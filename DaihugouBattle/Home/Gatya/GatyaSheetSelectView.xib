@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GatyaSheetSelectView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="KEx-aj-gyo" id="kTM-7A-JHw"/>
+                <outlet property="buyButton" destination="qXE-sj-h41" id="Eb2-wK-0Ai"/>
+                <outlet property="maxButton" destination="HM1-uw-gQF" id="QYi-bV-h4j"/>
+                <outlet property="minusButton" destination="PHU-u9-Nu4" id="aJV-Kl-kqh"/>
+                <outlet property="plusButton" destination="H66-cs-NxD" id="1nG-gb-sc1"/>
+                <outlet property="possessionLabel" destination="OOF-Bg-mtZ" id="h2L-Gl-PKl"/>
+                <outlet property="sheetCountLabel" destination="dep-8E-oAg" id="Clr-XQ-pyg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEx-aj-gyo">
+                    <rect key="frame" x="5" y="5" width="48" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="×">
+                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="F4f-Id-80M"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fc-yM-N27">
+                    <rect key="frame" x="0.0" y="37" width="480" height="228"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gcl-4u-7fy">
+                    <rect key="frame" x="72" y="270" width="336" height="40"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHU-u9-Nu4">
+                            <rect key="frame" x="0.0" y="0.0" width="63" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                            <state key="normal" title="-">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="regulationSheet:" destination="-1" eventType="touchUpInside" id="9Xi-8N-Mo2"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dep-8E-oAg">
+                            <rect key="frame" x="68" y="0.0" width="63.5" height="40"/>
+                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H66-cs-NxD">
+                            <rect key="frame" x="136.5" y="0.0" width="63" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <state key="normal" title="+">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="regulationSheet:" destination="-1" eventType="touchUpInside" id="Fpa-kZ-4Mz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM1-uw-gQF">
+                            <rect key="frame" x="204.5" y="0.0" width="63.5" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <state key="normal" title="max">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="regulationSheet:" destination="-1" eventType="touchUpInside" id="3oL-Fc-3uy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXE-sj-h41">
+                            <rect key="frame" x="273" y="0.0" width="63" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <inset key="titleEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="購入する">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="buy:" destination="-1" eventType="touchUpInside" id="3OA-5B-Ivj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOF-Bg-mtZ">
+                    <rect key="frame" x="180" y="225" width="120" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="gcl-4u-7fy" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-10" id="03i-X2-xBO"/>
+                <constraint firstItem="KEx-aj-gyo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="2yY-a7-tLe"/>
+                <constraint firstItem="gcl-4u-7fy" firstAttribute="top" secondItem="OOF-Bg-mtZ" secondAttribute="bottom" constant="5" id="4or-KC-Jyr"/>
+                <constraint firstItem="KEx-aj-gyo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="DhS-6D-QsR"/>
+                <constraint firstItem="gcl-4u-7fy" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:8" id="HUM-5T-QIL"/>
+                <constraint firstItem="4Fc-yM-N27" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LnQ-LD-i20"/>
+                <constraint firstItem="OOF-Bg-mtZ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="aDr-qI-yjc"/>
+                <constraint firstItem="4Fc-yM-N27" firstAttribute="top" secondItem="KEx-aj-gyo" secondAttribute="bottom" id="bKf-5X-vcc"/>
+                <constraint firstItem="KEx-aj-gyo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:10" id="fDx-t5-Lxf"/>
+                <constraint firstItem="gcl-4u-7fy" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="kfc-zJ-gN0"/>
+                <constraint firstItem="gcl-4u-7fy" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="md3-ZG-0Ci"/>
+                <constraint firstItem="OOF-Bg-mtZ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:4" id="ru4-fq-peM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4Fc-yM-N27" secondAttribute="trailing" id="sK8-Oa-YoB"/>
+                <constraint firstItem="KEx-aj-gyo" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:10" id="scm-Ri-k24"/>
+                <constraint firstItem="gcl-4u-7fy" firstAttribute="top" secondItem="4Fc-yM-N27" secondAttribute="bottom" constant="5" id="vA1-08-Sy6"/>
+                <constraint firstItem="OOF-Bg-mtZ" firstAttribute="height" secondItem="gcl-4u-7fy" secondAttribute="height" id="wHy-2U-uyC"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

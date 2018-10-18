@@ -1,0 +1,8 @@
+ビルド時間表示
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES
+並列ビルド
+defaults wirte com.apple.dt.Xcode IDEBuildOperationMaxNumberOfConcurrentCompileTasks 2
+ビルドした端末のみにビルド(Realse時にはNOにする)
+XcodeのTarget->Build Setting->Build Active Architecture OnlyでDebugだけYES
+
+Edid Scheme->Build

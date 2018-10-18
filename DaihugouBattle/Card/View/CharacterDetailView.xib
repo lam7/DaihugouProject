@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterDetailView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="atkLabel" destination="tps-r8-rSW" id="vVH-Dl-ghS"/>
+                <outlet property="descriptionTextView" destination="XWg-PA-AJv" id="SBN-zK-OGP"/>
+                <outlet property="hpLabel" destination="R0m-ZT-TJq" id="hK3-tm-L89"/>
+                <outlet property="imageView" destination="SZ0-2p-Rob" id="yWE-uv-LFF"/>
+                <outlet property="indexLabel" destination="Whg-0P-MXU" id="QHA-qL-U7L"/>
+                <outlet property="nameLabel" destination="dNn-7I-CIJ" id="498-7W-WEt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZ0-2p-Rob">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="320"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="SZ0-2p-Rob" secondAttribute="height" multiplier="3:4" id="Gfa-1I-RXa"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="inp-2S-g15">
+                    <rect key="frame" x="260" y="0.0" width="308" height="320"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="aAR-s4-ZZs">
+                            <rect key="frame" x="0.0" y="0.0" width="308" height="40"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNn-7I-CIJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="35" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="インデックス" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-0P-MXU">
+                                    <rect key="frame" x="35" y="0.0" width="273" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Whg-0P-MXU" firstAttribute="height" secondItem="aAR-s4-ZZs" secondAttribute="height" id="HM4-9B-u3B"/>
+                                <constraint firstItem="dNn-7I-CIJ" firstAttribute="height" secondItem="aAR-s4-ZZs" secondAttribute="height" id="UbM-o5-3Pm"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2Q-23-fFx">
+                            <rect key="frame" x="0.0" y="40" width="308" height="40.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="体力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0m-ZT-TJq">
+                                    <rect key="frame" x="0.0" y="0.0" width="154" height="40.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="攻撃力" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tps-r8-rSW">
+                                    <rect key="frame" x="154" y="0.0" width="154" height="40.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="R0m-ZT-TJq" firstAttribute="width" secondItem="tps-r8-rSW" secondAttribute="width" id="vE7-Aa-GRT"/>
+                            </constraints>
+                        </stackView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWg-PA-AJv">
+                            <rect key="frame" x="0.0" y="80.5" width="308" height="239.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="b2Q-23-fFx" firstAttribute="width" secondItem="inp-2S-g15" secondAttribute="width" id="XMM-SS-AES"/>
+                        <constraint firstItem="XWg-PA-AJv" firstAttribute="height" secondItem="inp-2S-g15" secondAttribute="height" multiplier="0.75" id="io9-wi-GPO"/>
+                        <constraint firstItem="aAR-s4-ZZs" firstAttribute="width" secondItem="inp-2S-g15" secondAttribute="width" id="jiM-2d-QwM"/>
+                        <constraint firstItem="aAR-s4-ZZs" firstAttribute="height" secondItem="b2Q-23-fFx" secondAttribute="height" id="sVa-px-wtn"/>
+                        <constraint firstItem="XWg-PA-AJv" firstAttribute="width" secondItem="inp-2S-g15" secondAttribute="width" id="wi9-ZR-NqD"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="SZ0-2p-Rob" secondAttribute="bottom" id="1iz-v1-TuE"/>
+                <constraint firstItem="inp-2S-g15" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="BhU-zu-EK0"/>
+                <constraint firstItem="SZ0-2p-Rob" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Gch-9u-igT"/>
+                <constraint firstItem="inp-2S-g15" firstAttribute="leading" secondItem="SZ0-2p-Rob" secondAttribute="trailing" constant="20" id="KOL-VW-izQ"/>
+                <constraint firstItem="SZ0-2p-Rob" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Pfn-6h-2Nl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="inp-2S-g15" secondAttribute="bottom" id="YOT-Mu-Qkq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="inp-2S-g15" secondAttribute="trailing" id="dxh-wa-nLL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

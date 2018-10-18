@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7lw-71-JVE">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Gatya-->
+        <scene sceneID="P8d-Kt-kIn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Gatya" id="JSk-Xv-dcw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccd-ho-uzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="878"/>
+        </scene>
+        <!--Battle-->
+        <scene sceneID="FWr-n7-JGM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Battle" id="17S-JS-iJ6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y1Y-i8-ZQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780" y="958"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="d5f-wA-buQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="wbN-5K-dkz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="exM-qE-Eoe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797" y="587"/>
+        </scene>
+        <!--PossessionCard-->
+        <scene sceneID="guc-GI-VP3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PossessionCard" id="5bL-KI-xcF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lqs-tT-J9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="807" y="678"/>
+        </scene>
+        <!--CreateDeck-->
+        <scene sceneID="w6v-kN-0uE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateDeck" id="j6h-h7-eRL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7J-mN-cKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="795" y="781"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="u7s-Lj-bAt">
+            <objects>
+                <viewController storyboardIdentifier="start" id="7lw-71-JVE" customClass="HomeViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vvI-Ae-Wzu"/>
+                        <viewControllerLayoutGuide type="bottom" id="6U5-vh-uOl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="056-yu-FTx">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="nZV-fC-V05" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                            </imageView>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg2-lJ-qbf" customClass="HomeSelectView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCA-sM-O9l" customClass="CardSelectView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0D-W2-Sh9" customClass="BattleSelectView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCI-2a-rXu" customClass="SettingSelectView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7W-ve-I0M" customClass="GatyaSelectView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-2c-2hJ">
+                                <rect key="frame" x="444" y="10" width="104" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持石" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkd-vq-G0z" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="20"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持ゴールド" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-Pq-3Um" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20" width="104" height="20"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gkd-vq-G0z" secondAttribute="width" id="UXY-K6-ueu"/>
+                                    <constraint firstItem="Gkd-vq-G0z" firstAttribute="width" secondItem="Pah-Pq-3Um" secondAttribute="width" id="keG-e6-dey"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ランク" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-Em-qfA">
+                                <rect key="frame" x="10" y="10" width="142" height="40"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="6nZ-lq-8zC" userLabel="Buttons">
+                                <rect key="frame" x="0.0" y="293.5" width="568" height="26.5"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-eF-8T6" customClass="ZFRippleButton" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="26.5"/>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="ホーム" image="IconHome">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="nonHighlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchUp:" destination="7lw-71-JVE" eventType="touchUpInside" id="dBL-JA-8CH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sja-8L-Nma" customClass="ZFRippleButton" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="119.5" y="0.0" width="89.5" height="26.5"/>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="カード" image="IconCard">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="nonHighlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchUp:" destination="7lw-71-JVE" eventType="touchUpInside" id="cxL-mV-xU2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-T3-SxW" customClass="ZFRippleButton" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="239" y="0.0" width="90" height="26.5"/>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="バトル" image="IconBattle">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="nonHighlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchUp:" destination="7lw-71-JVE" eventType="touchUpInside" id="iL0-LC-c4b"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-4S-q8j" customClass="ZFRippleButton" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="359" y="0.0" width="89.5" height="26.5"/>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="ガチャ" image="IconShop">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="nonHighlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchUp:" destination="7lw-71-JVE" eventType="touchUpInside" id="qRm-TE-Odn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqx-xb-Zc5" customClass="ZFRippleButton" customModule="DaihugouBattle" customModuleProvider="target">
+                                        <rect key="frame" x="478.5" y="0.0" width="89.5" height="26.5"/>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="設定" image="IconSetting">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="nonHighlightedBackgroundColor">
+                                                <color key="value" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="touchUp:" destination="7lw-71-JVE" eventType="touchUpInside" id="t16-Bg-inO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xg2-lJ-qbf" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="2Ww-hG-CGL"/>
+                            <constraint firstItem="r0D-W2-Sh9" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="9ZO-ET-Bpf"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="D4S-BA-i6N"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="r0D-W2-Sh9" secondAttribute="trailing" id="Dtt-Ik-zGu"/>
+                            <constraint firstItem="4Lh-2c-2hJ" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="top" id="FQq-kc-Jqo"/>
+                            <constraint firstItem="BCI-2a-rXu" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="HI3-mW-4fg"/>
+                            <constraint firstItem="4Lh-2c-2hJ" firstAttribute="height" secondItem="QeO-Em-qfA" secondAttribute="height" id="Hxg-Xt-GJe"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="Q7W-ve-I0M" secondAttribute="bottom" id="KBK-Sr-szE"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="xg2-lJ-qbf" secondAttribute="bottom" id="LqE-yo-66B"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="PCA-sM-O9l" secondAttribute="trailing" id="Nx8-Pc-qt8"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="4Lh-2c-2hJ" secondAttribute="trailing" constant="20" id="QLY-Jn-6sZ"/>
+                            <constraint firstItem="nZV-fC-V05" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="QcM-3R-PqM"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="xg2-lJ-qbf" secondAttribute="trailing" id="Rsg-xc-FTr"/>
+                            <constraint firstItem="BCI-2a-rXu" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="bottom" id="TBT-KD-DNW"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="top" secondItem="nZV-fC-V05" secondAttribute="top" id="VX6-xg-2pr"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="bottom" secondItem="6nZ-lq-8zC" secondAttribute="bottom" id="XSD-9c-rCT"/>
+                            <constraint firstItem="Q7W-ve-I0M" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="bottom" id="XXr-VE-r7c"/>
+                            <constraint firstItem="xg2-lJ-qbf" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="bottom" id="YLS-Fm-E97"/>
+                            <constraint firstItem="QeO-Em-qfA" firstAttribute="top" secondItem="Q77-tw-6in" secondAttribute="top" constant="10" id="a5w-Pa-gUV"/>
+                            <constraint firstItem="QeO-Em-qfA" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" constant="10" id="bL8-po-soD"/>
+                            <constraint firstItem="PCA-sM-O9l" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="cF6-Rm-9uy"/>
+                            <constraint firstItem="QeO-Em-qfA" firstAttribute="height" secondItem="056-yu-FTx" secondAttribute="height" multiplier="1:8" id="dzy-7l-Hm2"/>
+                            <constraint firstItem="QeO-Em-qfA" firstAttribute="width" secondItem="056-yu-FTx" secondAttribute="width" multiplier="1:4" id="esj-sO-xnR"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="nZV-fC-V05" secondAttribute="trailing" id="fiP-P9-XTk"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="r0D-W2-Sh9" secondAttribute="bottom" id="i0P-s0-Y9H"/>
+                            <constraint firstItem="r0D-W2-Sh9" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="bottom" id="j4e-7Y-ENd"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="height" secondItem="056-yu-FTx" secondAttribute="height" multiplier="1:12" id="jhc-SL-0sI"/>
+                            <constraint firstItem="xg2-lJ-qbf" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="bottom" id="mQD-xd-aNz"/>
+                            <constraint firstItem="PCA-sM-O9l" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="bottom" id="ohn-Kd-V9W"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="BCI-2a-rXu" secondAttribute="bottom" id="piN-5c-Ml6"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="Q7W-ve-I0M" secondAttribute="trailing" id="rTU-et-IgT"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="BCI-2a-rXu" secondAttribute="trailing" id="rV0-DL-yeE"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="6nZ-lq-8zC" secondAttribute="trailing" id="tIa-ik-jRa"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="bottom" secondItem="nZV-fC-V05" secondAttribute="bottom" id="tPO-UV-8gb"/>
+                            <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="PCA-sM-O9l" secondAttribute="bottom" id="v6M-yf-DGU"/>
+                            <constraint firstItem="Q7W-ve-I0M" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="wFg-ld-XiZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q77-tw-6in"/>
+                    </view>
+                    <connections>
+                        <outlet property="battleButton" destination="2QD-T3-SxW" id="WtR-2n-7Rt"/>
+                        <outlet property="battleView" destination="r0D-W2-Sh9" id="Ruf-LQ-531"/>
+                        <outlet property="cardButton" destination="Sja-8L-Nma" id="FFa-EA-pZI"/>
+                        <outlet property="cardView" destination="PCA-sM-O9l" id="2Zg-gE-GAe"/>
+                        <outlet property="crystalLabel" destination="Gkd-vq-G0z" id="3tR-6p-4wb"/>
+                        <outlet property="gatyaButton" destination="Xpq-4S-q8j" id="X5x-2B-ddR"/>
+                        <outlet property="gatyaView" destination="Q7W-ve-I0M" id="Yet-nV-1Ip"/>
+                        <outlet property="goldLabel" destination="Pah-Pq-3Um" id="Njd-1J-H5B"/>
+                        <outlet property="homeButton" destination="w6S-eF-8T6" id="qyC-rw-wS8"/>
+                        <outlet property="homeView" destination="xg2-lJ-qbf" id="DKg-0d-mc9"/>
+                        <outlet property="rankLabel" destination="QeO-Em-qfA" id="rUj-Rv-Gpq"/>
+                        <outlet property="settingButton" destination="uqx-xb-Zc5" id="ivF-Hg-PeX"/>
+                        <outlet property="settingView" destination="BCI-2a-rXu" id="TgZ-hK-zsy"/>
+                        <outletCollection property="viewButtons" destination="Sja-8L-Nma" collectionClass="NSMutableArray" id="gya-HM-O5X"/>
+                        <outletCollection property="viewButtons" destination="2QD-T3-SxW" collectionClass="NSMutableArray" id="uVM-37-FPm"/>
+                        <outletCollection property="viewButtons" destination="Xpq-4S-q8j" collectionClass="NSMutableArray" id="62V-Lm-hXu"/>
+                        <outletCollection property="viewButtons" destination="uqx-xb-Zc5" collectionClass="NSMutableArray" id="aSi-6n-fCe"/>
+                        <segue destination="JSk-Xv-dcw" kind="show" identifier="gatya" id="6ed-bd-2zU"/>
+                        <segue destination="5bL-KI-xcF" kind="show" identifier="possessionCard" id="JTO-ch-sfR"/>
+                        <segue destination="17S-JS-iJ6" kind="show" identifier="battle" id="3e6-m0-cf4"/>
+                        <segue destination="j6h-h7-eRL" kind="show" identifier="deckForming" id="N88-VH-DYf"/>
+                        <segue destination="wbN-5K-dkz" kind="show" identifier="main" id="cmz-4O-7Ey"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WM4-Vp-nHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34.859154929577464" y="862.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="HomeBackground" width="1920" height="1080"/>
+        <image name="IconBattle" width="32" height="32"/>
+        <image name="IconCard" width="32" height="32"/>
+        <image name="IconHome" width="32" height="32"/>
+        <image name="IconSetting" width="32" height="32"/>
+        <image name="IconShop" width="32" height="32"/>
+    </resources>
+</document>

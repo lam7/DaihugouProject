@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterStatusDetailView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="atkLabel" destination="4z1-P9-aiE" id="Xd4-7m-X3j"/>
+                <outlet property="descriptionTextView" destination="gbX-HK-9NF" id="X75-sK-b7p"/>
+                <outlet property="hpLabel" destination="5el-wU-hIP" id="K0C-Mv-rba"/>
+                <outlet property="indexLabel" destination="5Ca-1e-iMg" id="e6e-el-oHE"/>
+                <outlet property="nameLabel" destination="RKP-ob-3Ou" id="USI-OG-h6i"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="cU0-36-JHJ">
+                    <rect key="frame" x="5" y="5" width="558" height="320"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKP-ob-3Ou">
+                            <rect key="frame" x="0.0" y="0.0" width="558" height="64"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="upj-o5-L4s">
+                            <rect key="frame" x="0.0" y="64" width="150" height="48"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcy-lA-i0K">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CharacterStatus_Index" translatesAutoresizingMaskIntoConstraints="NO" id="qkS-kJ-FUy">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ca-1e-iMg" customClass="UILabelWithImageView" customModule="DaihugouBattle" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5Ca-1e-iMg" secondAttribute="height" multiplier="1:1" id="vDc-6e-unX"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="CharacterStatus_Hp"/>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="size">
+                                                    <size key="value" width="0.0" height="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="5Ca-1e-iMg" firstAttribute="width" secondItem="jcy-lA-i0K" secondAttribute="width" id="4IT-UB-OQN"/>
+                                        <constraint firstItem="qkS-kJ-FUy" firstAttribute="leading" secondItem="jcy-lA-i0K" secondAttribute="leading" id="Atp-xm-Y6L"/>
+                                        <constraint firstItem="qkS-kJ-FUy" firstAttribute="width" secondItem="jcy-lA-i0K" secondAttribute="width" id="DwA-C9-aDE"/>
+                                        <constraint firstItem="5Ca-1e-iMg" firstAttribute="height" secondItem="jcy-lA-i0K" secondAttribute="height" id="PT9-R2-RrD"/>
+                                        <constraint firstItem="qkS-kJ-FUy" firstAttribute="top" secondItem="jcy-lA-i0K" secondAttribute="top" id="Yp5-nU-7oO"/>
+                                        <constraint firstItem="5Ca-1e-iMg" firstAttribute="leading" secondItem="jcy-lA-i0K" secondAttribute="leading" id="lTu-4F-p1y"/>
+                                        <constraint firstItem="5Ca-1e-iMg" firstAttribute="top" secondItem="jcy-lA-i0K" secondAttribute="top" id="mca-U4-LJr"/>
+                                        <constraint firstItem="qkS-kJ-FUy" firstAttribute="height" secondItem="jcy-lA-i0K" secondAttribute="height" id="t0j-xn-X3f"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HH-gX-upS">
+                                    <rect key="frame" x="51" y="0.0" width="48" height="48"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CharacterStaus_Atk" translatesAutoresizingMaskIntoConstraints="NO" id="O41-jK-s8i">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="攻撃力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4z1-P9-aiE" customClass="UILabelWithImageView" customModule="DaihugouBattle" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="4z1-P9-aiE" secondAttribute="height" multiplier="1:1" id="smm-xD-juI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="O41-jK-s8i" firstAttribute="leading" secondItem="9HH-gX-upS" secondAttribute="leading" id="7vS-6W-k07"/>
+                                        <constraint firstItem="4z1-P9-aiE" firstAttribute="height" secondItem="9HH-gX-upS" secondAttribute="height" id="Kld-ws-NMk"/>
+                                        <constraint firstItem="4z1-P9-aiE" firstAttribute="leading" secondItem="9HH-gX-upS" secondAttribute="leading" id="Llg-w0-zJd"/>
+                                        <constraint firstItem="4z1-P9-aiE" firstAttribute="width" secondItem="9HH-gX-upS" secondAttribute="width" id="Mbq-zw-tZu"/>
+                                        <constraint firstItem="4z1-P9-aiE" firstAttribute="top" secondItem="9HH-gX-upS" secondAttribute="top" id="Tst-25-iSR"/>
+                                        <constraint firstItem="O41-jK-s8i" firstAttribute="width" secondItem="9HH-gX-upS" secondAttribute="width" id="gkv-fW-4Jb"/>
+                                        <constraint firstItem="O41-jK-s8i" firstAttribute="top" secondItem="9HH-gX-upS" secondAttribute="top" id="kpr-Ym-hPh"/>
+                                        <constraint firstItem="O41-jK-s8i" firstAttribute="height" secondItem="9HH-gX-upS" secondAttribute="height" id="lLj-Mb-xO6"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZQ-pa-Yrp">
+                                    <rect key="frame" x="102" y="0.0" width="48" height="48"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CharacterStatus_Hp" translatesAutoresizingMaskIntoConstraints="NO" id="wJt-yG-MME">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="体力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5el-wU-hIP" customClass="UILabelWithImageView" customModule="DaihugouBattle" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5el-wU-hIP" secondAttribute="height" multiplier="1:1" id="u62-q7-2m9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="CharacterStatus_Hp"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="wJt-yG-MME" firstAttribute="leading" secondItem="MZQ-pa-Yrp" secondAttribute="leading" id="0mM-78-ZrT"/>
+                                        <constraint firstItem="5el-wU-hIP" firstAttribute="leading" secondItem="MZQ-pa-Yrp" secondAttribute="leading" id="6nA-ql-wIY"/>
+                                        <constraint firstItem="5el-wU-hIP" firstAttribute="width" secondItem="MZQ-pa-Yrp" secondAttribute="width" id="8at-XM-Qcq"/>
+                                        <constraint firstItem="5el-wU-hIP" firstAttribute="height" secondItem="MZQ-pa-Yrp" secondAttribute="height" id="MUe-Td-czs"/>
+                                        <constraint firstItem="wJt-yG-MME" firstAttribute="height" secondItem="MZQ-pa-Yrp" secondAttribute="height" id="Z7I-Ng-jCW"/>
+                                        <constraint firstItem="wJt-yG-MME" firstAttribute="top" secondItem="MZQ-pa-Yrp" secondAttribute="top" id="o9e-DX-yeo"/>
+                                        <constraint firstItem="wJt-yG-MME" firstAttribute="width" secondItem="MZQ-pa-Yrp" secondAttribute="width" id="tPw-vT-ODd"/>
+                                        <constraint firstItem="5el-wU-hIP" firstAttribute="top" secondItem="MZQ-pa-Yrp" secondAttribute="top" id="y1S-vz-bIe"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="説明" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gbX-HK-9NF">
+                            <rect key="frame" x="0.0" y="112" width="558" height="208"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="gbX-HK-9NF" firstAttribute="leading" secondItem="cU0-36-JHJ" secondAttribute="leading" id="DKs-Et-xPB"/>
+                        <constraint firstAttribute="trailing" secondItem="RKP-ob-3Ou" secondAttribute="trailing" id="HTZ-V9-bQ1"/>
+                        <constraint firstItem="RKP-ob-3Ou" firstAttribute="height" secondItem="cU0-36-JHJ" secondAttribute="height" multiplier="0.2" id="P9H-wf-3Bx"/>
+                        <constraint firstAttribute="trailing" secondItem="gbX-HK-9NF" secondAttribute="trailing" id="fOg-rC-R2d"/>
+                        <constraint firstItem="upj-o5-L4s" firstAttribute="height" secondItem="cU0-36-JHJ" secondAttribute="height" multiplier="0.2" id="iJh-em-vb4"/>
+                        <constraint firstItem="RKP-ob-3Ou" firstAttribute="leading" secondItem="cU0-36-JHJ" secondAttribute="leading" id="iM8-qu-MG5"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="cU0-36-JHJ" secondAttribute="leading" constant="-5" id="3Kp-2A-1bC"/>
+                <constraint firstItem="cU0-36-JHJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="A2C-zv-gP6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cU0-36-JHJ" secondAttribute="trailing" constant="5" id="N2E-KL-z89"/>
+                <constraint firstItem="cU0-36-JHJ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="5" id="Wuf-BS-jc5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CharacterStatus_Hp" width="124" height="106"/>
+        <image name="CharacterStatus_Index" width="64" height="64"/>
+        <image name="CharacterStaus_Atk" width="64" height="64"/>
+    </resources>
+</document>

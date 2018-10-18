@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="Ke7-gz-I0G" id="7XJ-3x-cEa"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oa5-p2-kaA">
+                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ke7-gz-I0G">
+                    <rect key="frame" x="594.5" y="302.5" width="62.5" height="62.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Ke7-gz-I0G" secondAttribute="height" multiplier="1:1" id="KSs-rb-ofe"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="oa5-p2-kaA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9GB-Hc-UO8"/>
+                <constraint firstItem="oa5-p2-kaA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FS9-GS-Jxd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ke7-gz-I0G" secondAttribute="trailing" constant="10" id="I4h-Iy-fAU"/>
+                <constraint firstItem="Ke7-gz-I0G" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:6" id="JxV-lj-pKe"/>
+                <constraint firstItem="oa5-p2-kaA" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="VUq-B7-r4n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Ke7-gz-I0G" secondAttribute="bottom" constant="10" id="dLp-BN-BF1"/>
+                <constraint firstItem="oa5-p2-kaA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="yXe-EI-gzK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="34.5" y="82.5"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Swipeable View Controller-->
+        <scene sceneID="VDM-Oa-FW1">
+            <objects>
+                <viewController id="heL-WB-htU" customClass="ZLSwipeableViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tdq-Pz-re9">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtC-ST-yWb" customClass="ZLSwipeableView" customModule="ZLSwipeableViewSwift">
+                                <rect key="frame" x="133.5" y="37.5" width="400" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RtC-ST-yWb" secondAttribute="height" multiplier="4:3" id="EBM-o9-R3l"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RtC-ST-yWb" firstAttribute="width" secondItem="Tdq-Pz-re9" secondAttribute="width" multiplier="0.6" id="Jaf-Sq-6mb"/>
+                            <constraint firstItem="RtC-ST-yWb" firstAttribute="centerY" secondItem="rfk-X8-ezY" secondAttribute="centerY" id="QRJ-H2-yoi"/>
+                            <constraint firstItem="RtC-ST-yWb" firstAttribute="centerX" secondItem="rfk-X8-ezY" secondAttribute="centerX" id="lKj-3r-d6v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rfk-X8-ezY"/>
+                    </view>
+                    <connections>
+                        <outlet property="swipeableView" destination="RtC-ST-yWb" id="9Y1-fe-2uk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4QP-YY-HsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="728.87323943661977" y="-1762.5"/>
+        </scene>
+        <!--Possession Card View Controller-->
+        <scene sceneID="Scm-S6-xFI">
+            <objects>
+                <viewController id="jXU-gu-3cl" customClass="PossessionCardViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FOL-Bj-37a">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bji-io-cb9">
+                                <rect key="frame" x="0.0" y="50" width="667" height="325"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="30" id="RuK-fV-QZr">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jXU-gu-3cl" id="T8E-pp-P7C"/>
+                                    <outlet property="delegate" destination="jXU-gu-3cl" id="eMg-9Y-QEB"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ4-52-LGg">
+                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="40"/>
+                                <state key="normal" title="戻る"/>
+                                <connections>
+                                    <segue destination="z4O-xL-1Fx" kind="show" id="F1j-gj-ZAA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xe-S0-SlV">
+                                <rect key="frame" x="363.5" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9xe-S0-SlV" secondAttribute="height" multiplier="1:1" id="Wkk-xR-dcT"/>
+                                </constraints>
+                                <state key="normal" title="#"/>
+                                <connections>
+                                    <action selector="touchUpSortFilter:" destination="jXU-gu-3cl" eventType="touchUpInside" id="CWu-HR-058"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-8d-Fwl">
+                                <rect key="frame" x="403.5" y="0.0" width="263.5" height="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="jXU-gu-3cl" id="kA8-87-BQF"/>
+                                </connections>
+                            </searchBar>
+                            <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-FR-edE" customClass="CardSortFilterView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="66.5" y="19" width="534" height="337.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64z-H9-xTF" customClass="PossessionCardDetailView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="50" y="19" width="567" height="337.5"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <viewLayoutGuide key="safeArea" id="Sfa-i1-1a3"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eMb-FR-edE" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="3fT-wc-i8j"/>
+                            <constraint firstItem="SQ4-52-LGg" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="1:5" id="6QX-bZ-elg"/>
+                            <constraint firstItem="L7l-jf-xvv" firstAttribute="bottom" secondItem="bji-io-cb9" secondAttribute="bottom" id="7v5-sU-MWm"/>
+                            <constraint firstItem="SQ4-52-LGg" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="Hir-zC-T5X"/>
+                            <constraint firstItem="gJd-8d-Fwl" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="top" id="IEj-o0-xUB"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SQ4-52-LGg" secondAttribute="trailing" constant="20" symbolic="YES" id="JAH-t1-IN8"/>
+                            <constraint firstItem="64z-H9-xTF" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="0.85" id="KDC-TX-9pR"/>
+                            <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="bottom" constant="10" id="PfM-Tx-yW4"/>
+                            <constraint firstItem="bji-io-cb9" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="Pw2-fb-iDs"/>
+                            <constraint firstItem="eMb-FR-edE" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="0.8" id="Xc5-wf-vEr"/>
+                            <constraint firstItem="bji-io-cb9" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="aoj-qL-wM0"/>
+                            <constraint firstItem="64z-H9-xTF" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="ard-y5-lQb"/>
+                            <constraint firstItem="9xe-S0-SlV" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="top" id="dOv-w8-Cp8"/>
+                            <constraint firstItem="eMb-FR-edE" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="e1H-e6-7se"/>
+                            <constraint firstItem="SQ4-52-LGg" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" id="eXF-Oa-lnT"/>
+                            <constraint firstItem="gJd-8d-Fwl" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="ffX-TQ-oNX"/>
+                            <constraint firstItem="64z-H9-xTF" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="nHG-f2-v9m"/>
+                            <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" constant="50" id="nhR-Qx-eiK"/>
+                            <constraint firstItem="gJd-8d-Fwl" firstAttribute="height" secondItem="SQ4-52-LGg" secondAttribute="height" id="odD-3B-Y6F"/>
+                            <constraint firstItem="gJd-8d-Fwl" firstAttribute="leading" secondItem="9xe-S0-SlV" secondAttribute="trailing" id="ps3-zM-v0U"/>
+                            <constraint firstItem="9xe-S0-SlV" firstAttribute="centerX" secondItem="L7l-jf-xvv" secondAttribute="centerX" constant="50" id="qCM-Gb-EGr"/>
+                            <constraint firstItem="eMb-FR-edE" firstAttribute="centerX" secondItem="L7l-jf-xvv" secondAttribute="centerX" id="rfV-e5-fCd"/>
+                            <constraint firstItem="64z-H9-xTF" firstAttribute="centerX" secondItem="L7l-jf-xvv" secondAttribute="centerX" id="uXF-Y9-pXL"/>
+                            <constraint firstItem="9xe-S0-SlV" firstAttribute="height" secondItem="SQ4-52-LGg" secondAttribute="height" id="yBh-Wv-d7n"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L7l-jf-xvv"/>
+                    </view>
+                    <connections>
+                        <outlet property="characterDetailView" destination="64z-H9-xTF" id="KOd-Sn-NHN"/>
+                        <outlet property="collectionView" destination="bji-io-cb9" id="GM9-Vg-8AP"/>
+                        <outlet property="searchBar" destination="gJd-8d-Fwl" id="B3C-Hl-TI4"/>
+                        <outlet property="sortFilterView" destination="eMb-FR-edE" id="Lvb-sb-Mw4"/>
+                        <segue destination="heL-WB-htU" kind="show" identifier="swipeable" id="GKh-qC-SlQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wcV-R1-lwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718" y="-953"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="zIu-Yd-Vu9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="z4O-xL-1Fx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ubz-aD-qDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="-955"/>
+        </scene>
+    </scenes>
+</document>

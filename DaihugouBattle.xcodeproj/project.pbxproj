@@ -1,0 +1,1843 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A748AC5F076B6D953651C58 /* Pods_DaihugouBattleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD58E60B209FBE98E9A14F6C /* Pods_DaihugouBattleTests.framework */; };
+		0F98B9D324614F2604B3621C /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B209296A6312E5FF139017 /* Pods_DaihugouBattle.framework */; };
+		AA0173C71F84959F00D9168A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0173C61F84959F00D9168A /* LoadingView.swift */; };
+		AA0173D11F84C97400D9168A /* GatyaParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D01F84C82700D9168A /* GatyaParticle.sks */; };
+		AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D91F850E6B00D9168A /* Assets.xcassets */; };
+		AA0173DF1F85124400D9168A /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0173DE1F85124400D9168A /* BattleViewController.swift */; };
+		AA02D860209172AE005B1B55 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02D85F209172AE005B1B55 /* CardCollectionView.swift */; };
+		AA02D86220920EE4005B1B55 /* PlayerNameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02D86120920EE4005B1B55 /* PlayerNameSettingView.swift */; };
+		AA02D86420921215005B1B55 /* PlayerNameSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA02D86320921215005B1B55 /* PlayerNameSettingView.xib */; };
+		AA02D86620930951005B1B55 /* TextFieldWithToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */; };
+		AA0309B32160AFD10089123A /* SpotCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0309B22160AFD10089123A /* SpotCollectionView.swift */; };
+		AA0309B52160B07C0089123A /* SpotCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0309B42160B07C0089123A /* SpotCollectionView.xib */; };
+		AA0309B72160B6BC0089123A /* SpotCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0309B62160B6BC0089123A /* SpotCollectionHeader.swift */; };
+		AA0309B92160B72B0089123A /* SpotCollectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0309B82160B72B0089123A /* SpotCollectionHeader.xib */; };
+		AA03F4F820B1390000D1F26E /* SelectedDeckInCreateDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA03F4F720B1390000D1F26E /* SelectedDeckInCreateDeckView.swift */; };
+		AA03F4FA20B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */; };
+		AA03F4FD20B1408C00D1F26E /* GatyaPackParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */; };
+		AA03F4FE20B1408C00D1F26E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4FC20B1408B00D1F26E /* Assets.xcassets */; };
+		AA0742291F8F371A0063585A /* BattleSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0742281F8F371A0063585A /* BattleSelectView.xib */; };
+		AA093EBB20AF06940005B0E4 /* SlowAnimations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA093EBA20AF06940005B0E4 /* SlowAnimations.framework */; };
+		AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA093EBC20AF06BF0005B0E4 /* Measurements.framework */; };
+		AA0975E01F7F8DF000404F9C /* UICircleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0975DB1F7F8DEC00404F9C /* UICircleLabel.swift */; };
+		AA0975E31F7F8DF000404F9C /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0975DE1F7F8DEF00404F9C /* UIImage+Gif.swift */; };
+		AA0975E41F7F8DF000404F9C /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */; };
+		AA10CA171F932F3F0078850C /* Gatya.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA10CA161F932F3F0078850C /* Gatya.storyboard */; };
+		AA10CA1C1F93326E0078850C /* PossessionCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA10CA1B1F93326E0078850C /* PossessionCard.storyboard */; };
+		AA12875F207EFF4300194FD7 /* Extension_Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA12875E207EFF4300194FD7 /* Extension_Random.swift */; };
+		AA128C342166DE5400B78B23 /* BattleSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA128C332166DE5400B78B23 /* BattleSkillView.swift */; };
+		AA17A365201ADE9E000FB55E /* TouchBeganParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */; };
+		AA1D1CD51F92E8D1001FE74B /* GatyaSheetSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */; };
+		AA255FE9200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */; };
+		AA2692F9207B92F300631C3D /* Debug_GiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */; };
+		AA2692FB207B930300631C3D /* Debug_GiftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */; };
+		AA290786208D9A490075DA4B /* CardsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA290785208D9A490075DA4B /* CardsFilter.swift */; };
+		AA2C5AF420ECED60000B1E8B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5AF320ECED5F000B1E8B /* Icon.swift */; };
+		AA2C5AF620ECED90000B1E8B /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5AF520ECED90000B1E8B /* HomeButton.swift */; };
+		AA2CD47D20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */; };
+		AA2CD48120AC5A0200DFAC23 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2CD48020AC5A0100DFAC23 /* SnapKit.framework */; };
+		AA2EDE32212D5D52008FED44 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2EDE31212D5D52008FED44 /* CardView.swift */; };
+		AA2F20DC1FADC390002F70DA /* RoundCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F20DB1FADC390002F70DA /* RoundCornerButton.swift */; };
+		AA3209A5209DC9850059D51B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3209A4209DC9850059D51B /* main.swift */; };
+		AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3667EB20770F480012835E /* HomeSelectView.swift */; };
+		AA3667EE20770F9D0012835E /* HomeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3667ED20770F9D0012835E /* HomeSelectView.xib */; };
+		AA3B9D4A20CEB5F600AD79FC /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3B9D4920CEB5F600AD79FC /* Define.swift */; };
+		AA3B9D4C20CEBB7D00AD79FC /* CardWithView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3B9D4B20CEBB7D00AD79FC /* CardWithView.swift */; };
+		AA3B9D4E20CF73BA00AD79FC /* CardStandartFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3B9D4D20CF73B900AD79FC /* CardStandartFrontView.xib */; };
+		AA3B9D5020CF77CD00AD79FC /* CardStandartBackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3B9D4F20CF77CD00AD79FC /* CardStandartBackView.xib */; };
+		AA3C4E0A1FD67C7B00E1315C /* HpGaugeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3C4E091FD67C7B00E1315C /* HpGaugeView.xib */; };
+		AA3C4E0C1FD67D1F00E1315C /* HpGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C4E0B1FD67D1F00E1315C /* HpGaugeView.swift */; };
+		AA3C4E0E1FD6C9B700E1315C /* IDAProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C4E0D1FD6C9B700E1315C /* IDAProgressView.swift */; };
+		AA3D3DB12099D60900AB4396 /* BattleMultiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D3DB02099D60900AB4396 /* BattleMultiViewController.swift */; };
+		AA3D3DB32099D81800AB4396 /* BattleCPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D3DB22099D81800AB4396 /* BattleCPUViewController.swift */; };
+		AA3D3DB72099F1E700AB4396 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA3D3DB62099F1E600AB4396 /* GoogleService-Info.plist */; };
+		AA3EBAE81FC7B5B100D902B7 /* GatyaRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3EBAE71FC7B5B100D902B7 /* GatyaRollViewController.swift */; };
+		AA472FA92021C4E200440C59 /* StartViewParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA472FA82021C4E200440C59 /* StartViewParticle.sks */; };
+		AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA472FAC2021C6B500440C59 /* ParticleView.swift */; };
+		AA487E881F820E6F00342B49 /* CardBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487E871F820E6F00342B49 /* CardBattle.swift */; };
+		AA487E901F82181800342B49 /* BattleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA487E8F1F82181800342B49 /* BattleScene.sks */; };
+		AA487E921F821E4600342B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA487E911F821E4600342B49 /* Main.storyboard */; };
+		AA4AA0391FE0E0C50099E71C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0331FE0E0C40099E71C /* Chameleon.framework */; };
+		AA4AA03A1FE0E0C50099E71C /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0341FE0E0C50099E71C /* ZLSwipeableViewSwift.framework */; };
+		AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0351FE0E0C50099E71C /* Realm.framework */; };
+		AA4AA03C1FE0E0C50099E71C /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0361FE0E0C50099E71C /* Hero.framework */; };
+		AA4AA03D1FE0E0C50099E71C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0371FE0E0C50099E71C /* RealmSwift.framework */; };
+		AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0381FE0E0C50099E71C /* NCMB.framework */; };
+		AA4AA0411FE0E39F0099E71C /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4AA0401FE0E39F0099E71C /* EFCountingLabel.swift */; };
+		AA4B1EE020B244AD009969D3 /* GatyaPackParticle1.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA4B1EDF20B244AD009969D3 /* GatyaPackParticle1.sks */; };
+		AA4BB0271FDFF5320083B437 /* XcodeSetting.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB0261FDFF5320083B437 /* XcodeSetting.txt */; };
+		AA4BB3C82166E2A200E53BDA /* BattleSkillView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3C72166E2A200E53BDA /* BattleSkillView.xib */; };
+		AA4BB3CA2166FC8900E53BDA /* SkillDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3C92166FC8900E53BDA /* SkillDescriptionTextView.swift */; };
+		AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */; };
+		AA4BB3CE21670A8C00E53BDA /* BattlePlayerAtkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */; };
+		AA4BB3D0216AECCE00E53BDA /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4BB3CF216AECCD00E53BDA /* SwiftyGif.framework */; };
+		AA4BB3D2216AED0200E53BDA /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3D1216AED0200E53BDA /* GifView.swift */; };
+		AA4BB3DA216AF84500E53BDA /* 勇者たちのララバイ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */; };
+		AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */; };
+		AA524A39207DB67100F4E11B /* PossessionCardDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA524A38207DB67100F4E11B /* PossessionCardDetailView.xib */; };
+		AA5541902146163C003A008B /* PrivateBattleMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA55418F2146163C003A008B /* PrivateBattleMaster.swift */; };
+		AA554192214616F0003A008B /* ControllBattleDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA554191214616F0003A008B /* ControllBattleDeck.swift */; };
+		AA5541D6214E056B003A008B /* BattleDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5541D5214E056B003A008B /* BattleDeck.swift */; };
+		AA5AB98920ABC4F00084B7FC /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5AB98820ABC4F00084B7FC /* SelectableView.swift */; };
+		AA5C14ED1FB0180800D8CC15 /* CreateDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C14EC1FB0180800D8CC15 /* CreateDeckViewController.swift */; };
+		AA5C14EF1FB0184900D8CC15 /* CreateDeck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5C14EE1FB0184900D8CC15 /* CreateDeck.storyboard */; };
+		AA5C14F11FB14CDF00D8CC15 /* CharacterStatusDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5C14F01FB14CDF00D8CC15 /* CharacterStatusDetailView.xib */; };
+		AA5C14F31FB14DB600D8CC15 /* CharacterStatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5C14F21FB14DB600D8CC15 /* CharacterStatusDetailView.swift */; };
+		AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAD3209B3C8E0034DFC0 /* Fabric.framework */; };
+		AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAD4209B3C8F0034DFC0 /* Crashlytics.framework */; };
+		AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAD7209B43CA0034DFC0 /* GameAnalytics.framework */; };
+		AA5DBADA209BDD2C0034DFC0 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */; };
+		AA5DBADB209BDD2C0034DFC0 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */; };
+		AA5DBAE5209BDD310034DFC0 /* UITextField_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBADF209BDD310034DFC0 /* UITextField_Navigation.framework */; };
+		AA5DBAE6209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE0209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework */; };
+		AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE1209BDD310034DFC0 /* FLEX.framework */; };
+		AA5DBAE8209BDD310034DFC0 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE2209BDD310034DFC0 /* NVActivityIndicatorView.framework */; };
+		AA5DBAE9209BDFD00034DFC0 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1920902D0500AEAFB1 /* RxTest.framework */; };
+		AA5DBAEA209BDFD00034DFC0 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1720902D0500AEAFB1 /* RxBlocking.framework */; };
+		AA5E78BE1F95B61A0099632B /* GatyaSheetSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E78BD1F95B61A0099632B /* GatyaSheetSelectView.swift */; };
+		AA5F5F811FBAC4450020E1D0 /* PossessionCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5F5F801FBAC4450020E1D0 /* PossessionCardDetailView.swift */; };
+		AA65BE442058C0260062AFFA /* Extension_CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65BE432058C0260062AFFA /* Extension_CAAnimation.swift */; };
+		AA671EE61F8522B600355759 /* Battle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA671EE51F8522B600355759 /* Battle.storyboard */; };
+		AA6D7B5E1FAC8B0200C4ECDA /* CardSortFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */; };
+		AA6D7B601FAC8F8000C4ECDA /* CardSortFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */; };
+		AA6E65F720C60F3F002D883D /* CardAtkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E65F620C60F3F002D883D /* CardAtkView.swift */; };
+		AA6E70761F74A64600A401AE /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70751F74A64600A401AE /* Download.swift */; };
+		AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70BD1F77583800A401AE /* DownloadViewController.swift */; };
+		AA6F043720907EB600B4B65D /* CardsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F043520907EB500B4B65D /* CardsCell.swift */; };
+		AA6F043820907EB600B4B65D /* CardsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6F043620907EB500B4B65D /* CardsCell.xib */; };
+		AA6F043A2090823800B4B65D /* CardDecorateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F04392090823800B4B65D /* CardDecorateImage.swift */; };
+		AA7205701FB54A65003E5B88 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72056F1FB54A65003E5B88 /* SpotView.swift */; };
+		AA725D23215526500064A3BA /* DataRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA725D22215526500064A3BA /* DataRealm.swift */; };
+		AA7798AB2079DB47006F85C4 /* GiftBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7798AA2079DB47006F85C4 /* GiftBoxView.swift */; };
+		AA7798AD2079DB62006F85C4 /* GiftBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7798AC2079DB62006F85C4 /* GiftBoxView.xib */; };
+		AA7798AF2079DC24006F85C4 /* GiftBoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7798AE2079DC24006F85C4 /* GiftBoxCell.xib */; };
+		AA7798B12079FBCD006F85C4 /* GiftBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7798B02079FBCD006F85C4 /* GiftBoxCell.swift */; };
+		AA84978F1F947C3F00DD6899 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA84978E1F947C3F00DD6899 /* LoadingView.xib */; };
+		AA8497931F948D1400DD6899 /* CharacterDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8497921F948D1400DD6899 /* CharacterDetailView.xib */; };
+		AA8497951F948E3A00DD6899 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8497941F948E3A00DD6899 /* CharacterDetailView.swift */; };
+		AA89C0B71F7E6FC800218655 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89C0B61F7E6FC800218655 /* HomeViewController.swift */; };
+		AA8ADD1620902D0300AEAFB1 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF134FE202411D5002A472E /* Hydra.framework */; };
+		AA8E770520E4FDDF00D31049 /* PrivateDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */; };
+		AA95767720232B860023402A /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95767620232B860023402A /* SceneView.swift */; };
+		AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA98C90720CAB77F00FC8CE7 /* FrameView.swift */; };
+		AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */; };
+		AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */; };
+		AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */; };
+		AAA637A121738B5000678992 /* DeckRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A021738B5000678992 /* DeckRelated.swift */; };
+		AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A22174B43900678992 /* DeckConfirmationView.swift */; };
+		AAA637A52174B5C700678992 /* DeckConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA637A42174B5C700678992 /* DeckConfirmationView.xib */; };
+		AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA82E6F20B2A95000D70B38 /* Lottie.framework */; };
+		AAA86F6320AA7598002A3E8D /* SkillAbilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */; };
+		AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */; };
+		AAB0F4E220725979004D9C93 /* ManageAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F4E120725979004D9C93 /* ManageAudio.swift */; };
+		AAB19B2220AD3BCB004161F5 /* DeckSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */; };
+		AAB19B2420AD3BE8004161F5 /* DeckSelectPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */; };
+		AAB19B2620AD3D4D004161F5 /* DeckSelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2520AD3D4D004161F5 /* DeckSelectPageView.swift */; };
+		AAB19B2820AD4118004161F5 /* DeckSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2720AD4118004161F5 /* DeckSelectView.xib */; };
+		AAB19B2A20AEB8CC004161F5 /* CardBothSidesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */; };
+		AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */; };
+		AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */; };
+		AAB4017E2085B4B60077763D /* SpotCardsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */; };
+		AAB401802085B7000077763D /* SpotCardsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4017F2085B7000077763D /* SpotCardsCollectionView.swift */; };
+		AAB401832085CB160077763D /* CollectionImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB401812085CB160077763D /* CollectionImageViewCell.swift */; };
+		AAB401842085CB160077763D /* CollectionImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB401822085CB160077763D /* CollectionImageViewCell.xib */; };
+		AABF925F208055DB00BA0441 /* UINibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF925E208055DB00BA0441 /* UINibView.swift */; };
+		AABF92612080A28100BA0441 /* GatyaParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF92602080A28100BA0441 /* GatyaParticleView.swift */; };
+		AACC12E1213F67D9009F8510 /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = AACC12DF213F67D9009F8510 /* bokeh.png */; };
+		AACC12E2213F67D9009F8510 /* Test.scnp in Resources */ = {isa = PBXBuildFile; fileRef = AACC12E0213F67D9009F8510 /* Test.scnp */; };
+		AACC12E4213F7C04009F8510 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC12E3213F7C04009F8510 /* HUD.swift */; };
+		AACC12E62142A8B5009F8510 /* CardsSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC12E52142A8B5009F8510 /* CardsSort.swift */; };
+		AACC91CB1F8638D0009883B4 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC91CA1F8638D0009883B4 /* Spot.swift */; };
+		AACCD5A1216E28D50077273A /* InputNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCD5A0216E28D50077273A /* InputNameView.swift */; };
+		AACCD5A3216E293D0077273A /* InputNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AACCD5A2216E293D0077273A /* InputNameView.xib */; };
+		AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACDC0CC215F974700C30ADB /* SwiftyJSON.framework */; };
+		AACDC0CF215F97EC00C30ADB /* cardInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = AACDC0CE215F97EC00C30ADB /* cardInfo.json */; };
+		AACDC0D1215F97F600C30ADB /* cardSkill.json in Resources */ = {isa = PBXBuildFile; fileRef = AACDC0D0215F97F600C30ADB /* cardSkill.json */; };
+		AAD65B351F88D7E8004A121B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B341F88D7E8004A121B /* StartViewController.swift */; };
+		AAD9307A20C64FE9005488C5 /* GatyaResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD9307920C64FE9005488C5 /* GatyaResultView.xib */; };
+		AAD9307E20C650FC005488C5 /* GatyaResultRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */; };
+		AAD9308620C699B9005488C5 /* IndexLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9308520C699B9005488C5 /* IndexLabel.swift */; };
+		AAD9A2DB2074FF4F006C2769 /* SettingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A2DA2074FF4F006C2769 /* SettingSelectView.swift */; };
+		AAD9A2DD2075001B006C2769 /* AudioVolumeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A2DC2075001B006C2769 /* AudioVolumeSettingView.swift */; };
+		AAD9A2DF20750068006C2769 /* SettingSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD9A2DE20750068006C2769 /* SettingSelectView.xib */; };
+		AAD9A2E12075019F006C2769 /* AudioVolumeSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD9A2E02075019F006C2769 /* AudioVolumeSettingView.xib */; };
+		AAD9A2E6207645D7006C2769 /* BattleServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A2E5207645D7006C2769 /* BattleServer.swift */; };
+		AADE54451F723FC700DF83BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54441F723FC700DF83BF /* AppDelegate.swift */; };
+		AADE54501F723FC800DF83BF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADE544E1F723FC800DF83BF /* Home.storyboard */; };
+		AADE54521F723FC800DF83BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AADE54511F723FC800DF83BF /* Assets.xcassets */; };
+		AADE54551F723FC800DF83BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADE54531F723FC800DF83BF /* LaunchScreen.storyboard */; };
+		AADE54601F723FC900DF83BF /* DaihugouBattleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE545F1F723FC900DF83BF /* DaihugouBattleTests.swift */; };
+		AADE546B1F723FC900DF83BF /* DaihugouBattleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE546A1F723FC900DF83BF /* DaihugouBattleUITests.swift */; };
+		AADE54871F72440F00DF83BF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54791F72440A00DF83BF /* Card.swift */; };
+		AADE54881F72440F00DF83BF /* CardStrength.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547A1F72440A00DF83BF /* CardStrength.swift */; };
+		AADE548A1F72440F00DF83BF /* Gatya.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547C1F72440B00DF83BF /* Gatya.swift */; };
+		AADE548C1F72440F00DF83BF /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547E1F72440C00DF83BF /* Skill.swift */; };
+		AADE548D1F72440F00DF83BF /* BattleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547F1F72440C00DF83BF /* BattleField.swift */; };
+		AADE548E1F72440F00DF83BF /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54801F72440C00DF83BF /* Table.swift */; };
+		AADE548F1F72440F00DF83BF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54811F72440C00DF83BF /* Player.swift */; };
+		AADE54901F72440F00DF83BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54821F72440D00DF83BF /* User.swift */; };
+		AADE54921F72440F00DF83BF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54841F72440E00DF83BF /* Deck.swift */; };
+		AADE54931F72440F00DF83BF /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54851F72440E00DF83BF /* CPU.swift */; };
+		AADE54991F724D4300DF83BF /* CreateDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54981F724D4300DF83BF /* CreateDeck.swift */; };
+		AAE087F320F59BC900586167 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE087F220F59BC900586167 /* WeakObject.swift */; };
+		AAE087F620F59F5B00586167 /* TDPVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE087F520F59F5B00586167 /* TDPVIewController.swift */; };
+		AAE5B4072157D1F400463F28 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE5B4062157D1F400463F28 /* ImageCache.swift */; };
+		AAE71DE220A28B7C00A591A4 /* Cametery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE71DE120A28B7C00A591A4 /* Cametery.swift */; };
+		AAE92B0C20D12F1900B530B9 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE92B0B20D12F1900B530B9 /* NameView.swift */; };
+		AAEC52172088DD4A001428A4 /* FrameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC52162088DD4A001428A4 /* FrameLayer.swift */; };
+		AAF04A5B1FC11E740019723B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04A5A1FC11E740019723B /* Extension.swift */; };
+		AAF04A5D1FC1261B0019723B /* TouchMovedParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAF04A5C1FC1261B0019723B /* TouchMovedParticle.sks */; };
+		AAF04A5F1FC29B850019723B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF04A5E1FC29B850019723B /* PlayerView.swift */; };
+		AAF134FD2023F0CF002A472E /* ImageVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF134FC2023F0CF002A472E /* ImageVersion.swift */; };
+		AAF16EDE20C8CBF20007417F /* CardStandartFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF16EDD20C8CBF20007417F /* CardStandartFrontView.swift */; };
+		AAF16EE020C8D2C20007417F /* CardStandartBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF16EDF20C8D2C20007417F /* CardStandartBackView.swift */; };
+		AAF16EE220C8EA7D0007417F /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF16EE120C8EA7D0007417F /* IndexView.swift */; };
+		AAF36D751FCA98F1009809F6 /* GatyaParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */; };
+		AAF46D9D20CE31EE0046F268 /* ATestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */; };
+		AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46DA420CE32F50046F268 /* BattleAtk.swift */; };
+		AAF479061FD582610074AFC5 /* TDPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF479051FD582610074AFC5 /* TDPView.swift */; };
+		AAF479081FD584750074AFC5 /* TouchParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF479071FD584750074AFC5 /* TouchParticleScene.swift */; };
+		AAF8A22720D72A0F0018F650 /* CardStandartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF8A22620D72A0F0018F650 /* CardStandartCell.xib */; };
+		AAF8A22920D72A600018F650 /* CardStandartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8A22820D72A600018F650 /* CardStandartCell.swift */; };
+		AAF9657620933867007690B5 /* NumOfEachCardIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF9657520933867007690B5 /* NumOfEachCardIndexView.xib */; };
+		AAF9657A209477C6007690B5 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF96579209477C6007690B5 /* BarGraphView.swift */; };
+		AAFA434B1F8FA0290067F296 /* GatyaSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFA434A1F8FA0290067F296 /* GatyaSelectView.xib */; };
+		AAFA434D1F9087C00067F296 /* CardSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFA434C1F9087C00067F296 /* CardSelectView.xib */; };
+		AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA434F1F9088C00067F296 /* CardSelectView.swift */; };
+		AAFA43521F9089700067F296 /* BattleSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA43511F9089700067F296 /* BattleSelectView.swift */; };
+		AAFA43541F90898A0067F296 /* GatyaSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA43531F90898A0067F296 /* GatyaSelectView.swift */; };
+		AAFC181F2077181B002B1C7B /* SelectTrueOrFalseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */; };
+		AAFC18212077197E002B1C7B /* SelectTrueOrFalseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC18202077197E002B1C7B /* SelectTrueOrFalseView.swift */; };
+		AAFC18232077269A002B1C7B /* CacheClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC18222077269A002B1C7B /* CacheClearView.swift */; };
+		AAFC182720776822002B1C7B /* GiftBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC182620776821002B1C7B /* GiftBox.swift */; };
+		EFC62FAA8B4038F544DFACCC /* Pods_DaihugouBattleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AADE545C1F723FC900DF83BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADE54391F723FC400DF83BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AADE54401F723FC600DF83BF;
+			remoteInfo = DaihugouBattle;
+		};
+		AADE54671F723FC900DF83BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AADE54391F723FC400DF83BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AADE54401F723FC600DF83BF;
+			remoteInfo = DaihugouBattle;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		11B6307CC19B2BBA10E999FC /* Pods-DaihugouBattleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleTests/Pods-DaihugouBattleTests.release.xcconfig"; sourceTree = "<group>"; };
+		32B209296A6312E5FF139017 /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40DBE4C48B9DF2B27FB785D7 /* Pods-DaihugouBattleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleUITests/Pods-DaihugouBattleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5EF36BF8114357DB16E38308 /* Pods-DaihugouBattleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleUITests/Pods-DaihugouBattleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9DDF551B3F7B6A3D05A95A76 /* Pods-DaihugouBattleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleTests/Pods-DaihugouBattleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9FD0ED004792413D452ABD74 /* Pods-DaihugouBattle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.release.xcconfig"; sourceTree = "<group>"; };
+		A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0173C61F84959F00D9168A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		AA0173D01F84C82700D9168A /* GatyaParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaParticle.sks; sourceTree = "<group>"; };
+		AA0173D91F850E6B00D9168A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA0173DE1F85124400D9168A /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		AA02D85F209172AE005B1B55 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
+		AA02D86120920EE4005B1B55 /* PlayerNameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameSettingView.swift; sourceTree = "<group>"; };
+		AA02D86320921215005B1B55 /* PlayerNameSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerNameSettingView.xib; sourceTree = "<group>"; };
+		AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBar.swift; sourceTree = "<group>"; };
+		AA0309B22160AFD10089123A /* SpotCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCollectionView.swift; sourceTree = "<group>"; };
+		AA0309B42160B07C0089123A /* SpotCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCollectionView.xib; sourceTree = "<group>"; };
+		AA0309B62160B6BC0089123A /* SpotCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCollectionHeader.swift; sourceTree = "<group>"; };
+		AA0309B82160B72B0089123A /* SpotCollectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCollectionHeader.xib; sourceTree = "<group>"; };
+		AA03F4F720B1390000D1F26E /* SelectedDeckInCreateDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDeckInCreateDeckView.swift; sourceTree = "<group>"; };
+		AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInCreateDeckView.xib; sourceTree = "<group>"; };
+		AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaPackParticle.sks; sourceTree = "<group>"; };
+		AA03F4FC20B1408B00D1F26E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA0742281F8F371A0063585A /* BattleSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleSelectView.xib; sourceTree = "<group>"; };
+		AA093EBA20AF06940005B0E4 /* SlowAnimations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlowAnimations.framework; path = Carthage/Build/iOS/SlowAnimations.framework; sourceTree = "<group>"; };
+		AA093EBC20AF06BF0005B0E4 /* Measurements.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Measurements.framework; path = Carthage/Build/iOS/Measurements.framework; sourceTree = "<group>"; };
+		AA0975DB1F7F8DEC00404F9C /* UICircleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircleLabel.swift; sourceTree = "<group>"; };
+		AA0975DE1F7F8DEF00404F9C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
+		AA10CA161F932F3F0078850C /* Gatya.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gatya.storyboard; sourceTree = "<group>"; };
+		AA10CA1B1F93326E0078850C /* PossessionCard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PossessionCard.storyboard; sourceTree = "<group>"; };
+		AA12875E207EFF4300194FD7 /* Extension_Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Random.swift; sourceTree = "<group>"; };
+		AA128C332166DE5400B78B23 /* BattleSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSkillView.swift; sourceTree = "<group>"; };
+		AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TouchBeganParticle.sks; sourceTree = "<group>"; };
+		AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaSheetSelectView.xib; sourceTree = "<group>"; };
+		AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup+DurationAdjuster.swift"; sourceTree = "<group>"; };
+		AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug_GiftItemView.swift; sourceTree = "<group>"; };
+		AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Debug_GiftItemView.xib; sourceTree = "<group>"; };
+		AA290785208D9A490075DA4B /* CardsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsFilter.swift; sourceTree = "<group>"; };
+		AA2C5AF320ECED5F000B1E8B /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		AA2C5AF520ECED90000B1E8B /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
+		AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIViewAnimate.swift; sourceTree = "<group>"; };
+		AA2CD47E20AC59D500DFAC23 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SnapKit.framework.dSYM; path = Carthage/Build/iOS/SnapKit.framework.dSYM; sourceTree = "<group>"; };
+		AA2CD48020AC5A0100DFAC23 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		AA2EDE31212D5D52008FED44 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		AA2F20DB1FADC390002F70DA /* RoundCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornerButton.swift; sourceTree = "<group>"; };
+		AA3209A4209DC9850059D51B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AA3667EB20770F480012835E /* HomeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSelectView.swift; sourceTree = "<group>"; };
+		AA3667ED20770F9D0012835E /* HomeSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSelectView.xib; sourceTree = "<group>"; };
+		AA3B9D4920CEB5F600AD79FC /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		AA3B9D4B20CEBB7D00AD79FC /* CardWithView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithView.swift; sourceTree = "<group>"; };
+		AA3B9D4D20CF73B900AD79FC /* CardStandartFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardStandartFrontView.xib; sourceTree = "<group>"; };
+		AA3B9D4F20CF77CD00AD79FC /* CardStandartBackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardStandartBackView.xib; sourceTree = "<group>"; };
+		AA3C4E091FD67C7B00E1315C /* HpGaugeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HpGaugeView.xib; sourceTree = "<group>"; };
+		AA3C4E0B1FD67D1F00E1315C /* HpGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpGaugeView.swift; sourceTree = "<group>"; };
+		AA3C4E0D1FD6C9B700E1315C /* IDAProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDAProgressView.swift; sourceTree = "<group>"; };
+		AA3D3DB02099D60900AB4396 /* BattleMultiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleMultiViewController.swift; sourceTree = "<group>"; };
+		AA3D3DB22099D81800AB4396 /* BattleCPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleCPUViewController.swift; sourceTree = "<group>"; };
+		AA3D3DB62099F1E600AB4396 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA3EBAE71FC7B5B100D902B7 /* GatyaRollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaRollViewController.swift; sourceTree = "<group>"; };
+		AA472FA82021C4E200440C59 /* StartViewParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartViewParticle.sks; sourceTree = "<group>"; };
+		AA472FAC2021C6B500440C59 /* ParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleView.swift; sourceTree = "<group>"; };
+		AA487E871F820E6F00342B49 /* CardBattle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBattle.swift; sourceTree = "<group>"; };
+		AA487E8F1F82181800342B49 /* BattleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BattleScene.sks; sourceTree = "<group>"; };
+		AA487E911F821E4600342B49 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AA4AA0331FE0E0C40099E71C /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
+		AA4AA0341FE0E0C50099E71C /* ZLSwipeableViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZLSwipeableViewSwift.framework; path = Carthage/Build/iOS/ZLSwipeableViewSwift.framework; sourceTree = "<group>"; };
+		AA4AA0351FE0E0C50099E71C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		AA4AA0361FE0E0C50099E71C /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hero.framework; path = Carthage/Build/iOS/Hero.framework; sourceTree = "<group>"; };
+		AA4AA0371FE0E0C50099E71C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		AA4AA0381FE0E0C50099E71C /* NCMB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NCMB.framework; path = Carthage/Build/iOS/NCMB.framework; sourceTree = "<group>"; };
+		AA4AA0401FE0E39F0099E71C /* EFCountingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFCountingLabel.swift; sourceTree = "<group>"; };
+		AA4B1EDF20B244AD009969D3 /* GatyaPackParticle1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaPackParticle1.sks; sourceTree = "<group>"; };
+		AA4BB0261FDFF5320083B437 /* XcodeSetting.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = XcodeSetting.txt; sourceTree = "<group>"; };
+		AA4BB3C72166E2A200E53BDA /* BattleSkillView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleSkillView.xib; sourceTree = "<group>"; };
+		AA4BB3C92166FC8900E53BDA /* SkillDescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDescriptionTextView.swift; sourceTree = "<group>"; };
+		AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePlayerAtkView.swift; sourceTree = "<group>"; };
+		AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattlePlayerAtkView.xib; sourceTree = "<group>"; };
+		AA4BB3CF216AECCD00E53BDA /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
+		AA4BB3D1216AED0200E53BDA /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
+		AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "勇者たちのララバイ.mp3"; sourceTree = "<group>"; };
+		AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossessionCardViewController.swift; sourceTree = "<group>"; };
+		AA524A38207DB67100F4E11B /* PossessionCardDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PossessionCardDetailView.xib; sourceTree = "<group>"; };
+		AA55418F2146163C003A008B /* PrivateBattleMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateBattleMaster.swift; sourceTree = "<group>"; };
+		AA554191214616F0003A008B /* ControllBattleDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllBattleDeck.swift; sourceTree = "<group>"; };
+		AA5541D5214E056B003A008B /* BattleDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleDeck.swift; sourceTree = "<group>"; };
+		AA5AB98820ABC4F00084B7FC /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
+		AA5C14EC1FB0180800D8CC15 /* CreateDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeckViewController.swift; sourceTree = "<group>"; };
+		AA5C14EE1FB0184900D8CC15 /* CreateDeck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateDeck.storyboard; sourceTree = "<group>"; };
+		AA5C14F01FB14CDF00D8CC15 /* CharacterStatusDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterStatusDetailView.xib; sourceTree = "<group>"; };
+		AA5C14F21FB14DB600D8CC15 /* CharacterStatusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatusDetailView.swift; sourceTree = "<group>"; };
+		AA5DBAD3209B3C8E0034DFC0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		AA5DBAD4209B3C8F0034DFC0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		AA5DBAD7209B43CA0034DFC0 /* GameAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameAnalytics.framework; sourceTree = "<group>"; };
+		AA5DBADD209BDD300034DFC0 /* ShiftOperations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShiftOperations.framework; path = Carthage/Build/iOS/ShiftOperations.framework; sourceTree = "<group>"; };
+		AA5DBADE209BDD300034DFC0 /* Threadly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Threadly.framework; path = Carthage/Build/iOS/Threadly.framework; sourceTree = "<group>"; };
+		AA5DBADF209BDD310034DFC0 /* UITextField_Navigation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UITextField_Navigation.framework; path = Carthage/Build/iOS/UITextField_Navigation.framework; sourceTree = "<group>"; };
+		AA5DBAE0209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorViewAppExtension.framework; path = Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework; sourceTree = "<group>"; };
+		AA5DBAE1209BDD310034DFC0 /* FLEX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLEX.framework; path = Carthage/Build/iOS/FLEX.framework; sourceTree = "<group>"; };
+		AA5DBAE2209BDD310034DFC0 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		AA5E78BD1F95B61A0099632B /* GatyaSheetSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaSheetSelectView.swift; sourceTree = "<group>"; };
+		AA5F5F801FBAC4450020E1D0 /* PossessionCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossessionCardDetailView.swift; sourceTree = "<group>"; };
+		AA65BE432058C0260062AFFA /* Extension_CAAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_CAAnimation.swift; sourceTree = "<group>"; };
+		AA671EE51F8522B600355759 /* Battle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Battle.storyboard; sourceTree = "<group>"; };
+		AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSortFilterView.xib; sourceTree = "<group>"; };
+		AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortFilterView.swift; sourceTree = "<group>"; };
+		AA6E65F620C60F3F002D883D /* CardAtkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAtkView.swift; sourceTree = "<group>"; };
+		AA6E70751F74A64600A401AE /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		AA6E70BD1F77583800A401AE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		AA6F043520907EB500B4B65D /* CardsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCell.swift; sourceTree = "<group>"; };
+		AA6F043620907EB500B4B65D /* CardsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsCell.xib; sourceTree = "<group>"; };
+		AA6F04392090823800B4B65D /* CardDecorateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDecorateImage.swift; sourceTree = "<group>"; };
+		AA6F043B2090874B00B4B65D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AA6F043D2090875300B4B65D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA72056F1FB54A65003E5B88 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
+		AA725D22215526500064A3BA /* DataRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRealm.swift; sourceTree = "<group>"; };
+		AA7798AA2079DB47006F85C4 /* GiftBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBoxView.swift; sourceTree = "<group>"; };
+		AA7798AC2079DB62006F85C4 /* GiftBoxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftBoxView.xib; sourceTree = "<group>"; };
+		AA7798AE2079DC24006F85C4 /* GiftBoxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftBoxCell.xib; sourceTree = "<group>"; };
+		AA7798B02079FBCD006F85C4 /* GiftBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBoxCell.swift; sourceTree = "<group>"; };
+		AA84978E1F947C3F00DD6899 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		AA8497921F948D1400DD6899 /* CharacterDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailView.xib; sourceTree = "<group>"; };
+		AA8497941F948E3A00DD6899 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		AA89C0B61F7E6FC800218655 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AA8ADD1720902D0500AEAFB1 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		AA8ADD1920902D0500AEAFB1 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateDefine.swift; sourceTree = "<group>"; };
+		AA95767620232B860023402A /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
+		AA98C90720CAB77F00FC8CE7 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesView.swift; sourceTree = "<group>"; };
+		AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiquidFloating+.swift"; sourceTree = "<group>"; };
+		AAA637A021738B5000678992 /* DeckRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRelated.swift; sourceTree = "<group>"; };
+		AAA637A22174B43900678992 /* DeckConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckConfirmationView.swift; sourceTree = "<group>"; };
+		AAA637A42174B5C700678992 /* DeckConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckConfirmationView.xib; sourceTree = "<group>"; };
+		AAA82E6F20B2A95000D70B38 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAbilityList.swift; sourceTree = "<group>"; };
+		AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllAsyncBlock.swift; sourceTree = "<group>"; };
+		AAB0F4E120725979004D9C93 /* ManageAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAudio.swift; sourceTree = "<group>"; };
+		AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectView.swift; sourceTree = "<group>"; };
+		AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectPageView.xib; sourceTree = "<group>"; };
+		AAB19B2520AD3D4D004161F5 /* DeckSelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectPageView.swift; sourceTree = "<group>"; };
+		AAB19B2720AD4118004161F5 /* DeckSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectView.xib; sourceTree = "<group>"; };
+		AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBothSidesLayer.swift; sourceTree = "<group>"; };
+		AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributesInspector.framework; path = Carthage/Build/iOS/AttributesInspector.framework; sourceTree = "<group>"; };
+		AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
+		AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCardsCollectionView.xib; sourceTree = "<group>"; };
+		AAB4017F2085B7000077763D /* SpotCardsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCardsCollectionView.swift; sourceTree = "<group>"; };
+		AAB401812085CB160077763D /* CollectionImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionImageViewCell.swift; sourceTree = "<group>"; };
+		AAB401822085CB160077763D /* CollectionImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionImageViewCell.xib; sourceTree = "<group>"; };
+		AABF925E208055DB00BA0441 /* UINibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibView.swift; sourceTree = "<group>"; };
+		AABF92602080A28100BA0441 /* GatyaParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaParticleView.swift; sourceTree = "<group>"; };
+		AACC12DF213F67D9009F8510 /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
+		AACC12E0213F67D9009F8510 /* Test.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Test.scnp; sourceTree = "<group>"; };
+		AACC12E3213F7C04009F8510 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		AACC12E52142A8B5009F8510 /* CardsSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsSort.swift; sourceTree = "<group>"; };
+		AACC91CA1F8638D0009883B4 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		AACCD5A0216E28D50077273A /* InputNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNameView.swift; sourceTree = "<group>"; };
+		AACCD5A2216E293D0077273A /* InputNameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputNameView.xib; sourceTree = "<group>"; };
+		AACDC0CC215F974700C30ADB /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		AACDC0CE215F97EC00C30ADB /* cardInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardInfo.json; sourceTree = "<group>"; };
+		AACDC0D0215F97F600C30ADB /* cardSkill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardSkill.json; sourceTree = "<group>"; };
+		AAD65B341F88D7E8004A121B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AAD9307920C64FE9005488C5 /* GatyaResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaResultView.xib; sourceTree = "<group>"; };
+		AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaResultRarityView.swift; sourceTree = "<group>"; };
+		AAD9308520C699B9005488C5 /* IndexLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexLabel.swift; sourceTree = "<group>"; };
+		AAD9A2DA2074FF4F006C2769 /* SettingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSelectView.swift; sourceTree = "<group>"; };
+		AAD9A2DC2075001B006C2769 /* AudioVolumeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVolumeSettingView.swift; sourceTree = "<group>"; };
+		AAD9A2DE20750068006C2769 /* SettingSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSelectView.xib; sourceTree = "<group>"; };
+		AAD9A2E02075019F006C2769 /* AudioVolumeSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioVolumeSettingView.xib; sourceTree = "<group>"; };
+		AAD9A2E5207645D7006C2769 /* BattleServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleServer.swift; sourceTree = "<group>"; };
+		AADE54411F723FC600DF83BF /* DaihugouBattle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaihugouBattle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADE54441F723FC700DF83BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AADE544F1F723FC800DF83BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		AADE54511F723FC800DF83BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AADE54541F723FC800DF83BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AADE54561F723FC800DF83BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADE545B1F723FC900DF83BF /* DaihugouBattleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaihugouBattleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADE545F1F723FC900DF83BF /* DaihugouBattleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaihugouBattleTests.swift; sourceTree = "<group>"; };
+		AADE54611F723FC900DF83BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADE54661F723FC900DF83BF /* DaihugouBattleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaihugouBattleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADE546A1F723FC900DF83BF /* DaihugouBattleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaihugouBattleUITests.swift; sourceTree = "<group>"; };
+		AADE546C1F723FC900DF83BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADE54791F72440A00DF83BF /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Card.swift; path = DaihugouBattle/Card.swift; sourceTree = SOURCE_ROOT; };
+		AADE547A1F72440A00DF83BF /* CardStrength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStrength.swift; sourceTree = "<group>"; };
+		AADE547C1F72440B00DF83BF /* Gatya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gatya.swift; sourceTree = "<group>"; };
+		AADE547E1F72440C00DF83BF /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		AADE547F1F72440C00DF83BF /* BattleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleField.swift; sourceTree = "<group>"; };
+		AADE54801F72440C00DF83BF /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		AADE54811F72440C00DF83BF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		AADE54821F72440D00DF83BF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AADE54841F72440E00DF83BF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		AADE54851F72440E00DF83BF /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
+		AADE54981F724D4300DF83BF /* CreateDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeck.swift; sourceTree = "<group>"; };
+		AAE087F220F59BC900586167 /* WeakObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
+		AAE087F520F59F5B00586167 /* TDPVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPVIewController.swift; sourceTree = "<group>"; };
+		AAE5B4062157D1F400463F28 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		AAE71DE120A28B7C00A591A4 /* Cametery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cametery.swift; sourceTree = "<group>"; };
+		AAE92B0B20D12F1900B530B9 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
+		AAEC52162088DD4A001428A4 /* FrameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameLayer.swift; sourceTree = "<group>"; };
+		AAF04A5A1FC11E740019723B /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		AAF04A5C1FC1261B0019723B /* TouchMovedParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TouchMovedParticle.sks; sourceTree = "<group>"; };
+		AAF04A5E1FC29B850019723B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		AAF134FC2023F0CF002A472E /* ImageVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVersion.swift; sourceTree = "<group>"; };
+		AAF134FE202411D5002A472E /* Hydra.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hydra.framework; path = Carthage/Build/iOS/Hydra.framework; sourceTree = "<group>"; };
+		AAF16EDD20C8CBF20007417F /* CardStandartFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStandartFrontView.swift; sourceTree = "<group>"; };
+		AAF16EDF20C8D2C20007417F /* CardStandartBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStandartBackView.swift; sourceTree = "<group>"; };
+		AAF16EE120C8EA7D0007417F /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
+		AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaParticleScene.swift; sourceTree = "<group>"; };
+		AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATestViewController.swift; sourceTree = "<group>"; };
+		AAF46DA420CE32F50046F268 /* BattleAtk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleAtk.swift; sourceTree = "<group>"; };
+		AAF479051FD582610074AFC5 /* TDPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPView.swift; sourceTree = "<group>"; };
+		AAF479071FD584750074AFC5 /* TouchParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchParticleScene.swift; sourceTree = "<group>"; };
+		AAF8A22620D72A0F0018F650 /* CardStandartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardStandartCell.xib; sourceTree = "<group>"; };
+		AAF8A22820D72A600018F650 /* CardStandartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStandartCell.swift; sourceTree = "<group>"; };
+		AAF9657520933867007690B5 /* NumOfEachCardIndexView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumOfEachCardIndexView.xib; sourceTree = "<group>"; };
+		AAF96579209477C6007690B5 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
+		AAFA434A1F8FA0290067F296 /* GatyaSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaSelectView.xib; sourceTree = "<group>"; };
+		AAFA434C1F9087C00067F296 /* CardSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSelectView.xib; sourceTree = "<group>"; };
+		AAFA434F1F9088C00067F296 /* CardSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectView.swift; sourceTree = "<group>"; };
+		AAFA43511F9089700067F296 /* BattleSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSelectView.swift; sourceTree = "<group>"; };
+		AAFA43531F90898A0067F296 /* GatyaSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaSelectView.swift; sourceTree = "<group>"; };
+		AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectTrueOrFalseView.xib; path = Library/SelectTrueOrFalseView.xib; sourceTree = "<group>"; };
+		AAFC18202077197E002B1C7B /* SelectTrueOrFalseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTrueOrFalseView.swift; sourceTree = "<group>"; };
+		AAFC18222077269A002B1C7B /* CacheClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheClearView.swift; sourceTree = "<group>"; };
+		AAFC182620776821002B1C7B /* GiftBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBox.swift; sourceTree = "<group>"; };
+		B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.debug.xcconfig"; sourceTree = "<group>"; };
+		CD58E60B209FBE98E9A14F6C /* Pods_DaihugouBattleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AADE543E1F723FC600DF83BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA4BB3D0216AECCE00E53BDA /* SwiftyGif.framework in Frameworks */,
+				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
+				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
+				AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */,
+				AA093EBB20AF06940005B0E4 /* SlowAnimations.framework in Frameworks */,
+				AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */,
+				AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */,
+				AA2CD48120AC5A0200DFAC23 /* SnapKit.framework in Frameworks */,
+				AA5DBAE5209BDD310034DFC0 /* UITextField_Navigation.framework in Frameworks */,
+				AA5DBAE6209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */,
+				AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */,
+				AA5DBAE8209BDD310034DFC0 /* NVActivityIndicatorView.framework in Frameworks */,
+				AA4AA03A1FE0E0C50099E71C /* ZLSwipeableViewSwift.framework in Frameworks */,
+				AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */,
+				AA5DBADA209BDD2C0034DFC0 /* RxSwift.framework in Frameworks */,
+				AA5DBADB209BDD2C0034DFC0 /* RxCocoa.framework in Frameworks */,
+				AA4AA03D1FE0E0C50099E71C /* RealmSwift.framework in Frameworks */,
+				AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */,
+				AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */,
+				AA8ADD1620902D0300AEAFB1 /* Hydra.framework in Frameworks */,
+				AA4AA03C1FE0E0C50099E71C /* Hero.framework in Frameworks */,
+				AA4AA0391FE0E0C50099E71C /* Chameleon.framework in Frameworks */,
+				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
+				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
+				AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */,
+				0F98B9D324614F2604B3621C /* Pods_DaihugouBattle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADE54581F723FC900DF83BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA5DBAE9209BDFD00034DFC0 /* RxTest.framework in Frameworks */,
+				AA5DBAEA209BDFD00034DFC0 /* RxBlocking.framework in Frameworks */,
+				0A748AC5F076B6D953651C58 /* Pods_DaihugouBattleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADE54631F723FC900DF83BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFC62FAA8B4038F544DFACCC /* Pods_DaihugouBattleUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA0975E51F7F8E0000404F9C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */,
+				AA4AA0401FE0E39F0099E71C /* EFCountingLabel.swift */,
+				AA65BE432058C0260062AFFA /* Extension_CAAnimation.swift */,
+				AA12875E207EFF4300194FD7 /* Extension_Random.swift */,
+				AAF04A5A1FC11E740019723B /* Extension.swift */,
+				AA2F20DB1FADC390002F70DA /* RoundCornerButton.swift */,
+				AA0975DB1F7F8DEC00404F9C /* UICircleLabel.swift */,
+				AA0975DE1F7F8DEF00404F9C /* UIImage+Gif.swift */,
+				AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */,
+				AABF925E208055DB00BA0441 /* UINibView.swift */,
+				AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */,
+				AACC12E3213F7C04009F8510 /* HUD.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		AA1AC2DC1F80ADC6001BDEB2 /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				AA0173D91F850E6B00D9168A /* Assets.xcassets */,
+				AA671EE51F8522B600355759 /* Battle.storyboard */,
+				AA5541CF214A3D0A003A008B /* Model */,
+				AA487E8F1F82181800342B49 /* BattleScene.sks */,
+				AA5541D0214A3D2A003A008B /* ViewController */,
+				AAB401812085CB160077763D /* CollectionImageViewCell.swift */,
+				AAB401822085CB160077763D /* CollectionImageViewCell.xib */,
+				AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */,
+				AADE54841F72440E00DF83BF /* Deck.swift */,
+				AA3C4E0B1FD67D1F00E1315C /* HpGaugeView.swift */,
+				AA3C4E091FD67C7B00E1315C /* HpGaugeView.xib */,
+				AAF04A5E1FC29B850019723B /* PlayerView.swift */,
+				AAB4017F2085B7000077763D /* SpotCardsCollectionView.swift */,
+				AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */,
+				AA3C4E0D1FD6C9B700E1315C /* IDAProgressView.swift */,
+				AA72056F1FB54A65003E5B88 /* SpotView.swift */,
+				AAD9308520C699B9005488C5 /* IndexLabel.swift */,
+				AACC12DF213F67D9009F8510 /* bokeh.png */,
+				AACC12E0213F67D9009F8510 /* Test.scnp */,
+				AA554191214616F0003A008B /* ControllBattleDeck.swift */,
+				AA0309B22160AFD10089123A /* SpotCollectionView.swift */,
+				AA0309B42160B07C0089123A /* SpotCollectionView.xib */,
+				AA0309B62160B6BC0089123A /* SpotCollectionHeader.swift */,
+				AA0309B82160B72B0089123A /* SpotCollectionHeader.xib */,
+				AA128C332166DE5400B78B23 /* BattleSkillView.swift */,
+				AA4BB3C72166E2A200E53BDA /* BattleSkillView.xib */,
+				AA4BB3C92166FC8900E53BDA /* SkillDescriptionTextView.swift */,
+				AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */,
+				AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */,
+				AAA637A021738B5000678992 /* DeckRelated.swift */,
+			);
+			path = Battle;
+			sourceTree = "<group>";
+		};
+		AA1AC2E01F80AF5F001BDEB2 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				AA6E70751F74A64600A401AE /* Download.swift */,
+				AA6E70BD1F77583800A401AE /* DownloadViewController.swift */,
+				AAF134FC2023F0CF002A472E /* ImageVersion.swift */,
+				AADE54821F72440D00DF83BF /* User.swift */,
+				AA725D22215526500064A3BA /* DataRealm.swift */,
+				AAE5B4062157D1F400463F28 /* ImageCache.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		AA4FDC9020F6313800B092A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAF16EE120C8EA7D0007417F /* IndexView.swift */,
+				AA98C90720CAB77F00FC8CE7 /* FrameView.swift */,
+				AAE92B0B20D12F1900B530B9 /* NameView.swift */,
+				AA6E65F620C60F3F002D883D /* CardAtkView.swift */,
+				AAF16EDD20C8CBF20007417F /* CardStandartFrontView.swift */,
+				AA3B9D4D20CF73B900AD79FC /* CardStandartFrontView.xib */,
+				AA3B9D4F20CF77CD00AD79FC /* CardStandartBackView.xib */,
+				AAF16EDF20C8D2C20007417F /* CardStandartBackView.swift */,
+				AA8497941F948E3A00DD6899 /* CharacterDetailView.swift */,
+				AA8497921F948D1400DD6899 /* CharacterDetailView.xib */,
+				AA5C14F21FB14DB600D8CC15 /* CharacterStatusDetailView.swift */,
+				AA5C14F01FB14CDF00D8CC15 /* CharacterStatusDetailView.xib */,
+				AA2EDE31212D5D52008FED44 /* CardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AA5541CF214A3D0A003A008B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AADE547F1F72440C00DF83BF /* BattleField.swift */,
+				AAD9A2E5207645D7006C2769 /* BattleServer.swift */,
+				AA55418F2146163C003A008B /* PrivateBattleMaster.swift */,
+				AADE54811F72440C00DF83BF /* Player.swift */,
+				AACC91CA1F8638D0009883B4 /* Spot.swift */,
+				AADE54801F72440C00DF83BF /* Table.swift */,
+				AADE547A1F72440A00DF83BF /* CardStrength.swift */,
+				AAE71DE120A28B7C00A591A4 /* Cametery.swift */,
+				AADE54851F72440E00DF83BF /* CPU.swift */,
+				AAF46DA420CE32F50046F268 /* BattleAtk.swift */,
+				AA5541D5214E056B003A008B /* BattleDeck.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AA5541D0214A3D2A003A008B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AA3D3DB22099D81800AB4396 /* BattleCPUViewController.swift */,
+				AA3D3DB02099D60900AB4396 /* BattleMultiViewController.swift */,
+				AA0173DE1F85124400D9168A /* BattleViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AA5AB98A20ABC71A0084B7FC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */,
+				AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */,
+				AAFC182620776821002B1C7B /* GiftBox.swift */,
+				AA7798B02079FBCD006F85C4 /* GiftBoxCell.swift */,
+				AA7798AE2079DC24006F85C4 /* GiftBoxCell.xib */,
+				AA7798AA2079DB47006F85C4 /* GiftBoxView.swift */,
+				AA7798AC2079DB62006F85C4 /* GiftBoxView.xib */,
+				AA3667EB20770F480012835E /* HomeSelectView.swift */,
+				AA3667ED20770F9D0012835E /* HomeSelectView.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AA5AB98B20ABC7460084B7FC /* Gatya */ = {
+			isa = PBXGroup;
+			children = (
+				AAFA43531F90898A0067F296 /* GatyaSelectView.swift */,
+				AAFA434A1F8FA0290067F296 /* GatyaSelectView.xib */,
+				AA5E78BD1F95B61A0099632B /* GatyaSheetSelectView.swift */,
+				AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */,
+			);
+			path = Gatya;
+			sourceTree = "<group>";
+		};
+		AA607E9B20ABC7DF00E3F0EB /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				AAFA434F1F9088C00067F296 /* CardSelectView.swift */,
+				AAFA434C1F9087C00067F296 /* CardSelectView.xib */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		AA6C3F4820A961B100CBC4B5 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AAD9A2DE20750068006C2769 /* SettingSelectView.xib */,
+				AAD9A2DA2074FF4F006C2769 /* SettingSelectView.swift */,
+				AA02D86120920EE4005B1B55 /* PlayerNameSettingView.swift */,
+				AA02D86320921215005B1B55 /* PlayerNameSettingView.xib */,
+				AAD9A2DC2075001B006C2769 /* AudioVolumeSettingView.swift */,
+				AAD9A2E02075019F006C2769 /* AudioVolumeSettingView.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		AA6C3F4920A961D100CBC4B5 /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				AAFA43511F9089700067F296 /* BattleSelectView.swift */,
+				AA0742281F8F371A0063585A /* BattleSelectView.xib */,
+			);
+			path = Battle;
+			sourceTree = "<group>";
+		};
+		AA7B2FFF1F73DA9E00628FD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA4BB3CF216AECCD00E53BDA /* SwiftyGif.framework */,
+				AACDC0CC215F974700C30ADB /* SwiftyJSON.framework */,
+				AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */,
+				AA4AA0331FE0E0C40099E71C /* Chameleon.framework */,
+				AA5DBAD4209B3C8F0034DFC0 /* Crashlytics.framework */,
+				AA5DBAD3209B3C8E0034DFC0 /* Fabric.framework */,
+				AA5DBAE1209BDD310034DFC0 /* FLEX.framework */,
+				AA6F043D2090875300B4B65D /* Foundation.framework */,
+				AA5DBAD7209B43CA0034DFC0 /* GameAnalytics.framework */,
+				AA4AA0361FE0E0C50099E71C /* Hero.framework */,
+				AAF134FE202411D5002A472E /* Hydra.framework */,
+				AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */,
+				AAA82E6F20B2A95000D70B38 /* Lottie.framework */,
+				AA093EBC20AF06BF0005B0E4 /* Measurements.framework */,
+				AA4AA0381FE0E0C50099E71C /* NCMB.framework */,
+				AA5DBAE2209BDD310034DFC0 /* NVActivityIndicatorView.framework */,
+				AA5DBAE0209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework */,
+				32B209296A6312E5FF139017 /* Pods_DaihugouBattle.framework */,
+				CD58E60B209FBE98E9A14F6C /* Pods_DaihugouBattleTests.framework */,
+				A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */,
+				AA4AA0351FE0E0C50099E71C /* Realm.framework */,
+				AA4AA0371FE0E0C50099E71C /* RealmSwift.framework */,
+				AA8ADD1720902D0500AEAFB1 /* RxBlocking.framework */,
+				AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */,
+				AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */,
+				AA8ADD1920902D0500AEAFB1 /* RxTest.framework */,
+				AA5DBADD209BDD300034DFC0 /* ShiftOperations.framework */,
+				AA093EBA20AF06940005B0E4 /* SlowAnimations.framework */,
+				AA2CD48020AC5A0100DFAC23 /* SnapKit.framework */,
+				AA2CD47E20AC59D500DFAC23 /* SnapKit.framework.dSYM */,
+				AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */,
+				AA5DBADE209BDD300034DFC0 /* Threadly.framework */,
+				AA6F043B2090874B00B4B65D /* UIKit.framework */,
+				AA5DBADF209BDD310034DFC0 /* UITextField_Navigation.framework */,
+				AA4AA0341FE0E0C50099E71C /* ZLSwipeableViewSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAB64E1120E9FC87006DC024 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				AAFC18222077269A002B1C7B /* CacheClearView.swift */,
+				AAD65B341F88D7E8004A121B /* StartViewController.swift */,
+				AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		AADE54381F723FC400DF83BF = {
+			isa = PBXGroup;
+			children = (
+				AADE54431F723FC600DF83BF /* DaihugouBattle */,
+				AADE545E1F723FC900DF83BF /* DaihugouBattleTests */,
+				AADE54691F723FC900DF83BF /* DaihugouBattleUITests */,
+				AADE54421F723FC600DF83BF /* Products */,
+				AA7B2FFF1F73DA9E00628FD3 /* Frameworks */,
+				BC0C7D54EB18A3F7320CC1C4 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		AADE54421F723FC600DF83BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AADE54411F723FC600DF83BF /* DaihugouBattle.app */,
+				AADE545B1F723FC900DF83BF /* DaihugouBattleTests.xctest */,
+				AADE54661F723FC900DF83BF /* DaihugouBattleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AADE54431F723FC600DF83BF /* DaihugouBattle */ = {
+			isa = PBXGroup;
+			children = (
+				AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */,
+				AA3D3DB62099F1E600AB4396 /* GoogleService-Info.plist */,
+				AADE54561F723FC800DF83BF /* Info.plist */,
+				AA4BB0261FDFF5320083B437 /* XcodeSetting.txt */,
+				AA472FA82021C4E200440C59 /* StartViewParticle.sks */,
+				AA487E911F821E4600342B49 /* Main.storyboard */,
+				AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */,
+				AADE54441F723FC700DF83BF /* AppDelegate.swift */,
+				AA3209A4209DC9850059D51B /* main.swift */,
+				AA2C5AF320ECED5F000B1E8B /* Icon.swift */,
+				AACDC0CE215F97EC00C30ADB /* cardInfo.json */,
+				AACDC0D0215F97F600C30ADB /* cardSkill.json */,
+				AAB64E1120E9FC87006DC024 /* Start */,
+				AA3B9D4920CEB5F600AD79FC /* Define.swift */,
+				AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */,
+				AAB0F4E120725979004D9C93 /* ManageAudio.swift */,
+				AADE54511F723FC800DF83BF /* Assets.xcassets */,
+				AA1AC2DC1F80ADC6001BDEB2 /* Battle */,
+				AAFA8829206A29E70003CC14 /* Card */,
+				AAFA882A206A2A4F0003CC14 /* Gatya */,
+				AAFA882C206A2C5F0003CC14 /* Home */,
+				AADE54531F723FC800DF83BF /* LaunchScreen.storyboard */,
+				AA0975E51F7F8E0000404F9C /* Library */,
+				AAFA882B206A2BC40003CC14 /* Possession */,
+				AA1AC2E01F80AF5F001BDEB2 /* Server */,
+				AA0173C61F84959F00D9168A /* LoadingView.swift */,
+				AA84978E1F947C3F00DD6899 /* LoadingView.xib */,
+				AA95767620232B860023402A /* SceneView.swift */,
+				AAFC18202077197E002B1C7B /* SelectTrueOrFalseView.swift */,
+				AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */,
+				AA472FAC2021C6B500440C59 /* ParticleView.swift */,
+				AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */,
+				AAE087F420F59F3400586167 /* TouchDownParticle */,
+				AAE087F220F59BC900586167 /* WeakObject.swift */,
+				AA4BB3D1216AED0200E53BDA /* GifView.swift */,
+			);
+			path = DaihugouBattle;
+			sourceTree = "<group>";
+		};
+		AADE545E1F723FC900DF83BF /* DaihugouBattleTests */ = {
+			isa = PBXGroup;
+			children = (
+				AADE545F1F723FC900DF83BF /* DaihugouBattleTests.swift */,
+				AADE54611F723FC900DF83BF /* Info.plist */,
+			);
+			path = DaihugouBattleTests;
+			sourceTree = "<group>";
+		};
+		AADE54691F723FC900DF83BF /* DaihugouBattleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AADE546A1F723FC900DF83BF /* DaihugouBattleUITests.swift */,
+				AADE546C1F723FC900DF83BF /* Info.plist */,
+			);
+			path = DaihugouBattleUITests;
+			sourceTree = "<group>";
+		};
+		AAE087F420F59F3400586167 /* TouchDownParticle */ = {
+			isa = PBXGroup;
+			children = (
+				AAF479051FD582610074AFC5 /* TDPView.swift */,
+				AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */,
+				AAF04A5C1FC1261B0019723B /* TouchMovedParticle.sks */,
+				AAF479071FD584750074AFC5 /* TouchParticleScene.swift */,
+				AAE087F520F59F5B00586167 /* TDPVIewController.swift */,
+			);
+			path = TouchDownParticle;
+			sourceTree = "<group>";
+		};
+		AAFA8829206A29E70003CC14 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */,
+				AADE54791F72440A00DF83BF /* Card.swift */,
+				AA487E871F820E6F00342B49 /* CardBattle.swift */,
+				AAEC52162088DD4A001428A4 /* FrameLayer.swift */,
+				AA6F04392090823800B4B65D /* CardDecorateImage.swift */,
+				AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */,
+				AADE547E1F72440C00DF83BF /* Skill.swift */,
+				AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */,
+				AA3B9D4B20CEBB7D00AD79FC /* CardWithView.swift */,
+				AA4FDC9020F6313800B092A4 /* View */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		AAFA882A206A2A4F0003CC14 /* Gatya */ = {
+			isa = PBXGroup;
+			children = (
+				AA0173D01F84C82700D9168A /* GatyaParticle.sks */,
+				AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */,
+				AA10CA161F932F3F0078850C /* Gatya.storyboard */,
+				AADE547C1F72440B00DF83BF /* Gatya.swift */,
+				AA3EBAE71FC7B5B100D902B7 /* GatyaRollViewController.swift */,
+				AABF92602080A28100BA0441 /* GatyaParticleView.swift */,
+				AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */,
+				AA03F4FC20B1408B00D1F26E /* Assets.xcassets */,
+				AA4B1EDF20B244AD009969D3 /* GatyaPackParticle1.sks */,
+				AAD9307920C64FE9005488C5 /* GatyaResultView.xib */,
+				AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */,
+			);
+			path = Gatya;
+			sourceTree = "<group>";
+		};
+		AAFA882B206A2BC40003CC14 /* Possession */ = {
+			isa = PBXGroup;
+			children = (
+				AAFA882E206A2D9D0003CC14 /* Card */,
+				AAFA882D206A2D970003CC14 /* Deck */,
+				AA290785208D9A490075DA4B /* CardsFilter.swift */,
+				AACC12E52142A8B5009F8510 /* CardsSort.swift */,
+				AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */,
+				AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */,
+				AA6F043520907EB500B4B65D /* CardsCell.swift */,
+				AA6F043620907EB500B4B65D /* CardsCell.xib */,
+				AA02D85F209172AE005B1B55 /* CardCollectionView.swift */,
+				AACCD5A0216E28D50077273A /* InputNameView.swift */,
+				AACCD5A2216E293D0077273A /* InputNameView.xib */,
+			);
+			path = Possession;
+			sourceTree = "<group>";
+		};
+		AAFA882C206A2C5F0003CC14 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AA6C3F4920A961D100CBC4B5 /* Battle */,
+				AA607E9B20ABC7DF00E3F0EB /* Card */,
+				AA5AB98A20ABC71A0084B7FC /* Home */,
+				AA5AB98B20ABC7460084B7FC /* Gatya */,
+				AA6C3F4820A961B100CBC4B5 /* Setting */,
+				AADE544E1F723FC800DF83BF /* Home.storyboard */,
+				AA89C0B61F7E6FC800218655 /* HomeViewController.swift */,
+				AA5AB98820ABC4F00084B7FC /* SelectableView.swift */,
+				AA2C5AF520ECED90000B1E8B /* HomeButton.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AAFA882D206A2D970003CC14 /* Deck */ = {
+			isa = PBXGroup;
+			children = (
+				AAF96579209477C6007690B5 /* BarGraphView.swift */,
+				AA5C14EE1FB0184900D8CC15 /* CreateDeck.storyboard */,
+				AADE54981F724D4300DF83BF /* CreateDeck.swift */,
+				AA5C14EC1FB0180800D8CC15 /* CreateDeckViewController.swift */,
+				AAB19B2520AD3D4D004161F5 /* DeckSelectPageView.swift */,
+				AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */,
+				AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */,
+				AAB19B2720AD4118004161F5 /* DeckSelectView.xib */,
+				AAF9657520933867007690B5 /* NumOfEachCardIndexView.xib */,
+				AA03F4F720B1390000D1F26E /* SelectedDeckInCreateDeckView.swift */,
+				AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */,
+				AAA637A22174B43900678992 /* DeckConfirmationView.swift */,
+				AAA637A42174B5C700678992 /* DeckConfirmationView.xib */,
+			);
+			path = Deck;
+			sourceTree = "<group>";
+		};
+		AAFA882E206A2D9D0003CC14 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				AA10CA1B1F93326E0078850C /* PossessionCard.storyboard */,
+				AA5F5F801FBAC4450020E1D0 /* PossessionCardDetailView.swift */,
+				AA524A38207DB67100F4E11B /* PossessionCardDetailView.xib */,
+				AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */,
+				AAF8A22620D72A0F0018F650 /* CardStandartCell.xib */,
+				AAF8A22820D72A600018F650 /* CardStandartCell.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		BC0C7D54EB18A3F7320CC1C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */,
+				9FD0ED004792413D452ABD74 /* Pods-DaihugouBattle.release.xcconfig */,
+				9DDF551B3F7B6A3D05A95A76 /* Pods-DaihugouBattleTests.debug.xcconfig */,
+				11B6307CC19B2BBA10E999FC /* Pods-DaihugouBattleTests.release.xcconfig */,
+				5EF36BF8114357DB16E38308 /* Pods-DaihugouBattleUITests.debug.xcconfig */,
+				40DBE4C48B9DF2B27FB785D7 /* Pods-DaihugouBattleUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AADE54401F723FC600DF83BF /* DaihugouBattle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADE546F1F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattle" */;
+			buildPhases = (
+				BAC778CAEDE4599F6371C4DB /* [CP] Check Pods Manifest.lock */,
+				AADE543D1F723FC600DF83BF /* Sources */,
+				AADE543E1F723FC600DF83BF /* Frameworks */,
+				AADE543F1F723FC600DF83BF /* Resources */,
+				AAB19B2F20AEBA4E004161F5 /* Carthage Debug */,
+				D64819B94825C30412D5CB27 /* [CP] Embed Pods Frameworks */,
+				AA4AA03F1FE0E0D50099E71C /* Carthage */,
+				AA58985D207DC27F00AF2EF1 /* BuildVersion */,
+				AA5DBAD2209B3A260034DFC0 /* Fabric */,
+				38B27F42209C1DFC4F5169FC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaihugouBattle;
+			productName = DaihugouBattle;
+			productReference = AADE54411F723FC600DF83BF /* DaihugouBattle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AADE545A1F723FC900DF83BF /* DaihugouBattleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADE54721F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattleTests" */;
+			buildPhases = (
+				DFC52F5448081940FFB8DE97 /* [CP] Check Pods Manifest.lock */,
+				AADE54571F723FC900DF83BF /* Sources */,
+				AADE54581F723FC900DF83BF /* Frameworks */,
+				AADE54591F723FC900DF83BF /* Resources */,
+				AA5DBAEB209BE0230034DFC0 /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AADE545D1F723FC900DF83BF /* PBXTargetDependency */,
+			);
+			name = DaihugouBattleTests;
+			productName = DaihugouBattleTests;
+			productReference = AADE545B1F723FC900DF83BF /* DaihugouBattleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AADE54651F723FC900DF83BF /* DaihugouBattleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADE54751F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattleUITests" */;
+			buildPhases = (
+				7A8B6CF9F3A92F0A5C803A51 /* [CP] Check Pods Manifest.lock */,
+				AADE54621F723FC900DF83BF /* Sources */,
+				AADE54631F723FC900DF83BF /* Frameworks */,
+				AADE54641F723FC900DF83BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AADE54681F723FC900DF83BF /* PBXTargetDependency */,
+			);
+			name = DaihugouBattleUITests;
+			productName = DaihugouBattleUITests;
+			productReference = AADE54661F723FC900DF83BF /* DaihugouBattleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AADE54391F723FC400DF83BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Main;
+				TargetAttributes = {
+					AADE54401F723FC600DF83BF = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+					};
+					AADE545A1F723FC900DF83BF = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AADE54401F723FC600DF83BF;
+					};
+					AADE54651F723FC900DF83BF = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AADE54401F723FC600DF83BF;
+					};
+				};
+			};
+			buildConfigurationList = AADE543C1F723FC400DF83BF /* Build configuration list for PBXProject "DaihugouBattle" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AADE54381F723FC400DF83BF;
+			productRefGroup = AADE54421F723FC600DF83BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AADE54401F723FC600DF83BF /* DaihugouBattle */,
+				AADE545A1F723FC900DF83BF /* DaihugouBattleTests */,
+				AADE54651F723FC900DF83BF /* DaihugouBattleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AADE543F1F723FC600DF83BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACCD5A3216E293D0077273A /* InputNameView.xib in Resources */,
+				AA4BB3DA216AF84500E53BDA /* 勇者たちのララバイ.mp3 in Resources */,
+				AAF8A22720D72A0F0018F650 /* CardStandartCell.xib in Resources */,
+				AAB401842085CB160077763D /* CollectionImageViewCell.xib in Resources */,
+				AA03F4FA20B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib in Resources */,
+				AA2692FB207B930300631C3D /* Debug_GiftItemView.xib in Resources */,
+				AA671EE61F8522B600355759 /* Battle.storyboard in Resources */,
+				AA0309B92160B72B0089123A /* SpotCollectionHeader.xib in Resources */,
+				AA3B9D4E20CF73BA00AD79FC /* CardStandartFrontView.xib in Resources */,
+				AA0173D11F84C97400D9168A /* GatyaParticle.sks in Resources */,
+				AADE54501F723FC800DF83BF /* Home.storyboard in Resources */,
+				AAB19B2820AD4118004161F5 /* DeckSelectView.xib in Resources */,
+				AAF9657620933867007690B5 /* NumOfEachCardIndexView.xib in Resources */,
+				AA1D1CD51F92E8D1001FE74B /* GatyaSheetSelectView.xib in Resources */,
+				AACC12E2213F67D9009F8510 /* Test.scnp in Resources */,
+				AA4BB0271FDFF5320083B437 /* XcodeSetting.txt in Resources */,
+				AA0742291F8F371A0063585A /* BattleSelectView.xib in Resources */,
+				AA4BB3C82166E2A200E53BDA /* BattleSkillView.xib in Resources */,
+				AA3667EE20770F9D0012835E /* HomeSelectView.xib in Resources */,
+				AAA637A52174B5C700678992 /* DeckConfirmationView.xib in Resources */,
+				AAFA434B1F8FA0290067F296 /* GatyaSelectView.xib in Resources */,
+				AACDC0CF215F97EC00C30ADB /* cardInfo.json in Resources */,
+				AA02D86420921215005B1B55 /* PlayerNameSettingView.xib in Resources */,
+				AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */,
+				AA84978F1F947C3F00DD6899 /* LoadingView.xib in Resources */,
+				AA10CA1C1F93326E0078850C /* PossessionCard.storyboard in Resources */,
+				AADE54521F723FC800DF83BF /* Assets.xcassets in Resources */,
+				AA6F043820907EB600B4B65D /* CardsCell.xib in Resources */,
+				AA4BB3CE21670A8C00E53BDA /* BattlePlayerAtkView.xib in Resources */,
+				AA17A365201ADE9E000FB55E /* TouchBeganParticle.sks in Resources */,
+				AA4B1EE020B244AD009969D3 /* GatyaPackParticle1.sks in Resources */,
+				AAFA434D1F9087C00067F296 /* CardSelectView.xib in Resources */,
+				AA8497931F948D1400DD6899 /* CharacterDetailView.xib in Resources */,
+				AAD9A2DF20750068006C2769 /* SettingSelectView.xib in Resources */,
+				AAF04A5D1FC1261B0019723B /* TouchMovedParticle.sks in Resources */,
+				AA10CA171F932F3F0078850C /* Gatya.storyboard in Resources */,
+				AADE54551F723FC800DF83BF /* LaunchScreen.storyboard in Resources */,
+				AA3B9D5020CF77CD00AD79FC /* CardStandartBackView.xib in Resources */,
+				AA487E901F82181800342B49 /* BattleScene.sks in Resources */,
+				AACC12E1213F67D9009F8510 /* bokeh.png in Resources */,
+				AAFC181F2077181B002B1C7B /* SelectTrueOrFalseView.xib in Resources */,
+				AA7798AD2079DB62006F85C4 /* GiftBoxView.xib in Resources */,
+				AA524A39207DB67100F4E11B /* PossessionCardDetailView.xib in Resources */,
+				AAD9307A20C64FE9005488C5 /* GatyaResultView.xib in Resources */,
+				AA6D7B5E1FAC8B0200C4ECDA /* CardSortFilterView.xib in Resources */,
+				AA03F4FD20B1408C00D1F26E /* GatyaPackParticle.sks in Resources */,
+				AAD9A2E12075019F006C2769 /* AudioVolumeSettingView.xib in Resources */,
+				AA5C14F11FB14CDF00D8CC15 /* CharacterStatusDetailView.xib in Resources */,
+				AA3C4E0A1FD67C7B00E1315C /* HpGaugeView.xib in Resources */,
+				AA0309B52160B07C0089123A /* SpotCollectionView.xib in Resources */,
+				AACDC0D1215F97F600C30ADB /* cardSkill.json in Resources */,
+				AAB19B2420AD3BE8004161F5 /* DeckSelectPageView.xib in Resources */,
+				AA487E921F821E4600342B49 /* Main.storyboard in Resources */,
+				AA5C14EF1FB0184900D8CC15 /* CreateDeck.storyboard in Resources */,
+				AAB4017E2085B4B60077763D /* SpotCardsCollectionView.xib in Resources */,
+				AA472FA92021C4E200440C59 /* StartViewParticle.sks in Resources */,
+				AA7798AF2079DC24006F85C4 /* GiftBoxCell.xib in Resources */,
+				AA03F4FE20B1408C00D1F26E /* Assets.xcassets in Resources */,
+				AA3D3DB72099F1E700AB4396 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADE54591F723FC900DF83BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADE54641F723FC900DF83BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38B27F42209C1DFC4F5169FC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A8B6CF9F3A92F0A5C803A51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DaihugouBattleUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA4AA03F1FE0E0D50099E71C /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/NCMB.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ZLSwipeableViewSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FLEX.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/UITextField_Navigation.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyGif.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/myfile",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		AA58985D207DC27F00AF2EF1 /* BuildVersion */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = BuildVersion;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+		AA5DBAD2209B3A260034DFC0 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 98765e2cecf59f371e3d0b755d2e3d32fbc4d587 e86cb92c91402d6c158987b761e4086acb82d0b9f8ac08376010aa0e8ed35d05\n";
+		};
+		AA5DBAEB209BE0230034DFC0 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		AAB19B2F20AEBA4E004161F5 /* Carthage Debug */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/HyperionCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AttributesInspector.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SlowAnimations.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Measurements.framework",
+			);
+			name = "Carthage Debug";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/HyperionCore.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AttributesInspector.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SlowAnimations.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Measurements.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"$CONFIGURATION\" == \"Debug\" ]; then\n/usr/local/bin/carthage copy-frameworks\nfi\n";
+		};
+		BAC778CAEDE4599F6371C4DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DaihugouBattle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D64819B94825C30412D5CB27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/LiquidFloatingActionButton/LiquidFloatingActionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LiquidFloatingActionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewFlexLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFC52F5448081940FFB8DE97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DaihugouBattleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AADE543D1F723FC600DF83BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAF479081FD584750074AFC5 /* TouchParticleScene.swift in Sources */,
+				AAB19B2620AD3D4D004161F5 /* DeckSelectPageView.swift in Sources */,
+				AADE548D1F72440F00DF83BF /* BattleField.swift in Sources */,
+				AA2EDE32212D5D52008FED44 /* CardView.swift in Sources */,
+				AA6F043720907EB600B4B65D /* CardsCell.swift in Sources */,
+				AAF46D9D20CE31EE0046F268 /* ATestViewController.swift in Sources */,
+				AA7798B12079FBCD006F85C4 /* GiftBoxCell.swift in Sources */,
+				AADE548F1F72440F00DF83BF /* Player.swift in Sources */,
+				AADE54901F72440F00DF83BF /* User.swift in Sources */,
+				AAFA43521F9089700067F296 /* BattleSelectView.swift in Sources */,
+				AAE087F620F59F5B00586167 /* TDPVIewController.swift in Sources */,
+				AA554192214616F0003A008B /* ControllBattleDeck.swift in Sources */,
+				AAD65B351F88D7E8004A121B /* StartViewController.swift in Sources */,
+				AAE71DE220A28B7C00A591A4 /* Cametery.swift in Sources */,
+				AAF36D751FCA98F1009809F6 /* GatyaParticleScene.swift in Sources */,
+				AAE5B4072157D1F400463F28 /* ImageCache.swift in Sources */,
+				AA0173C71F84959F00D9168A /* LoadingView.swift in Sources */,
+				AAE92B0C20D12F1900B530B9 /* NameView.swift in Sources */,
+				AAFA43541F90898A0067F296 /* GatyaSelectView.swift in Sources */,
+				AA3D3DB12099D60900AB4396 /* BattleMultiViewController.swift in Sources */,
+				AA0309B32160AFD10089123A /* SpotCollectionView.swift in Sources */,
+				AA2C5AF420ECED60000B1E8B /* Icon.swift in Sources */,
+				AA4AA0411FE0E39F0099E71C /* EFCountingLabel.swift in Sources */,
+				AA7205701FB54A65003E5B88 /* SpotView.swift in Sources */,
+				AAFC182720776822002B1C7B /* GiftBox.swift in Sources */,
+				AADE54881F72440F00DF83BF /* CardStrength.swift in Sources */,
+				AADE548E1F72440F00DF83BF /* Table.swift in Sources */,
+				AAFC18232077269A002B1C7B /* CacheClearView.swift in Sources */,
+				AA6E65F720C60F3F002D883D /* CardAtkView.swift in Sources */,
+				AA2CD47D20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift in Sources */,
+				AAA637A121738B5000678992 /* DeckRelated.swift in Sources */,
+				AA8E770520E4FDDF00D31049 /* PrivateDefine.swift in Sources */,
+				AA2C5AF620ECED90000B1E8B /* HomeButton.swift in Sources */,
+				AA725D23215526500064A3BA /* DataRealm.swift in Sources */,
+				AADE548A1F72440F00DF83BF /* Gatya.swift in Sources */,
+				AAEC52172088DD4A001428A4 /* FrameLayer.swift in Sources */,
+				AA128C342166DE5400B78B23 /* BattleSkillView.swift in Sources */,
+				AA7798AB2079DB47006F85C4 /* GiftBoxView.swift in Sources */,
+				AAA86F6320AA7598002A3E8D /* SkillAbilityList.swift in Sources */,
+				AACC91CB1F8638D0009883B4 /* Spot.swift in Sources */,
+				AA3C4E0C1FD67D1F00E1315C /* HpGaugeView.swift in Sources */,
+				AADE54871F72440F00DF83BF /* Card.swift in Sources */,
+				AA4BB3D2216AED0200E53BDA /* GifView.swift in Sources */,
+				AAB0F4E220725979004D9C93 /* ManageAudio.swift in Sources */,
+				AACCD5A1216E28D50077273A /* InputNameView.swift in Sources */,
+				AA0975E31F7F8DF000404F9C /* UIImage+Gif.swift in Sources */,
+				AA290786208D9A490075DA4B /* CardsFilter.swift in Sources */,
+				AAFC18212077197E002B1C7B /* SelectTrueOrFalseView.swift in Sources */,
+				AA02D86220920EE4005B1B55 /* PlayerNameSettingView.swift in Sources */,
+				AAE087F320F59BC900586167 /* WeakObject.swift in Sources */,
+				AA487E881F820E6F00342B49 /* CardBattle.swift in Sources */,
+				AAD9A2DD2075001B006C2769 /* AudioVolumeSettingView.swift in Sources */,
+				AAF8A22920D72A600018F650 /* CardStandartCell.swift in Sources */,
+				AA5C14F31FB14DB600D8CC15 /* CharacterStatusDetailView.swift in Sources */,
+				AA3D3DB32099D81800AB4396 /* BattleCPUViewController.swift in Sources */,
+				AA2F20DC1FADC390002F70DA /* RoundCornerButton.swift in Sources */,
+				AAF134FD2023F0CF002A472E /* ImageVersion.swift in Sources */,
+				AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */,
+				AA89C0B71F7E6FC800218655 /* HomeViewController.swift in Sources */,
+				AABF925F208055DB00BA0441 /* UINibView.swift in Sources */,
+				AA0975E41F7F8DF000404F9C /* ZFRippleButton.swift in Sources */,
+				AADE54931F72440F00DF83BF /* CPU.swift in Sources */,
+				AAF16EDE20C8CBF20007417F /* CardStandartFrontView.swift in Sources */,
+				AAD9A2E6207645D7006C2769 /* BattleServer.swift in Sources */,
+				AA3B9D4A20CEB5F600AD79FC /* Define.swift in Sources */,
+				AA5F5F811FBAC4450020E1D0 /* PossessionCardDetailView.swift in Sources */,
+				AAD9A2DB2074FF4F006C2769 /* SettingSelectView.swift in Sources */,
+				AA0309B72160B6BC0089123A /* SpotCollectionHeader.swift in Sources */,
+				AA12875F207EFF4300194FD7 /* Extension_Random.swift in Sources */,
+				AACC12E4213F7C04009F8510 /* HUD.swift in Sources */,
+				AA6D7B601FAC8F8000C4ECDA /* CardSortFilterView.swift in Sources */,
+				AA255FE9200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift in Sources */,
+				AA02D86620930951005B1B55 /* TextFieldWithToolBar.swift in Sources */,
+				AA6F043A2090823800B4B65D /* CardDecorateImage.swift in Sources */,
+				AAF04A5F1FC29B850019723B /* PlayerView.swift in Sources */,
+				AAB401802085B7000077763D /* SpotCardsCollectionView.swift in Sources */,
+				AACC12E62142A8B5009F8510 /* CardsSort.swift in Sources */,
+				AA4BB3CA2166FC8900E53BDA /* SkillDescriptionTextView.swift in Sources */,
+				AA6E70761F74A64600A401AE /* Download.swift in Sources */,
+				AA3C4E0E1FD6C9B700E1315C /* IDAProgressView.swift in Sources */,
+				AA5541902146163C003A008B /* PrivateBattleMaster.swift in Sources */,
+				AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */,
+				AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */,
+				AA0975E01F7F8DF000404F9C /* UICircleLabel.swift in Sources */,
+				AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */,
+				AAB19B2A20AEB8CC004161F5 /* CardBothSidesLayer.swift in Sources */,
+				AADE548C1F72440F00DF83BF /* Skill.swift in Sources */,
+				AA65BE442058C0260062AFFA /* Extension_CAAnimation.swift in Sources */,
+				AA5541D6214E056B003A008B /* BattleDeck.swift in Sources */,
+				AAF16EE220C8EA7D0007417F /* IndexView.swift in Sources */,
+				AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */,
+				AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */,
+				AAF16EE020C8D2C20007417F /* CardStandartBackView.swift in Sources */,
+				AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */,
+				AA0173DF1F85124400D9168A /* BattleViewController.swift in Sources */,
+				AAB19B2220AD3BCB004161F5 /* DeckSelectView.swift in Sources */,
+				AABF92612080A28100BA0441 /* GatyaParticleView.swift in Sources */,
+				AA8497951F948E3A00DD6899 /* CharacterDetailView.swift in Sources */,
+				AA02D860209172AE005B1B55 /* CardCollectionView.swift in Sources */,
+				AAD9308620C699B9005488C5 /* IndexLabel.swift in Sources */,
+				AA3209A5209DC9850059D51B /* main.swift in Sources */,
+				AA5E78BE1F95B61A0099632B /* GatyaSheetSelectView.swift in Sources */,
+				AA3B9D4C20CEBB7D00AD79FC /* CardWithView.swift in Sources */,
+				AADE54991F724D4300DF83BF /* CreateDeck.swift in Sources */,
+				AA2692F9207B92F300631C3D /* Debug_GiftItemView.swift in Sources */,
+				AA5C14ED1FB0180800D8CC15 /* CreateDeckViewController.swift in Sources */,
+				AA03F4F820B1390000D1F26E /* SelectedDeckInCreateDeckView.swift in Sources */,
+				AAF9657A209477C6007690B5 /* BarGraphView.swift in Sources */,
+				AADE54921F72440F00DF83BF /* Deck.swift in Sources */,
+				AAF04A5B1FC11E740019723B /* Extension.swift in Sources */,
+				AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */,
+				AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */,
+				AA5AB98920ABC4F00084B7FC /* SelectableView.swift in Sources */,
+				AAD9307E20C650FC005488C5 /* GatyaResultRarityView.swift in Sources */,
+				AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */,
+				AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */,
+				AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */,
+				AAB401832085CB160077763D /* CollectionImageViewCell.swift in Sources */,
+				AA95767720232B860023402A /* SceneView.swift in Sources */,
+				AA3EBAE81FC7B5B100D902B7 /* GatyaRollViewController.swift in Sources */,
+				AADE54451F723FC700DF83BF /* AppDelegate.swift in Sources */,
+				AAF479061FD582610074AFC5 /* TDPView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADE54571F723FC900DF83BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADE54601F723FC900DF83BF /* DaihugouBattleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AADE54621F723FC900DF83BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADE546B1F723FC900DF83BF /* DaihugouBattleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AADE545D1F723FC900DF83BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AADE54401F723FC600DF83BF /* DaihugouBattle */;
+			targetProxy = AADE545C1F723FC900DF83BF /* PBXContainerItemProxy */;
+		};
+		AADE54681F723FC900DF83BF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AADE54401F723FC600DF83BF /* DaihugouBattle */;
+			targetProxy = AADE54671F723FC900DF83BF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AADE544E1F723FC800DF83BF /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AADE544F1F723FC800DF83BF /* Base */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
+		AADE54531F723FC800DF83BF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AADE54541F723FC800DF83BF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AADE546D1F723FC900DF83BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AADE546E1F723FC900DF83BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AADE54701F723FC900DF83BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 88KEKANDUC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				HEADERMAP_USES_VFS = YES;
+				INFOPLIST_FILE = DaihugouBattle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=80";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lam.DaihugouProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AADE54711F723FC900DF83BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FD0ED004792413D452ABD74 /* Pods-DaihugouBattle.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 88KEKANDUC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				HEADERMAP_USES_VFS = NO;
+				INFOPLIST_FILE = DaihugouBattle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lam.DaihugouProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AADE54731F723FC900DF83BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DDF551B3F7B6A3D05A95A76 /* Pods-DaihugouBattleTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66628V8FK3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DaihugouBattleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = s.DaihugouBattleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaihugouBattle.app/DaihugouBattle";
+			};
+			name = Debug;
+		};
+		AADE54741F723FC900DF83BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11B6307CC19B2BBA10E999FC /* Pods-DaihugouBattleTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66628V8FK3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DaihugouBattleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = s.DaihugouBattleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DaihugouBattle.app/DaihugouBattle";
+			};
+			name = Release;
+		};
+		AADE54761F723FC900DF83BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EF36BF8114357DB16E38308 /* Pods-DaihugouBattleUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66628V8FK3;
+				INFOPLIST_FILE = DaihugouBattleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = s.DaihugouBattleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DaihugouBattle;
+			};
+			name = Debug;
+		};
+		AADE54771F723FC900DF83BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40DBE4C48B9DF2B27FB785D7 /* Pods-DaihugouBattleUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66628V8FK3;
+				INFOPLIST_FILE = DaihugouBattleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = s.DaihugouBattleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DaihugouBattle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AADE543C1F723FC400DF83BF /* Build configuration list for PBXProject "DaihugouBattle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADE546D1F723FC900DF83BF /* Debug */,
+				AADE546E1F723FC900DF83BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AADE546F1F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADE54701F723FC900DF83BF /* Debug */,
+				AADE54711F723FC900DF83BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AADE54721F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADE54731F723FC900DF83BF /* Debug */,
+				AADE54741F723FC900DF83BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AADE54751F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADE54761F723FC900DF83BF /* Debug */,
+				AADE54771F723FC900DF83BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AADE54391F723FC400DF83BF /* Project object */;
+}

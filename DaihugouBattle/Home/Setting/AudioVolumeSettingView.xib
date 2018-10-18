@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AudioVolumeSettingView" customModule="DaihugouBattle" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WQK-oG-Q6D">
+                    <rect key="frame" x="113.5" y="96" width="341" height="128"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qx7-Zs-g5h">
+                            <rect key="frame" x="0.0" y="0.0" width="341" height="59"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BGM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNB-8W-ezS">
+                                    <rect key="frame" x="0.0" y="0.0" width="48.5" height="59"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="247-xB-cRV">
+                                    <rect key="frame" x="46.5" y="0.0" width="296.5" height="60"/>
+                                    <connections>
+                                        <action selector="valueChanged:" destination="-1" eventType="valueChanged" id="Bex-i1-9e7"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="ZNB-8W-ezS" firstAttribute="width" secondItem="247-xB-cRV" secondAttribute="width" multiplier="1:6" id="Pv8-GB-Czp"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dl1-ye-meY">
+                            <rect key="frame" x="0.0" y="69" width="341" height="59"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh6-Uw-M7M">
+                                    <rect key="frame" x="0.0" y="0.0" width="48.5" height="59"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MkL-sY-L3g">
+                                    <rect key="frame" x="46.5" y="0.0" width="296.5" height="60"/>
+                                    <connections>
+                                        <action selector="valueChanged:" destination="-1" eventType="valueChanged" id="Yyf-Ec-f4b"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="qh6-Uw-M7M" firstAttribute="width" secondItem="MkL-sY-L3g" secondAttribute="width" multiplier="1:6" id="3Cy-ex-ffW"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V6-kh-p8g">
+                    <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2V6-kh-p8g" secondAttribute="height" multiplier="1:1" id="Mtj-bw-cz1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <state key="normal" title="×">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="pfX-42-lTd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="2V6-kh-p8g" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.1" id="V0h-fG-Ta2"/>
+                <constraint firstItem="WQK-oG-Q6D" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="XQn-yy-1w7"/>
+                <constraint firstItem="WQK-oG-Q6D" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="b2Q-e2-sih"/>
+                <constraint firstItem="2V6-kh-p8g" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="eXx-RH-neb"/>
+                <constraint firstItem="WQK-oG-Q6D" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="o5X-Gn-C19"/>
+                <constraint firstItem="2V6-kh-p8g" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oNU-3q-ih0"/>
+                <constraint firstItem="WQK-oG-Q6D" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="xn7-ZN-YLG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardSelectView" customModule="DaihugouBattle" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3L3-25-sOi">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fCc-wX-wWG">
+                    <rect key="frame" x="113.5" y="32" width="341" height="256"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ar-ZS-KKS">
+                            <rect key="frame" x="0.0" y="0.0" width="170.5" height="256"/>
+                            <state key="normal" title="デッキ編成" backgroundImage="buttonFrame"/>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="RH0-lz-sDg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbU-zs-anu">
+                            <rect key="frame" x="170.5" y="0.0" width="170.5" height="256"/>
+                            <state key="normal" title="所持カード" backgroundImage="buttonFrame"/>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="gUm-LC-IgH"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="7ar-ZS-KKS" firstAttribute="height" secondItem="fCc-wX-wWG" secondAttribute="height" id="ITq-hL-96u"/>
+                        <constraint firstItem="kbU-zs-anu" firstAttribute="height" secondItem="fCc-wX-wWG" secondAttribute="height" id="NP9-MD-fZz"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fCc-wX-wWG" firstAttribute="height" secondItem="3L3-25-sOi" secondAttribute="height" multiplier="0.8" id="0y7-ob-42q"/>
+                <constraint firstItem="fCc-wX-wWG" firstAttribute="centerY" secondItem="cjR-xA-xyt" secondAttribute="centerY" id="IGn-pz-Q03"/>
+                <constraint firstItem="fCc-wX-wWG" firstAttribute="width" secondItem="3L3-25-sOi" secondAttribute="width" multiplier="0.6" id="YLh-RC-wS3"/>
+                <constraint firstItem="fCc-wX-wWG" firstAttribute="centerX" secondItem="cjR-xA-xyt" secondAttribute="centerX" id="t7O-Zk-bj3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="cjR-xA-xyt"/>
+            <point key="canvasLocation" x="65" y="33"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buttonFrame" width="460" height="680"/>
+    </resources>
+</document>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingSelectView" customModule="DaihugouBattle" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="t1N-jp-JFD">
+                    <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHc-hC-1FX">
+                            <rect key="frame" x="0.0" y="0.0" width="142" height="320"/>
+                            <state key="normal" title="ボリューム" backgroundImage="buttonFrame"/>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="lTk-xV-SyJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHP-8m-j2P">
+                            <rect key="frame" x="142" y="0.0" width="142" height="320"/>
+                            <state key="normal" title="名前変更" backgroundImage="buttonFrame"/>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="oIu-XL-qIR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9I-D0-wXD">
+                            <rect key="frame" x="284" y="0.0" width="142" height="320"/>
+                            <state key="normal" title="ホームへ戻る" backgroundImage="buttonFrame">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="6ED-i4-dEt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-la-FIX">
+                            <rect key="frame" x="426" y="0.0" width="142" height="320"/>
+                            <state key="normal" title="テストへ" backgroundImage="buttonFrame">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="nPk-kt-VKr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Q9I-D0-wXD" firstAttribute="height" secondItem="xHc-hC-1FX" secondAttribute="height" id="n1m-3c-hoI"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="t1N-jp-JFD" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="2MJ-Eo-HUw"/>
+                <constraint firstItem="t1N-jp-JFD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="IEb-8B-tBo"/>
+                <constraint firstItem="t1N-jp-JFD" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JHH-jI-EaY"/>
+                <constraint firstItem="t1N-jp-JFD" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="Xyo-f5-O65"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buttonFrame" width="460" height="680"/>
+    </resources>
+</document>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeckConfirmationView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="J3V-7A-1ti" id="ZGX-FN-0Al"/>
+                <outlet property="collectionView" destination="bKa-5p-GBA" id="Zqy-J4-Tf9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bKa-5p-GBA">
+                    <rect key="frame" x="28.5" y="48" width="511" height="224"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y1y-Kr-aVK">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3V-7A-1ti">
+                    <rect key="frame" x="5" y="5" width="51" height="51"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="J3V-7A-1ti" secondAttribute="height" multiplier="1:1" id="cqE-Mx-nAB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <state key="normal" title="×"/>
+                    <connections>
+                        <action selector="touchUpClose:" destination="-1" eventType="touchUpInside" id="Yc2-xw-fPg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bKa-5p-GBA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="CNo-fy-UoL"/>
+                <constraint firstItem="J3V-7A-1ti" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="Mlv-7K-MFn"/>
+                <constraint firstItem="bKa-5p-GBA" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="Ne2-h5-VDs"/>
+                <constraint firstItem="J3V-7A-1ti" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="Smk-eN-m9K"/>
+                <constraint firstItem="bKa-5p-GBA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="eNU-Bp-Mnt"/>
+                <constraint firstItem="bKa-5p-GBA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="x5F-Oe-RKk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

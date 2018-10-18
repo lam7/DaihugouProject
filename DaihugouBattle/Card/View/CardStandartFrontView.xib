@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardStandartFrontView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="frameBackView" destination="SGu-gu-yXX" id="kk0-NK-hTs"/>
+                <outlet property="frameView" destination="Bws-Xo-mQL" id="rpM-EC-Wa2"/>
+                <outlet property="indexView" destination="mbT-Z8-u3k" id="yQu-qa-a7R"/>
+                <outlet property="nameView" destination="ODE-wo-gsr" id="FCN-E2-Qar"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGu-gu-yXX" customClass="CardBackFrame" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bws-Xo-mQL" customClass="CardFrame" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="90" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="6H9-cd-IIV"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODE-wo-gsr" customClass="NameView" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="10" width="90" height="18"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbT-Z8-u3k" customClass="IndexView" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="mbT-Z8-u3k" secondAttribute="height" multiplier="1:1" id="4OE-iA-wxb"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="GXR-2d-F5F"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fh-cg-RBz">
+                    <rect key="frame" x="9" y="84" width="72" height="36"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="Z0Q-ip-HYw"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="8fh-cg-RBz" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="5IS-te-1V0"/>
+                <constraint firstItem="ODE-wo-gsr" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="A9d-jz-0m1"/>
+                <constraint firstItem="mbT-Z8-u3k" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="CAV-AU-WTm"/>
+                <constraint firstItem="Bws-Xo-mQL" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Cbd-wN-arq"/>
+                <constraint firstItem="SGu-gu-yXX" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="KWx-73-jWP"/>
+                <constraint firstItem="Bws-Xo-mQL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Nf3-qz-1EK"/>
+                <constraint firstItem="8fh-cg-RBz" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="P3s-Ks-v2W"/>
+                <constraint firstItem="SGu-gu-yXX" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="WgQ-kZ-UZ2"/>
+                <constraint firstItem="Bws-Xo-mQL" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="XDX-UY-LgK"/>
+                <constraint firstItem="SGu-gu-yXX" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="YQ0-ZF-M6r"/>
+                <constraint firstItem="8fh-cg-RBz" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="YhJ-s7-uh1"/>
+                <constraint firstItem="Bws-Xo-mQL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="aMN-Jk-oca"/>
+                <constraint firstItem="ODE-wo-gsr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="hl5-pi-ei9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8fh-cg-RBz" secondAttribute="bottom" id="ltd-qR-083"/>
+                <constraint firstItem="SGu-gu-yXX" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="tPC-Ms-7V3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="mbT-Z8-u3k" secondAttribute="top" id="tUs-a4-l50"/>
+                <constraint firstItem="ODE-wo-gsr" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.15" id="xhj-7F-2gQ"/>
+                <constraint firstItem="ODE-wo-gsr" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="yaG-2A-rzr"/>
+                <constraint firstItem="mbT-Z8-u3k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yja-rf-Kdg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-103" y="-110.5"/>
+        </view>
+    </objects>
+</document>

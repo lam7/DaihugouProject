@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HpGaugeView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="label" destination="ybr-MW-S9A" id="yfd-0M-biP"/>
+                <outlet property="progressView" destination="tU0-3i-ESM" id="xYw-78-Mnv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="429" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tU0-3i-ESM" customClass="IDAProgressView" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="429" height="24"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999/9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybr-MW-S9A" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="335" y="18.5" width="94" height="21.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="tU0-3i-ESM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="0pF-u6-2yP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ybr-MW-S9A" secondAttribute="bottom" id="CHz-9c-9FX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="tU0-3i-ESM" secondAttribute="top" id="LDJ-Ph-RsF"/>
+                <constraint firstItem="tU0-3i-ESM" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="SdY-ls-ngb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ybr-MW-S9A" secondAttribute="trailing" id="aFn-42-WF9"/>
+                <constraint firstItem="tU0-3i-ESM" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.6" id="qjW-as-T93"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-169.5" y="160"/>
+        </view>
+    </objects>
+</document>
