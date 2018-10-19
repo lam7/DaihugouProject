@@ -36,5 +36,4 @@ class DeckSelectPageView: UINibView{
     @IBAction func touchUp(_ sender: UIButton){
         delegate?.selectButtonAction(sender)
     }
-    
 }

@@ -110,6 +110,8 @@
 		AA6D7B5E1FAC8B0200C4ECDA /* CardSortFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */; };
 		AA6D7B601FAC8F8000C4ECDA /* CardSortFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */; };
 		AA6D96492179DB4B004E4A25 /* BarGraphBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */; };
+		AA6D964B2179EC95004E4A25 /* SelectedDeckInBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D964A2179EC95004E4A25 /* SelectedDeckInBattleView.swift */; };
+		AA6D9651217A1D2E004E4A25 /* SelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D9650217A1D2E004E4A25 /* SelectionButton.swift */; };
 		AA6E65F720C60F3F002D883D /* CardAtkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E65F620C60F3F002D883D /* CardAtkView.swift */; };
 		AA6E70761F74A64600A401AE /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70751F74A64600A401AE /* Download.swift */; };
 		AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70BD1F77583800A401AE /* DownloadViewController.swift */; };
@@ -349,6 +351,9 @@
 		AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSortFilterView.xib; sourceTree = "<group>"; };
 		AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortFilterView.swift; sourceTree = "<group>"; };
 		AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarGraphBaseView.xib; sourceTree = "<group>"; };
+		AA6D964A2179EC95004E4A25 /* SelectedDeckInBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDeckInBattleView.swift; sourceTree = "<group>"; };
+		AA6D964E217A1B00004E4A25 /* SelectedDeckInBattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectedDeckInBattleView.xib; path = /Users/main/Desktop/DaihugouBattle/DaihugouBattle/SelectedDeckInBattleView.xib; sourceTree = "<absolute>"; };
+		AA6D9650217A1D2E004E4A25 /* SelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionButton.swift; sourceTree = "<group>"; };
 		AA6E65F620C60F3F002D883D /* CardAtkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAtkView.swift; sourceTree = "<group>"; };
 		AA6E70751F74A64600A401AE /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		AA6E70BD1F77583800A401AE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
@@ -702,6 +707,8 @@
 			children = (
 				AAFA43511F9089700067F296 /* BattleSelectView.swift */,
 				AA0742281F8F371A0063585A /* BattleSelectView.xib */,
+				AA6D964E217A1B00004E4A25 /* SelectedDeckInBattleView.xib */,
+				AA6D964A2179EC95004E4A25 /* SelectedDeckInBattleView.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -917,6 +924,7 @@
 				AA89C0B61F7E6FC800218655 /* HomeViewController.swift */,
 				AA5AB98820ABC4F00084B7FC /* SelectableView.swift */,
 				AA2C5AF520ECED90000B1E8B /* HomeButton.swift */,
+				AA6D9650217A1D2E004E4A25 /* SelectionButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1410,6 +1418,7 @@
 				AAFC182720776822002B1C7B /* GiftBox.swift in Sources */,
 				AADE54881F72440F00DF83BF /* CardStrength.swift in Sources */,
 				AADE548E1F72440F00DF83BF /* Table.swift in Sources */,
+				AA6D964B2179EC95004E4A25 /* SelectedDeckInBattleView.swift in Sources */,
 				AAFC18232077269A002B1C7B /* CacheClearView.swift in Sources */,
 				AA6E65F720C60F3F002D883D /* CardAtkView.swift in Sources */,
 				AA2CD47D20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift in Sources */,
@@ -1478,6 +1487,7 @@
 				AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */,
 				AAF16EE020C8D2C20007417F /* CardStandartBackView.swift in Sources */,
 				AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */,
+				AA6D9651217A1D2E004E4A25 /* SelectionButton.swift in Sources */,
 				AA0173DF1F85124400D9168A /* BattleViewController.swift in Sources */,
 				AAB19B2220AD3BCB004161F5 /* DeckSelectView.swift in Sources */,
 				AABF92612080A28100BA0441 /* GatyaParticleView.swift in Sources */,
