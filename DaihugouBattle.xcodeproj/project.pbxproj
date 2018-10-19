@@ -109,6 +109,7 @@
 		AA671EE61F8522B600355759 /* Battle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA671EE51F8522B600355759 /* Battle.storyboard */; };
 		AA6D7B5E1FAC8B0200C4ECDA /* CardSortFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */; };
 		AA6D7B601FAC8F8000C4ECDA /* CardSortFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */; };
+		AA6D96492179DB4B004E4A25 /* BarGraphBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */; };
 		AA6E65F720C60F3F002D883D /* CardAtkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E65F620C60F3F002D883D /* CardAtkView.swift */; };
 		AA6E70761F74A64600A401AE /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70751F74A64600A401AE /* Download.swift */; };
 		AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70BD1F77583800A401AE /* DownloadViewController.swift */; };
@@ -163,6 +164,7 @@
 		AACDC0CF215F97EC00C30ADB /* cardInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = AACDC0CE215F97EC00C30ADB /* cardInfo.json */; };
 		AACDC0D1215F97F600C30ADB /* cardSkill.json in Resources */ = {isa = PBXBuildFile; fileRef = AACDC0D0215F97F600C30ADB /* cardSkill.json */; };
 		AAD65B351F88D7E8004A121B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B341F88D7E8004A121B /* StartViewController.swift */; };
+		AAD78AEF2179A1920033A313 /* DeckIndexBarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */; };
 		AAD9307A20C64FE9005488C5 /* GatyaResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD9307920C64FE9005488C5 /* GatyaResultView.xib */; };
 		AAD9307E20C650FC005488C5 /* GatyaResultRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */; };
 		AAD9308620C699B9005488C5 /* IndexLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9308520C699B9005488C5 /* IndexLabel.swift */; };
@@ -346,6 +348,7 @@
 		AA671EE51F8522B600355759 /* Battle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Battle.storyboard; sourceTree = "<group>"; };
 		AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSortFilterView.xib; sourceTree = "<group>"; };
 		AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortFilterView.swift; sourceTree = "<group>"; };
+		AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarGraphBaseView.xib; sourceTree = "<group>"; };
 		AA6E65F620C60F3F002D883D /* CardAtkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAtkView.swift; sourceTree = "<group>"; };
 		AA6E70751F74A64600A401AE /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		AA6E70BD1F77583800A401AE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
@@ -405,6 +408,7 @@
 		AACDC0CE215F97EC00C30ADB /* cardInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardInfo.json; sourceTree = "<group>"; };
 		AACDC0D0215F97F600C30ADB /* cardSkill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardSkill.json; sourceTree = "<group>"; };
 		AAD65B341F88D7E8004A121B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckIndexBarGraph.swift; sourceTree = "<group>"; };
 		AAD9307920C64FE9005488C5 /* GatyaResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaResultView.xib; sourceTree = "<group>"; };
 		AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaResultRarityView.swift; sourceTree = "<group>"; };
 		AAD9308520C699B9005488C5 /* IndexLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexLabel.swift; sourceTree = "<group>"; };
@@ -921,6 +925,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF96579209477C6007690B5 /* BarGraphView.swift */,
+				AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */,
 				AA5C14EE1FB0184900D8CC15 /* CreateDeck.storyboard */,
 				AADE54981F724D4300DF83BF /* CreateDeck.swift */,
 				AA5C14EC1FB0180800D8CC15 /* CreateDeckViewController.swift */,
@@ -933,6 +938,7 @@
 				AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */,
 				AAA637A22174B43900678992 /* DeckConfirmationView.swift */,
 				AAA637A42174B5C700678992 /* DeckConfirmationView.xib */,
+				AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -1118,6 +1124,7 @@
 				AA8497931F948D1400DD6899 /* CharacterDetailView.xib in Resources */,
 				AAD9A2DF20750068006C2769 /* SettingSelectView.xib in Resources */,
 				AAF04A5D1FC1261B0019723B /* TouchMovedParticle.sks in Resources */,
+				AA6D96492179DB4B004E4A25 /* BarGraphBaseView.xib in Resources */,
 				AA10CA171F932F3F0078850C /* Gatya.storyboard in Resources */,
 				AADE54551F723FC800DF83BF /* LaunchScreen.storyboard in Resources */,
 				AA3B9D5020CF77CD00AD79FC /* CardStandartBackView.xib in Resources */,
@@ -1200,7 +1207,7 @@
 		};
 		AA4AA03F1FE0E0D50099E71C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -1227,7 +1234,7 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/myfile",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
@@ -1460,6 +1467,7 @@
 				AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */,
 				AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */,
 				AA0975E01F7F8DF000404F9C /* UICircleLabel.swift in Sources */,
+				AAD78AEF2179A1920033A313 /* DeckIndexBarGraph.swift in Sources */,
 				AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */,
 				AAB19B2A20AEB8CC004161F5 /* CardBothSidesLayer.swift in Sources */,
 				AADE548C1F72440F00DF83BF /* Skill.swift in Sources */,
