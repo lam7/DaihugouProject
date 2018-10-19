@@ -22,16 +22,9 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
     
     func collectionView(_ collectionView: UICollectionView, observedEvent: Event<[Card]>) {
         Binder(self) { dataSource, element in
-//            dataSource.cards = element
-//            collectionView.reloadData()
             if dataSource.cards.count == 0 &&  element.count == 0{
                 return
             }
-//            print("aaaaaaaaaaaaaaaaaaaaaaaaaaa")
-//            dump(dataSource.cards)
-//            print("bbbbbbbbbbbbbbbbbbbbbbbbbbb")
-//            dump(element)
-//            print("cccccccccccccccccccccccccccc")
             if dataSource.cards.count < element.count{
                 var t = element
                 for card in dataSource.cards{
@@ -50,15 +43,6 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
                 if let indexPath = indexPaths.first{
                     collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
                 }
-//                guard let c = t.first,
-//                    let i = dataSource.cards.index(of: c) else{
-//                        print("NNNNNNNNNNAAAAAAAAA")
-//                        dump(dataSource.cards)
-//                        return
-//                }
-//                let indexPath = IndexPath(row: i, section: 0)
-//                dataSource.cards = element
-//                collectionView.insertItems(at: [indexPath])
             }else{
                 var t = dataSource.cards
                 for card in element{
@@ -73,17 +57,6 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
                 }
                 dataSource.cards = element
                 collectionView.deleteItems(at: indexPaths)
-//                dump(t.first)
-//                guard let c = t.first,
-//                    let i = dataSource.cards.index(of: c) else{
-//                        print("NNNNNNNNNN")
-//
-//                        dump(dataSource.cards)
-//                        return
-//                }
-//                let indexPath = IndexPath(row: i, section: 0)
-//                dataSource.cards = element
-//                collectionView.deleteItems(at: [indexPath])
             }
         }.on(observedEvent)
     }
@@ -197,13 +170,6 @@ class CreateDeckViewController: UIViewController{
         let nameds = cards.map{ $0.imageNamed } + "cardBack.png"
 
         RealmImageCache.shared.loadImagesBackground(nameds){
-//            self.createDeck.possessionCards.subscribe{ event in
-//                guard let element = event.element else{
-//                    return
-//                }
-//                self.possessionDataSource.cardCount = element
-//                self.possessionCollectionView.reloadData()
-//            }.disposed(by: self.disposeBag)
             self.createDeck.set(possessionCards: UserInfo.shared.cardsValue)
             self.possessionViewModel.originalCards = self.createDeck.originalPossessionCards
             self.createDeck.deckCards.bind(to: self.deckCollectionView.rx.items(dataSource: self.deckDataSource)).disposed(by: self.disposeBag)
@@ -212,24 +178,12 @@ class CreateDeckViewController: UIViewController{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        statusDetailView.isHidden = false
-        guard let location = touches.first?.location(in: self.view) else{
-            return
-        }
-        let c = getCard(possessionCollectionView, location: location) ?? getCard(possessionCollectionView, location: location)
-
-        if let card = c{
-            statusDetailView.card = card
-            statusDetailView.isHidden = false
-        }else{
-            statusDetailView.isHidden = true
-        }
+        statusDetailView.isHidden = true
     }
     
     @IBAction func pan(_ sender: UIPanGestureRecognizer){
         switch sender.state{
         case .began:
-            
             var c: Card?
             if let card = getCard(possessionCollectionView, pan: sender){
                 c = card
@@ -240,14 +194,12 @@ class CreateDeckViewController: UIViewController{
             }
             
             if let card = c{
-//                statusDetailView.card = card
-//                statusDetailView.isHidden = false
+                statusDetailView.card = card
+                statusDetailView.isHidden = false
                 touchedCard = card
                 touchedCardView.set(from: card)
-                touchedCardView.isHidden = false
                 touchedCardView.center = sender.location(in: self.view)
-            }else{
-//                statusDetailView.isHidden = true
+                touchedCardView.isHidden = false
             }
         case .changed:
             touchedCardView.center = sender.location(in: self.view)
@@ -278,21 +230,8 @@ class CreateDeckViewController: UIViewController{
         }
     }
     
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let location = touched.first?.location(in: self.view) else{
-//            return
-//        }
-//        if touchedCard != nil{
-//            touchedCardView.center = location
-//        }else{
-//            if let card = getCard(possessionCollectionView, touch: touches.first){
-//
-//            }
-//        }
-//
-//    }
-    
-    func getCard(_ collectionView: UICollectionView, location: CGPoint)-> Card?{
+    func getCard(_ collectionView: UICollectionView, touch: UITouch)-> Card?{
+        let location = touch.location(in: collectionView)
         guard let indexPath = collectionView.indexPathForItem(at: location) else{
             print("indexPath")
             return nil
@@ -305,9 +244,7 @@ class CreateDeckViewController: UIViewController{
     func getCard(_ collectionView: UICollectionView, pan: UIPanGestureRecognizer) -> Card?{
         let location = pan.location(in: collectionView)
         
-        dump(location)
         guard let indexPath = collectionView.indexPathForItem(at: location) else{
-               print("indexPath")
             return nil
         }
         
@@ -325,10 +262,8 @@ class CreateDeckViewController: UIViewController{
         do{
             try createDeck.canCreate()
             if createDeck.deck != nil{
-                print("ffffffffff")
                 let d = createDeck.create()
                 UserInfo.shared.append(deck: d, completion: { error in
-                    print("aaaaaaaaaaaaaaa")
                     if let error = error{
                         self.alert(error, actions: self.BackAlertAction)
                     }
@@ -359,8 +294,6 @@ class CreateDeckViewController: UIViewController{
             alert(error, actions: OKAlertAction, BackAlertAction)
         }
     }
-    
-    
 }
 
 extension CreateDeckViewController: UISearchBarDelegate{
@@ -377,343 +310,8 @@ extension CreateDeckViewController: UICollectionViewDelegate, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if collectionView == possessionCollectionView{
-//            let card = possessionDataSource.cards[indexPath.row]
-//            do{
-//                try createDeck.append(card)
-//            }catch{
-//                self.alert(error, actions: OKAlertAction)
-//            }
-//        }
         let card = collectionView == possessionCollectionView ? possessionDataSource.cards[indexPath.row] : deckDataSource.cards[indexPath.row]
         statusDetailView.card = card
         statusDetailView.isHidden = false
     }
 }
-
-
-
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        if collectionView.tag == deckTag{
-//            guard let card = deck.deckCards[safe: indexPath.row]?.card else{
-//                return
-//            }
-//            if statusDetailView.card == card{
-//                do{
-//                    try deck.remove(card)
-//                    let deckCards = deck.deckCards
-//                    let possessionCards = deck.possessionCards
-//                    var isFound = false
-//                    for i in 0..<deckCards.count{
-//                        if deckCards[i].card == card{
-//                            deckCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                            isFound = true
-//                            break
-//                        }
-//                    }
-//                    if !isFound{
-//                        deckCollectionView.deleteItems(at: [indexPath])
-//                    }
-//                    for i in 0..<possessionCards.count{
-//                        if possessionCards[i].card == card{
-//                            possessionCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                            break
-//                        }
-//                    }
-//                }catch(let error){
-//                    let alert = UIAlertController(title: "デッキ作成エラー", message: (error as! CreateStandartDeckError).localizedDescription, preferredStyle: .alert)
-//                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                    alert.addAction(alertAction)
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-//            }else{
-//                statusDetailView.set(card: card)
-//                statusDetailView.isHidden = false
-//            }
-//        }else{
-//            let card = deck.possessionCards[indexPath.row].card
-//            if statusDetailView.card == card{
-//                do{
-//                    try deck.append(card)
-//                    deckBarGraphView.update(card)
-//                    let deckCards = deck.deckCards
-//                    let possessionCards = deck.possessionCards
-//                    for i in 0..<deckCards.count{
-//                        if deckCards[i].card == card{
-//                            if deckCards[i].count == 1{
-//                                deckCollectionView.insertItems(at: [IndexPath(row: i, section: 0)])
-//                            }else{
-//                                deckCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                            }
-//                            break
-//                        }
-//                    }
-//                    for i in 0..<possessionCards.count{
-//                        if possessionCards[i].card == card{
-//                            possessionCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                        }
-//                    }
-//                }catch(let error){
-//                    let alert = UIAlertController(title: "デッキ作成エラー", message: (error as! CreateStandartDeckError).localizedDescription, preferredStyle: .alert)
-//                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                    alert.addAction(alertAction)
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-//            }else{
-//                statusDetailView.set(card: card)
-//                statusDetailView.isHidden = false
-//            }
-//        }
-//    }
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        statusDetailView.isHidden = true
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let height = collectionView.frame.height
-//        let width = height * 3 / 4
-//        return CGSize(width: width, height: height)
-//    }
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//    @IBAction func touchUp(_ sender: UIButton) {
-//        createDeck()
-//    }
-//
-//    func createDeck(){
-//        if isCreating{
-//            return
-//        }
-//        isCreating = true
-//        //        try deck.create(T##name: String##String)
-//        if checkError != nil{
-//            let alert = UIAlertController(title: "デッキ作成エラー", message: (checkError as! CreateStandartDeckError).localizedDescription, preferredStyle: .actionSheet)
-//            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            let back = UIAlertAction(title: "戻る", style: .default){
-//                _ in
-//                self.performSegue(withIdentifier: "home", sender: nil)
-//            }
-//            alert.addAction(ok)
-//            alert.addAction(back)
-//            self.present(alert, animated: true, completion: nil)
-//            isCreating = false
-//            return
-//        }
-//        deck.create{
-//            error in
-//            if error != nil{
-//                let alert = UIAlertController(title: "通信エラー", message: error?.localizedDescription, preferredStyle: .actionSheet)
-//                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                let back = UIAlertAction(title: "戻る", style: .default){
-//                    _ in
-//                    self.performSegue(withIdentifier: "home", sender: self)
-//                }
-//                alert.addAction(ok)
-//                alert.addAction(back)
-//                self.present(alert, animated: true, completion: nil)
-//                self.isCreating = false
-//                return
-//            }
-//            self.performSegue(withIdentifier: "home", sender: self)
-//        }
-//    }
-
-//class CreateDeckViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchBarDelegate{
-//    @IBOutlet weak var statusDetailView: CharacterStatusDetailView!
-//    @IBOutlet weak var possessionCollectionView: UICollectionView!
-//    @IBOutlet weak var deckCollectionView: UICollectionView!
-//    @IBOutlet weak var deckBarGraphView: DeckBarGraphView!
-//    var deck: CreateDeck!
-//    private let possessionTag = 1
-//    private let deckTag = 2
-//    private var selectedImageView: UIImageView?
-//    private var isCreating: Bool = false
-//    let disposeBag = DisposeBag()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        possessionCollectionView.register(UINib(nibName: "CardsCell", bundle: nil), forCellWithReuseIdentifier: "imageCountCell")
-//        deckCollectionView.register(UINib(nibName: "CardsCell", bundle: nil), forCellWithReuseIdentifier: "imageCountCell")
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        deck = CreateStandartDeck()
-//        deckBarGraphView.deck = deck
-//
-//        deck.possessionCards
-//            .bind(to: possessionCollectionView.rx.items(cellIdentifier: "standartCell", cellType: CardStandartCell.self)){
-//                row, element, cell in
-//        }.disposed(by: disposeBag)
-//
-////        possessionCollectionView.rx.items(cellIdentifier: <#T##String#>, cellType: Car)
-//
-//    }
-//
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch collectionView.tag {
-//        case possessionTag:
-//            return deck.possessionCards.count
-//        case deckTag:
-//            return  deck.deckCards.count
-//        default:
-//            fatalError("Unexpected tag: \(collectionView.tag)")
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        switch collectionView.tag {
-//        case possessionTag:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCountCell", for: indexPath) as! CardsCell
-//            cell.card = deck.possessionCards[indexPath.row]
-//            return cell
-//        case deckTag:
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCountCell", for: indexPath) as! CardsCell
-//            cell.card = deck.deckCards[indexPath.row]
-//            return cell
-//        default:
-//            fatalError("Unexpected tag: \(collectionView.tag)")
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        if collectionView.tag == deckTag{
-//            guard let card = deck.deckCards[safe: indexPath.row]?.card else{
-//                return
-//            }
-//            if statusDetailView.card == card{
-//                do{
-//                    try deck.remove(card)
-//                    let deckCards = deck.deckCards
-//                    let possessionCards = deck.possessionCards
-//                    var isFound = false
-//                    for i in 0..<deckCards.count{
-//                        if deckCards[i].card == card{
-//                            deckCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                            isFound = true
-//                            break
-//                        }
-//                    }
-//                    if !isFound{
-//                        deckCollectionView.deleteItems(at: [indexPath])
-//                    }
-//                    for i in 0..<possessionCards.count{
-//                        if possessionCards[i].card == card{
-//                            possessionCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                            break
-//                        }
-//                    }
-//                }catch(let error){
-//                    let alert = UIAlertController(title: "デッキ作成エラー", message: (error as! CreateStandartDeckError).localizedDescription, preferredStyle: .alert)
-//                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                    alert.addAction(alertAction)
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-//            }else{
-//                statusDetailView.set(card: card)
-//                statusDetailView.isHidden = false
-//            }
-//        }else{
-//            let card = deck.possessionCards[indexPath.row].card
-//            if statusDetailView.card == card{
-//                do{
-//                    try deck.append(card)
-//                   deckBarGraphView.update(card)
-//                    let deckCards = deck.deckCards
-//                    let possessionCards = deck.possessionCards
-//                    for i in 0..<deckCards.count{
-//                        if deckCards[i].card == card{
-//                            if deckCards[i].count == 1{
-//                                deckCollectionView.insertItems(at: [IndexPath(row: i, section: 0)])
-//                            }else{
-//                                deckCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                            }
-//                            break
-//                        }
-//                    }
-//                    for i in 0..<possessionCards.count{
-//                        if possessionCards[i].card == card{
-//                            possessionCollectionView.reloadItems(at: [IndexPath(row: i, section: 0)])
-//                        }
-//                    }
-//                }catch(let error){
-//                    let alert = UIAlertController(title: "デッキ作成エラー", message: (error as! CreateStandartDeckError).localizedDescription, preferredStyle: .alert)
-//                    let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                    alert.addAction(alertAction)
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-//            }else{
-//                statusDetailView.set(card: card)
-//                statusDetailView.isHidden = false
-//            }
-//        }
-//    }
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//        statusDetailView.isHidden = true
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let height = collectionView.frame.height
-//        let width = height * 3 / 4
-//        return CGSize(width: width, height: height)
-//    }
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//    @IBAction func touchUp(_ sender: UIButton) {
-//        createDeck()
-//    }
-//
-//    func createDeck(){
-//        if isCreating{
-//            return
-//        }
-//        isCreating = true
-////        try deck.create(<#T##name: String##String#>)
-//        if checkError != nil{
-//            let alert = UIAlertController(title: "デッキ作成エラー", message: (checkError as! CreateStandartDeckError).localizedDescription, preferredStyle: .actionSheet)
-//            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            let back = UIAlertAction(title: "戻る", style: .default){
-//                _ in
-//                self.performSegue(withIdentifier: "home", sender: nil)
-//            }
-//            alert.addAction(ok)
-//            alert.addAction(back)
-//            self.present(alert, animated: true, completion: nil)
-//            isCreating = false
-//            return
-//        }
-//        deck.create{
-//            error in
-//            if error != nil{
-//                let alert = UIAlertController(title: "通信エラー", message: error?.localizedDescription, preferredStyle: .actionSheet)
-//                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                let back = UIAlertAction(title: "戻る", style: .default){
-//                    _ in
-//                    self.performSegue(withIdentifier: "home", sender: self)
-//                }
-//                alert.addAction(ok)
-//                alert.addAction(back)
-//                self.present(alert, animated: true, completion: nil)
-//                self.isCreating = false
-//                return
-//            }
-//            self.performSegue(withIdentifier: "home", sender: self)
-//        }
-//    }
-//
-//}
