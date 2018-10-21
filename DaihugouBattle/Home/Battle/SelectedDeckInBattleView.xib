@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectedDeckInBattleView" customModule="DaihugouBattle" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="qTd-qJ-Rxo" id="GOi-ye-QDQ"/>
+                <outlet property="confirmationButton" destination="5jP-04-lnD" id="Ezv-z5-GwR"/>
+                <outlet property="deckNameLabel" destination="FJU-Pj-NCd" id="wH3-v5-aIt"/>
+                <outlet property="sortieButton" destination="hJG-JW-8Ic" id="5qN-Ap-feU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rRU-gH-a5G">
+            <rect key="frame" x="0.0" y="0.0" width="735" height="337"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="デッキ名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJU-Pj-NCd">
+                    <rect key="frame" x="0.0" y="153.5" width="735" height="67.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jP-04-lnD" customClass="SelectionButton" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="20" y="226" width="332.5" height="101"/>
+                    <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="デッキ確認">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundGradientColor0">
+                            <color key="value" red="0.10267476026576716" green="1" blue="0.90365319667912791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundGradientColor1">
+                            <color key="value" red="0.68156971767586005" green="1" blue="0.96702191394775094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundGradientColor2">
+                            <color key="value" red="0.046092782031172237" green="0.71155218908629436" blue="0.65273696035630713" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientLocation0">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientLocation1">
+                            <real key="value" value="0.59999999999999998"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientLocation2">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="gradientColor0">
+                            <color key="value" red="0.68156971769999997" green="1" blue="0.96702191390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="gradientColor1">
+                            <color key="value" red="0.046092782030000001" green="0.71155218909999995" blue="0.65273696039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="gradientColor2">
+                            <color key="value" red="0.048482929746326009" green="0.29326618020304573" blue="0.28096977503910492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpConfirmation:" destination="-1" eventType="touchUpInside" id="pcV-Z0-owM"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-JW-8Ic" customClass="SelectionButton" customModule="DaihugouBattle" customModuleProvider="target">
+                    <rect key="frame" x="382.5" y="226" width="332.5" height="101"/>
+                    <color key="backgroundColor" red="0.44115334169999998" green="0.81029901650000002" blue="0.7749468075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="出撃">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundGradientColor0">
+                            <color key="value" red="0.25832804570000001" green="0.091173987805068218" blue="0.12797475479860637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundGradientColor1">
+                            <color key="value" red="0.81029901650000002" green="0.21906475390788138" blue="0.37559895017166539" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundGradientColor2">
+                            <color key="value" red="0.74579631979695438" green="0.62603079462514788" blue="0.67798369803724412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientLocation0">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientLocation1">
+                            <real key="value" value="0.59999999999999998"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientLocation2">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="gradientColor0">
+                            <color key="value" red="0.74579631980000005" green="0.6260307946" blue="0.67798369800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="gradientColor1">
+                            <color key="value" red="0.81029901650000002" green="0.21906475389999999" blue="0.3755989502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="gradientColor2">
+                            <color key="value" red="0.25832804570000001" green="0.091173987809999996" blue="0.12797475480000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpSortie:" destination="-1" eventType="touchUpInside" id="Sem-ZZ-etL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTd-qJ-Rxo">
+                    <rect key="frame" x="5" y="5" width="84.5" height="84.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="qTd-qJ-Rxo" secondAttribute="height" multiplier="1:1" id="dS1-fp-x5J"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <state key="normal" title="×"/>
+                    <connections>
+                        <action selector="touchUpClose:" destination="-1" eventType="touchUpInside" id="uJU-QN-VN0"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="確認" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuW-wu-cVm">
+                    <rect key="frame" x="350" y="13.5" width="35" height="67.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このデッキで出撃します" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfn-MZ-dQe">
+                    <rect key="frame" x="5" y="94.5" width="735" height="54"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333329999998" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="5jP-04-lnD" firstAttribute="leading" secondItem="Zye-mZ-9dm" secondAttribute="leading" constant="20" id="8Sg-Za-EYN"/>
+                <constraint firstItem="Zye-mZ-9dm" firstAttribute="trailing" secondItem="hJG-JW-8Ic" secondAttribute="trailing" constant="20" id="8Uw-AY-ktv"/>
+                <constraint firstItem="FJU-Pj-NCd" firstAttribute="width" secondItem="rRU-gH-a5G" secondAttribute="width" id="91t-ER-jqQ"/>
+                <constraint firstItem="XuW-wu-cVm" firstAttribute="height" secondItem="qTd-qJ-Rxo" secondAttribute="height" multiplier="0.8" id="Ajc-Bi-mXN"/>
+                <constraint firstItem="Zye-mZ-9dm" firstAttribute="bottom" secondItem="5jP-04-lnD" secondAttribute="bottom" constant="10" id="Cs7-56-5Wv"/>
+                <constraint firstItem="hJG-JW-8Ic" firstAttribute="top" secondItem="FJU-Pj-NCd" secondAttribute="bottom" constant="5" id="Cwp-Ou-Wam"/>
+                <constraint firstItem="Qfn-MZ-dQe" firstAttribute="width" secondItem="rRU-gH-a5G" secondAttribute="width" id="DDU-Cq-q89"/>
+                <constraint firstItem="hJG-JW-8Ic" firstAttribute="height" secondItem="rRU-gH-a5G" secondAttribute="height" multiplier="0.3" id="DRl-2H-tsy"/>
+                <constraint firstItem="XuW-wu-cVm" firstAttribute="centerY" secondItem="qTd-qJ-Rxo" secondAttribute="centerY" id="DTn-pe-p8K"/>
+                <constraint firstItem="Qfn-MZ-dQe" firstAttribute="top" secondItem="qTd-qJ-Rxo" secondAttribute="bottom" constant="5" id="Deh-f2-Qq3"/>
+                <constraint firstItem="qTd-qJ-Rxo" firstAttribute="top" secondItem="Zye-mZ-9dm" secondAttribute="top" constant="5" id="K5a-Wy-N8g"/>
+                <constraint firstItem="Zye-mZ-9dm" firstAttribute="bottom" secondItem="hJG-JW-8Ic" secondAttribute="bottom" constant="10" id="LLX-TK-bt6"/>
+                <constraint firstItem="qTd-qJ-Rxo" firstAttribute="leading" secondItem="Zye-mZ-9dm" secondAttribute="leading" constant="5" id="OVR-Rx-cDg"/>
+                <constraint firstItem="XuW-wu-cVm" firstAttribute="centerX" secondItem="Zye-mZ-9dm" secondAttribute="centerX" id="T53-E1-Jfq"/>
+                <constraint firstItem="Qfn-MZ-dQe" firstAttribute="height" secondItem="FJU-Pj-NCd" secondAttribute="height" multiplier="0.8" id="cRy-4z-JHh"/>
+                <constraint firstItem="5jP-04-lnD" firstAttribute="height" secondItem="hJG-JW-8Ic" secondAttribute="height" id="gck-Is-3Qt"/>
+                <constraint firstItem="FJU-Pj-NCd" firstAttribute="top" secondItem="Qfn-MZ-dQe" secondAttribute="bottom" constant="5" id="kRJ-nQ-TD5"/>
+                <constraint firstItem="qTd-qJ-Rxo" firstAttribute="height" secondItem="rRU-gH-a5G" secondAttribute="height" multiplier="0.25" id="nRC-gP-6z5"/>
+                <constraint firstItem="5jP-04-lnD" firstAttribute="width" secondItem="hJG-JW-8Ic" secondAttribute="width" id="nX4-rr-I7U"/>
+                <constraint firstItem="FJU-Pj-NCd" firstAttribute="centerX" secondItem="XuW-wu-cVm" secondAttribute="centerX" id="noW-rt-XNr"/>
+                <constraint firstItem="hJG-JW-8Ic" firstAttribute="leading" secondItem="5jP-04-lnD" secondAttribute="trailing" constant="30" id="t7v-Ye-Mob"/>
+                <constraint firstItem="Qfn-MZ-dQe" firstAttribute="centerX" secondItem="Zye-mZ-9dm" secondAttribute="centerX" constant="5" id="vH2-tV-gW3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Zye-mZ-9dm"/>
+            <point key="canvasLocation" x="426.39999999999998" y="394.45277361319341"/>
+        </view>
+    </objects>
+</document>

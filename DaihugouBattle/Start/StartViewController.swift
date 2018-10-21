@@ -130,8 +130,11 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             }
             SkillList.loadPropertyLocal()
             CardList.loadPropertyLocal()
-            let v = DeckIndexBarGraph(frame: CGRect(x: 100, y: 100, width: 150, height: 100))
-            v.indexCounts(from: CardList.CardDeck.test)
+            
+            let v = SelectedDeckInBattleView(frame: CGRect(center: self.view.bounds, width: 300, height: 150))
+            v.deck = CardList.CardDeck.test2
+            print("-------------------")
+            dump(v.layer)
             self.view.addSubview(v)
 //            SkillList.loadPropertyLocal()
 //            CardList.loadPropertyLocal()

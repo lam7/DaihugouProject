@@ -10,24 +10,22 @@ import Foundation
 import UIKit
 
 @IBDesignable class SelectionButton: UIButton{
-    @IBInspectable var backgroundGradientColor0: UIColor? = nil
-    @IBInspectable var backgroundGradientColor1: UIColor? = nil
-    @IBInspectable var backgroundGradientColor2: UIColor? = nil
-    @IBInspectable var backgroundGradientColor3: UIColor? = nil
-    @IBInspectable var backgroundGradientColor4: UIColor? = nil
+    @IBInspectable var gradientColor0: UIColor? = nil
+    @IBInspectable var gradientColor1: UIColor? = nil
+    @IBInspectable var gradientColor2: UIColor? = nil
+    @IBInspectable var gradientColor3: UIColor? = nil
+    @IBInspectable var gradientColor4: UIColor? = nil
+    @IBInspectable var gradientLocation0: Float = 0
+    @IBInspectable var gradientLocation1: Float = 0.25
+    @IBInspectable var gradientLocation2: Float = 0.5
+    @IBInspectable var gradientLocation3: Float = 0.75
+    @IBInspectable var gradientLocation4: Float = 1.0
     @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = UIColor.clear
+    @IBInspectable var borderColor: UIColor? = nil
     @IBInspectable var borderWidth: CGFloat = 0
-    
-    
-    weak var gradientLayer: CAGradientLayer!{
-        didSet{
-            gradientLayer.frame = bounds
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: bounds.width, y: 0)
-        
-        }
-    }
+    @IBInspectable var gradientStartPoint: CGPoint = CGPoint(x: 0, y: 0.5)
+    @IBInspectable var gradientEndPoint: CGPoint = CGPoint(x: 1, y: 0.5)
+    weak var gradientLayer: CAGradientLayer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,26 +38,47 @@ import UIKit
     }
     
     private func setUp(){
+        clipsToBounds = true
+        
         let gradientLayer = CAGradientLayer()
-        layer.addSublayer(gradientLayer)
+        layer.insertSublayer(gradientLayer, at: 0)
         self.gradientLayer = gradientLayer
     }
     
     override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
+        print(borderWidth)
         updateGradientColors()
+        updateLayerProperty()
         
+        dump(layer)
+        super.draw(rect)
+    }
+    
+    func updateLayerProperty(){
         layer.borderWidth = borderWidth
         layer.cornerRadius = cornerRadius
-        layer.borderColor = borderColor.cgColor
+        if let borderColor = self.borderColor{
+            layer.borderColor = borderColor.cgColor
+        }
     }
     
     func updateGradientColors(){
         let colors = [
-            backgroundGradientColor0, backgroundGradientColor1,
-            backgroundGradientColor2, backgroundGradientColor3,
-            backgroundGradientColor4].compactMap({ $0 })
+            gradientColor0, gradientColor1,
+            gradientColor2, gradientColor3,
+            gradientColor4].compactMap{ $0 }
+        print(colors)
+
         gradientLayer.colors = colors.map({ $0.cgColor })
+        gradientLayer.startPoint = gradientStartPoint
+        gradientLayer.endPoint = gradientEndPoint
+        gradientLayer.frame = bounds
+        
+        let locations = [
+            gradientLocation0, gradientLocation1,
+            gradientLocation2, gradientLocation3,
+            gradientLocation4
+            ][0..<colors.count].map{ NSNumber(value: $0) }
+        gradientLayer.locations = locations
     }
 }

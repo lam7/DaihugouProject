@@ -35,10 +35,16 @@ import UIKit
     }
     
     func selected(_ deck: Deck?) {
-        guard let deck = deck else{
+        guard let deck = deck,
+            let view = self.parentViewController()?.view else{
             return
         }
-        self.parentViewController()?.performSegue(withIdentifier: "battle", sender: deck)
+        
+        let w = view.bounds.width * 0.6
+        let h  = w * 0.5
+        let v = SelectedDeckInBattleView(frame: CGRect(center: view.bounds, width: w, height: h))
+        v.deck = deck
+        view.addSubview(v)
     }
     
 }

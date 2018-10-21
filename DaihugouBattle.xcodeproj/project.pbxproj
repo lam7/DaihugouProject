@@ -134,6 +134,7 @@
 		AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA98C90720CAB77F00FC8CE7 /* FrameView.swift */; };
 		AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */; };
 		AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */; };
+		AAA1F629217C29450072A8DD /* SelectedDeckInBattleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */; };
 		AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */; };
 		AAA637A121738B5000678992 /* DeckRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A021738B5000678992 /* DeckRelated.swift */; };
 		AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A22174B43900678992 /* DeckConfirmationView.swift */; };
@@ -352,7 +353,6 @@
 		AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortFilterView.swift; sourceTree = "<group>"; };
 		AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarGraphBaseView.xib; sourceTree = "<group>"; };
 		AA6D964A2179EC95004E4A25 /* SelectedDeckInBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDeckInBattleView.swift; sourceTree = "<group>"; };
-		AA6D964E217A1B00004E4A25 /* SelectedDeckInBattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectedDeckInBattleView.xib; path = /Users/main/Desktop/DaihugouBattle/DaihugouBattle/SelectedDeckInBattleView.xib; sourceTree = "<absolute>"; };
 		AA6D9650217A1D2E004E4A25 /* SelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionButton.swift; sourceTree = "<group>"; };
 		AA6E65F620C60F3F002D883D /* CardAtkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAtkView.swift; sourceTree = "<group>"; };
 		AA6E70751F74A64600A401AE /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -381,6 +381,7 @@
 		AA98C90720CAB77F00FC8CE7 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesView.swift; sourceTree = "<group>"; };
 		AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInBattleView.xib; sourceTree = "<group>"; };
 		AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiquidFloating+.swift"; sourceTree = "<group>"; };
 		AAA637A021738B5000678992 /* DeckRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRelated.swift; sourceTree = "<group>"; };
 		AAA637A22174B43900678992 /* DeckConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckConfirmationView.swift; sourceTree = "<group>"; };
@@ -707,8 +708,8 @@
 			children = (
 				AAFA43511F9089700067F296 /* BattleSelectView.swift */,
 				AA0742281F8F371A0063585A /* BattleSelectView.xib */,
-				AA6D964E217A1B00004E4A25 /* SelectedDeckInBattleView.xib */,
 				AA6D964A2179EC95004E4A25 /* SelectedDeckInBattleView.swift */,
+				AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -1154,6 +1155,7 @@
 				AA5C14EF1FB0184900D8CC15 /* CreateDeck.storyboard in Resources */,
 				AAB4017E2085B4B60077763D /* SpotCardsCollectionView.xib in Resources */,
 				AA472FA92021C4E200440C59 /* StartViewParticle.sks in Resources */,
+				AAA1F629217C29450072A8DD /* SelectedDeckInBattleView.xib in Resources */,
 				AA7798AF2079DC24006F85C4 /* GiftBoxCell.xib in Resources */,
 				AA03F4FE20B1408C00D1F26E /* Assets.xcassets in Resources */,
 				AA3D3DB72099F1E700AB4396 /* GoogleService-Info.plist in Resources */,
