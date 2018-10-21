@@ -52,5 +52,4 @@ extension Nibable{
         // Adding custom subview on top of our view (over any custom drawing > see note below)
         addSubview(nibView)
     }
-
 }

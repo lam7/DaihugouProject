@@ -8,33 +8,27 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
-protocol NotTouchableBehindView where Self: UIView{
+protocol BlockableOutsideTouchView where Self: UIView{
     weak var behindView: UIView?{get set}
-
-    func touchBehind(_ sender: Any?)
     
     func setUpBehindView()-> UIView?
 }
 
-extension NotTouchableBehindView{
+extension BlockableOutsideTouchView{
     func setUpBehindView()-> UIView?{
-        guard let v = superview else{
-            print("NotContains superview")
+        guard let v = superview,
+            let vc = self.parentViewController()?.view else{
             return nil
         }
-        let bounds = v.bounds
+        
+        var frame = CGRect(x: -vc.bounds.width, y: -vc.bounds.height, width: vc.bounds.width * 2, height: vc.bounds.height * 2)
         let color = UIColor.darkGray.withAlphaComponent(0.6)
-
-        let behind = UIView(frame: bounds)
+        let behind = UIView(frame: frame)
         behind.backgroundColor = color
         v.insertSubview(behind, belowSubview: self)
-        
         return behind
-    }
-    
-    func touchBehind(_ sender: Any?){
-        removeSafelyFromSuperview()
     }
 }
 

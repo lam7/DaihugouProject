@@ -21,7 +21,8 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class AudioVolumeSettingView: UINibView, NotTouchableBehindView {
+@IBDesignable class AudioVolumeSettingView: UINibView, BlockableOutsideTouchView {
+    
     private weak var windowView: UIView!
     weak var behindView: UIView?
     

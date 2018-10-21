@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PlayerNameSettingView: UINibView, NotTouchableBehindView{
+class PlayerNameSettingView: UINibView, BlockableOutsideTouchView{
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
