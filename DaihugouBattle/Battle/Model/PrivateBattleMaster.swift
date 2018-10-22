@@ -33,8 +33,8 @@ protocol BattleFieldDelegate: class{
 
 protocol BattleMaster{
     var delegate: BattleFieldDelegate?{ get set }
-    var battleField: BattleField{ get }
-    var spotAtkRate: Float{ get }
+    var battleField: BattleField!{ get }
+    var spotAtkRate: Float!{ get }
     func ownerPutDown(_ cards: [Card],  completion: @escaping (_ error: Error?) -> ())
     func ownerPass(_  completion: @escaping (_ error: Error?) -> ())
     func gameStart(_  completion: @escaping (_ error: Error?) -> ())
@@ -120,6 +120,7 @@ class LocalBattleMaster: BattleMaster{
     
     private func drawEnemyCards(_ amount: Int = 1){
         let cards = enemyDeck.drawCards(amount)
+        
         battleField.enemy.drawCards(cards.compactMap{ $0 })
         if !cards.filter({ $0 == nil }).isEmpty{
             battleField.enemy.attacked(9999)

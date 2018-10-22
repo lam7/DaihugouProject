@@ -123,7 +123,7 @@ class HomeViewController: UIViewController{
         if self.currentView == view{
             return
         }
-        
+
         let currentView = self.currentView
         self.currentView = view
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
