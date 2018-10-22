@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7lw-71-JVE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7lw-71-JVE">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,6 +65,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="nZV-fC-V05" userLabel="Background View">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFn-nZ-JCc" customClass="LOTAnimatedControl">
+                                <rect key="frame" x="222.5" y="0.0" width="345.5" height="192"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UFn-nZ-JCc" secondAttribute="height" multiplier="306:170" id="o3N-qe-5n9"/>
+                                </constraints>
+                            </view>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg2-lJ-qbf" customClass="HomeSelectView" customModule="DaihugouBattle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,14 +96,14 @@
                                 <rect key="frame" x="444" y="10" width="104" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持石" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkd-vq-G0z" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="17.5"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持ゴールド" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-Pq-3Um" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="104" height="20"/>
+                                        <rect key="frame" x="0.0" y="22.5" width="104" height="17.5"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,8 +262,10 @@
                             <constraint firstItem="4Lh-2c-2hJ" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="top" id="FQq-kc-Jqo"/>
                             <constraint firstItem="BCI-2a-rXu" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="HI3-mW-4fg"/>
                             <constraint firstItem="4Lh-2c-2hJ" firstAttribute="height" secondItem="QeO-Em-qfA" secondAttribute="height" id="Hxg-Xt-GJe"/>
+                            <constraint firstItem="UFn-nZ-JCc" firstAttribute="top" secondItem="Q77-tw-6in" secondAttribute="top" id="Iyt-2H-xai"/>
                             <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="Q7W-ve-I0M" secondAttribute="bottom" id="KBK-Sr-szE"/>
                             <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="xg2-lJ-qbf" secondAttribute="bottom" id="LqE-yo-66B"/>
+                            <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="UFn-nZ-JCc" secondAttribute="trailing" id="NBV-o6-tUj"/>
                             <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="PCA-sM-O9l" secondAttribute="trailing" id="Nx8-Pc-qt8"/>
                             <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="4Lh-2c-2hJ" secondAttribute="trailing" constant="20" id="QLY-Jn-6sZ"/>
                             <constraint firstItem="nZV-fC-V05" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="QcM-3R-PqM"/>
@@ -284,10 +293,12 @@
                             <constraint firstItem="Q77-tw-6in" firstAttribute="bottom" secondItem="nZV-fC-V05" secondAttribute="bottom" id="tPO-UV-8gb"/>
                             <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="PCA-sM-O9l" secondAttribute="bottom" id="v6M-yf-DGU"/>
                             <constraint firstItem="Q7W-ve-I0M" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="wFg-ld-XiZ"/>
+                            <constraint firstItem="UFn-nZ-JCc" firstAttribute="height" secondItem="056-yu-FTx" secondAttribute="height" multiplier="0.6" id="zIc-iB-OUE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q77-tw-6in"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundLottieView" destination="UFn-nZ-JCc" id="Qvb-SK-qFu"/>
                         <outlet property="battleButton" destination="2QD-T3-SxW" id="WtR-2n-7Rt"/>
                         <outlet property="battleView" destination="r0D-W2-Sh9" id="Ruf-LQ-531"/>
                         <outlet property="cardButton" destination="Sja-8L-Nma" id="FFa-EA-pZI"/>
@@ -318,7 +329,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HomeBackground" width="1920" height="1080"/>
+        <image name="HomeBackground" width="1382.4000244140625" height="777.5999755859375"/>
         <image name="IconBattle" width="32" height="32"/>
         <image name="IconCard" width="32" height="32"/>
         <image name="IconHome" width="32" height="32"/>

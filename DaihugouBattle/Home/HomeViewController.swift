@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 let SSX = UIScreen.main.bounds.size.width
 let SSY = UIScreen.main.bounds.size.height
@@ -32,6 +33,8 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var battleButton: UIButton!
     @IBOutlet weak var gatyaButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var backgroundLottieView: LOTAnimatedControl!
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -49,6 +52,13 @@ class HomeViewController: UIViewController{
         
         goldLabel.formatBlock = {
             $0.i.description + "G"
+        }
+        
+        if let data = DataRealm.get(dataNamed: "the_final_frontier.json"){
+            backgroundLottieView.translatesAutoresizingMaskIntoConstraints = true
+            backgroundLottieView.animationView.setAnimation(data: data)
+            backgroundLottieView.animationView.play()
+            backgroundLottieView.animationView.loopAnimation = true
         }
     }
     

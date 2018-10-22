@@ -17,25 +17,12 @@ extension LOTAnimationView{
         let animationJSON = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
         self.init(json: animationJSON as! Dictionary)
     }
+    
+    func setAnimation(data: Data){
+        let animationJSON = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        self.setAnimation(json: animationJSON as! Dictionary)
+    }
 }
-//@IBDesignable class LoadingView: UINibView{
-//
-//    @IBOutlet weak var imageView: UIImageView!
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setUp()
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)!
-//        setUp()
-//    }
-//
-//    private func setUp(){
-//        imageView.loadGif(name: "loading")
-//    }
-//}
 
 class LoadingView: NSObject{
     
