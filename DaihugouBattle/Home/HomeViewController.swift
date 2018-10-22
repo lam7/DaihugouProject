@@ -120,19 +120,21 @@ class HomeViewController: UIViewController{
     
     
     private func moveView(_ view: UIView){
-        if currentView == view{
+        if self.currentView == view{
             return
         }
-        UIView.animate(withDuration: 0.2, animations: {
-            if self.currentView != nil{
-                self.currentView.center.x += SSX
+        
+        let currentView = self.currentView
+        self.currentView = view
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
+            if currentView != nil{
+                currentView!.center.x += SSX
             }
             view.center.x = SSX / 2
         }, completion: { _ in
-            if self.currentView != nil{
-                self.currentView.center.x = -SSX / 2
+            if currentView != nil{
+            currentView!.center.x = -SSX / 2
             }
-            self.currentView = view
         })
     }
     
