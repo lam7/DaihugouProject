@@ -148,6 +148,10 @@ class CreateStandartDeck: CreateDeck{
             throw Errors.CreateDeck.overCards
         }
         
+        if possessionCards[card] == nil || possessionCards[card] == 0{
+            throw Errors.CreateDeck.notExistCard
+        }
+        
         let count = deckCards[card] ?? 0 + 1
         if count >= MaxSamaIndexCardsCountInAppend{
             throw Errors.CreateDeck.overSamaIndexCards
