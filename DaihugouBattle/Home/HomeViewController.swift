@@ -60,6 +60,9 @@ class HomeViewController: UIViewController{
             backgroundLottieView.animationView.play()
             backgroundLottieView.animationView.loopAnimation = true
         }
+        
+        tutorial.homeViewController = self
+        tutorial.start()
     }
     
     override func viewDidLayoutSubviews() {

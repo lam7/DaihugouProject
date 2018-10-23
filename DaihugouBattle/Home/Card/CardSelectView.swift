@@ -11,6 +11,9 @@ import UIKit
 
 
 @IBDesignable class CardSelectView: UINibView, SelectableView, DeckSelectDelegate {
+    @IBOutlet weak var deckButton: UIButton!
+    @IBOutlet weak var possessionButton: UIButton!
+    
     weak var displayView: UIView?{
         didSet{
             oldValue?.removeSafelyFromSuperview()

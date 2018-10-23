@@ -158,6 +158,8 @@
 		AAB401842085CB160077763D /* CollectionImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB401822085CB160077763D /* CollectionImageViewCell.xib */; };
 		AABF925F208055DB00BA0441 /* UINibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF925E208055DB00BA0441 /* UINibView.swift */; };
 		AABF92612080A28100BA0441 /* GatyaParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF92602080A28100BA0441 /* GatyaParticleView.swift */; };
+		AAC80707217EFCD80081B9F1 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC80706217EFCD80081B9F1 /* Tutorial.swift */; };
+		AAC80709217F4DEE0081B9F1 /* MMPopLabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */; };
 		AACC12E1213F67D9009F8510 /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = AACC12DF213F67D9009F8510 /* bokeh.png */; };
 		AACC12E2213F67D9009F8510 /* Test.scnp in Resources */ = {isa = PBXBuildFile; fileRef = AACC12E0213F67D9009F8510 /* Test.scnp */; };
 		AACC12E4213F7C04009F8510 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC12E3213F7C04009F8510 /* HUD.swift */; };
@@ -407,6 +409,8 @@
 		AAB401822085CB160077763D /* CollectionImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionImageViewCell.xib; sourceTree = "<group>"; };
 		AABF925E208055DB00BA0441 /* UINibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibView.swift; sourceTree = "<group>"; };
 		AABF92602080A28100BA0441 /* GatyaParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaParticleView.swift; sourceTree = "<group>"; };
+		AAC80706217EFCD80081B9F1 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
+		AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPopLabel+.swift"; sourceTree = "<group>"; };
 		AACC12DF213F67D9009F8510 /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
 		AACC12E0213F67D9009F8510 /* Test.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Test.scnp; sourceTree = "<group>"; };
 		AACC12E3213F7C04009F8510 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
@@ -556,6 +560,7 @@
 				AABF925E208055DB00BA0441 /* UINibView.swift */,
 				AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */,
 				AACC12E3213F7C04009F8510 /* HUD.swift */,
+				AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -932,6 +937,7 @@
 				AA5AB98820ABC4F00084B7FC /* SelectableView.swift */,
 				AA2C5AF520ECED90000B1E8B /* HomeButton.swift */,
 				AA6D9650217A1D2E004E4A25 /* SelectionButton.swift */,
+				AAC80706217EFCD80081B9F1 /* Tutorial.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1351,6 +1357,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/LiquidFloatingActionButton/LiquidFloatingActionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -1364,6 +1371,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LiquidFloatingActionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewFlexLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -1455,11 +1463,13 @@
 				AAF8A22920D72A600018F650 /* CardStandartCell.swift in Sources */,
 				AA5C14F31FB14DB600D8CC15 /* CharacterStatusDetailView.swift in Sources */,
 				AA3D3DB32099D81800AB4396 /* BattleCPUViewController.swift in Sources */,
+				AAC80709217F4DEE0081B9F1 /* MMPopLabel+.swift in Sources */,
 				AA2F20DC1FADC390002F70DA /* RoundCornerButton.swift in Sources */,
 				AAF134FD2023F0CF002A472E /* ImageVersion.swift in Sources */,
 				AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */,
 				AA89C0B71F7E6FC800218655 /* HomeViewController.swift in Sources */,
 				AABF925F208055DB00BA0441 /* UINibView.swift in Sources */,
+				AAC80707217EFCD80081B9F1 /* Tutorial.swift in Sources */,
 				AA0975E41F7F8DF000404F9C /* ZFRippleButton.swift in Sources */,
 				AADE54931F72440F00DF83BF /* CPU.swift in Sources */,
 				AAF16EDE20C8CBF20007417F /* CardStandartFrontView.swift in Sources */,

@@ -14,6 +14,7 @@ target 'DaihugouBattle' do
   pod 'FlatUIKit'
   pod 'LiquidFloatingActionButton', :git => 'https://github.com/alexsanderkhitev/LiquidFloatingActionButton.git'
   pod 'UICollectionViewFlexLayout'  
+  pod 'MMPopLabel'
 # Pods for DaihugouBattle
 
   target 'DaihugouBattleTests' do
