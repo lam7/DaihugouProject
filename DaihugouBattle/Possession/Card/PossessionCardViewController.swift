@@ -124,6 +124,7 @@ class PossessionCardViewController: UIViewController{
     @IBOutlet weak var sortFilterView: CardSortFilterView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var characterDetailView: PossessionCardDetailView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     var dataSource: PossessionCollectionDataSource!
     var viewModel: SortFilterViewModel!
     let disposeBag: DisposeBag = DisposeBag()
@@ -140,6 +141,8 @@ class PossessionCardViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
         
         collectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self

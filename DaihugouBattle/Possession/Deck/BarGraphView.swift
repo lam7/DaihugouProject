@@ -23,6 +23,7 @@ class BarGraphView: UIStackView{
                 let w = self.bounds.width / barRatings.count.cf
                 for rate in barRatings{
                     let v = BarGraphBaseView()
+                    v.backgroundColor = self.backgroundColor
                     addArrangedSubview(v)
                     v.snp.makeConstraints{ make in
                         make.height.equalTo(self)
@@ -65,6 +66,12 @@ class BarGraphBaseView: UINibView{
         return barView.layer as! BarGraphBaseLayer
     }
     @IBOutlet weak var bottomLabel: UILabel!
+    
+    override var backgroundColor: UIColor?{
+        didSet{
+            barView.backgroundColor = backgroundColor
+        }
+    }
 }
 
 class BarGraphBaseLayerView: UIView{

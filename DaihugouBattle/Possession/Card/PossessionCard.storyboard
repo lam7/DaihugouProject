@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,9 +50,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rmp-6I-5Ve">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bji-io-cb9">
                                 <rect key="frame" x="0.0" y="50" width="667" height="325"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="30" id="RuK-fV-QZr">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -110,18 +113,22 @@
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="1:5" id="6QX-bZ-elg"/>
                             <constraint firstItem="L7l-jf-xvv" firstAttribute="bottom" secondItem="bji-io-cb9" secondAttribute="bottom" id="7v5-sU-MWm"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="Hir-zC-T5X"/>
+                            <constraint firstItem="Rmp-6I-5Ve" firstAttribute="centerX" secondItem="L7l-jf-xvv" secondAttribute="centerX" id="Htc-cR-G9n"/>
                             <constraint firstItem="gJd-8d-Fwl" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="top" id="IEj-o0-xUB"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SQ4-52-LGg" secondAttribute="trailing" constant="20" symbolic="YES" id="JAH-t1-IN8"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="0.85" id="KDC-TX-9pR"/>
+                            <constraint firstItem="Rmp-6I-5Ve" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" id="OlO-BC-0Td"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="bottom" constant="10" id="PfM-Tx-yW4"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="Pw2-fb-iDs"/>
                             <constraint firstItem="eMb-FR-edE" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="0.8" id="Xc5-wf-vEr"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="aoj-qL-wM0"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="ard-y5-lQb"/>
+                            <constraint firstItem="Rmp-6I-5Ve" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" id="bja-d3-AEn"/>
                             <constraint firstItem="9xe-S0-SlV" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="top" id="dOv-w8-Cp8"/>
                             <constraint firstItem="eMb-FR-edE" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="e1H-e6-7se"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" id="eXF-Oa-lnT"/>
                             <constraint firstItem="gJd-8d-Fwl" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="ffX-TQ-oNX"/>
+                            <constraint firstItem="Rmp-6I-5Ve" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="mLR-wY-bv7"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="nHG-f2-v9m"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" constant="50" id="nhR-Qx-eiK"/>
                             <constraint firstItem="gJd-8d-Fwl" firstAttribute="height" secondItem="SQ4-52-LGg" secondAttribute="height" id="odD-3B-Y6F"/>
@@ -134,6 +141,7 @@
                         <viewLayoutGuide key="safeArea" id="L7l-jf-xvv"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="Rmp-6I-5Ve" id="oic-ab-Vr6"/>
                         <outlet property="characterDetailView" destination="64z-H9-xTF" id="KOd-Sn-NHN"/>
                         <outlet property="collectionView" destination="bji-io-cb9" id="GM9-Vg-8AP"/>
                         <outlet property="searchBar" destination="gJd-8d-Fwl" id="B3C-Hl-TI4"/>

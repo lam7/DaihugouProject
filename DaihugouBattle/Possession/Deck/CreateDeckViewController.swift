@@ -80,6 +80,7 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
 }
 
 class CreateDeckViewController: UIViewController{
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var touchedCardView: CardStandartFrontView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var statusDetailView: CharacterStatusDetailView!
@@ -160,6 +161,9 @@ class CreateDeckViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
+        
         possessionViewModel = SortFilterViewModel(filterIndexs: possessionSortFilterView.indexs.asObservable(), filterRarities: possessionSortFilterView.rarities.asObservable(), filterText: possessionIncrementalText.asObservable(), sortBy: possessionSortFilterView.sortBy.asObservable(), sortIsAsc: possessionSortFilterView.sortIsAsc.asObservable())
         possessionViewModel.cards.bind(to: possessionCollectionView.rx.items(dataSource: possessionDataSource)).disposed(by: disposeBag)
     }

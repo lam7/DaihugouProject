@@ -22,7 +22,9 @@ class DeckIndexBarGraph: BarGraphView{
                 v.barLayer.borderWidth = 1.0
                 v.barLayer.borderColor = UIColor.white.cgColor
                 v.topLabel.text = indexCounts[i].value.description
+                v.topLabel.textColor = .white
                 v.bottomLabel.text = indexCounts[i].key.description
+                v.bottomLabel.textColor = .white
             }
         }
     }
