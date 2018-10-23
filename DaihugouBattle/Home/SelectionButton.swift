@@ -56,6 +56,11 @@ import UIKit
     
     func updateLayerProperty(){
         layer.borderWidth = borderWidth
+        var cornerRadius = self.cornerRadius
+        if cornerRadius < 0{
+            let m = min(layer.bounds.width, layer.bounds.height)
+            cornerRadius = m / 2
+        }
         layer.cornerRadius = cornerRadius
         if let borderColor = self.borderColor{
             layer.borderColor = borderColor.cgColor

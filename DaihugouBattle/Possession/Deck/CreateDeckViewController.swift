@@ -200,6 +200,10 @@ class CreateDeckViewController: UIViewController{
             if let card = c{
                 statusDetailView.card = card
                 statusDetailView.isHidden = false
+                
+                if createDeck.possessionCardsValue[card]! <= 0{
+                    return
+                }
                 touchedCard = card
                 touchedCardView.set(from: card)
                 touchedCardView.center = sender.location(in: self.view)
