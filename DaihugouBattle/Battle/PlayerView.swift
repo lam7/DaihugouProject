@@ -214,14 +214,14 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
             let cardViews = self.cardViewNodata()
             let normalCardViews = cardViews[0..<normalCards.count].map{ $0 }
             let overCardViews  = cardViews[normalCards.count ..< (normalCards.count + overCards.count)].map{ $0 }
-            for i in 0..<normalCards.count{ normalCardViews[i].card = normalCards[i]}
-            for i in 0..<overCards.count{ overCardViews[i].card = overCards[i]}
+            for i in 0..<normalCards.count{ normalCardViews[i].card = normalCards[i] }
+            for i in 0..<overCards.count{ overCardViews[i].card = overCards[i] }
             
             self.drawCardSupport(normalCardViews, overCards: overCardViews, player: player)
         }
     }
     
-    private func cardViewNodata()-> [CardView]{
+    func cardViewNodata()-> [CardView]{
         var c: [CardView] = []
         for i in 0..<cardViews.count{
             if cardViews[i].card == cardNoData{
@@ -676,6 +676,17 @@ class EnemyView: PlayerView{
         didSet{
             atkView.titleLabel.text = "敵の攻撃力"
         }
+    }
+    
+    override func willPutDown(_ cards: [Card], player: Player) {
+        asyncBlock.add {
+            let cardViews = self.cardViewNodata()
+            for i in 0..<cards.count{
+                cardViews[i].card = cards[i]
+            }
+            self.asyncBlock.next()
+        }
+        
     }
     
     override func drawCardSupport(_ normalCards: [CardView], overCards: [CardView], player: Player){

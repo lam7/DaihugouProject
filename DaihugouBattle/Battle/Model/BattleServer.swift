@@ -87,7 +87,6 @@ class BattleServer{
     }
     
     private func createRoom(value:Dictionary<AnyHashable, Any>){
-        
         //chatを始めるユーザを取得。
         
         for (key,val) in value {

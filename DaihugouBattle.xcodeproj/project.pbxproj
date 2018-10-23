@@ -14,6 +14,7 @@
 		AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D91F850E6B00D9168A /* Assets.xcassets */; };
 		AA0173DF1F85124400D9168A /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0173DE1F85124400D9168A /* BattleViewController.swift */; };
 		AA0241D4217D9C6C00FA9EF2 /* FirebaseBattleMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0241D3217D9C6B00FA9EF2 /* FirebaseBattleMaster.swift */; };
+		AA0241D6217DCC8600FA9EF2 /* FirebaseBattleRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0241D5217DCC8600FA9EF2 /* FirebaseBattleRoom.swift */; };
 		AA02D860209172AE005B1B55 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02D85F209172AE005B1B55 /* CardCollectionView.swift */; };
 		AA02D86220920EE4005B1B55 /* PlayerNameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02D86120920EE4005B1B55 /* PlayerNameSettingView.swift */; };
 		AA02D86420921215005B1B55 /* PlayerNameSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA02D86320921215005B1B55 /* PlayerNameSettingView.xib */; };
@@ -258,6 +259,7 @@
 		AA0173D91F850E6B00D9168A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA0173DE1F85124400D9168A /* BattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		AA0241D3217D9C6B00FA9EF2 /* FirebaseBattleMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBattleMaster.swift; sourceTree = "<group>"; };
+		AA0241D5217DCC8600FA9EF2 /* FirebaseBattleRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBattleRoom.swift; sourceTree = "<group>"; };
 		AA02D85F209172AE005B1B55 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
 		AA02D86120920EE4005B1B55 /* PlayerNameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameSettingView.swift; sourceTree = "<group>"; };
 		AA02D86320921215005B1B55 /* PlayerNameSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerNameSettingView.xib; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 				AAF46DA420CE32F50046F268 /* BattleAtk.swift */,
 				AA5541D5214E056B003A008B /* BattleDeck.swift */,
 				AA0241D3217D9C6B00FA9EF2 /* FirebaseBattleMaster.swift */,
+				AA0241D5217DCC8600FA9EF2 /* FirebaseBattleRoom.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1517,6 +1520,7 @@
 				AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */,
 				AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */,
 				AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */,
+				AA0241D6217DCC8600FA9EF2 /* FirebaseBattleRoom.swift in Sources */,
 				AAB401832085CB160077763D /* CollectionImageViewCell.swift in Sources */,
 				AA95767720232B860023402A /* SceneView.swift in Sources */,
 				AA3EBAE81FC7B5B100D902B7 /* GatyaRollViewController.swift in Sources */,

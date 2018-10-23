@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zX1-gl-gDM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zX1-gl-gDM">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -885,11 +885,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9F-Vg-o0u">
-                                <rect key="frame" x="42.5" y="87.5" width="483" height="145"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="t9F-Vg-o0u" secondAttribute="height" multiplier="493:148" id="WVh-RQ-rv0"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t9F-Vg-o0u">
+                                <rect key="frame" x="85" y="32" width="398" height="256"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -905,7 +902,7 @@
                             <constraint firstItem="o1D-OL-2go" firstAttribute="width" secondItem="6oE-Kc-RFJ" secondAttribute="width" id="7Yy-ET-R49"/>
                             <constraint firstItem="d5C-cY-tWa" firstAttribute="height" secondItem="aPi-q9-TOy" secondAttribute="height" id="8Gu-9o-6g5"/>
                             <constraint firstItem="f7Y-AF-bSJ" firstAttribute="top" secondItem="UPI-rA-P7k" secondAttribute="top" id="9HW-eF-yID"/>
-                            <constraint firstItem="t9F-Vg-o0u" firstAttribute="width" secondItem="aPi-q9-TOy" secondAttribute="width" multiplier="0.85" id="CPL-uR-0Jg"/>
+                            <constraint firstItem="t9F-Vg-o0u" firstAttribute="width" secondItem="aPi-q9-TOy" secondAttribute="width" multiplier="0.7" id="AEC-KJ-E6r"/>
                             <constraint firstItem="6oE-Kc-RFJ" firstAttribute="trailing" secondItem="o1D-OL-2go" secondAttribute="trailing" id="DON-8c-pV3"/>
                             <constraint firstItem="C1J-mg-U3y" firstAttribute="width" secondItem="Oy6-KN-G4C" secondAttribute="width" id="Fgm-ba-b2f"/>
                             <constraint firstItem="C1J-mg-U3y" firstAttribute="height" secondItem="aPi-q9-TOy" secondAttribute="height" multiplier="0.3" id="Fya-Ox-5ef"/>
@@ -940,6 +937,7 @@
                             <constraint firstItem="8Dr-uq-2g1" firstAttribute="height" secondItem="aPi-q9-TOy" secondAttribute="height" id="b5n-fm-kGk"/>
                             <constraint firstItem="UPI-rA-P7k" firstAttribute="trailing" secondItem="C1J-mg-U3y" secondAttribute="trailing" constant="-20" id="bPc-oD-4af"/>
                             <constraint firstItem="uvU-Xz-QC8" firstAttribute="leading" secondItem="UPI-rA-P7k" secondAttribute="leading" constant="10" id="dAJ-e5-9VZ"/>
+                            <constraint firstItem="t9F-Vg-o0u" firstAttribute="height" secondItem="aPi-q9-TOy" secondAttribute="height" multiplier="0.8" id="dGR-uJ-lTx"/>
                             <constraint firstItem="uvU-Xz-QC8" firstAttribute="top" secondItem="UPI-rA-P7k" secondAttribute="top" constant="10" id="fNK-Rh-Pz7"/>
                             <constraint firstItem="Jth-IT-coJ" firstAttribute="width" secondItem="fcP-dv-96N" secondAttribute="width" id="gC1-FZ-Isx"/>
                             <constraint firstItem="C1J-mg-U3y" firstAttribute="trailing" secondItem="Oy6-KN-G4C" secondAttribute="trailing" id="gHc-u8-4Vc"/>

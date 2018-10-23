@@ -42,7 +42,7 @@ protocol BattleMaster{
 
 class LocalBattleMaster: BattleMaster{
     var delegate: BattleFieldDelegate?
-    private(set) var battleField: BattleField
+    private(set) var battleField: BattleField!
     private var cpu: RandomCPU
     private var ownerDeck: DeckBattle
     private var enemyDeck: DeckBattle
@@ -55,7 +55,7 @@ class LocalBattleMaster: BattleMaster{
     private let NumberOfInitialHands = 5
     private let NumberOfRevolution = 4
     
-    var spotAtkRate: Float{ return atkRate.spotAtkRate(battleField.table.spotStatus) }
+    var spotAtkRate: Float!{ return atkRate.spotAtkRate(battleField.table.spotStatus) }
     private var ownerOriginalAtk: Int{ return battleField.spot.ownerCards.reduce(0, { $0 + $1.atk })}
     private var ownerAtkRate: Float{ return battleField.owner.atkRate }
     private var ownerAtk: Int{
@@ -114,8 +114,6 @@ class LocalBattleMaster: BattleMaster{
         }else{
             battleField.owner.drawCards(cards.compactMap{ $0 })
         }
-        
-        
     }
     
     private func drawEnemyCards(_ amount: Int = 1){
