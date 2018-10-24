@@ -55,12 +55,13 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     
     private func loadPage(_ page: Int) {
         guard 0 <= page && page < numPages else { return }
-        
+        print("loadPage \(page)")
         if pages[page] == nil{
             let width = scrollView.bounds.width * 0.95
             let height = scrollView.bounds.height * 0.95
-            let x = self.frame.midX - width / 2
-            let y = self.frame.midY - height / 2
+            var x = scrollView.frame.midX - width / 2
+            x += scrollView.bounds.width * page.cf
+            let y = scrollView.frame.midY - height / 2
             let frame = CGRect(x: x, y: y, width: width, height: height)
             let selectPageView = DeckSelectPageView(frame: frame)
             scrollView.addSubview(selectPageView)
@@ -102,9 +103,9 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     func loadCurrentPages(page: Int) {
         guard 0 <= page && page < numPages else { return }
         
-        // Remove all of the images and start over.
-        removeAnyPageView()
-        pages = [UIView?](repeating: nil, count: numPages)
+//        // Remove all of the images and start over.
+//        removeAnyPageView()
+//        pages = [UIView?](repeating: nil, count: numPages)
         
         // Load the appropriate new pages for scrolling.
         if page == 0{
