@@ -70,7 +70,10 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ4-52-LGg">
                                 <rect key="frame" x="0.0" y="0.0" width="133.5" height="40"/>
-                                <state key="normal" title="戻る"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="z4O-xL-1Fx" kind="show" id="F1j-gj-ZAA"/>
                                 </connections>
@@ -80,7 +83,10 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9xe-S0-SlV" secondAttribute="height" multiplier="1:1" id="Wkk-xR-dcT"/>
                                 </constraints>
-                                <state key="normal" title="#"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="#">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="touchUpSortFilter:" destination="jXU-gu-3cl" eventType="touchUpInside" id="CWu-HR-058"/>
                                 </connections>
