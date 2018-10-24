@@ -84,6 +84,7 @@ class CreateDeckViewController: UIViewController{
     @IBOutlet weak var touchedCardView: CardStandartFrontView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var statusDetailView: CharacterStatusDetailView!
+    @IBOutlet weak var possessionSearchBar: UISearchBar!
     @IBOutlet weak var possessionCollectionView: UICollectionView!{
         didSet{
             possessionCollectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -110,14 +111,8 @@ class CreateDeckViewController: UIViewController{
         }
     }
     
-    @IBOutlet weak var possessionSearchBar: UISearchBar!
-    private var possessionIncrementalText: Driver<String> {
-        return rx
-            .methodInvoked(#selector(CreateDeckViewController.searchBar(_:shouldChangeTextIn:replacementText:)))
-            .debounce(0.2, scheduler: MainScheduler.instance)
-            .flatMap { [weak self] _ -> Observable<String> in .just(self?.possessionSearchBar.text ?? "") }
-            .distinctUntilChanged()
-            .asDriver(onErrorJustReturn: "")
+    private var possessionIncrementalText: Observable<String?> {
+        return possessionSearchBar.rx.text.asObservable()
     }
     private var possessionDataSource = PossessionCollectionDataSource()
     private var possessionViewModel: SortFilterViewModel!
@@ -164,7 +159,7 @@ class CreateDeckViewController: UIViewController{
         
         backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
         
-        possessionViewModel = SortFilterViewModel(filterIndexs: possessionSortFilterView.indexs.asObservable(), filterRarities: possessionSortFilterView.rarities.asObservable(), filterText: possessionIncrementalText.asObservable(), sortBy: possessionSortFilterView.sortBy.asObservable(), sortIsAsc: possessionSortFilterView.sortIsAsc.asObservable())
+        possessionViewModel = SortFilterViewModel(filterIndexs: possessionSortFilterView.indexs.asObservable(), filterRarities: possessionSortFilterView.rarities.asObservable(), filterText: possessionIncrementalText, sortBy: possessionSortFilterView.sortBy.asObservable(), sortIsAsc: possessionSortFilterView.sortIsAsc.asObservable())
         possessionViewModel.cards.bind(to: possessionCollectionView.rx.items(dataSource: possessionDataSource)).disposed(by: disposeBag)
     }
     

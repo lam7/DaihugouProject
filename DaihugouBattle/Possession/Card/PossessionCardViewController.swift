@@ -93,7 +93,7 @@ class SortFilterViewModel{
     
     let disposeBag = DisposeBag()
     
-    init(filterIndexs: Observable<Set<Int>>, filterRarities: Observable<Set<CardRarity>>, filterText: Observable<String>, sortBy: Observable<CardsSort.SortBy>, sortIsAsc: Observable<Bool>){
+    init(filterIndexs: Observable<Set<Int>>, filterRarities: Observable<Set<CardRarity>>, filterText: Observable<String?>, sortBy: Observable<CardsSort.SortBy>, sortIsAsc: Observable<Bool>){
         let filter = Observable.combineLatest(filterIndexs, filterRarities, filterText).debounce(0.01, scheduler: MainScheduler.instance)
         filter.subscribe{
             [weak self] event in
@@ -101,11 +101,11 @@ class SortFilterViewModel{
                 let element = event.element else {
                     return
             }
-            let cards = CardsFilter.filter(self.originalCards, indexs: element.0.map({$0}), rarities: element.1.map({$0}), text: element.2)
+            let text = element.2 ?? ""
+            let cards = CardsFilter.filter(self.originalCards, indexs: element.0.map({$0}), rarities: element.1.map({$0}), text: text)
             self.cardsVar.value = cards
             }.disposed(by: disposeBag)
-        
-        
+
         let sort = Observable.combineLatest(sortBy, sortIsAsc).debounce(0.01, scheduler: MainScheduler.instance)
         sort.subscribe{[weak self] event in
             guard let `self` = self,
@@ -130,13 +130,8 @@ class PossessionCardViewController: UIViewController{
     let disposeBag: DisposeBag = DisposeBag()
     
     
-    private var incrementalText: Driver<String> {
-        return rx
-            .methodInvoked(#selector(PossessionCardViewController.searchBar(_:shouldChangeTextIn:replacementText:)))
-            .debounce(0.2, scheduler: MainScheduler.instance)
-            .flatMap { [weak self] _ -> Observable<String> in .just(self?.searchBar.text ?? "") }
-            .distinctUntilChanged()
-            .asDriver(onErrorJustReturn: "")
+    private var incrementalText: Observable<String?> {
+        return searchBar.rx.text.asObservable()
     }
     
     override func viewDidLoad() {
@@ -153,8 +148,7 @@ class PossessionCardViewController: UIViewController{
         
         self.dataSource.cardCount = UserInfo.shared.cardsValue
         
-        viewModel = SortFilterViewModel(filterIndexs: sortFilterView.indexs.asObservable(), filterRarities: sortFilterView.rarities.asObservable(), filterText: incrementalText.asObservable(), sortBy: sortFilterView.sortBy.asObservable(), sortIsAsc: sortFilterView.sortIsAsc.asObservable())
-//        viewModel.cards.asDriver(onErrorJustReturn: []).drive(collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        viewModel = SortFilterViewModel(filterIndexs: sortFilterView.indexs.asObservable(), filterRarities: sortFilterView.rarities.asObservable(), filterText: incrementalText, sortBy: sortFilterView.sortBy.asObservable(), sortIsAsc: sortFilterView.sortIsAsc.asObservable())
         viewModel.cards.bind(to: collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
         sortFilterView.closeButton.rx.tap.subscribe{ [weak self] event in
