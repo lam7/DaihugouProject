@@ -179,37 +179,6 @@ class Card: Equatable, Hashable, NSCopying{
     }
 }
 
-//class CardNoData: Card{
-//    private static var counter: Int = 0
-//    private var cardNumber: Int
-//
-//    init(){
-//        cardNumber = CardNoData.counter
-//        CardNoData.counter += 1
-//        super.init(id: 0, name: "", imageNamed: "", rarity: "N", index: 1, hp: 0, atk: 0, skill: Skill())
-//    }
-//
-//    override init(card: Card) {
-//        if let card = card as? CardNoData{
-//            cardNumber = card.cardNumber
-//        }else{
-//            cardNumber = CardNoData.counter
-//            CardNoData.counter += 1
-//        }
-//        super.init(id: 0, name: "", imageNamed: "", rarity: "N", index: 1, hp: 0, atk: 0, skill: Skill())
-//    }
-//
-//    override func equal(_ to: Card) -> Bool {
-//        guard let card = to as? CardNoData else{
-//            return false
-//        }
-//        return cardNumber == card.cardNumber
-//    }
-//
-//    override func copy(with zone: NSZone?) -> Any {
-//        let card = init(card: self)
-//    }
-//}
 var cardNoData: Card{
     return Card(id: 0, name: "", imageNamed: "", rarity: "N", index: 0, hp: 0, atk: 0, skill: Skill())
 }

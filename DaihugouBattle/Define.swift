@@ -18,7 +18,6 @@ class Plist{
     }
 }
 
-
 class Errors{
     static let ErrorDomain = "com.lam.daipro"
     private(set) static var _code = 0
@@ -30,5 +29,7 @@ class Errors{
     }
 }
 
+/// デッキ枚数
 let StandartDeckCardsNum: Int = 40
+/// 最大デッキ所持数
 let MaxPossessionDecksNum: Int = 18

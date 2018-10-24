@@ -119,7 +119,6 @@
 		AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6E70BD1F77583800A401AE /* DownloadViewController.swift */; };
 		AA6F043720907EB600B4B65D /* CardsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F043520907EB500B4B65D /* CardsCell.swift */; };
 		AA6F043820907EB600B4B65D /* CardsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6F043620907EB500B4B65D /* CardsCell.xib */; };
-		AA6F043A2090823800B4B65D /* CardDecorateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6F04392090823800B4B65D /* CardDecorateImage.swift */; };
 		AA7205701FB54A65003E5B88 /* SpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72056F1FB54A65003E5B88 /* SpotView.swift */; };
 		AA725D23215526500064A3BA /* DataRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA725D22215526500064A3BA /* DataRealm.swift */; };
 		AA7798AB2079DB47006F85C4 /* GiftBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7798AA2079DB47006F85C4 /* GiftBoxView.swift */; };
@@ -365,7 +364,6 @@
 		AA6E70BD1F77583800A401AE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		AA6F043520907EB500B4B65D /* CardsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCell.swift; sourceTree = "<group>"; };
 		AA6F043620907EB500B4B65D /* CardsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsCell.xib; sourceTree = "<group>"; };
-		AA6F04392090823800B4B65D /* CardDecorateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDecorateImage.swift; sourceTree = "<group>"; };
 		AA6F043B2090874B00B4B65D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AA6F043D2090875300B4B65D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA72056F1FB54A65003E5B88 /* SpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotView.swift; sourceTree = "<group>"; };
@@ -878,7 +876,6 @@
 				AADE54791F72440A00DF83BF /* Card.swift */,
 				AA487E871F820E6F00342B49 /* CardBattle.swift */,
 				AAEC52162088DD4A001428A4 /* FrameLayer.swift */,
-				AA6F04392090823800B4B65D /* CardDecorateImage.swift */,
 				AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */,
 				AADE547E1F72440C00DF83BF /* Skill.swift */,
 				AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */,
@@ -1484,7 +1481,6 @@
 				AA255FE9200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift in Sources */,
 				AA02D86620930951005B1B55 /* TextFieldWithToolBar.swift in Sources */,
 				AA0241D4217D9C6C00FA9EF2 /* FirebaseBattleMaster.swift in Sources */,
-				AA6F043A2090823800B4B65D /* CardDecorateImage.swift in Sources */,
 				AAF04A5F1FC29B850019723B /* PlayerView.swift in Sources */,
 				AAB401802085B7000077763D /* SpotCardsCollectionView.swift in Sources */,
 				AACC12E62142A8B5009F8510 /* CardsSort.swift in Sources */,

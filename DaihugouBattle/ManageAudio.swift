@@ -20,6 +20,8 @@ final class ManageAudio{
     
     private init(){}
     
+    /// BGMのボリューム。
+    /// 再生中のBGMも音量が更新される。
     var bgmVolume: Float{
         set(volume){
             let userDefaults: UserDefaults = UserDefaults.standard
@@ -36,6 +38,8 @@ final class ManageAudio{
         }
     }
     
+    /// SEのボリューム。
+    /// 再生中のSEも音量が更新される。
     var seVolume: Float{
         set(volume){
             let userDefaults: UserDefaults = UserDefaults.standard
@@ -80,6 +84,9 @@ final class ManageAudio{
         }
     }
     
+    /// Realmからデータを取得しプレイヤーを作成
+    ///
+    /// - Parameter fileNamed: 拡張子を含むファイル名
     func getAudioPlayerFromRealm(_ audioNamed: String)-> AVAudioPlayer?{
         guard let data = DataRealm.get(dataNamed: audioNamed) else{
             return nil
@@ -93,6 +100,9 @@ final class ManageAudio{
         return nil
     }
     
+    /// ローカルからデータを取得しプレイヤーを作成
+    ///
+    /// - Parameter fileNamed: 拡張子を含むファイル名
     func getAudioPlayerFromLocal(_ audioNamed: String)-> AVAudioPlayer?{
         let components = audioNamed.components(separatedBy: ".")
         guard let named = components[safe: 0],
@@ -112,14 +122,26 @@ final class ManageAudio{
         return nil
     }
     
+    /// Realmから音楽を取って来てキャッシュに登録する。
+    /// また、ループ数とボリュームを調整する。
+    /// - Parameters:
+    ///   - audioNamed: 拡張子を含むファイル名
+    ///   - audioType: bgm: 曲をループさせボリュームをbgmVolumeにする, se: 曲を一度だけなるようにしボリュームをseVolumeにする
     func addAudioFromRealm(_ audioNamed: String, audioType: AudioType){
         guard let audioPlayer = getAudioPlayerFromRealm(audioNamed) else{
             return
         }
         audiosWithType[audioNamed] = (audioType, audioPlayer)
         adjust(audioPlayer, audioType: audioType)
+        
     }
     
+    
+    /// ローカルから音楽を取って来てキャッシュに登録する。
+    /// また、ループ数とボリュームを調整する。
+    /// - Parameters:
+    ///   - audioNamed: 拡張子を含むファイル名
+    ///   - audioType: bgm: 曲をループさせボリュームをbgmVolumeにする, se: 曲を一度だけなるようにしボリュームをseVolumeにする
     func addAudioFromLocal(_ audioNamed: String, audioType: AudioType){
         guard let audioPlayer = getAudioPlayerFromLocal(audioNamed) else{
             return
@@ -128,15 +150,21 @@ final class ManageAudio{
         adjust(audioPlayer, audioType: audioType)
     }
     
+    /// キャッシュからプレイヤーを削除する
+    ///
+    /// - Parameter fileNamed: 拡張子を含むファイル名
     func removeAudio(_ audioNamed: String){
         audiosWithType[audioNamed] = nil
     }
     
+    /// キャッシュから全てのプレイヤーを削除する
     func removeAllAudios(){
         audiosWithType.removeAll()
     }
     
-    /// 指定した音声ファイルが登録されていたならその音声を１から流す
+    /// 指定した音声ファイルが登録されていたならその音声を最初から流す
+    ///
+    /// - Parameter fileNamed: 拡張子を含むファイル名
     func play(_ fileNamed: String){
         guard let audio = audios[fileNamed] else{
             return

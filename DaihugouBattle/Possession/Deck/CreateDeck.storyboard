@@ -159,7 +159,7 @@
                         <outlet property="deckBarGraphView" destination="q1M-OM-GlG" id="AIA-zn-BjG"/>
                         <outlet property="deckCollectionView" destination="1zJ-4K-PJC" id="BH9-XF-3JU"/>
                         <outlet property="possessionCollectionView" destination="s7F-1q-T20" id="HyW-p5-Kne"/>
-                        <outlet property="possessionSearchBar" destination="M4m-dm-TFc" id="gF6-cy-zxR"/>
+                        <outlet property="possessionSearchBar" destination="M4m-dm-TFc" id="78S-35-2qY"/>
                         <outlet property="possessionSortFilterView" destination="80q-Y5-vvE" id="SFi-8w-msa"/>
                         <outlet property="statusDetailView" destination="LP9-qS-8bW" id="fp9-CG-cbF"/>
                         <outlet property="touchedCardView" destination="C1G-bJ-W5m" id="Tmn-ss-y0n"/>

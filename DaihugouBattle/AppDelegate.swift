@@ -56,16 +56,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ///画面がタッチされた時にイベントを送る
 class ApplicationSendTouchEvent: UIApplication{
-    /// respondersにtouchとeventが持つほとんどのプロパティは、恐らく欲しい値になっていない
+    // respondersにtouchとeventが持つほとんどのプロパティは、恐らく欲しい値になっていない
     override func sendEvent(_ event: UIEvent) {
         super.sendEvent(event)
+        
         if TDPView.shared.superview == nil{
+            //タッチ判定をさせないようにし、最前面に画面いっぱいに配置
             keyWindow?.addSubview(TDPView.shared)
             TDPView.shared.isUserInteractionEnabled = false
             TDPView.shared.frame = UIScreen.main.bounds
             TDPView.shared.layer.zPosition = CGFloat.leastNormalMagnitude
         }
-        
+        //パーティクルビューがまだ追加されていないなら最前面に追加する
         if let allTouches = event.allTouches{
             let touchBegan = allTouches.filter({ $0.phase == .began })
             let touchMoved = allTouches.filter({ $0.phase == .moved })
