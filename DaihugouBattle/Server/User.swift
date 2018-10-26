@@ -41,6 +41,8 @@ extension Errors{
                                                                                   NSLocalizedFailureReasonErrorKey : "エラーコード\(_code)"])
         static let overDeckNum = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "デッキ追加エラー",
                                                                                    NSLocalizedFailureReasonErrorKey : "これ以上デッキを追加することは出来ません"])
+        static let notExistDeleteDeck = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "デッキ削除エラー",
+                                                                                     NSLocalizedFailureReasonErrorKey : "そのデッキは存在しません"])
     }
 }
 
@@ -482,63 +484,38 @@ class UserInfo{
         }
     }
     
-//    func getAllDeck(_ completion: @escaping (_ decks: [Deck?], _: Error?) -> ()){
-//        guard let userInfo = NCMBObject(className: "userInfo"),
-//            let userDeck = NCMBQuery(className: "userDeck") else{
-//            completion([], Errors.UserInfo.ncmbObjectFailure)
-//            return
-//        }
-//        userInfo.objectId = UserLogin.objectIdUserInfo
-//        var decks: [Deck?] = []
-//        print("getDecks")
-//        userInfo.fetchInBackground(){ error in
-//            if let error = error{
-//                completion([], error)
-//                return
-//            }
-//            let deckIds = userInfo.object(forKey: "deckObjectIds") as! [String]
-//            let decksAllNil = [Deck?](repeating: nil, count: deckIds.count)
-//            let deckIdsNotNull = deckIds.filter({$0 != "NULL"})
-//            if deckIdsNotNull.isEmpty{
-//                completion(decksAllNil, nil)
-//                return
-//            }
-//            userDeck.whereKey("objectId", containedIn: deckIdsNotNull)
-//            userDeck.findObjectsInBackground{
-//                objects, error in
-//                if let error = error{
-//                    completion(decksAllNil, error)
-//                    return
-//                }
-//                guard let objects = objects else{
-//                    completion(decksAllNil, Errors.UserInfo.ncmbObjectFailure)
-//                    return
-//                }
-//
-//                for object in objects{
-//                    guard let obj = object as? NCMBObject else{
-//                        print("UserInfo-getAllDeck object Error")
-//                        decks.append(nil)
-//                        continue
-//                    }
-//                    let cardsId = obj.object(forKey: "cardsId") as! [Int]
-//                    let cards = cardsId.map({ CardList.get(id: $0 )})
-//                    if !cards.filter({ $0 == nil}).isEmpty{
-//                        print("Not Exist Card \(cards)")
-//                        decks.append(nil)
-//                        continue
-//                    }
-//
-//                    let name = obj.object(forKey: "name") as! String
-//                    print("name\(name)")
-//                    print("deck")
-//                    let deck = Deck(cards: cards.compactMap({ $0 }), name: name)
-//                    decks.append(deck)
-//                }
-//                completion(decks, nil)
-//            }
-//        }
-//    }
+    func remove(deck objectId: String, completion: @escaping (_: Error?) -> ()){
+        guard let userDeck = NCMBObject(className: "userDeck"),
+            let userInfo = NCMBObject(className: "userInfo") else{
+            completion(Errors.UserInfo.ncmbObjectFailure)
+            return
+        }
+        userInfo.objectId = UserLogin.objectIdUserInfo
+        userInfo.fetchInBackground(){ error in
+            if let error = error{
+                completion(error)
+                return
+            }
+            var deckIds = userInfo.object(forKey: "deckObjectIds") as! [String]
+            guard let index = deckIds.index(of: objectId) else{
+                completion(Errors.UserInfo.notExistDeleteDeck)
+                return
+            }
+            deckIds.remove(at: index)
+            userInfo.setObject(deckIds, forKey: "deckObjectIds")
+            userInfo.saveInBackground{
+                [weak self] saveError in
+                if let saveError = saveError{
+                    completion(saveError)
+                    return
+                }
+                self?.deckIdsVar.value = deckIds
+                
+                userDeck.objectId = objectId
+                userDeck.deleteInBackground(completion)
+            }
+        }
+    }
     
     
     func gift(item: GiftItemInfo, completion: @escaping (_: Error?) -> ()){

@@ -9,11 +9,7 @@
 import Foundation
 import UIKit
 
-protocol SelectedDeckInCreateDeckDelegate{
-    func deckForming(_ deck: Deck)
-    
-}
-class SelectedDeckInCreateDeckView: UINibView{
+class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameChangingButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -26,6 +22,10 @@ class SelectedDeckInCreateDeckView: UINibView{
     @IBOutlet weak var deckFormingButton: UIButton!
     @IBOutlet weak var deckConfirmingButton: UIButton!
     
+    weak var behindView: UIView?
+    
+    var updateDecks: (() -> ())?
+    
     var deck: DeckRelated!{
         didSet{
             nameLabel.text = deck.name
@@ -34,8 +34,33 @@ class SelectedDeckInCreateDeckView: UINibView{
         }
     }
     
+    override func didMoveToSuperview() {
+        behindView = setUpBehindView()
+    }
+    
+    override func willMove(toSuperview newSuperview: UIView?) {
+        if newSuperview == nil{
+            behindView?.removeSafelyFromSuperview()
+        }
+    }
+    
+    @IBAction func touchUpRename(_ sender: UIButton){
+        
+    }
+    
+    @IBAction func touchUpChangingSleeve(_ sender: UIButton){
+        
+    }
+    @IBAction func touchUpChangingSkin(_ sender: UIButton){
+        
+    }
+    
+    @IBAction func touchUpClose(_ sender: UIButton){
+        self.removeSafelyFromSuperview()
+    }
     
     @IBAction func touchUpDeckForming(_ sender: UIButton){
+        self.removeSafelyFromSuperview()
         parentViewController()?.performSegue(withIdentifier: "deckForming", sender: deck)
     }
     
@@ -53,8 +78,21 @@ class SelectedDeckInCreateDeckView: UINibView{
     }
     
     @IBAction func touchUpDeckRemoving(_ sender: UIButton){
-        self.removeFromSuperview()
+        guard let objectId = deck.objectId else{
+            return
+        }
+        
+        UserInfo.shared.remove(deck: objectId, completion: { [weak self] error in
+            if let error = error{
+                guard let controller = self?.parentViewController() else{
+                    return
+                }
+                controller.alert(error, actions: controller.OKAlertAction)
+            }
+            self?.removeSafelyFromSuperview()
+            self?.updateDecks?()
+        })
     }
     
-
+    
 }

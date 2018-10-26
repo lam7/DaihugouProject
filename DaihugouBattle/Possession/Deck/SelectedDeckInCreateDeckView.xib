@@ -40,6 +40,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <state key="normal" title="×"/>
+                            <connections>
+                                <action selector="touchUpClose:" destination="-1" eventType="touchUpInside" id="2vG-3X-Bzs"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5d-1N-gkc">
                             <rect key="frame" x="70" y="0.0" width="341" height="32"/>
@@ -50,6 +53,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3s-1J-7ZT">
                             <rect key="frame" x="453" y="1" width="115" height="30"/>
                             <state key="normal" title="変更"/>
+                            <connections>
+                                <action selector="touchUpRename:" destination="-1" eventType="touchUpInside" id="4Vd-CN-pjR"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -65,14 +71,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="269" height="220"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="br9-Oj-ZBG">
-                                    <rect key="frame" x="17.5" y="0.0" width="234.5" height="176"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="br9-Oj-ZBG" secondAttribute="height" multiplier="4:3" id="Ri9-4n-TqX"/>
-                                    </constraints>
+                                    <rect key="frame" x="0.0" y="0.0" width="269" height="161"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-EB-wQ1">
-                                    <rect key="frame" x="96" y="205" width="77" height="15"/>
+                                    <rect key="frame" x="96" y="190" width="77" height="30"/>
                                     <state key="normal" title="スキン変更"/>
+                                    <connections>
+                                        <action selector="touchUpChangingSkin:" destination="-1" eventType="touchUpInside" id="MnX-zN-Dam"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -100,6 +106,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLq-kR-fzt">
                                             <rect key="frame" x="86.5" y="12.5" width="182.5" height="30"/>
                                             <state key="normal" title="変更"/>
+                                            <connections>
+                                                <action selector="touchUpChangingSleeve:" destination="-1" eventType="touchUpInside" id="LJD-6K-nK5"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>

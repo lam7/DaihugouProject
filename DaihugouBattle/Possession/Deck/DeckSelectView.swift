@@ -22,7 +22,7 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     private (set) var pages = [UIView?]()
     var decks: [Deck]!{
         didSet{
-            self.loadCurrentPages(page: 0)
+            self.loadCurrentPages(page: pageControl.currentPage, update: true)
         }
     }
     
@@ -55,7 +55,6 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     
     private func loadPage(_ page: Int) {
         guard 0 <= page && page < numPages else { return }
-        print("loadPage \(page)")
         if pages[page] == nil{
             let width = scrollView.bounds.width * 0.95
             let height = scrollView.bounds.height * 0.95
@@ -100,12 +99,14 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
         button.isEnabled = false
     }
     
-    func loadCurrentPages(page: Int) {
+    func loadCurrentPages(page: Int, update: Bool = false) {
         guard 0 <= page && page < numPages else { return }
-        
-//        // Remove all of the images and start over.
-//        removeAnyPageView()
-//        pages = [UIView?](repeating: nil, count: numPages)
+    
+        // Remove all of the images and start over.
+        if update{
+            removeAnyPageView()
+            pages = [UIView?](repeating: nil, count: numPages)
+        }
         
         // Load the appropriate new pages for scrolling.
         if page == 0{
