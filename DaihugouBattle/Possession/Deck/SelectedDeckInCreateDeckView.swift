@@ -60,8 +60,8 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
     }
     
     @IBAction func touchUpDeckForming(_ sender: UIButton){
-        self.removeSafelyFromSuperview()
         parentViewController()?.performSegue(withIdentifier: "deckForming", sender: deck)
+        self.removeSafelyFromSuperview()
     }
     
     @IBAction func touchUpDeckConfirming(_ sender: UIButton){
