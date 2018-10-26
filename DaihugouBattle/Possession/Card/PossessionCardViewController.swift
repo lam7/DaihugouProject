@@ -86,7 +86,7 @@ class SortFilterViewModel{
     var originalCards: [Card] = []{
         didSet{
             let cards = CardsSort.sort(originalCards, by: currentSort, isAsc: true)
-            cardsVar.value = originalCards
+            cardsVar.value = cards
         }
     }
     private var currentSort: CardsSort.SortBy = CardsSort.SortBy.id
@@ -159,7 +159,7 @@ class PossessionCardViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         LoadingView.show()
-        let cards = CardsSort.sort(UserInfo.shared.cardsValue.map{ $0.key }, by: .id, isAsc: true)
+        let cards = UserInfo.shared.cardsValue.map({ $0.key })
         let nameds = cards.map{ $0.imageNamed } + "cardBack.png"
         RealmImageCache.shared.loadImagesBackground(nameds){
             self.viewModel.originalCards = cards
