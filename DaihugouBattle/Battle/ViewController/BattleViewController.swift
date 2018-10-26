@@ -205,25 +205,18 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
     func appearOwnerTurnLogo(_ completion: @escaping () -> ()){
         self.turnLogoImageView.image = DataRealm.get(imageNamed: "BattleLogo_YourTurn.png")
         self.turnLogoImageView.isHidden = false
-        UIView.animate(withDuration: 1.2, animations: {[weak self] in
-            guard let `self` = self else {
-                return
-            }
-            self.turnLogoImageView.alpha = 0
-            }, completion: { [weak self] _ in
-                guard let `self` = self else {
-                    return
-                }
-                self.turnLogoImageView.isHidden = true
-                self.turnLogoImageView.alpha = 1
-                completion()
-        })
+        appearTurnLogo(completion)
     }
     
     func appearEnemyTurnLogo(_ completion: @escaping () -> ()){
         self.turnLogoImageView.image = DataRealm.get(imageNamed: "BattleLogo_EnemyTurn.png")
         self.turnLogoImageView.isHidden = false
-        UIView.animate(withDuration: 1.2, animations: { [weak self] in
+        appearTurnLogo(completion)
+    }
+    
+    private func appearTurnLogo(_ completion: @escaping () -> ()){
+        UIView.animate(withDuration: 0.4, delay: 0.8, options: .curveEaseIn, animations: {
+            [weak self] in
             guard let `self` = self else {
                 return
             }
