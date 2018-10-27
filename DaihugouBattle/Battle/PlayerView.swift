@@ -41,7 +41,7 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     /// カードをドローするアニメーションにかかる時間
     var drawAnimationSp: TimeInterval = 0.6
     
-    
+    var death: (()->())?
     
     /// 子viewからそれぞれの位置を取り出して、そのViewを消す
     fileprivate func initHandPoint()-> [[CGPoint]]{
@@ -297,6 +297,7 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     }
     
     func death(_ player: Player) {
+        self.death?()
         print(player.name + "is Lose")
     }
     
@@ -425,6 +426,7 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
         chStatusView.card = card
         chStatusView.isHidden = false
     }
+    
 }
 
 
@@ -704,6 +706,4 @@ class EnemyView: PlayerView{
         }
         return view
     }
-    
-    
 }

@@ -190,8 +190,11 @@ class Player: NSCopying{
         let dHp = hp - amount
         let damage = dHp <= 0 ? hp : amount
         self.hp -= damage
-        
         delegate?.attacked(damage, player: copy() as! Player)
+        
+        if self.hp <= 0{
+            delegate?.death(copy() as! Player)
+        }
     }
     
     

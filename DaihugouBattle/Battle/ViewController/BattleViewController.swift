@@ -118,6 +118,8 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         enemyView.chStatusView = self.characterStatusView
         ownerView.skillView = self.skillView
         enemyView.skillView = self.skillView
+        ownerView.death = self.deathOwner
+        enemyView.death = self.deathEnemy
         
         //それぞれのviewにplayer, tableをセットする
         ownerCardViews = self.ownerView.set(battleMaster: battleMaster)
@@ -172,6 +174,43 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
 //        battleField.owner.putDown(cards)
 //        ownerView.removeFrame(cards)
 //        battleField.turnEnd()
+    }
+    
+    func deathOwner(){
+        BattleViewController.asyncBlock.add{[weak self] in
+            self?.appearDeathLabel{ label in
+                label.text = "You Lose"
+                label.textColor = .blue
+            }
+        }
+    }
+    
+    func deathEnemy(){
+        BattleViewController.asyncBlock.add{[weak self] in
+            self?.appearDeathLabel{ label in
+                label.text = "You Win"
+                label.textColor = .red
+            }
+        }
+    }
+    
+    private func appearDeathLabel(_ set: (_: UILabel)->()){
+        let label = UILabel()
+        self.view.addSubview(label)
+        set(label)
+        label.font = UIFont(name: "Times New Roman", size: 80)
+        label.sizeToFit()
+        label.snp.makeConstraints{ make in
+            make.center.equalTo(self.view)
+        }
+        
+        UIView.animate(withDuration: 0.8, animations: {
+            label.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
+        }, completion: { _ in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        })
     }
     
     func startOwnerTurn() {
