@@ -445,6 +445,25 @@ class OwnerView: PlayerView{
         }
     }
     
+    lazy var minHandSupportView: UIView = self.viewWithTag(200)  as! UIView
+    
+    fileprivate lazy var minHandFrame: [[CGRect]] = {
+        var r: [[CGRect]] = []
+        for y in 1...9{
+            //1 23 456 78910 1112131415
+            var raw: [CGRect] = []
+            for x in 1...y{
+                let view = minHandSupportView.viewWithTag(10000 + x + (y * (y - 1) / 2))!
+                let frame = view.superview!.convert(view.frame, to: self)
+                raw.append(frame)
+                view.removeFromSuperview()
+                view.superview?.removeFromSuperview()
+            }
+            r.append(raw)
+        }
+        return r
+    }()
+    
     var putDownCards: [CardBattle] = []
     
     /// カードを表に向けるアニメーションを追加
@@ -480,10 +499,18 @@ class OwnerView: PlayerView{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchedCardView = nil
         super.touchesBegan(touches, with: event)
-        guard let touch = touches.first,
-            let cardView = getCardView(touch) else{
-                displayChStatus(nil)
-                return
+        guard let touch = touches.first else{
+            return
+        }
+        
+        guard let cardView = getCardView(touch) else{
+            displayChStatus(nil)
+            let location = touch.location(in: self)
+            print(location)
+            if location.x >= bounds.width * 0.6 && location.y >= bounds.height * 0.6{
+                switchToMinHandView()
+            }
+            return
         }
         displayChStatus(cardView.card)
         
@@ -533,6 +560,17 @@ class OwnerView: PlayerView{
             print("ClearPutDownCards")
             clearPutDownCards()
         }
+    }
+    
+    
+    func switchToMinHandView(){
+        let hand = (player.hand as! [CardBattle]).map({self.cardView($0)}).compactMap({ $0 })
+        UIView.animate(withDuration: 0.25, animations: {
+            for (i, cardView) in hand.enumerated(){
+                let f = self.minHandFrame[hand.count][i]
+                cardView.frame = f
+            }
+        })
     }
     
 

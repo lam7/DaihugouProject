@@ -59,6 +59,7 @@ fileprivate extension Int{
     private func setUp(){
         label.text = "0/0"
         progressView.delegate = self
+        progressView.set(progress: 1.0)
     }
     
     ///　最大Hpをセットする
