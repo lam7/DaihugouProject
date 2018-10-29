@@ -209,7 +209,7 @@ final class SkillAbilityList{
             }
         }
         
-        /// 手札をランダムに２枚すて、捨てたカードの攻撃力の合計値✕指定レートを相手にダメージを与える
+        /// 手札をランダムにすて、捨てたカードの攻撃力の合計値✕指定レートを相手にダメージを与える
         @objc static func activate16(_ amount: AmountValue!)-> ActivateValue{
             return ActivateValue{ player in
                 let amount = amount.value(player)
