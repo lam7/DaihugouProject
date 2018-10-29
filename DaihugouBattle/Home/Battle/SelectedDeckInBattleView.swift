@@ -21,6 +21,10 @@ class SelectedDeckInBattleView: UINibView{
         }
     }
     
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        return super.hitTest(point, with: event) ?? self
+    }
+    
     @IBAction func touchUpConfirmation(_ sender: UIButton){
         let v = DeckConfirmationView(frame: UIScreen.main.bounds)
         v.deckCards = deck.cards
