@@ -21,36 +21,51 @@
             <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fCc-wX-wWG">
-                    <rect key="frame" x="113.5" y="32" width="341" height="256"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq0-VX-DIg">
+                    <rect key="frame" x="108" y="32" width="352" height="256"/>
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ar-ZS-KKS">
-                            <rect key="frame" x="0.0" y="0.0" width="170.5" height="256"/>
-                            <state key="normal" title="デッキ編成" backgroundImage="buttonFrame"/>
-                            <connections>
-                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="RH0-lz-sDg"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbU-zs-anu">
-                            <rect key="frame" x="170.5" y="0.0" width="170.5" height="256"/>
-                            <state key="normal" title="所持カード" backgroundImage="buttonFrame"/>
+                        <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbU-zs-anu">
+                            <rect key="frame" x="0.0" y="0.0" width="151" height="256"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="kbU-zs-anu" secondAttribute="height" multiplier="23:39" id="upX-9z-Ljy"/>
+                            </constraints>
+                            <state key="normal" title="所持カード" backgroundImage="buttonFrame">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="gUm-LC-IgH"/>
                             </connections>
                         </button>
+                        <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ar-ZS-KKS">
+                            <rect key="frame" x="201" y="0.0" width="151" height="256"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="7ar-ZS-KKS" secondAttribute="height" multiplier="23:39" id="6tt-uF-uJT"/>
+                            </constraints>
+                            <state key="normal" title="デッキ編成" backgroundImage="buttonFrame">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="touchUp:" destination="-1" eventType="touchUpInside" id="RH0-lz-sDg"/>
+                            </connections>
+                        </button>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="7ar-ZS-KKS" firstAttribute="height" secondItem="fCc-wX-wWG" secondAttribute="height" id="ITq-hL-96u"/>
-                        <constraint firstItem="kbU-zs-anu" firstAttribute="height" secondItem="fCc-wX-wWG" secondAttribute="height" id="NP9-MD-fZz"/>
+                        <constraint firstAttribute="trailing" secondItem="7ar-ZS-KKS" secondAttribute="trailing" id="9Ho-Bl-nI5"/>
+                        <constraint firstItem="kbU-zs-anu" firstAttribute="top" secondItem="Eq0-VX-DIg" secondAttribute="top" id="G9h-JC-SLY"/>
+                        <constraint firstItem="kbU-zs-anu" firstAttribute="leading" secondItem="Eq0-VX-DIg" secondAttribute="leading" id="GIa-Og-A87"/>
+                        <constraint firstItem="7ar-ZS-KKS" firstAttribute="leading" secondItem="kbU-zs-anu" secondAttribute="trailing" constant="50" id="M1X-3c-N0c"/>
+                        <constraint firstItem="7ar-ZS-KKS" firstAttribute="height" secondItem="Eq0-VX-DIg" secondAttribute="height" id="Mec-Gn-H0t"/>
+                        <constraint firstItem="kbU-zs-anu" firstAttribute="height" secondItem="Eq0-VX-DIg" secondAttribute="height" id="R93-Ey-jJG"/>
+                        <constraint firstItem="7ar-ZS-KKS" firstAttribute="top" secondItem="Eq0-VX-DIg" secondAttribute="top" id="apu-WA-oAF"/>
                     </constraints>
-                </stackView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fCc-wX-wWG" firstAttribute="height" secondItem="3L3-25-sOi" secondAttribute="height" multiplier="0.8" id="0y7-ob-42q"/>
-                <constraint firstItem="fCc-wX-wWG" firstAttribute="centerY" secondItem="cjR-xA-xyt" secondAttribute="centerY" id="IGn-pz-Q03"/>
-                <constraint firstItem="fCc-wX-wWG" firstAttribute="width" secondItem="3L3-25-sOi" secondAttribute="width" multiplier="0.6" id="YLh-RC-wS3"/>
-                <constraint firstItem="fCc-wX-wWG" firstAttribute="centerX" secondItem="cjR-xA-xyt" secondAttribute="centerX" id="t7O-Zk-bj3"/>
+                <constraint firstItem="Eq0-VX-DIg" firstAttribute="height" secondItem="3L3-25-sOi" secondAttribute="height" multiplier="0.8" id="7NA-9T-8Re"/>
+                <constraint firstItem="Eq0-VX-DIg" firstAttribute="centerX" secondItem="cjR-xA-xyt" secondAttribute="centerX" id="Ddb-LX-LCW"/>
+                <constraint firstItem="Eq0-VX-DIg" firstAttribute="centerY" secondItem="cjR-xA-xyt" secondAttribute="centerY" id="Lmy-Pl-DrK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="cjR-xA-xyt"/>
             <point key="canvasLocation" x="65" y="33"/>
