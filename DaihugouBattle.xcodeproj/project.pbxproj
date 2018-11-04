@@ -109,6 +109,7 @@
 		AA5F5F811FBAC4450020E1D0 /* PossessionCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5F5F801FBAC4450020E1D0 /* PossessionCardDetailView.swift */; };
 		AA65BE442058C0260062AFFA /* Extension_CAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65BE432058C0260062AFFA /* Extension_CAAnimation.swift */; };
 		AA671EE61F8522B600355759 /* Battle.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA671EE51F8522B600355759 /* Battle.storyboard */; };
+		AA6D2610218B244D00D660CF /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D260F218B244D00D660CF /* IconView.swift */; };
 		AA6D7B5E1FAC8B0200C4ECDA /* CardSortFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */; };
 		AA6D7B601FAC8F8000C4ECDA /* CardSortFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */; };
 		AA6D96492179DB4B004E4A25 /* BarGraphBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */; };
@@ -354,6 +355,7 @@
 		AA5F5F801FBAC4450020E1D0 /* PossessionCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossessionCardDetailView.swift; sourceTree = "<group>"; };
 		AA65BE432058C0260062AFFA /* Extension_CAAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_CAAnimation.swift; sourceTree = "<group>"; };
 		AA671EE51F8522B600355759 /* Battle.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Battle.storyboard; sourceTree = "<group>"; };
+		AA6D260F218B244D00D660CF /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		AA6D7B5D1FAC8B0200C4ECDA /* CardSortFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSortFilterView.xib; sourceTree = "<group>"; };
 		AA6D7B5F1FAC8F8000C4ECDA /* CardSortFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSortFilterView.swift; sourceTree = "<group>"; };
 		AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarGraphBaseView.xib; sourceTree = "<group>"; };
@@ -835,6 +837,7 @@
 				AAE087F420F59F3400586167 /* TouchDownParticle */,
 				AAE087F220F59BC900586167 /* WeakObject.swift */,
 				AA4BB3D1216AED0200E53BDA /* GifView.swift */,
+				AA6D260F218B244D00D660CF /* IconView.swift */,
 			);
 			path = DaihugouBattle;
 			sourceTree = "<group>";
@@ -1423,6 +1426,7 @@
 				AA0173C71F84959F00D9168A /* LoadingView.swift in Sources */,
 				AAE92B0C20D12F1900B530B9 /* NameView.swift in Sources */,
 				AAFA43541F90898A0067F296 /* GatyaSelectView.swift in Sources */,
+				AA6D2610218B244D00D660CF /* IconView.swift in Sources */,
 				AA3D3DB12099D60900AB4396 /* BattleMultiViewController.swift in Sources */,
 				AA0309B32160AFD10089123A /* SpotCollectionView.swift in Sources */,
 				AA2C5AF420ECED60000B1E8B /* Icon.swift in Sources */,

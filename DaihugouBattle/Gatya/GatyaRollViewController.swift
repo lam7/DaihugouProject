@@ -238,10 +238,11 @@ class GatyaRollViewController: UIViewController{
                 let layer = self.animationCardViews[i].layer
                 CATransaction.setCompletionBlock({
                     [weak self] in
-                    guard let `self` = self else {
+                    guard let `self` = self,
+                        let v = self.animationCardViews[safe: i] else {
                         return
                     }
-                    self.animationCardViews[i].center = layer.presentation()!.position
+                    v.center = layer.presentation()!.position
                     layer.removeAnimation(forKey: "gatyaAnimation")
                     if i == count - 1{
                         completion()

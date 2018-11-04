@@ -1,0 +1,6 @@
+framework module MMPopLabel {
+  umbrella header "MMPopLabel-umbrella.h"
+
+  export *
+  module * { export * }
+}
