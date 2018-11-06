@@ -128,14 +128,11 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             guard let `self` = self else {
                 return
             }
-            SkillList.loadPropertyLocal()
-            CardList.loadPropertyLocal()
-            
-            let v = SelectedDeckInBattleView(frame: CGRect(center: self.view.bounds, width: 300, height: 150))
-            v.deck = CardList.CardDeck.test2
-            print("-------------------")
-            dump(v.layer)
-            self.view.addSubview(v)
+            let tutorial = TutorialView(frame: self.view.bounds)
+            self.view.addSubview(tutorial)
+            tutorial.append(self.menuButton, description: "ボタンを押して")
+            tutorial.descriptionDirection = .left
+            tutorial.start()
 //            SkillList.loadPropertyLocal()
 //            CardList.loadPropertyLocal()
 //            self.performSegue(withIdentifier: "test", sender: self)
@@ -219,7 +216,6 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         errorAlart.addAction(alertAction)
         errorAlart.message = error.localizedDescription
         self.present(errorAlart, animated: true, completion: completion)
-
     }
     
 }

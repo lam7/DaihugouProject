@@ -39,6 +39,7 @@
 		AA128C342166DE5400B78B23 /* BattleSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA128C332166DE5400B78B23 /* BattleSkillView.swift */; };
 		AA17A365201ADE9E000FB55E /* TouchBeganParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */; };
 		AA1D1CD51F92E8D1001FE74B /* GatyaSheetSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */; };
+		AA22B6B2219133F900E89409 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B6B1219133F900E89409 /* TutorialView.swift */; };
 		AA255FE9200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */; };
 		AA2692F9207B92F300631C3D /* Debug_GiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */; };
 		AA2692FB207B930300631C3D /* Debug_GiftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */; };
@@ -286,6 +287,7 @@
 		AA128C332166DE5400B78B23 /* BattleSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSkillView.swift; sourceTree = "<group>"; };
 		AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TouchBeganParticle.sks; sourceTree = "<group>"; };
 		AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaSheetSelectView.xib; sourceTree = "<group>"; };
+		AA22B6B1219133F900E89409 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup+DurationAdjuster.swift"; sourceTree = "<group>"; };
 		AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug_GiftItemView.swift; sourceTree = "<group>"; };
 		AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Debug_GiftItemView.xib; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 				AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */,
 				AACC12E3213F7C04009F8510 /* HUD.swift */,
 				AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */,
+				AA22B6B1219133F900E89409 /* TutorialView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1525,6 +1528,7 @@
 				AAF04A5B1FC11E740019723B /* Extension.swift in Sources */,
 				AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */,
 				AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */,
+				AA22B6B2219133F900E89409 /* TutorialView.swift in Sources */,
 				AA5AB98920ABC4F00084B7FC /* SelectableView.swift in Sources */,
 				AAD9307E20C650FC005488C5 /* GatyaResultRarityView.swift in Sources */,
 				AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */,
