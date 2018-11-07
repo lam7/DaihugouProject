@@ -13,7 +13,7 @@ class TutorialView: UIView{
     weak var maskLayer: CAShapeLayer!{
         didSet{
             maskLayer.fillRule = .evenOdd
-            maskLayer.fillColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.9).cgColor
+            maskLayer.fillColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.6).cgColor
         }
     }
     
@@ -133,7 +133,8 @@ class TutorialView: UIView{
     }
     
     func append(_ target: UIView, parent: UIViewController, description: String){
-        let frame = parent.view.convert(target.frame, from: target)
+        let frame = parent.view.convert(target.frame, from: target.superview)
+        print(frame)
         targetsSpotFrame.append(frame)
         targetsHitFrame.append(frame)
         descriptions.append(description)
@@ -151,10 +152,14 @@ class TutorialView: UIView{
     }
     
     func next(){
-        guard !targetsSpotFrame.isEmpty && !targetsHitFrame.isEmpty else{
+        guard !targetsSpotFrame.isEmpty && !targetsHitFrame.isEmpty && !descriptions.isEmpty else{
+            isHidden = true
             return
         }
         targetsSpotFrame.remove(at: 0)
         targetsHitFrame.remove(at: 0)
+        descriptions.remove(at: 0)
+        fillRectLayer()
+        appearLabel()
     }
 }

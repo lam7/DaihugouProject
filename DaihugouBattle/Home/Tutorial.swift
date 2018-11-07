@@ -12,11 +12,13 @@ import RxSwift
 
 class Tutorial{
     var tutorialView: TutorialView!
+    let disposeBag = DisposeBag()
     
     init(_ viewController: UIViewController){
         let tutorialView = TutorialView(frame: viewController.view.bounds)
         viewController.view.addSubview(tutorialView)
         self.tutorialView = tutorialView
+//        UserDefaults.standard.set(<#T##value: Bool##Bool#>, forKey: <#T##String#>)
     }
 }
 
@@ -31,9 +33,21 @@ class InductionDeckCreateTutorial: Tutorial{
         
         let card = viewController.cardButton
         let deck = (viewController.cardView as! CardSelectView).deckButton
-        tutorialView.append(card!, description: "大プロの世界へようこそ\nまず、デッキを作成しバトルをしてみましょう。")
-        tutorialView.append(deck!, parent: viewController, description: "デッキ編成ボタンを押してみましょう")
+        tutorialView.descriptionDirection = .up
+        tutorialView.append(card!, parent: viewController, description: "大プロの世界へようこそ\nまず、デッキを作成しバトルをしてみましょう。")
+        tutorialView.append(CGRect(x: 310, y: 74.5, width: 120, height: 200), hit: CGRect(x: 310, y: 74.5, width: 120, height: 200), description: "デッキ編成ボタンを押してみましょう")
+        print("222222222222222")
+        dump(card)
+        dump(card?.titleLabel)
+        dump(deck)
         
+        card?.rx.tap.subscribe({ _ in
+            self.tutorialView.next()
+        }).disposed(by: disposeBag)
+        
+        deck?.rx.tap.subscribe{
+            self.tutorialView.next()
+        }.disposed(by: disposeBag)
     }
     
 //    private func startFirst(){

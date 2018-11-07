@@ -45,9 +45,6 @@ import Foundation
 //    private func drawEnemyCards(_ amount: Int = 1){
 //        let cards = (0 ..< amount).map{ _ in CardBattle(card: cardNoData) }
 //        battleField.enemy.drawCards(cards.compactMap{ $0 })
-//        if !cards.filter({ $0 == nil }).isEmpty{
-//            battleField.enemy.attacked(9999)
-//        }
 //    }
 //    
 //    private func putDown(_ cards: [Card], player: Player) -> Error?{

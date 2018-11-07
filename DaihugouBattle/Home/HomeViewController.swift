@@ -62,6 +62,7 @@ class HomeViewController: UIViewController{
         }
         
         let tutorial = InductionDeckCreateTutorial(self)
+        tutorial.tutorialView.start()
     }
     
     override func viewDidLayoutSubviews() {

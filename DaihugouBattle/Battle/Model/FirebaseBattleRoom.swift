@@ -109,6 +109,7 @@ class FirebaseBattleRoom{
         print("チャット開始するルームId\(roomId!)")
     }
     
+    
     private func decodeMessage(_ dictionary: NSDictionary){
         guard let text = (dictionary["text"] as? String) else{ return }
         let texts = text.components(separatedBy: ",")
