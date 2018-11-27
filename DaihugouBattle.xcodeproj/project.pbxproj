@@ -82,7 +82,6 @@
 		AA4BB3CA2166FC8900E53BDA /* SkillDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3C92166FC8900E53BDA /* SkillDescriptionTextView.swift */; };
 		AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */; };
 		AA4BB3CE21670A8C00E53BDA /* BattlePlayerAtkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */; };
-		AA4BB3D0216AECCE00E53BDA /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4BB3CF216AECCD00E53BDA /* SwiftyGif.framework */; };
 		AA4BB3D2216AED0200E53BDA /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3D1216AED0200E53BDA /* GifView.swift */; };
 		AA4BB3DA216AF84500E53BDA /* 勇者たちのララバイ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */; };
 		AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */; };
@@ -497,7 +496,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4BB3D0216AECCE00E53BDA /* SwiftyGif.framework in Frameworks */,
 				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
 				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
 				AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */,
@@ -1253,7 +1251,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyGif.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1359,6 +1356,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/LiquidFloatingActionButton/LiquidFloatingActionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -1373,6 +1371,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LiquidFloatingActionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",

@@ -147,7 +147,7 @@ open class LiquidFloatingActionButton : UIView {
         
         // draw plus shape
         let plusLayer = CAShapeLayer()
-        plusLayer.lineCap = convertToCAShapeLayerLineCap(convertFromCAShapeLayerLineCap(CAShapeLayerLineCap.round))
+        plusLayer.lineCap = CAShapeLayerLineCap.round
         plusLayer.strokeColor = UIColor.white.cgColor
         plusLayer.lineWidth = 3.0
         
@@ -243,7 +243,6 @@ open class LiquidFloatingActionButton : UIView {
                 let cell = cells[i]
                 if target === cell {
                     delegate?.liquidFloatingActionButton?(self, didSelectItemAtIndex: i)
-                    target.tap?(target)
                 }
             }
         }
@@ -259,9 +258,9 @@ class ActionBarBaseView : UIView {
     func translateY(_ layer: CALayer, duration: CFTimeInterval, f: (CABasicAnimation) -> ()) {
         let translate = CABasicAnimation(keyPath: "transform.translation.y")
         f(translate)
-        translate.timingFunction = CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeInEaseOut)))
+        translate.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         translate.isRemovedOnCompletion = false
-        translate.fillMode = convertToCAMediaTimingFillMode(convertFromCAMediaTimingFillMode(CAMediaTimingFillMode.forwards))
+        translate.fillMode = CAMediaTimingFillMode.forwards
         translate.duration = duration
         layer.add(translate, forKey: "transYAnim")
     }
@@ -452,9 +451,8 @@ open class LiquidFloatingCell : LiquittableCircle {
 
     open var responsible = true
     open var imageView = UIImageView()
-    open var tap: ((LiquidFloatingCell) -> ())?
-    
     weak var actionButton: LiquidFloatingActionButton?
+    open var tap: (()->())?
 
     // for implement responsible color
     fileprivate var originalColor: UIColor
@@ -529,36 +527,7 @@ open class LiquidFloatingCell : LiquittableCircle {
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         color = originalColor
         actionButton?.didTappedCell(self)
+        tap?()
     }
 
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToCAShapeLayerLineCap(_ input: String) -> CAShapeLayerLineCap {
-	return CAShapeLayerLineCap(rawValue: input)
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromCAShapeLayerLineCap(_ input: CAShapeLayerLineCap) -> String {
-	return input.rawValue
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToCAMediaTimingFunctionName(_ input: String) -> CAMediaTimingFunctionName {
-	return CAMediaTimingFunctionName(rawValue: input)
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunctionName) -> String {
-	return input.rawValue
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToCAMediaTimingFillMode(_ input: String) -> CAMediaTimingFillMode {
-	return CAMediaTimingFillMode(rawValue: input)
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromCAMediaTimingFillMode(_ input: CAMediaTimingFillMode) -> String {
-	return input.rawValue
 }
