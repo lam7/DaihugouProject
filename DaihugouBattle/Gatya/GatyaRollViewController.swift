@@ -86,9 +86,6 @@ class GatyaRollViewController: UIViewController{
             let cardView = CardView(frame: b)
             self.animationCardViews.append(cardView)
             self.cardsView.addSubview(cardView)
-//            switch gatya.gatyaType.id{
-//                default: break
-//            }
         }
         
     }

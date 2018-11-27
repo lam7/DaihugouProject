@@ -152,7 +152,7 @@ final class ManageAudio{
     
     /// キャッシュからプレイヤーを削除する
     ///
-    /// - Parameter fileNamed: 拡張子を含むファイル名
+    /// - Parameter audioNamed: 拡張子を含むファイル名
     func removeAudio(_ audioNamed: String){
         audiosWithType[audioNamed] = nil
     }
@@ -164,8 +164,8 @@ final class ManageAudio{
     
     /// 指定した音声ファイルが登録されていたならその音声を最初から流す
     ///
-    /// - Parameter fileNamed: 拡張子を含むファイル名
-    func play(_ fileNamed: String){
+    /// - Parameter audioNamed: 拡張子を含むファイル名
+    func play(_ audioNamed: String){
         guard let audio = audios[fileNamed] else{
             return
         }
