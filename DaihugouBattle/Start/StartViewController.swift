@@ -43,7 +43,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         let cache = cellFactory("icon_cacheClear", "キャッシュクリア")
         menuCells.append(cache)
         cache.tap = {
-            [weak self] _ in
+            [weak self] in
             guard let `self` = self else {
                 return
             }
@@ -59,7 +59,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         let notice = cellFactory("icon_notice", "お知らせ")
         menuCells.append(notice)
         notice.tap = {
-            [weak self] _ in
+            [weak self] in
             guard let `self` = self else {
                 return
             }
@@ -69,7 +69,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
 //        let contact = cellFactory("icon_contact", "お問い合わせ")
 //        menuCells.append(contact)
 //        contact.tap = {
-//            [weak self] _ in
+//            [weak self] in
 //            guard let `self` = self else {
 //                return
 //            }
@@ -79,7 +79,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         let test = cellFactory("icon_contact", "バトル")
         menuCells.append(test)
         test.tap = {
-            [weak self] _ in
+            [weak self] in
             guard let `self` = self else {
                 return
             }
@@ -124,7 +124,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         let test2 = cellFactory("icon_contact", "テスト")
         menuCells.append(test2)
         test2.tap = {
-            [weak self] _ in
+            [weak self] in
             guard let `self` = self else {
                 return
             }
@@ -154,7 +154,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         ManageAudio.shared.removeAudio("勇者たちのララバイ.mp3")
     }
     
-    @IBAction func touchUp(_ sender: UIButton){
+    @IBAction func tap(_ sender: Any){
         login()
     }
     

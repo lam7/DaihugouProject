@@ -166,7 +166,7 @@ final class ManageAudio{
     ///
     /// - Parameter audioNamed: 拡張子を含むファイル名
     func play(_ audioNamed: String){
-        guard let audio = audios[fileNamed] else{
+        guard let audio = audios[audioNamed] else{
             return
         }
         audio.currentTime = 0

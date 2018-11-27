@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import SwiftyGif
+import UIKit
+
 
 class GifView: UIView{
     weak var imageView: UIImageView!

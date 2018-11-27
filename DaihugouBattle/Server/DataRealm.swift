@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 import UIKit
-import SwiftyGif
 
 class DataRealm: Object{
     private static var realm: Realm? = try? Realm()
@@ -56,14 +55,6 @@ class DataRealm: Object{
         return UIImage(data: data)
     }
     
-    static func get(gifNamed named: String)-> UIImage?{
-        guard let data = get(dataNamed: named) else{
-            return nil
-        }
-        let image = UIImage(gifData: data)
-        return image
-    }
-    
     static func getBackground(imageNamed: String, completion: @escaping ((_ image: UIImage?) -> ())){
         guard let data = get(dataNamed: imageNamed) else{
             completion(nil)
@@ -92,10 +83,6 @@ class DataRealm: Object{
             all.forEach{
                 realm?.delete($0)
             }
-            //            realm?.invalidate()
-            //            if let url = Realm.Configuration.defaultConfiguration.fileURL {
-            //                try FileManager().removeItem(at: url)
-            //            }
         }
     }
     

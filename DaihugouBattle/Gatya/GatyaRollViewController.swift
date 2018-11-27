@@ -9,9 +9,6 @@
 import Foundation
 import UIKit
 import SpriteKit
-import SwiftyGif
-
-
 
 class GatyaRollViewController: UIViewController{
     @IBOutlet weak var okButton: UIButton!
@@ -68,14 +65,7 @@ class GatyaRollViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageView.image = DataRealm.get(imageNamed: "gatyaStandartBackground.png")
-        particleView.scene.setUpNormalParticle()
-
-        if let packImage = DataRealm.get(gifNamed: "gatya_open1.gif"){
-            packEffectImageView.loopCount = 1
-            
-            packEffectImageView.setGifImage(packImage)
-        }
-        
+        particleView.scene.setUpNormalParticle()        
         createCardView()
     }
     
