@@ -61,8 +61,8 @@ class HomeViewController: UIViewController{
             backgroundLottieView.animationView.loopAnimation = true
         }
         
-        let tutorial = InductionDeckCreateTutorial(self)
-        tutorial.tutorialView.start()
+//        let tutorial = InductionDeckCreateTutorial(self)
+//        tutorial.tutorialView.start()
     }
     
     override func viewDidLayoutSubviews() {
