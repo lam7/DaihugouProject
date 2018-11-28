@@ -23,6 +23,10 @@ class Deck: NSCopying{
         self.name = name
     }
     
+    /// デッキに指定のカードがあるかどうか確認する
+    ///
+    /// - Parameter possessionCards: あるかどうか確認するカード
+    /// - Returns: デッキになかったカード
     final func notExistDeckCards(in possessionCards: CardCount)-> CardCount{
         var possessionCards = possessionCards
         var notExistCards: CardCount = [:]

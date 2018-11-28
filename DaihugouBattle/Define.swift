@@ -18,6 +18,7 @@ class Plist{
     }
 }
 
+/// 自作のエラーはこのクラスにExtensionされる
 class Errors{
     static let ErrorDomain = "com.lam.daipro"
     private(set) static var _code = 0

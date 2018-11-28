@@ -54,7 +54,6 @@
 		AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3667EB20770F480012835E /* HomeSelectView.swift */; };
 		AA3667EE20770F9D0012835E /* HomeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3667ED20770F9D0012835E /* HomeSelectView.xib */; };
 		AA3B9D4A20CEB5F600AD79FC /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3B9D4920CEB5F600AD79FC /* Define.swift */; };
-		AA3B9D4C20CEBB7D00AD79FC /* CardWithView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3B9D4B20CEBB7D00AD79FC /* CardWithView.swift */; };
 		AA3B9D4E20CF73BA00AD79FC /* CardStandartFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3B9D4D20CF73B900AD79FC /* CardStandartFrontView.xib */; };
 		AA3B9D5020CF77CD00AD79FC /* CardStandartBackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3B9D4F20CF77CD00AD79FC /* CardStandartBackView.xib */; };
 		AA3C4E0A1FD67C7B00E1315C /* HpGaugeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3C4E091FD67C7B00E1315C /* HpGaugeView.xib */; };
@@ -82,7 +81,6 @@
 		AA4BB3CA2166FC8900E53BDA /* SkillDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3C92166FC8900E53BDA /* SkillDescriptionTextView.swift */; };
 		AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */; };
 		AA4BB3CE21670A8C00E53BDA /* BattlePlayerAtkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */; };
-		AA4BB3D2216AED0200E53BDA /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4BB3D1216AED0200E53BDA /* GifView.swift */; };
 		AA4BB3DA216AF84500E53BDA /* 勇者たちのララバイ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */; };
 		AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */; };
 		AA524A39207DB67100F4E11B /* PossessionCardDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA524A38207DB67100F4E11B /* PossessionCardDetailView.xib */; };
@@ -134,6 +132,8 @@
 		AA8E770520E4FDDF00D31049 /* PrivateDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */; };
 		AA95767720232B860023402A /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95767620232B860023402A /* SceneView.swift */; };
 		AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA98C90720CAB77F00FC8CE7 /* FrameView.swift */; };
+		AA9DA11521AE2A3B0047E410 /* SelectTrueOrFalseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9DA11421AE2A3A0047E410 /* SelectTrueOrFalseView.swift */; };
+		AA9DA11721AE2B600047E410 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9DA11621AE2B600047E410 /* Card.swift */; };
 		AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */; };
 		AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */; };
 		AAA1F629217C29450072A8DD /* SelectedDeckInBattleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */; };
@@ -149,7 +149,6 @@
 		AAB19B2420AD3BE8004161F5 /* DeckSelectPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */; };
 		AAB19B2620AD3D4D004161F5 /* DeckSelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2520AD3D4D004161F5 /* DeckSelectPageView.swift */; };
 		AAB19B2820AD4118004161F5 /* DeckSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2720AD4118004161F5 /* DeckSelectView.xib */; };
-		AAB19B2A20AEB8CC004161F5 /* CardBothSidesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */; };
 		AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */; };
 		AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */; };
 		AAB4017E2085B4B60077763D /* SpotCardsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */; };
@@ -160,8 +159,6 @@
 		AABF92612080A28100BA0441 /* GatyaParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF92602080A28100BA0441 /* GatyaParticleView.swift */; };
 		AAC80707217EFCD80081B9F1 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC80706217EFCD80081B9F1 /* Tutorial.swift */; };
 		AAC80709217F4DEE0081B9F1 /* MMPopLabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */; };
-		AACC12E1213F67D9009F8510 /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = AACC12DF213F67D9009F8510 /* bokeh.png */; };
-		AACC12E2213F67D9009F8510 /* Test.scnp in Resources */ = {isa = PBXBuildFile; fileRef = AACC12E0213F67D9009F8510 /* Test.scnp */; };
 		AACC12E4213F7C04009F8510 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC12E3213F7C04009F8510 /* HUD.swift */; };
 		AACC12E62142A8B5009F8510 /* CardsSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC12E52142A8B5009F8510 /* CardsSort.swift */; };
 		AACC91CB1F8638D0009883B4 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC91CA1F8638D0009883B4 /* Spot.swift */; };
@@ -173,7 +170,6 @@
 		AAD65B351F88D7E8004A121B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B341F88D7E8004A121B /* StartViewController.swift */; };
 		AAD78AEF2179A1920033A313 /* DeckIndexBarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */; };
 		AAD9307A20C64FE9005488C5 /* GatyaResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD9307920C64FE9005488C5 /* GatyaResultView.xib */; };
-		AAD9307E20C650FC005488C5 /* GatyaResultRarityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */; };
 		AAD9308620C699B9005488C5 /* IndexLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9308520C699B9005488C5 /* IndexLabel.swift */; };
 		AAD9A2DB2074FF4F006C2769 /* SettingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A2DA2074FF4F006C2769 /* SettingSelectView.swift */; };
 		AAD9A2DD2075001B006C2769 /* AudioVolumeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9A2DC2075001B006C2769 /* AudioVolumeSettingView.swift */; };
@@ -186,7 +182,6 @@
 		AADE54551F723FC800DF83BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADE54531F723FC800DF83BF /* LaunchScreen.storyboard */; };
 		AADE54601F723FC900DF83BF /* DaihugouBattleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE545F1F723FC900DF83BF /* DaihugouBattleTests.swift */; };
 		AADE546B1F723FC900DF83BF /* DaihugouBattleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE546A1F723FC900DF83BF /* DaihugouBattleUITests.swift */; };
-		AADE54871F72440F00DF83BF /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54791F72440A00DF83BF /* Card.swift */; };
 		AADE54881F72440F00DF83BF /* CardStrength.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547A1F72440A00DF83BF /* CardStrength.swift */; };
 		AADE548A1F72440F00DF83BF /* Gatya.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547C1F72440B00DF83BF /* Gatya.swift */; };
 		AADE548C1F72440F00DF83BF /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE547E1F72440C00DF83BF /* Skill.swift */; };
@@ -197,7 +192,6 @@
 		AADE54921F72440F00DF83BF /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54841F72440E00DF83BF /* Deck.swift */; };
 		AADE54931F72440F00DF83BF /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54851F72440E00DF83BF /* CPU.swift */; };
 		AADE54991F724D4300DF83BF /* CreateDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54981F724D4300DF83BF /* CreateDeck.swift */; };
-		AAE087F320F59BC900586167 /* WeakObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE087F220F59BC900586167 /* WeakObject.swift */; };
 		AAE087F620F59F5B00586167 /* TDPVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE087F520F59F5B00586167 /* TDPVIewController.swift */; };
 		AAE5B4072157D1F400463F28 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE5B4062157D1F400463F28 /* ImageCache.swift */; };
 		AAE71DE220A28B7C00A591A4 /* Cametery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE71DE120A28B7C00A591A4 /* Cametery.swift */; };
@@ -215,6 +209,7 @@
 		AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46DA420CE32F50046F268 /* BattleAtk.swift */; };
 		AAF479061FD582610074AFC5 /* TDPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF479051FD582610074AFC5 /* TDPView.swift */; };
 		AAF479081FD584750074AFC5 /* TouchParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF479071FD584750074AFC5 /* TouchParticleScene.swift */; };
+		AAF774DC21AECDF300655055 /* GifEffectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF774DB21AECDF300655055 /* GifEffectScene.swift */; };
 		AAF8A22720D72A0F0018F650 /* CardStandartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF8A22620D72A0F0018F650 /* CardStandartCell.xib */; };
 		AAF8A22920D72A600018F650 /* CardStandartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF8A22820D72A600018F650 /* CardStandartCell.swift */; };
 		AAF9657620933867007690B5 /* NumOfEachCardIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF9657520933867007690B5 /* NumOfEachCardIndexView.xib */; };
@@ -225,7 +220,6 @@
 		AAFA43521F9089700067F296 /* BattleSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA43511F9089700067F296 /* BattleSelectView.swift */; };
 		AAFA43541F90898A0067F296 /* GatyaSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFA43531F90898A0067F296 /* GatyaSelectView.swift */; };
 		AAFC181F2077181B002B1C7B /* SelectTrueOrFalseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */; };
-		AAFC18212077197E002B1C7B /* SelectTrueOrFalseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC18202077197E002B1C7B /* SelectTrueOrFalseView.swift */; };
 		AAFC18232077269A002B1C7B /* CacheClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC18222077269A002B1C7B /* CacheClearView.swift */; };
 		AAFC182720776822002B1C7B /* GiftBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC182620776821002B1C7B /* GiftBox.swift */; };
 		EFC62FAA8B4038F544DFACCC /* Pods_DaihugouBattleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */; };
@@ -302,7 +296,6 @@
 		AA3667EB20770F480012835E /* HomeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSelectView.swift; sourceTree = "<group>"; };
 		AA3667ED20770F9D0012835E /* HomeSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSelectView.xib; sourceTree = "<group>"; };
 		AA3B9D4920CEB5F600AD79FC /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
-		AA3B9D4B20CEBB7D00AD79FC /* CardWithView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithView.swift; sourceTree = "<group>"; };
 		AA3B9D4D20CF73B900AD79FC /* CardStandartFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardStandartFrontView.xib; sourceTree = "<group>"; };
 		AA3B9D4F20CF77CD00AD79FC /* CardStandartBackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardStandartBackView.xib; sourceTree = "<group>"; };
 		AA3C4E091FD67C7B00E1315C /* HpGaugeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HpGaugeView.xib; sourceTree = "<group>"; };
@@ -331,7 +324,6 @@
 		AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePlayerAtkView.swift; sourceTree = "<group>"; };
 		AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattlePlayerAtkView.xib; sourceTree = "<group>"; };
 		AA4BB3CF216AECCD00E53BDA /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
-		AA4BB3D1216AED0200E53BDA /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "勇者たちのララバイ.mp3"; sourceTree = "<group>"; };
 		AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossessionCardViewController.swift; sourceTree = "<group>"; };
 		AA524A38207DB67100F4E11B /* PossessionCardDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PossessionCardDetailView.xib; sourceTree = "<group>"; };
@@ -386,6 +378,8 @@
 		AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateDefine.swift; sourceTree = "<group>"; };
 		AA95767620232B860023402A /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		AA98C90720CAB77F00FC8CE7 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		AA9DA11421AE2A3A0047E410 /* SelectTrueOrFalseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrueOrFalseView.swift; sourceTree = "<group>"; };
+		AA9DA11621AE2B600047E410 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesView.swift; sourceTree = "<group>"; };
 		AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInBattleView.xib; sourceTree = "<group>"; };
@@ -401,7 +395,6 @@
 		AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectPageView.xib; sourceTree = "<group>"; };
 		AAB19B2520AD3D4D004161F5 /* DeckSelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectPageView.swift; sourceTree = "<group>"; };
 		AAB19B2720AD4118004161F5 /* DeckSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectView.xib; sourceTree = "<group>"; };
-		AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBothSidesLayer.swift; sourceTree = "<group>"; };
 		AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributesInspector.framework; path = Carthage/Build/iOS/AttributesInspector.framework; sourceTree = "<group>"; };
 		AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
 		AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCardsCollectionView.xib; sourceTree = "<group>"; };
@@ -412,8 +405,6 @@
 		AABF92602080A28100BA0441 /* GatyaParticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaParticleView.swift; sourceTree = "<group>"; };
 		AAC80706217EFCD80081B9F1 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPopLabel+.swift"; sourceTree = "<group>"; };
-		AACC12DF213F67D9009F8510 /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
-		AACC12E0213F67D9009F8510 /* Test.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Test.scnp; sourceTree = "<group>"; };
 		AACC12E3213F7C04009F8510 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		AACC12E52142A8B5009F8510 /* CardsSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsSort.swift; sourceTree = "<group>"; };
 		AACC91CA1F8638D0009883B4 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
@@ -425,7 +416,6 @@
 		AAD65B341F88D7E8004A121B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckIndexBarGraph.swift; sourceTree = "<group>"; };
 		AAD9307920C64FE9005488C5 /* GatyaResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaResultView.xib; sourceTree = "<group>"; };
-		AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaResultRarityView.swift; sourceTree = "<group>"; };
 		AAD9308520C699B9005488C5 /* IndexLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexLabel.swift; sourceTree = "<group>"; };
 		AAD9A2DA2074FF4F006C2769 /* SettingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSelectView.swift; sourceTree = "<group>"; };
 		AAD9A2DC2075001B006C2769 /* AudioVolumeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVolumeSettingView.swift; sourceTree = "<group>"; };
@@ -444,7 +434,6 @@
 		AADE54661F723FC900DF83BF /* DaihugouBattleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaihugouBattleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADE546A1F723FC900DF83BF /* DaihugouBattleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaihugouBattleUITests.swift; sourceTree = "<group>"; };
 		AADE546C1F723FC900DF83BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AADE54791F72440A00DF83BF /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Card.swift; path = DaihugouBattle/Card.swift; sourceTree = SOURCE_ROOT; };
 		AADE547A1F72440A00DF83BF /* CardStrength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStrength.swift; sourceTree = "<group>"; };
 		AADE547C1F72440B00DF83BF /* Gatya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gatya.swift; sourceTree = "<group>"; };
 		AADE547E1F72440C00DF83BF /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
@@ -455,7 +444,6 @@
 		AADE54841F72440E00DF83BF /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		AADE54851F72440E00DF83BF /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		AADE54981F724D4300DF83BF /* CreateDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeck.swift; sourceTree = "<group>"; };
-		AAE087F220F59BC900586167 /* WeakObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakObject.swift; sourceTree = "<group>"; };
 		AAE087F520F59F5B00586167 /* TDPVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPVIewController.swift; sourceTree = "<group>"; };
 		AAE5B4062157D1F400463F28 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		AAE71DE120A28B7C00A591A4 /* Cametery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cametery.swift; sourceTree = "<group>"; };
@@ -474,6 +462,7 @@
 		AAF46DA420CE32F50046F268 /* BattleAtk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleAtk.swift; sourceTree = "<group>"; };
 		AAF479051FD582610074AFC5 /* TDPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPView.swift; sourceTree = "<group>"; };
 		AAF479071FD584750074AFC5 /* TouchParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchParticleScene.swift; sourceTree = "<group>"; };
+		AAF774DB21AECDF300655055 /* GifEffectScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifEffectScene.swift; sourceTree = "<group>"; };
 		AAF8A22620D72A0F0018F650 /* CardStandartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardStandartCell.xib; sourceTree = "<group>"; };
 		AAF8A22820D72A600018F650 /* CardStandartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStandartCell.swift; sourceTree = "<group>"; };
 		AAF9657520933867007690B5 /* NumOfEachCardIndexView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NumOfEachCardIndexView.xib; sourceTree = "<group>"; };
@@ -483,8 +472,7 @@
 		AAFA434F1F9088C00067F296 /* CardSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectView.swift; sourceTree = "<group>"; };
 		AAFA43511F9089700067F296 /* BattleSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleSelectView.swift; sourceTree = "<group>"; };
 		AAFA43531F90898A0067F296 /* GatyaSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaSelectView.swift; sourceTree = "<group>"; };
-		AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SelectTrueOrFalseView.xib; path = Library/SelectTrueOrFalseView.xib; sourceTree = "<group>"; };
-		AAFC18202077197E002B1C7B /* SelectTrueOrFalseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTrueOrFalseView.swift; sourceTree = "<group>"; };
+		AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTrueOrFalseView.xib; sourceTree = "<group>"; };
 		AAFC18222077269A002B1C7B /* CacheClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheClearView.swift; sourceTree = "<group>"; };
 		AAFC182620776821002B1C7B /* GiftBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBox.swift; sourceTree = "<group>"; };
 		B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -552,16 +540,26 @@
 				AA4AA0401FE0E39F0099E71C /* EFCountingLabel.swift */,
 				AA65BE432058C0260062AFFA /* Extension_CAAnimation.swift */,
 				AA12875E207EFF4300194FD7 /* Extension_Random.swift */,
+				AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */,
 				AAF04A5A1FC11E740019723B /* Extension.swift */,
+				AACC12E3213F7C04009F8510 /* HUD.swift */,
+				AA2C5AF320ECED5F000B1E8B /* Icon.swift */,
+				AA6D260F218B244D00D660CF /* IconView.swift */,
+				AA0173C61F84959F00D9168A /* LoadingView.swift */,
+				AA84978E1F947C3F00DD6899 /* LoadingView.xib */,
+				AAB0F4E120725979004D9C93 /* ManageAudio.swift */,
+				AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */,
+				AA472FAC2021C6B500440C59 /* ParticleView.swift */,
 				AA2F20DB1FADC390002F70DA /* RoundCornerButton.swift */,
+				AA95767620232B860023402A /* SceneView.swift */,
+				AA9DA11421AE2A3A0047E410 /* SelectTrueOrFalseView.swift */,
+				AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */,
+				AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */,
+				AA22B6B1219133F900E89409 /* TutorialView.swift */,
 				AA0975DB1F7F8DEC00404F9C /* UICircleLabel.swift */,
 				AA0975DE1F7F8DEF00404F9C /* UIImage+Gif.swift */,
-				AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */,
 				AABF925E208055DB00BA0441 /* UINibView.swift */,
-				AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */,
-				AACC12E3213F7C04009F8510 /* HUD.swift */,
-				AAC80708217F4DEE0081B9F1 /* MMPopLabel+.swift */,
-				AA22B6B1219133F900E89409 /* TutorialView.swift */,
+				AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -586,8 +584,6 @@
 				AA3C4E0D1FD6C9B700E1315C /* IDAProgressView.swift */,
 				AA72056F1FB54A65003E5B88 /* SpotView.swift */,
 				AAD9308520C699B9005488C5 /* IndexLabel.swift */,
-				AACC12DF213F67D9009F8510 /* bokeh.png */,
-				AACC12E0213F67D9009F8510 /* Test.scnp */,
 				AA554191214616F0003A008B /* ControllBattleDeck.swift */,
 				AA0309B22160AFD10089123A /* SpotCollectionView.swift */,
 				AA0309B42160B07C0089123A /* SpotCollectionView.xib */,
@@ -599,6 +595,7 @@
 				AA4BB3CB21670A1400E53BDA /* BattlePlayerAtkView.swift */,
 				AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */,
 				AAA637A021738B5000678992 /* DeckRelated.swift */,
+				AAF774DB21AECDF300655055 /* GifEffectScene.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -773,6 +770,7 @@
 			children = (
 				AAFC18222077269A002B1C7B /* CacheClearView.swift */,
 				AAD65B341F88D7E8004A121B /* StartViewController.swift */,
+				AA472FA82021C4E200440C59 /* StartViewParticle.sks */,
 				AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */,
 			);
 			path = Start;
@@ -803,22 +801,18 @@
 		AADE54431F723FC600DF83BF /* DaihugouBattle */ = {
 			isa = PBXGroup;
 			children = (
+				AACDC0CE215F97EC00C30ADB /* cardInfo.json */,
+				AACDC0D0215F97F600C30ADB /* cardSkill.json */,
 				AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */,
 				AA3D3DB62099F1E600AB4396 /* GoogleService-Info.plist */,
 				AADE54561F723FC800DF83BF /* Info.plist */,
-				AA4BB0261FDFF5320083B437 /* XcodeSetting.txt */,
-				AA472FA82021C4E200440C59 /* StartViewParticle.sks */,
 				AA487E911F821E4600342B49 /* Main.storyboard */,
-				AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */,
 				AADE54441F723FC700DF83BF /* AppDelegate.swift */,
-				AA3209A4209DC9850059D51B /* main.swift */,
-				AA2C5AF320ECED5F000B1E8B /* Icon.swift */,
-				AACDC0CE215F97EC00C30ADB /* cardInfo.json */,
-				AACDC0D0215F97F600C30ADB /* cardSkill.json */,
-				AAB64E1120E9FC87006DC024 /* Start */,
+				AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */,
 				AA3B9D4920CEB5F600AD79FC /* Define.swift */,
+				AA3209A4209DC9850059D51B /* main.swift */,
 				AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */,
-				AAB0F4E120725979004D9C93 /* ManageAudio.swift */,
+				AA4BB0261FDFF5320083B437 /* XcodeSetting.txt */,
 				AADE54511F723FC800DF83BF /* Assets.xcassets */,
 				AA1AC2DC1F80ADC6001BDEB2 /* Battle */,
 				AAFA8829206A29E70003CC14 /* Card */,
@@ -828,17 +822,8 @@
 				AA0975E51F7F8E0000404F9C /* Library */,
 				AAFA882B206A2BC40003CC14 /* Possession */,
 				AA1AC2E01F80AF5F001BDEB2 /* Server */,
-				AA0173C61F84959F00D9168A /* LoadingView.swift */,
-				AA84978E1F947C3F00DD6899 /* LoadingView.xib */,
-				AA95767620232B860023402A /* SceneView.swift */,
-				AAFC18202077197E002B1C7B /* SelectTrueOrFalseView.swift */,
-				AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */,
-				AA472FAC2021C6B500440C59 /* ParticleView.swift */,
-				AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */,
+				AAB64E1120E9FC87006DC024 /* Start */,
 				AAE087F420F59F3400586167 /* TouchDownParticle */,
-				AAE087F220F59BC900586167 /* WeakObject.swift */,
-				AA4BB3D1216AED0200E53BDA /* GifView.swift */,
-				AA6D260F218B244D00D660CF /* IconView.swift */,
 			);
 			path = DaihugouBattle;
 			sourceTree = "<group>";
@@ -876,14 +861,12 @@
 		AAFA8829206A29E70003CC14 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				AA9DA11621AE2B600047E410 /* Card.swift */,
 				AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */,
-				AADE54791F72440A00DF83BF /* Card.swift */,
 				AA487E871F820E6F00342B49 /* CardBattle.swift */,
 				AAEC52162088DD4A001428A4 /* FrameLayer.swift */,
 				AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */,
 				AADE547E1F72440C00DF83BF /* Skill.swift */,
-				AAB19B2920AEB8CC004161F5 /* CardBothSidesLayer.swift */,
-				AA3B9D4B20CEBB7D00AD79FC /* CardWithView.swift */,
 				AA4FDC9020F6313800B092A4 /* View */,
 			);
 			path = Card;
@@ -902,7 +885,6 @@
 				AA03F4FC20B1408B00D1F26E /* Assets.xcassets */,
 				AA4B1EDF20B244AD009969D3 /* GatyaPackParticle1.sks */,
 				AAD9307920C64FE9005488C5 /* GatyaResultView.xib */,
-				AAD9307D20C650FC005488C5 /* GatyaResultRarityView.swift */,
 			);
 			path = Gatya;
 			sourceTree = "<group>";
@@ -1125,7 +1107,6 @@
 				AAB19B2820AD4118004161F5 /* DeckSelectView.xib in Resources */,
 				AAF9657620933867007690B5 /* NumOfEachCardIndexView.xib in Resources */,
 				AA1D1CD51F92E8D1001FE74B /* GatyaSheetSelectView.xib in Resources */,
-				AACC12E2213F67D9009F8510 /* Test.scnp in Resources */,
 				AA4BB0271FDFF5320083B437 /* XcodeSetting.txt in Resources */,
 				AA0742291F8F371A0063585A /* BattleSelectView.xib in Resources */,
 				AA4BB3C82166E2A200E53BDA /* BattleSkillView.xib in Resources */,
@@ -1151,7 +1132,6 @@
 				AADE54551F723FC800DF83BF /* LaunchScreen.storyboard in Resources */,
 				AA3B9D5020CF77CD00AD79FC /* CardStandartBackView.xib in Resources */,
 				AA487E901F82181800342B49 /* BattleScene.sks in Resources */,
-				AACC12E1213F67D9009F8510 /* bokeh.png in Resources */,
 				AAFC181F2077181B002B1C7B /* SelectTrueOrFalseView.xib in Resources */,
 				AA7798AD2079DB62006F85C4 /* GiftBoxView.xib in Resources */,
 				AA524A39207DB67100F4E11B /* PossessionCardDetailView.xib in Resources */,
@@ -1431,6 +1411,7 @@
 				AA6D2610218B244D00D660CF /* IconView.swift in Sources */,
 				AA3D3DB12099D60900AB4396 /* BattleMultiViewController.swift in Sources */,
 				AA0309B32160AFD10089123A /* SpotCollectionView.swift in Sources */,
+				AAF774DC21AECDF300655055 /* GifEffectScene.swift in Sources */,
 				AA2C5AF420ECED60000B1E8B /* Icon.swift in Sources */,
 				AA4AA0411FE0E39F0099E71C /* EFCountingLabel.swift in Sources */,
 				AA7205701FB54A65003E5B88 /* SpotView.swift in Sources */,
@@ -1445,6 +1426,7 @@
 				AA8E770520E4FDDF00D31049 /* PrivateDefine.swift in Sources */,
 				AA2C5AF620ECED90000B1E8B /* HomeButton.swift in Sources */,
 				AA725D23215526500064A3BA /* DataRealm.swift in Sources */,
+				AA9DA11521AE2A3B0047E410 /* SelectTrueOrFalseView.swift in Sources */,
 				AADE548A1F72440F00DF83BF /* Gatya.swift in Sources */,
 				AAEC52172088DD4A001428A4 /* FrameLayer.swift in Sources */,
 				AA128C342166DE5400B78B23 /* BattleSkillView.swift in Sources */,
@@ -1452,15 +1434,11 @@
 				AAA86F6320AA7598002A3E8D /* SkillAbilityList.swift in Sources */,
 				AACC91CB1F8638D0009883B4 /* Spot.swift in Sources */,
 				AA3C4E0C1FD67D1F00E1315C /* HpGaugeView.swift in Sources */,
-				AADE54871F72440F00DF83BF /* Card.swift in Sources */,
-				AA4BB3D2216AED0200E53BDA /* GifView.swift in Sources */,
 				AAB0F4E220725979004D9C93 /* ManageAudio.swift in Sources */,
 				AACCD5A1216E28D50077273A /* InputNameView.swift in Sources */,
 				AA0975E31F7F8DF000404F9C /* UIImage+Gif.swift in Sources */,
 				AA290786208D9A490075DA4B /* CardsFilter.swift in Sources */,
-				AAFC18212077197E002B1C7B /* SelectTrueOrFalseView.swift in Sources */,
 				AA02D86220920EE4005B1B55 /* PlayerNameSettingView.swift in Sources */,
-				AAE087F320F59BC900586167 /* WeakObject.swift in Sources */,
 				AA487E881F820E6F00342B49 /* CardBattle.swift in Sources */,
 				AAD9A2DD2075001B006C2769 /* AudioVolumeSettingView.swift in Sources */,
 				AAF8A22920D72A600018F650 /* CardStandartCell.swift in Sources */,
@@ -1497,9 +1475,9 @@
 				AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */,
 				AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */,
 				AA0975E01F7F8DF000404F9C /* UICircleLabel.swift in Sources */,
+				AA9DA11721AE2B600047E410 /* Card.swift in Sources */,
 				AAD78AEF2179A1920033A313 /* DeckIndexBarGraph.swift in Sources */,
 				AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */,
-				AAB19B2A20AEB8CC004161F5 /* CardBothSidesLayer.swift in Sources */,
 				AADE548C1F72440F00DF83BF /* Skill.swift in Sources */,
 				AA65BE442058C0260062AFFA /* Extension_CAAnimation.swift in Sources */,
 				AA5541D6214E056B003A008B /* BattleDeck.swift in Sources */,
@@ -1517,7 +1495,6 @@
 				AAD9308620C699B9005488C5 /* IndexLabel.swift in Sources */,
 				AA3209A5209DC9850059D51B /* main.swift in Sources */,
 				AA5E78BE1F95B61A0099632B /* GatyaSheetSelectView.swift in Sources */,
-				AA3B9D4C20CEBB7D00AD79FC /* CardWithView.swift in Sources */,
 				AADE54991F724D4300DF83BF /* CreateDeck.swift in Sources */,
 				AA2692F9207B92F300631C3D /* Debug_GiftItemView.swift in Sources */,
 				AA5C14ED1FB0180800D8CC15 /* CreateDeckViewController.swift in Sources */,
@@ -1529,7 +1506,6 @@
 				AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */,
 				AA22B6B2219133F900E89409 /* TutorialView.swift in Sources */,
 				AA5AB98920ABC4F00084B7FC /* SelectableView.swift in Sources */,
-				AAD9307E20C650FC005488C5 /* GatyaResultRarityView.swift in Sources */,
 				AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */,
 				AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */,
 				AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */,

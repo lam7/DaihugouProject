@@ -18,6 +18,7 @@ import UIKit
  106 HandSupportView
  108 HandView
  */
+/// バトルでのプレイヤーのビュー
 class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     /// ハンドにあるカードの位置
     fileprivate lazy var handPoint: [[CGPoint]] = initHandPoint()
@@ -41,6 +42,7 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     /// カードをドローするアニメーションにかかる時間
     var drawAnimationSp: TimeInterval = 0.6
     
+    /// 死んだことを通知する
     var death: (()->())?
     
     /// 子viewからそれぞれの位置を取り出して、そのViewを消す
@@ -99,11 +101,6 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     ///   - player: プレイヤー
     ///   - table: テーブル
     func set(battleMaster: BattleMaster)-> [CardView]{
-//        guard let deck = player.deck.cards as? [CardBattle] else{
-//            print("PlayerView - set(player:)")
-//            print("Deck class is not [CardBattle]")
-//            return
-//        }
         self.battleMaster = battleMaster
         player.delegate = self
         hpGauseView.set(maxHp: player.maxHP)
@@ -118,23 +115,10 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
         cardViews.forEach{
             self.handView.addSubview($0)
         }
-//        self.cardViews = []
-//        deck.reversed().forEach({
-//            let cardView = self.createCardView($0)
-//            self.handView.addSubview(cardView.view)
-//            self.cardViews.insert(cardView, at: 0)
-//        })
         animComp = CAAnimationCompletion(parent: self)
         
         return cardViews
     }
-    
-//    func createCardView(_ card: CardBattle)-> CardView{
-//        let cardView = CardView(frame: deckView.frame)
-//        cardView.card = card
-//        cardView.bothSidesView.flip(0, isFront: false)
-//        return cardView
-//    }
     
     /// -TODO: 複数枚出しでもステータスを表示できるように
     func willPutDown(_ cards: [Card], player: Player){
