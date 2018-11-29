@@ -109,8 +109,9 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
         player.delegate = self
         hpGauseView.set(maxHp: player.maxHP)
         effectView.presentScene(GifEffectScene.self)
-        let data = DataRealm.get(dataNamed: "battle_attack_sword.gif")
-        (effectView.scene as! GifEffectScene).createNode(gif: data!, position: iconImageView.center)
+        let image = DataRealm.get(imageNamed: "battle_attack_sword.png")
+        let images = image!.divImage(9, yNum: 1)
+        (effectView.scene as! GifEffectScene).createNode(gif: images, position: iconImageView.center)
         let count = StandartDeckCardsNum
         cardViews = []
         for _ in (0..<count).reversed(){

@@ -589,6 +589,26 @@ extension UIImage{
     /// 画像分割読み込み
     ///
     /// - Parameters:
+    ///   - xNum: x方向に何分割するか　画像の横幅は画像の横幅÷xNumで決まる
+    ///   - yNum: y方向に何分割するか　画像の縦幅は画像の縦幅÷yNumで決まる
+    /// - Returns: xNum * yNum個の分割されたUIImage
+    func divImage(_ xNum: Int, yNum: Int)-> [UIImage]{
+        let image = self
+        let width = image.size.width / CGFloat(xNum)
+        let height = image.size.height / CGFloat(yNum)
+        var imgs: [UIImage] = []
+        for y in 0..<yNum{
+            for x in 0..<xNum{
+                imgs.append(UIImage.clipImage(image, x: CGFloat(x) * width, y: CGFloat(y) * height, width: width, height: height))
+            }
+        }
+        
+        return imgs
+    }
+    
+    /// 画像分割読み込み
+    ///
+    /// - Parameters:
     ///   - named: 画像名
     ///   - xNum: x方向に何個分割するか
     ///   - yNum: y方向に何個分割するか
