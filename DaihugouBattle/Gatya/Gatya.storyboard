@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xlp-my-rpu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xlp-my-rpu">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -128,6 +128,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jop-Mx-4rV" customClass="SceneView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8B-Ur-J3C">
                                 <rect key="frame" x="473" y="10" width="85" height="48"/>
                                 <state key="normal" title="スキップ">
@@ -169,6 +173,8 @@
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="0gh-Gj-ATc"/>
                             <constraint firstItem="uem-IH-K36" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="71s-qD-oXt"/>
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="8Kl-5F-GtJ"/>
+                            <constraint firstItem="jop-Mx-4rV" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="8xM-si-4Vu"/>
+                            <constraint firstItem="jop-Mx-4rV" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="ADv-xT-UqM"/>
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="height" secondItem="iHI-b9-x2a" secondAttribute="height" multiplier="0.6" id="F39-3O-jQc"/>
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerY" secondItem="iHI-b9-x2a" secondAttribute="centerY" id="G1B-Zl-KYD"/>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="Gck-uC-y1F"/>
@@ -176,6 +182,7 @@
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" multiplier="0.5" id="LJ6-rG-5MN"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="trailing" secondItem="W8B-Ur-J3C" secondAttribute="trailing" constant="10" id="Osb-Sx-KME"/>
                             <constraint firstItem="biD-43-NjD" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="PB4-44-I5u"/>
+                            <constraint firstItem="jop-Mx-4rV" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="Q9X-pe-Mqu"/>
                             <constraint firstItem="W8B-Ur-J3C" firstAttribute="top" secondItem="BfO-2B-2fJ" secondAttribute="top" constant="10" id="QMn-BM-jl9"/>
                             <constraint firstItem="rYc-hF-hFI" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" multiplier="0.15" id="RhJ-jd-zj7"/>
                             <constraint firstItem="uem-IH-K36" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="SQU-Po-Pa9"/>
@@ -199,6 +206,7 @@
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" constant="20" id="pS1-PK-CaL"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="top" secondItem="a86-6P-sVe" secondAttribute="bottom" constant="5" id="tAb-5U-84u"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="leading" secondItem="rYc-hF-hFI" secondAttribute="leading" id="vdm-tT-oFG"/>
+                            <constraint firstItem="jop-Mx-4rV" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="zQ8-2h-pP4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BfO-2B-2fJ"/>
                     </view>
@@ -212,6 +220,7 @@
                         <outlet property="packEffectImageView" destination="biD-43-NjD" id="S4E-zM-Uux"/>
                         <outlet property="packImageView" destination="iHI-b9-x2a" id="Yek-gX-EMw"/>
                         <outlet property="particleView" destination="cnF-pk-ch3" id="6N6-SV-NRp"/>
+                        <outlet property="sceneView" destination="jop-Mx-4rV" id="9lU-J9-Fmz"/>
                         <outlet property="skipButton" destination="W8B-Ur-J3C" id="z9z-th-RhA"/>
                     </connections>
                 </viewController>

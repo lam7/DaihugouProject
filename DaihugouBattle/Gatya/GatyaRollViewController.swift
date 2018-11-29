@@ -21,6 +21,7 @@ class GatyaRollViewController: UIViewController{
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var particleView: GatyaParticleView!
     @IBOutlet weak var packEffectImageView: UIImageView!
+    @IBOutlet weak var sceneView: SceneView!
     
     var gatya: Gatya!
     
@@ -67,6 +68,11 @@ class GatyaRollViewController: UIViewController{
         backgroundImageView.image = DataRealm.get(imageNamed: "gatyaStandartBackground.png")
         particleView.scene.setUpNormalParticle()        
         createCardView()
+        sceneView.presentScene(GifEffectScene.self)
+        if let image = DataRealm.get(imageNamed: "gatya_kourin.png"){
+            let images = image.divImage(2, yNum: 8)
+            (sceneView.scene as! GifEffectScene).createNode(gif: images, position: packImageView.center, scale: 0.5)
+        }
     }
     
     private func createCardView(){
@@ -156,6 +162,7 @@ class GatyaRollViewController: UIViewController{
     private func packAnimation(_ duration: TimeInterval, completion: @escaping () -> ()){
         CATransaction.begin()
         let ecAnimation = packScaleAnimation(duration)
+        (self.sceneView.scene as! GifEffectScene).startGif()
         CATransaction.setCompletionBlock{
             completion()
             CATransaction.begin()
