@@ -22,8 +22,9 @@ class SceneView: UIView{
         }
     }
     
-    func presentScene(_ scene: SKScene){
+    func presentScene(_ scene: SKScene.Type){
         let skView = SKView(frame: bounds)
+        let scene = scene.init(size: frame.size)
         addSubview(skView)
         skView.presentScene(scene)
         self.skView = skView

@@ -27,11 +27,10 @@ class GatyaParticleView: UIView{
     
     func setUp(){
         let sceneView = SceneView(frame: frame)
-        let scene = GatyaParticleScene(size: bounds.size)
-        scene.scaleMode = .aspectFit
-        sceneView.presentScene(scene)
+        sceneView.presentScene(GatyaParticleScene.self)
         addSubview(sceneView)
         self.sceneView = sceneView
-        self.scene = scene
+        scene = sceneView.scene as! GatyaParticleScene
+        scene.scaleMode = .aspectFit
     }
 }

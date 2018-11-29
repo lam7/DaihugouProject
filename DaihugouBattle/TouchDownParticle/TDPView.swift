@@ -38,7 +38,7 @@ class TDPView: UIView{
     private func setUp(){
         self.isUserInteractionEnabled = false
         let sceneView = SceneView(frame: bounds)
-        sceneView.presentScene(TouchDownParticleScene(size: frame.size))
+        sceneView.presentScene(TouchDownParticleScene.self)
         addSubview(sceneView)
         self.sceneView = sceneView
         tdpScene.scaleMode = .aspectFill

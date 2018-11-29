@@ -28,7 +28,7 @@ class ParticleView: UIView{
         let sceneView = SceneView(frame: bounds)
         addSubview(sceneView)
         self.sceneView = sceneView
-        sceneView.presentScene(SKScene(size: frame.size))
+        sceneView.presentScene(SKScene.self)
     }
     
     func presentParticles(_ filesNamed: String...){

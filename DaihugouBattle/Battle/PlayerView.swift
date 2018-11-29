@@ -17,6 +17,8 @@ import UIKit
  102 IconImageView
  106 HandSupportView
  108 HandView
+ 109 atkView
+ 110 effectView
  */
 /// バトルでのプレイヤーのビュー
 class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
@@ -82,6 +84,8 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     /// ハンドを表示するView
     lazy var handView: UIView = self.viewWithTag(108)!
     
+    lazy var effectView: SceneView = self.viewWithTag(110) as! SceneView
+    
     /// 攻撃力を表示するView
     lazy var atkView: BattlePlayerAtkView = self.viewWithTag(109) as! BattlePlayerAtkView
     
@@ -104,6 +108,9 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
         self.battleMaster = battleMaster
         player.delegate = self
         hpGauseView.set(maxHp: player.maxHP)
+        effectView.presentScene(GifEffectScene.self)
+        let data = DataRealm.get(dataNamed: "battle_attack_sword.gif")
+        (effectView.scene as! GifEffectScene).createNode(gif: data!, position: iconImageView.center)
         let count = StandartDeckCardsNum
         cardViews = []
         for _ in (0..<count).reversed(){
@@ -143,6 +150,7 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
     
     func attacked(_ amount: Int, player: Player) {
         if amount == 0{ return }
+        
         asyncBlock.add{[weak self] in
             guard let `self` = self else{
                 return
@@ -158,6 +166,8 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
                 self.damageLabel.alpha = 0
                 self.asyncBlock.next()
             })
+            
+            (self.effectView.scene as! GifEffectScene).startGif()
             print(self.player.name + "に\(amount)のダメージ")
         }
     }
