@@ -79,17 +79,21 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageView.image = DataRealm.get(imageNamed: "BattleBackgroundDoukutu.png")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let bgm = DefineServer.shared.value("battleBGM") as? String ?? "神臨 -しんりん-.mp3"
         ManageAudio.shared.addAudioFromRealm(bgm, audioType: .bgm)
         ManageAudio.shared.play(bgm)
+        
+        ManageAudio.shared.addAudioFromRealm("se_battle_attack.mp3", audioType: .se)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         let bgm = DefineServer.shared.value("battleBGM") as? String ?? "神臨 -しんりん-.mp3"
         ManageAudio.shared.removeAudio(bgm)
+        ManageAudio.shared.removeAudio("se_battle_attack.mp3")
     }
     
     override func viewDidAppear(_ animated: Bool) {

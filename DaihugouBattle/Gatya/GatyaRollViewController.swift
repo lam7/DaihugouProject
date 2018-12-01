@@ -66,6 +66,8 @@ class GatyaRollViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageView.image = DataRealm.get(imageNamed: "gatyaStandartBackground.png")
+        ManageAudio.shared.addAudioFromRealm("se_gatya_iainuki.mp3", audioType: .se)
+        ManageAudio.shared.addAudioFromRealm("se_card_flip.mp3", audioType: .se)
         particleView.scene.setUpNormalParticle()        
         createCardView()
         sceneView.presentScene(GifEffectScene.self)
@@ -92,12 +94,8 @@ class GatyaRollViewController: UIViewController{
         LoadingView.show()
         isPerform = true
         
-        ManageAudio.shared.addAudioFromRealm("CardFlip.wav", audioType: .se)
-        
         packImageView.image = DataRealm.get(imageNamed: "gatyaStandart.png")
-        print("gatyaRoll")
         gatya.roll(){
-            
             cards, error in
             if let error = error{
                 self.present(error, completion: nil)
@@ -122,7 +120,8 @@ class GatyaRollViewController: UIViewController{
         getCards = []
         selectedCard = nil
         animationCardViews = []
-        ManageAudio.shared.removeAudio("CardFlip.wav")
+        ManageAudio.shared.removeAudio("se_gatya_iainuki.mp3")
+        ManageAudio.shared.removeAudio("se_card_flip.mp3")
     }
     
     private func present(_ error: Error, completion: (() -> ())!){
@@ -163,6 +162,7 @@ class GatyaRollViewController: UIViewController{
         CATransaction.begin()
         let ecAnimation = packScaleAnimation(duration)
         (self.sceneView.scene as! GifEffectScene).startGif()
+        ManageAudio.shared.play("se_gatya_iainuki.mp3")
         CATransaction.setCompletionBlock{
             completion()
             CATransaction.begin()
@@ -303,7 +303,7 @@ class GatyaRollViewController: UIViewController{
                 if !card.bothSidesView.isBack {
                     return
                 }
-                ManageAudio.shared.play("CardFlip.wav")
+                ManageAudio.shared.play("se_card_flip.mp3")
                 self.particleView.scene.perform(0.2, card: card.card!, view: card, completion: {})
                 card.bothSidesView.flip(0.3){
                     [weak self] in

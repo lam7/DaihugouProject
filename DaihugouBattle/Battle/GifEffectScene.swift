@@ -36,14 +36,23 @@ class GifEffectScene: SKScene{
         gifNodes.append(node)
     }
     
-    func createNode(gif textures: [UIImage], position: CGPoint){
+    private func createNode(_ textures: [UIImage], position: CGPoint)-> GifEffectNode{
         let node = GifEffectNode(gif: textures)
         let position = CGPoint(x: position.x, y: size.height - position.y)
         node.position = position
         node.color = .clear
-        
         addChild(node)
         gifNodes.append(node)
+        return node
+    }
+    func createNode(gif textures: [UIImage], position: CGPoint, scale: CGFloat = 1.0){
+        let node = createNode(textures, position: position)
+        node.setScale(scale)
+    }
+    
+    func createNode(gif textures: [UIImage], position: CGPoint, size: CGSize){
+        let node = createNode(textures, position: position)
+        node.size = size
     }
     
     func startGif(){

@@ -156,6 +156,7 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
             guard let `self` = self else{
                 return
             }
+            ManageAudio.shared.play("se_battle_attack.mp3")
             //1.2秒間でHpゲージを減少させ、ダメージ量を表示する
             self.hpGauseView.set(hp: player.hp, withDuration: 1.0, completion: nil)
             self.damageLabel.text = amount.description
