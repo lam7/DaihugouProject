@@ -35,6 +35,10 @@ class GatyaRollViewController: UIViewController{
     private let RollCountOnceGatya = 8
     private var isPerform: Bool!
     private var currentStep: AnimationStep!
+    /// アニメーションのスピード
+    ///
+    /// 値が大きいほど早くなる
+    private var animationSpeedRate: TimeInterval = 1.0
     private lazy var listCardFrame: [CGRect] = {
         var frames: [CGRect] = []
         for i in 1...8{
@@ -179,7 +183,7 @@ class GatyaRollViewController: UIViewController{
         packImageView.layer.add(ecAnimation, forKey: "ecAnimation")
         CATransaction.commit()
         
-        packEffectImageView.animationDuration = 0.8
+        packEffectImageView.animationDuration = duration * 0.6
     }
     
     
@@ -203,11 +207,12 @@ class GatyaRollViewController: UIViewController{
     
     private func animation(_ completion: @escaping () -> ()){
         let radius = self.view.frame.size.height / 3
-        let waitDuration   = 0.05
-        let moveUpDuration = 0.5
-        let circleDuration = 1.5
-        let rotateDuration = 0.1
-        packAnimation(1.2){
+        let waitDuration   = 0.05 / animationSpeedRate
+        let moveUpDuration = 0.5 / animationSpeedRate
+        let circleDuration = 1.5 / animationSpeedRate
+        let rotateDuration = 0.1 / animationSpeedRate
+        let packDuration = 1.2 / animationSpeedRate
+        packAnimation(packDuration){
             self.particleView.scene.perform(pack: self.view, completion: {})
             let count = self.animationCardViews.count
             for i in 0 ..< count{
@@ -387,6 +392,10 @@ class GatyaRollViewController: UIViewController{
         }, completion: {_ in
             self.okButton.isHidden = true
         })
+        // 2回目以降は倍速で
+        if animationSpeedRate == 1.0{
+            animationSpeedRate = 2.0
+        }
         self.flowingAnimation(0.8){
             [weak self] in
             guard let `self` = self else {
