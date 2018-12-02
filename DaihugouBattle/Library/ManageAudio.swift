@@ -9,16 +9,18 @@
 import Foundation
 import AVFoundation
 
-final class ManageAudio{
+final class ManageAudio: NSObject, AVAudioPlayerDelegate{
     private var audiosWithType: [String : (AudioType, AVAudioPlayer)] = [:]
     var audios: [String : AVAudioPlayer]{
         return audiosWithType.mapValues{ $0.1 }
     }
     private let BGMVolumeKey = "bgmVolume"
     private let SEVolumeKey = "seVolume"
+    /// ARCで回収されないように一時的に保存しておくオ-ディオ
+    private var tmpAudiosList: [AVAudioPlayer] = []
     static let  shared = ManageAudio()
     
-    private init(){}
+    private override init(){}
     
     /// BGMのボリューム。
     /// 再生中のBGMも音量が更新される。
@@ -169,7 +171,36 @@ final class ManageAudio{
         guard let audio = audios[audioNamed] else{
             return
         }
+        
         audio.currentTime = 0
         audio.play()
+    }
+    
+    /// 指定した音声ファイルが登録されていたならその音声を最初から流す
+    ///
+    /// - playとの違いとして同じ音声を同時に複数再生できる
+    /// - Parameter audioNamed: 拡張子を含むファイル名
+    func playMultiple(_ audioNamed: String){
+        guard let original = audios[audioNamed],
+            let audio = copyAudio(original) else{
+            return
+        }
+        tmpAudiosList.append(audio)
+        audio.delegate = self
+        audio.play()
+    }
+    
+    func copyAudio(_ audio: AVAudioPlayer)-> AVAudioPlayer?{
+        guard let data = audio.data,
+            let new = try? AVAudioPlayer(data: data) else{
+            return nil
+        }
+        new.numberOfLoops = audio.numberOfLoops
+        new.volume = audio.volume
+        return new
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        tmpAudiosList.removeFirst(safe: player)
     }
 }

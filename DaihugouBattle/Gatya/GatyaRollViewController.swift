@@ -303,7 +303,7 @@ class GatyaRollViewController: UIViewController{
                 if !card.bothSidesView.isBack {
                     return
                 }
-                ManageAudio.shared.play("se_card_flip.mp3")
+                ManageAudio.shared.playMultiple("se_card_flip.mp3")
                 self.particleView.scene.perform(0.2, card: card.card!, view: card, completion: {})
                 card.bothSidesView.flip(0.3){
                     [weak self] in
