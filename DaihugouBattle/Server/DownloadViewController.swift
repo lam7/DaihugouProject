@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DownloadViewController: UIViewController{
     @IBOutlet weak var pageControl: UIPageControl!
@@ -17,6 +19,7 @@ class DownloadViewController: UIViewController{
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var characterDetailView: CharacterDetailView!
     private var cards: [Card]!
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,70 +33,60 @@ class DownloadViewController: UIViewController{
             self.characterDetailView.set(card: self.cards[0])
         }
         
-        let download: DownloadData = DownloadData()
-        download.setUpRealm()
-        download.setUpServer({
-            [weak self](setUperror: Error?) in
+        let downloadData = DownloadData()
+        downloadData.lastDownloadedNamed
+            .asDriver()
+            .drive(imagePathLabel.rx.text)
+            .disposed(by: disposeBag)
+        downloadData.countDownloaded
+            .asDriver()
+            .map({ $0.description + "/" + downloadData.countDownloadDatas.description})
+            .drive(progressLabel.rx.text)
+            .disposed(by: disposeBag)
+        downloadData.countDownloaded
+            .asDriver()
+            .map({ $0.f / downloadData.countDownloadDatas.f })
+            .drive(progressView.rx.progress)
+            .disposed(by: disposeBag)
+        
+        downloadData.setUpServer{
+            [weak self] error in
             guard let `self` = self else {
                 return
             }
-            if let error = setUperror{
-                print(error)
-                self.dismiss(animated: true, completion: nil)
+            if let error = error{
+                self.alert(error, actions: self.BackAlertAction)
                 return
             }
+            
             do{
-                try download.erased()
-            }catch let erasedError{
-                print(erasedError)
+                try downloadData.erased()
+            }catch let error{
+                self.alert(error, actions: self.BackAlertAction)
                 return
             }
-            download.download(progress: {
-                [weak self](path: String, progress: Int, downloadError: Error?) in
-                guard let `self` = self else {
+            
+            downloadData.download(error: {
+                error in
+                self.alert(error, actions: self.BackAlertAction)
+            }, completion: {
+                do{
+                    try downloadData.check()
+                }catch let error{
+                    self.alert(error, actions: self.BackAlertAction)
                     return
                 }
-                if let error = downloadError{
-                    print("downloadError " + path + progress.description)
-                    print(error)
-                    self.dismiss(animated: true, completion: nil)
-                }
-                self.imagePathLabel.text = path
-                self.progressLabel.text = progress.description + " / " + download.downloadMax.description
-                self.progressView.setProgress(Float(progress) / download.downloadMax, animated: true)
-                }, completion: { [weak self] in
-                guard let `self` = self else {
-                    return
-                }
-                self.progressLabel.text = "check"
-                download.check()
-                download.download(progress: {
-                    (path: String, progress: Int, downloadError: Error?) in
-                    if let error = downloadError{
-                        print("downloadError " + progress.description)
-                        print(error)
-                    }
-                    self.imagePathLabel.text = path
-                    self.progressLabel.text = progress.description + " / " + download.downloadMax.description
-                    self.progressView.setProgress(Float(progress) / download.downloadMax, animated: true)
-                }, completion: { [weak self] in
-                    guard let `self` = self else {
-                        return
-                    }
-                    let version = ImageVersion.getLatestVersion()
-                    self.imagePathLabel.text = "fin"
-                    print("fin")
-                    print(version)
-                    let userDefault = UserDefaults.standard
-                    userDefault.set(version, forKey: "imageVersion")
-                    userDefault.synchronize()
-                    self.performSegue(withIdentifier: "home", sender: self)
-                })
+                self.updateImageVersion()
+                self.performSegue(withIdentifier: "home", sender: self)
             })
-        })
+        }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    private func updateImageVersion(){
+        let version = ImageVersion.getLatestVersion()
+        let userDefault = UserDefaults.standard
+        userDefault.set(version, forKey: "imageVersion")
+        userDefault.synchronize()
     }
     
     @IBAction func pageControl(_ sender: UIPageControl) {

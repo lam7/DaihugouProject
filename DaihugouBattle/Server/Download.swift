@@ -9,6 +9,7 @@
 import Foundation
 import NCMB
 import UIKit
+import RxSwift
 
 /// 最初の文字と最後の文字を取り除く．
 /// "で閉じられていないなら引数をそのまま返す
@@ -47,14 +48,34 @@ public func addDoubleQuotesFirstAndLast(_ character: String)-> String{
     return new
 }
 
+extension Errors{
+    class DownloadData{
+        static let isNotCorrectDataType: ((String) -> (NSError)) = {
+            description in
+            var reason = "データの形式が正しくありません。\(description)"
+            return NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "ダウンロードエラー",
+                                                                       NSLocalizedFailureReasonErrorKey : reason])
+        }
+        
+        static let notExistObjects: NSError = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "ダウンロードエラー",
+                                                                                             NSLocalizedFailureReasonErrorKey : "オブジェクトが存在しません"])
+        
+        static let notExistFileFromServer: NSError = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "ダウンロードエラー",
+                                                                                             NSLocalizedFailureReasonErrorKey : "ファイルが存在しません"])
+        static let fileDamage: NSError = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "ファイルエラー",
+                                                                                             NSLocalizedFailureReasonErrorKey : "ファイルが破損しています。\nキャッシュを削除しデータをダウンロードしなおして下さい。"])
+    }
+}
+
 class DownloadData{
-    private var dataRealm: [DataRealm] = []
-    private var dataServer: [DataInfo] = []
-    private var dataDownload: [DataInfo] = []
-    private var dataErased: [DataRealm] = []
+    private var erasedDatas: [DataInfo] = []
+    private var downloadDatas: [DataInfo] = []
     
-    var downloadMax: Int{
-        return dataDownload.count
+    var countDownloaded: Variable<Int> = Variable(0)
+    var lastDownloadedNamed: Variable<String> = Variable("")
+    
+    var countDownloadDatas: Int{
+        return downloadDatas.count
     }
     
     private struct DataInfo{
@@ -63,39 +84,32 @@ class DownloadData{
         var isErased: Bool
     }
     
-    func setUpRealm(){
-        dataRealm = DataRealm.loadAll()
-    }
-    
     func setUpServer(_ completion: @escaping (_: Error?) -> ()){
         getDataInfoFromDataBase({
-            fileServer,error  in
+            [weak self] dataInfos,error  in
+            guard let `self` = self else {
+                return
+            }
             if let error = error{
                 completion(error)
                 return
             }
             
-            self.dataServer = fileServer
-            for dataServer in fileServer{
+            for dataInfo in dataInfos{
                 //保存済みで削除命令があるなら
-                let erased = self.dataRealm.filter({
-                    $0.path == dataServer.path && dataServer.isErased
-                })
-                if !erased.isEmpty{
-                    self.dataErased += erased
+                if dataInfo.isErased && DataRealm.isExisted(dataInfo.path){
+                    self.erasedDatas.append(dataInfo)
                     continue
                 }
                 
                 //保存済みと同バージョンなら
-                if !self.dataRealm.filter({
-                    $0.path == dataServer.path && $0.version == dataServer.version
-                }).isEmpty{
+                if DataRealm.isExisted(dataInfo.path, version: dataInfo.version){
                     continue
                 }
                 
                 //上記のいずれの条件にも当てはまらないならデータ情報を配列に追加
                 //この情報はdownload()が呼ばれるときに使われる
-                self.dataDownload.append(dataServer)
+                self.downloadDatas.append(dataInfo)
             }
             completion(nil)
         })
@@ -104,7 +118,6 @@ class DownloadData{
     private func getDataInfoFromDataBase(_ completion: @escaping (_: [DataInfo], _: Error?) -> ()){
         var dataInfos: [DataInfo] = []
         let query = NCMBQuery(className: "imagePath")
-        query?.addDescendingOrder("version")
         query?.limit = 1000
         
         query?.findObjectsInBackground(){
@@ -114,29 +127,26 @@ class DownloadData{
                 return
             }
             guard let objects = objects else{
-                completion([], NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil))
+                completion([], Errors.DownloadData.notExistObjects)
                 return
             }
             print("objects count " + objects.count.description)
             
             for object in objects{
                 guard let obj = object as? NCMBObject else{
-                    fatalError("Download-getDataInfo object Error")
+                    completion([], Errors.DownloadData.notExistObjects)
                     continue
                 }
                 guard let version = obj.object(forKey: "version") as? Int else{
-                    print(obj.object(forKey: "version"))
-                    fatalError("Download-getDataInfo version Error")
+                    completion([], Errors.DownloadData.isNotCorrectDataType("version: \(obj.object(forKey: "version").debugDescription)"))
                     continue
                 }
                 guard let path = obj.object(forKey: "path") as? String else{
-                    print(obj.object(forKey: "path"))
-                    fatalError("Download-getDataInfo path Error")
+                    completion([], Errors.DownloadData.isNotCorrectDataType("version: \(obj.object(forKey: "path").debugDescription)"))
                     continue
                 }
                 guard let isErased = obj.object(forKey: "isErased") as? Bool else{
-                    print(obj.object(forKey: "isErased"))
-                    fatalError("Download-getDataInfo isErased Error")
+                    completion([], Errors.DownloadData.isNotCorrectDataType("version: \(obj.object(forKey: "isErased").debugDescription)"))
                     continue
                 }
                 
@@ -153,46 +163,28 @@ class DownloadData{
     }
     
     
-    private func getDataFromFileServer(_ path: String, completion: @escaping (_ : Data?, _: Error?) -> ()){
-        guard let fileData = NCMBFile.file(withName: path, data: nil) as? NCMBFile else{
-            fatalError("Dismiss path   " + path)
-        }
-    
+    private func getDataFromFileServer(_ path: String, progress: @escaping NCMBProgressBlock, completion: @escaping NCMBDataResultBlock){
+        let fileData = NCMBFile.file(withName: path, data: nil) as! NCMBFile
         
-        fileData.getDataInBackground({
-            data, error in
-            completion(data, error)
-        }, progressBlock: {
-            progress in
-            print(progress)
-        })
-    }
-    
-    func erased() throws{
-        for data in dataErased{
-            try DataRealm.remove(data)
-        }
+        fileData.getDataInBackground(completion, progressBlock: progress)
     }
     
     private func downloadSupport(_ dataInfo: DataInfo, completion: @escaping(_ error: Error?) -> ()){
-        getDataFromFileServer(dataInfo.path){
+        getDataFromFileServer(dataInfo.path, progress: {
+            print(dataInfo.path + ": \($0)")
+        }){
             data, error in
-            
             if let error = error{
                 completion(error)
                 return
             }
             if data == nil{
-                completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil))
+                completion(Errors.DownloadData.notExistFileFromServer)
                 return
             }
-            
-            let realm = DataRealm()
-            realm.path = dataInfo.path
-            realm.version = dataInfo.version
-            realm.data = data
+
             do{
-                try realm.write()
+                try DataRealm.add(dataInfo.path, data: data, version: dataInfo.version)
             }catch let realmError{
                 print("Download-check Can't save new dataInfo")
                 print(realmError)
@@ -203,74 +195,44 @@ class DownloadData{
         }
     }
     
-    func download(_ count: Int = 0, progress: @escaping (_ path: String, _ progress: Int, _ error: Error?) -> (), completion: @escaping () -> ()){
-        if !dataDownload.inRange(count){
+    func download(_ count: Int = 0, error: @escaping (_ error: Error) -> (), completion: @escaping () -> ()){
+        if self.downloadDatas.outOfRange(count){
             completion()
             return
         }
-        
-        downloadSupport(dataDownload[count]){
-            error in
-            progress(self.dataDownload[count].path, count + 1, error)
-            if error != nil{
+        let downloadData = downloadDatas[count]
+        downloadSupport(downloadData, completion: {
+            [weak self] e in
+            if let e = e{
+                error(e)
                 return
             }
-            self.download(count + 1, progress: progress, completion: completion)
+            self?.lastDownloadedNamed.value = downloadData.path
+            self?.countDownloaded.value = count
+            self?.download(count + 1, error: error, completion: completion)
+        })
+    }
+    
+    func erased() throws{
+        for data in erasedDatas{
+            try DataRealm.remove(data.path)
         }
     }
     
-    func downloadAtSameTime(progress: @escaping (_ path: String, _ progress: Int, _ error: Error?) -> (), completion: @escaping () -> ()){
-        for count in 0..<dataDownload.count{
-            downloadSupport(dataDownload[count]){
-                error in
-                progress(self.dataDownload[count].path, count + 1, error)
-                if DataRealm.loadAll().count == self.dataDownload.count{
-                    completion()
-                }
-            }
-        }
-       
-    }
-    
-    func check(){
+    func check() throws{
         print("データのチェックを開始します")
-        dataRealm = DataRealm.loadAll()
-        
-        var cnt = -1
-        while true{
-            cnt += 1
-            if !self.dataRealm.inRange(cnt){
-                break
-            }
-            
-            let dataRealm = self.dataRealm[cnt]
-            if self.dataRealm.filter({
-                $0.path == dataRealm.path
-            }).count >= 2{
-                do{
-                    print("remove data " + dataRealm.path)
-                    try DataRealm.remove(dataRealm)
-                    self.dataRealm.remove(at: cnt)
-                    cnt -= 1
-                }catch{
-                    print(error)
-                    continue
-                }
+        for data in downloadDatas{
+            if !DataRealm.isExisted(data.path, version: data.version){
+                throw Errors.DownloadData.fileDamage
             }
         }
         
-        
-        dataDownload = []
-        
-        for dataServer in dataServer{
-            let dataCnt =  dataRealm.filter({
-                $0.path == dataServer.path
-            }).count
-            if dataCnt == 0{
-                dataDownload.append(dataServer)
-            }else if dataCnt >= 2{
-                print("データが重複しています " + dataServer.path)
+        for data in erasedDatas{
+            if DataRealm.isExisted(data.path){
+                throw Errors.DownloadData.fileDamage
             }
         }
+        print("チェック終了")
     }
+    
 }
