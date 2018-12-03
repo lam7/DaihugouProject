@@ -30,6 +30,26 @@ class DataRealm: Object{
         return datas.map{$0}
     }
     
+    static func isExisted(_ named: String)-> Bool{
+        if realm == nil{
+            realm = try? Realm()
+        }
+        
+        return realm?.object(ofType: DataRealm.self, forPrimaryKey: named) != nil
+    }
+    
+    static func isExisted(_ named: String, version: Int)-> Bool{
+        if realm == nil{
+            realm = try? Realm()
+        }
+        
+        guard let object = realm?.object(ofType: DataRealm.self, forPrimaryKey: named) else{
+            return false
+        }
+        
+        return object.version == version
+    }
+    
     
     static func get(dataNamed named: String)-> Data?{
         if realm == nil{
@@ -72,6 +92,28 @@ class DataRealm: Object{
         try realm?.write {
             realm?.delete(dataRealm)
         }
+    }
+    
+    static func remove(_ path: String) throws{
+        if realm == nil{
+            realm = try Realm()
+        }
+        
+        guard let object = realm?.object(ofType: DataRealm.self, forPrimaryKey: path) else{
+            print("DataRealm: Irregal path.\(path)")
+            return
+        }
+        try realm?.write {
+            realm?.delete(object)
+        }
+    }
+    
+    static func add(_ path: String, data: Data?, version: Int) throws{
+        let dataRealm = DataRealm()
+        dataRealm.path = path
+        dataRealm.data = data
+        dataRealm.version = version
+        try dataRealm.write()
     }
     
     static func removeAll() throws{

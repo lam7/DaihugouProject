@@ -74,7 +74,7 @@ final class RealmImageCache{
         }
         
         loadings[named] = [completion]
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             [weak self] in
             guard let `self` = self else {
                 return
