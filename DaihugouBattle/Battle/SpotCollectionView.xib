@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpotCollectionView" customModule="DaihugouBattle" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="yaU-h1-niZ" id="y74-QG-AYx"/>
+                <outlet property="closeButton" destination="NeR-qh-RwY" id="d1I-VC-zb8"/>
+                <outlet property="collectionView" destination="yaU-h1-niZ" id="o9Q-MQ-pqs"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,17 +22,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yaU-h1-niZ">
-                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                    <rect key="frame" x="0.0" y="37.5" width="667" height="337.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewLayout key="collectionViewLayout" id="xyQ-P6-48e" customClass="UICollectionViewFlexLayout" customModule="UICollectionViewFlexLayout"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H25-Zb-TTE">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeR-qh-RwY">
+                    <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NeR-qh-RwY" secondAttribute="height" multiplier="1:1" id="4A8-7k-vlE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                    <state key="normal" title="×"/>
+                    <connections>
+                        <action selector="touchUpClose:" destination="-1" eventType="touchUpInside" id="AMk-BQ-MQe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="yaU-h1-niZ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="0ls-Np-6n9"/>
-                <constraint firstItem="yaU-h1-niZ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ASu-vt-0Xd"/>
-                <constraint firstItem="yaU-h1-niZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="LDK-G9-puv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yaU-h1-niZ" secondAttribute="bottom" id="B4E-eG-CzT"/>
+                <constraint firstItem="NeR-qh-RwY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HJw-eb-Rjz"/>
+                <constraint firstItem="yaU-h1-niZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.9" id="LDK-G9-puv"/>
                 <constraint firstItem="yaU-h1-niZ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RbX-Dy-tCw"/>
+                <constraint firstItem="NeR-qh-RwY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cyA-yw-FvJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

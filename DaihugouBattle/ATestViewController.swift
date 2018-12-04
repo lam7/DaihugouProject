@@ -26,8 +26,8 @@ class TestViewController: UIViewController{
         spot.putDown(b, isOwner: false)
         spot.putDown(c, isOwner: true)
         spot.putDown(d, isOwner: false)
-        collection.cardsWithIdentifier = spot.cardsWithIdentifer
-        collection.collectionView.reloadData()
+//        collection.cardsWithIdentifier = spot.cardsWithIdentifer
+//        collection.collectionView.reloadData()
     }
 }
 

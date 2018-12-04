@@ -21,8 +21,6 @@
 		AA02D86620930951005B1B55 /* TextFieldWithToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */; };
 		AA0309B32160AFD10089123A /* SpotCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0309B22160AFD10089123A /* SpotCollectionView.swift */; };
 		AA0309B52160B07C0089123A /* SpotCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0309B42160B07C0089123A /* SpotCollectionView.xib */; };
-		AA0309B72160B6BC0089123A /* SpotCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0309B62160B6BC0089123A /* SpotCollectionHeader.swift */; };
-		AA0309B92160B72B0089123A /* SpotCollectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0309B82160B72B0089123A /* SpotCollectionHeader.xib */; };
 		AA03F4F820B1390000D1F26E /* SelectedDeckInCreateDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA03F4F720B1390000D1F26E /* SelectedDeckInCreateDeckView.swift */; };
 		AA03F4FA20B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */; };
 		AA03F4FD20B1408C00D1F26E /* GatyaPackParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */; };
@@ -204,6 +202,8 @@
 		AAF16EDE20C8CBF20007417F /* CardStandartFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF16EDD20C8CBF20007417F /* CardStandartFrontView.swift */; };
 		AAF16EE020C8D2C20007417F /* CardStandartBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF16EDF20C8D2C20007417F /* CardStandartBackView.swift */; };
 		AAF16EE220C8EA7D0007417F /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF16EE120C8EA7D0007417F /* IndexView.swift */; };
+		AAF28CA321B6378F0010B847 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF28CA221B6378F0010B847 /* CollectionHeaderView.swift */; };
+		AAF28CA521B6627E0010B847 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */; };
 		AAF36D751FCA98F1009809F6 /* GatyaParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */; };
 		AAF46D9D20CE31EE0046F268 /* ATestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */; };
 		AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46DA420CE32F50046F268 /* BattleAtk.swift */; };
@@ -262,8 +262,6 @@
 		AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithToolBar.swift; sourceTree = "<group>"; };
 		AA0309B22160AFD10089123A /* SpotCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCollectionView.swift; sourceTree = "<group>"; };
 		AA0309B42160B07C0089123A /* SpotCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCollectionView.xib; sourceTree = "<group>"; };
-		AA0309B62160B6BC0089123A /* SpotCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCollectionHeader.swift; sourceTree = "<group>"; };
-		AA0309B82160B72B0089123A /* SpotCollectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCollectionHeader.xib; sourceTree = "<group>"; };
 		AA03F4F720B1390000D1F26E /* SelectedDeckInCreateDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDeckInCreateDeckView.swift; sourceTree = "<group>"; };
 		AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInCreateDeckView.xib; sourceTree = "<group>"; };
 		AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaPackParticle.sks; sourceTree = "<group>"; };
@@ -457,6 +455,8 @@
 		AAF16EDD20C8CBF20007417F /* CardStandartFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStandartFrontView.swift; sourceTree = "<group>"; };
 		AAF16EDF20C8D2C20007417F /* CardStandartBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStandartBackView.swift; sourceTree = "<group>"; };
 		AAF16EE120C8EA7D0007417F /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
+		AAF28CA221B6378F0010B847 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 		AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaParticleScene.swift; sourceTree = "<group>"; };
 		AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATestViewController.swift; sourceTree = "<group>"; };
 		AAF46DA420CE32F50046F268 /* BattleAtk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleAtk.swift; sourceTree = "<group>"; };
@@ -560,6 +560,8 @@
 				AA0975DE1F7F8DEF00404F9C /* UIImage+Gif.swift */,
 				AABF925E208055DB00BA0441 /* UINibView.swift */,
 				AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */,
+				AAF28CA221B6378F0010B847 /* CollectionHeaderView.swift */,
+				AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -587,8 +589,6 @@
 				AA554191214616F0003A008B /* ControllBattleDeck.swift */,
 				AA0309B22160AFD10089123A /* SpotCollectionView.swift */,
 				AA0309B42160B07C0089123A /* SpotCollectionView.xib */,
-				AA0309B62160B6BC0089123A /* SpotCollectionHeader.swift */,
-				AA0309B82160B72B0089123A /* SpotCollectionHeader.xib */,
 				AA128C332166DE5400B78B23 /* BattleSkillView.swift */,
 				AA4BB3C72166E2A200E53BDA /* BattleSkillView.xib */,
 				AA4BB3C92166FC8900E53BDA /* SkillDescriptionTextView.swift */,
@@ -1100,7 +1100,6 @@
 				AA03F4FA20B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib in Resources */,
 				AA2692FB207B930300631C3D /* Debug_GiftItemView.xib in Resources */,
 				AA671EE61F8522B600355759 /* Battle.storyboard in Resources */,
-				AA0309B92160B72B0089123A /* SpotCollectionHeader.xib in Resources */,
 				AA3B9D4E20CF73BA00AD79FC /* CardStandartFrontView.xib in Resources */,
 				AA0173D11F84C97400D9168A /* GatyaParticle.sks in Resources */,
 				AADE54501F723FC800DF83BF /* Home.storyboard in Resources */,
@@ -1113,6 +1112,7 @@
 				AA3667EE20770F9D0012835E /* HomeSelectView.xib in Resources */,
 				AAA637A52174B5C700678992 /* DeckConfirmationView.xib in Resources */,
 				AAFA434B1F8FA0290067F296 /* GatyaSelectView.xib in Resources */,
+				AAF28CA521B6627E0010B847 /* CollectionHeaderView.xib in Resources */,
 				AACDC0CF215F97EC00C30ADB /* cardInfo.json in Resources */,
 				AA02D86420921215005B1B55 /* PlayerNameSettingView.xib in Resources */,
 				AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */,
@@ -1458,7 +1458,6 @@
 				AA3B9D4A20CEB5F600AD79FC /* Define.swift in Sources */,
 				AA5F5F811FBAC4450020E1D0 /* PossessionCardDetailView.swift in Sources */,
 				AAD9A2DB2074FF4F006C2769 /* SettingSelectView.swift in Sources */,
-				AA0309B72160B6BC0089123A /* SpotCollectionHeader.swift in Sources */,
 				AA12875F207EFF4300194FD7 /* Extension_Random.swift in Sources */,
 				AACC12E4213F7C04009F8510 /* HUD.swift in Sources */,
 				AA6D7B601FAC8F8000C4ECDA /* CardSortFilterView.swift in Sources */,
@@ -1488,6 +1487,7 @@
 				AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */,
 				AA6D9651217A1D2E004E4A25 /* SelectionButton.swift in Sources */,
 				AA0173DF1F85124400D9168A /* BattleViewController.swift in Sources */,
+				AAF28CA321B6378F0010B847 /* CollectionHeaderView.swift in Sources */,
 				AAB19B2220AD3BCB004161F5 /* DeckSelectView.swift in Sources */,
 				AABF92612080A28100BA0441 /* GatyaParticleView.swift in Sources */,
 				AA8497951F948E3A00DD6899 /* CharacterDetailView.swift in Sources */,

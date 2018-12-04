@@ -32,6 +32,8 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     
     lazy var spotButton: UIButton = self.viewWithTag(103) as! UIButton
     
+    var spotCollectionView: SpotCollectionView!
+    
     /// カードを出すアニメーションにかかる時間
     private let putDownDuration: TimeInterval = 0.3
     
@@ -104,6 +106,12 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     
     func didPutDown(_ cards: [Card], isOwner: Bool) {
         asyncBlock.add{
+            [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            
+            self.spotCollectionView.insertData((cards: cards, isOwnerTurn: isOwner))
             let cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
             //カードを出す位置までアニメーションさせる
             let points = self.points(cardViews)
@@ -126,11 +134,17 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     func removeAll(_ cards: [Card]) {
         if cards.isEmpty{ return }
         asyncBlock.add{
+            [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            
             let cardViews = (cards as! [CardBattle]).map{ self.cardView($0) }
             //カードをアニメーションさせ、親Viewから除去する
             for cardView in cardViews{
                 let move = CABasicAnimation.moveX(0.8, by: 50)
                 self.animComp.add(move, completion: {
+                    self.spotCollectionView.deleteAllData()
                     cardView.removeFromSuperview()
                     cardView.layer.removeAllAnimations()
                     
@@ -161,5 +175,6 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     }
     
     @IBAction func touchUpSpot(_ sender: UIButton) {
+        let spotCollectionView = SpotCollectionView(frame: bounds)
     }
 }

@@ -1143,7 +1143,7 @@
                                 <rect key="frame" x="206" y="82" width="155" height="155.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="touchUpSpot:" destination="PqQ-Nn-hFQ" eventType="touchUpInside" id="LJi-eL-OhL"/>
+                                    <action selector="touchUpSpot:" destination="zX1-gl-gDM" eventType="touchUpInside" id="KO1-mg-2sp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvU-Xz-QC8">
@@ -1233,7 +1233,7 @@
                                     <action selector="touchUpPutDown:" destination="zX1-gl-gDM" eventType="touchUpInside" id="Zhn-eI-MsV"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpk-ff-C19" customClass="SpotCardsCollectionView" customModule="DaihugouBattle" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpk-ff-C19" customClass="SpotCollectionView" customModule="DaihugouBattle" customModuleProvider="target">
                                 <rect key="frame" x="57" y="10" width="454" height="220"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -1361,13 +1361,12 @@
                         <outlet property="enemyView" destination="lxn-Vi-r1p" id="Cl2-bc-aer"/>
                         <outlet property="ownerView" destination="Zun-Br-55Y" id="IlF-Lz-rbJ"/>
                         <outlet property="skillView" destination="f7Y-AF-bSJ" id="MG7-3c-eIW"/>
-                        <outlet property="spotCardsCollectionView" destination="Jpk-ff-C19" id="txP-lI-4Yt"/>
+                        <outlet property="spotCollectionView" destination="Jpk-ff-C19" id="nSu-3c-L60"/>
                         <outlet property="spotView" destination="8Dr-uq-2g1" id="8Ur-hb-S5D"/>
                         <outlet property="turnLogoImageView" destination="t9F-Vg-o0u" id="kii-Sj-UYO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pz4-Yc-Fh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="PqQ-Nn-hFQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-105.63380281690141" y="-712.5"/>
         </scene>

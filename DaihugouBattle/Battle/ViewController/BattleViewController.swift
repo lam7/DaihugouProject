@@ -51,7 +51,7 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
     /// - parent: self.view
     @IBOutlet weak var turnLogoImageView: UIImageView!
     
-    @IBOutlet weak var spotCardsCollectionView: SpotCardsCollectionView!
+    @IBOutlet weak var spotCollectionView: SpotCollectionView!
     
     @IBOutlet weak var skillView: BattleSkillView!{
         didSet{
@@ -132,6 +132,7 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         spotView.set(battleMaster: battleMaster)
         spotView.ownerCardViews = ownerCardViews
         spotView.enemyCardViews = enemyCardViews
+        spotView.spotCollectionView = spotCollectionView
         
         battleMaster.battleField.table.delegate = self
     }
@@ -178,6 +179,10 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
 //        battleField.owner.putDown(cards)
 //        ownerView.removeFrame(cards)
 //        battleField.turnEnd()
+    }
+    
+    @IBAction func touchUpSpot(_ sender: Any) {
+        spotCollectionView.isHidden = false
     }
     
     func deathOwner(){

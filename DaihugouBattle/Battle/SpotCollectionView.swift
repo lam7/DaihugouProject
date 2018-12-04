@@ -8,74 +8,65 @@
 
 import Foundation
 import UIKit
-import UICollectionViewFlexLayout
 
-//class UICollectionFlowLayout_Background: UICollectionViewFlowLayout{
-//    static let elementKindSectionBackground = "UICollectionElementKindSectionBackground"
-//    var sectionBackgroundAttributes: [Int: UICollectionViewLayoutAttributes] = [:]
-//
-//    override func
-//}
 class SpotCollectionView: UINibView{
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
+            collectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+            collectionView.register(UINib(nibName: "CollectionHeaderView", bundle: nil).self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
             collectionView.delegate = self
             collectionView.dataSource = self
-//            (collectionView.collectionViewLayout as! UICollectionViewFlexLayout).scrollDirection = .horizontal
-            collectionView.register(UINib(nibName: "SpotCollectionHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
-            collectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
-            collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionBackground, withReuseIdentifier: "sectionBackground")
         }
     }
+    @IBOutlet weak var closeButton: UIButton!
+    private var originalCards: [(cards: [Card], isOwnerTurn: Bool)] = []
+    
+    func reloadData(_ originalCards: [(cards: [Card], isOwnerTurn: Bool)]){
+        self.originalCards = originalCards
+        self.collectionView.reloadData()
+    }
+    
+    func insertData(_ originalCard: (cards: [Card], isOwnerTurn: Bool)){
+        let section = self.originalCards.count
+        self.originalCards.append(originalCard)
+        self.collectionView.insertSections(IndexSet(arrayLiteral: section))
+    }
+    
+    func deleteAllData(){
+        let count = originalCards.count
+        originalCards = []
+        let indexSet = IndexSet((0..<count).map{$0})
+        self.collectionView.deleteSections(indexSet)
+    }
 
-    var cardsWithIdentifier: [([Card], Bool)] = []
+    
+    @IBAction func touchUpClose(_ sender: Any) {
+        self.isHidden = true
+    }
 }
 
-extension SpotCollectionView: UICollectionViewDelegateFlexLayout, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return cardsWithIdentifier[section].0.count
-    }
-
+extension SpotCollectionView: UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return cardsWithIdentifier.count
+        return originalCards.count
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return originalCards[section].cards.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardStandartCell
-        cell.card = cardsWithIdentifier[indexPath.section].0[indexPath.row]
-        cell.countLabel.isHidden = true
+        cell.card = originalCards[indexPath.section].cards[indexPath.row]
         return cell
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewFlexLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let h = collectionView.frame.height
-        let w = h * 3 / 4
-        return CGSize(width: w, height: h)
-    }
-
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind{
-        case UICollectionElementKindSectionBackground:
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionBackground", for: indexPath)
-            view.backgroundColor = cardsWithIdentifier[indexPath.section].1 ? .green : .red
-            return view
-        default:
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! SpotCollectionHeader
-            view.label.text = cardsWithIdentifier[indexPath.section].1 ? "あなた" : "てき"
-            return view
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath) as! CollectionHeaderView
+            let isOwnerTurn = originalCards[indexPath.section].isOwnerTurn
+            header.headerLabel.text = isOwnerTurn ? "あなた" : "敵"
+            return header
         }
+        return UICollectionReusableView()
     }
-
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        print(kind)
-//        switch kind {
-//        case UICollectionElementKindSectionBackground: // section background
-//            dump(indexPath)
-//            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionBackground, withReuseIdentifier: "sectionBackground", for: indexPath)
-//            view.backgroundColor = cardsWithIdentifier[indexPath.section].1 ? .green : .red
-//            return view
-//        default: return UICollectionReusableView()
-//        }
-//    }
 }
