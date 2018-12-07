@@ -68,7 +68,6 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardStandartCell
         let card = cards[indexPath.row]
-        cell.countLabel.isHidden = true
         cell.card = card
         return cell
     }
@@ -87,7 +86,7 @@ class CreateDeckViewController: UIViewController{
     @IBOutlet weak var possessionSearchBar: UISearchBar!
     @IBOutlet weak var possessionCollectionView: UICollectionView!{
         didSet{
-            possessionCollectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+            possessionCollectionView.register(UINib(nibName: "CardSheetsStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
             possessionCollectionView.delegate = self
             possessionCollectionView.dataSource = possessionDataSource
             possessionCollectionView.prefetchDataSource = possessionDataSource
@@ -127,7 +126,7 @@ class CreateDeckViewController: UIViewController{
                 
                 self.possessionDataSource.cardCount = event.element!
                 if let collection = self.possessionCollectionView,
-                    let cells = collection.visibleCells as? [CardStandartCell]{
+                    let cells = collection.visibleCells as? [CardSheetsStandartCell]{
                     for cell in cells{
                         guard let card = cell.card else{ continue }
                         cell.count = self.possessionDataSource.cardCount[card]
@@ -251,8 +250,14 @@ class CreateDeckViewController: UIViewController{
             return nil
         }
         
-        let cell = collectionView.cellForItem(at: indexPath) as! CardStandartCell
-        return cell.card
+        let cell = collectionView.cellForItem(at: indexPath)
+        var card: Card?
+        if let cell = cell as? CardStandartCell{
+            card = cell.card
+        }else{
+            card = (cell as! CardSheetsStandartCell).card
+        }
+        return card
     }
     
     

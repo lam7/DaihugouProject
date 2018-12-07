@@ -34,7 +34,7 @@ class DeckConfirmationView: UINibView, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardStandartCell
         cell.card = deckCards[indexPath.row]
-        cell.countLabel.isHidden = true
+        cell.isHidden = true
         return cell
     }
     

@@ -60,7 +60,7 @@ class PossessionCollectionDataSource: NSObject, RxCollectionViewDataSourceType, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardStandartCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardSheetsStandartCell
         let card = cards[indexPath.row]
         cell.card = card
         if let count = cardCount[card]{
@@ -139,7 +139,7 @@ class PossessionCardViewController: UIViewController{
         
         backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
         
-        collectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        collectionView.register(UINib(nibName: "CardSheetsStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = dataSource
         collectionView.prefetchDataSource = dataSource
@@ -192,129 +192,3 @@ extension PossessionCardViewController: UICollectionViewDelegate, UICollectionVi
         characterDetailView.isHidden = false
     }
 }
-
-//class PossessionCardViewController: TDPViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, CardFilterDelegate{
-//    @IBOutlet weak var collectionView: UICollectionView!
-//    @IBOutlet weak var filterView: CardSortFilterView!
-//    @IBOutlet weak var searchBar: UISearchBar!
-//    @IBOutlet weak var characterDetailView: PossessionCardDetailView!
-////    private var selectedCard: Card?
-////    private var cardsFilter: CardsFilter!
-////
-////
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        collectionView.register(UINib(nibName: "CardStandartCell", bundle: nil), forCellWithReuseIdentifier: "imageCell")
-//
-//        searchBar.rx.text.asDriver().
-////        collectionView.register(UINib(nibName: "CardsCell", bundle: nil), forCellWithReuseIdentifier: "imageCell")
-//    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        cardsFilter = CardsFilter(cards: [])
-//        UserInfo.shared.update{error in
-//            if let error = error{
-//                print(error)
-//            }
-//            self.cardsFilter.originalCards = UserInfo.shared.cardsValue
-//            self.collectionView.reloadData()
-//        }
-//        filterView.delegate = self
-//        characterDetailView.delegate = touchHidden
-//    }
-//
-//    func update(_ indexs: [Int], _ rarities: [CardRarity]){
-//        cardsFilter.filter = (indexs, rarities)
-//        collectionView.reloadData()
-//    }
-//
-//    func update(_ sort: (Card, Card) -> Bool) {
-//        cardsFilter.cards.sort(by: {
-//            sort($0.card, $1.card)
-//        })
-//       collectionView.reloadData()
-//    }
-//
-//
-//    func touchHidden(_ possessionCardDetailView: PossessionCardDetailView){
-//        possessionCardDetailView.isHidden = true
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return cardsFilter.cards.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if !cardsFilter.cards.inRange(indexPath.row){
-//            return
-//        }
-//        let card =  cardsFilter.cards[indexPath.row].card
-//        characterDetailView.isHidden = false
-//        characterDetailView.set(card: card)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CardStandartCell
-//        cell.card = cardsFilter.cards[indexPath.row]
-////        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CardsCell
-////        cell.card = cardsFilter.cards[indexPath.row]
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let height = self.view.frame.height / 3
-//        let width = height * 3 / 4
-//        return CGSize(width: width, height: height)
-//    }
-//
-//
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//
-//    @IBAction func filterTouchUp(_ sender: UIButton) {
-//        filterView.isHidden = false
-//    }
-//
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        guard let text = searchBar.text else{
-//            return
-//        }
-//
-//        cardsFilter.searchText = text
-//        collectionView.reloadData()
-//    }
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        guard let text = searchBar.text else{
-//            return
-//        }
-//        cardsFilter.searchText = text
-//        collectionView.reloadData()
-//    }
-//
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        cardsFilter.searchText = ""
-//        collectionView.reloadData()
-//    }
-//
-//    private func applyFilter(indexs: [Int], rarities: [CardRarity]){
-//        cardsFilter.filter = (indexs, rarities)
-//        collectionView.reloadData()
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    }
-//
-//
-//}

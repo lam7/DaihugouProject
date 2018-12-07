@@ -19,19 +19,7 @@ class CardStandartCell: UICollectionViewCell{
         }
     }
     
-    var count: Int!{
-        didSet{
-            guard oldValue != count else{
-                return
-            }
-            countLabel.text = "× " + count.description
-        }
-    }
-    
     @IBOutlet weak var standartView: CardStandartFrontView!
-    @IBOutlet weak var countLabel: UILabel!{
-        didSet{
-            countLabel.frame.origin.y = -countLabel.frame.height * 0.8
-        }
-    }
 }
+
+

@@ -25,6 +25,9 @@
 		AA03F4FA20B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */; };
 		AA03F4FD20B1408C00D1F26E /* GatyaPackParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */; };
 		AA03F4FE20B1408C00D1F26E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA03F4FC20B1408B00D1F26E /* Assets.xcassets */; };
+		AA065A3B21BA0BA70024E5EF /* CardSheetsStandartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA065A3A21BA0BA70024E5EF /* CardSheetsStandartCell.xib */; };
+		AA065A3D21BA0BC60024E5EF /* CardSheetsStandartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA065A3C21BA0BC60024E5EF /* CardSheetsStandartCell.swift */; };
+		AA065A3F21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA065A3E21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift */; };
 		AA0742291F8F371A0063585A /* BattleSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0742281F8F371A0063585A /* BattleSelectView.xib */; };
 		AA093EBB20AF06940005B0E4 /* SlowAnimations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA093EBA20AF06940005B0E4 /* SlowAnimations.framework */; };
 		AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA093EBC20AF06BF0005B0E4 /* Measurements.framework */; };
@@ -149,8 +152,6 @@
 		AAB19B2820AD4118004161F5 /* DeckSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2720AD4118004161F5 /* DeckSelectView.xib */; };
 		AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */; };
 		AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */; };
-		AAB4017E2085B4B60077763D /* SpotCardsCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */; };
-		AAB401802085B7000077763D /* SpotCardsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB4017F2085B7000077763D /* SpotCardsCollectionView.swift */; };
 		AAB401832085CB160077763D /* CollectionImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB401812085CB160077763D /* CollectionImageViewCell.swift */; };
 		AAB401842085CB160077763D /* CollectionImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB401822085CB160077763D /* CollectionImageViewCell.xib */; };
 		AABF925F208055DB00BA0441 /* UINibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABF925E208055DB00BA0441 /* UINibView.swift */; };
@@ -266,6 +267,9 @@
 		AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInCreateDeckView.xib; sourceTree = "<group>"; };
 		AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaPackParticle.sks; sourceTree = "<group>"; };
 		AA03F4FC20B1408B00D1F26E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA065A3A21BA0BA70024E5EF /* CardSheetsStandartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSheetsStandartCell.xib; sourceTree = "<group>"; };
+		AA065A3C21BA0BC60024E5EF /* CardSheetsStandartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSheetsStandartCell.swift; sourceTree = "<group>"; };
+		AA065A3E21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		AA0742281F8F371A0063585A /* BattleSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleSelectView.xib; sourceTree = "<group>"; };
 		AA093EBA20AF06940005B0E4 /* SlowAnimations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlowAnimations.framework; path = Carthage/Build/iOS/SlowAnimations.framework; sourceTree = "<group>"; };
 		AA093EBC20AF06BF0005B0E4 /* Measurements.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Measurements.framework; path = Carthage/Build/iOS/Measurements.framework; sourceTree = "<group>"; };
@@ -395,8 +399,6 @@
 		AAB19B2720AD4118004161F5 /* DeckSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectView.xib; sourceTree = "<group>"; };
 		AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AttributesInspector.framework; path = Carthage/Build/iOS/AttributesInspector.framework; sourceTree = "<group>"; };
 		AAB19B2C20AEBA05004161F5 /* HyperionCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HyperionCore.framework; path = Carthage/Build/iOS/HyperionCore.framework; sourceTree = "<group>"; };
-		AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotCardsCollectionView.xib; sourceTree = "<group>"; };
-		AAB4017F2085B7000077763D /* SpotCardsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCardsCollectionView.swift; sourceTree = "<group>"; };
 		AAB401812085CB160077763D /* CollectionImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionImageViewCell.swift; sourceTree = "<group>"; };
 		AAB401822085CB160077763D /* CollectionImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionImageViewCell.xib; sourceTree = "<group>"; };
 		AABF925E208055DB00BA0441 /* UINibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibView.swift; sourceTree = "<group>"; };
@@ -581,8 +583,6 @@
 				AA3C4E0B1FD67D1F00E1315C /* HpGaugeView.swift */,
 				AA3C4E091FD67C7B00E1315C /* HpGaugeView.xib */,
 				AAF04A5E1FC29B850019723B /* PlayerView.swift */,
-				AAB4017F2085B7000077763D /* SpotCardsCollectionView.swift */,
-				AAB4017D2085B4B60077763D /* SpotCardsCollectionView.xib */,
 				AA3C4E0D1FD6C9B700E1315C /* IDAProgressView.swift */,
 				AA72056F1FB54A65003E5B88 /* SpotView.swift */,
 				AAD9308520C699B9005488C5 /* IndexLabel.swift */,
@@ -596,6 +596,7 @@
 				AA4BB3CD21670A8C00E53BDA /* BattlePlayerAtkView.xib */,
 				AAA637A021738B5000678992 /* DeckRelated.swift */,
 				AAF774DB21AECDF300655055 /* GifEffectScene.swift */,
+				AA065A3E21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -956,6 +957,8 @@
 				AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */,
 				AAF8A22620D72A0F0018F650 /* CardStandartCell.xib */,
 				AAF8A22820D72A600018F650 /* CardStandartCell.swift */,
+				AA065A3A21BA0BA70024E5EF /* CardSheetsStandartCell.xib */,
+				AA065A3C21BA0BC60024E5EF /* CardSheetsStandartCell.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				AAF28CA521B6627E0010B847 /* CollectionHeaderView.xib in Resources */,
 				AACDC0CF215F97EC00C30ADB /* cardInfo.json in Resources */,
 				AA02D86420921215005B1B55 /* PlayerNameSettingView.xib in Resources */,
+				AA065A3B21BA0BA70024E5EF /* CardSheetsStandartCell.xib in Resources */,
 				AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */,
 				AA84978F1F947C3F00DD6899 /* LoadingView.xib in Resources */,
 				AA10CA1C1F93326E0078850C /* PossessionCard.storyboard in Resources */,
@@ -1146,7 +1150,6 @@
 				AAB19B2420AD3BE8004161F5 /* DeckSelectPageView.xib in Resources */,
 				AA487E921F821E4600342B49 /* Main.storyboard in Resources */,
 				AA5C14EF1FB0184900D8CC15 /* CreateDeck.storyboard in Resources */,
-				AAB4017E2085B4B60077763D /* SpotCardsCollectionView.xib in Resources */,
 				AA472FA92021C4E200440C59 /* StartViewParticle.sks in Resources */,
 				AAA1F629217C29450072A8DD /* SelectedDeckInBattleView.xib in Resources */,
 				AA7798AF2079DC24006F85C4 /* GiftBoxCell.xib in Resources */,
@@ -1210,7 +1213,7 @@
 		};
 		AA4AA03F1FE0E0D50099E71C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -1236,7 +1239,7 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/myfile",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
@@ -1451,10 +1454,12 @@
 				AA89C0B71F7E6FC800218655 /* HomeViewController.swift in Sources */,
 				AABF925F208055DB00BA0441 /* UINibView.swift in Sources */,
 				AAC80707217EFCD80081B9F1 /* Tutorial.swift in Sources */,
+				AA065A3D21BA0BC60024E5EF /* CardSheetsStandartCell.swift in Sources */,
 				AA0975E41F7F8DF000404F9C /* ZFRippleButton.swift in Sources */,
 				AADE54931F72440F00DF83BF /* CPU.swift in Sources */,
 				AAF16EDE20C8CBF20007417F /* CardStandartFrontView.swift in Sources */,
 				AAD9A2E6207645D7006C2769 /* BattleServer.swift in Sources */,
+				AA065A3F21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift in Sources */,
 				AA3B9D4A20CEB5F600AD79FC /* Define.swift in Sources */,
 				AA5F5F811FBAC4450020E1D0 /* PossessionCardDetailView.swift in Sources */,
 				AAD9A2DB2074FF4F006C2769 /* SettingSelectView.swift in Sources */,
@@ -1465,7 +1470,6 @@
 				AA02D86620930951005B1B55 /* TextFieldWithToolBar.swift in Sources */,
 				AA0241D4217D9C6C00FA9EF2 /* FirebaseBattleMaster.swift in Sources */,
 				AAF04A5F1FC29B850019723B /* PlayerView.swift in Sources */,
-				AAB401802085B7000077763D /* SpotCardsCollectionView.swift in Sources */,
 				AACC12E62142A8B5009F8510 /* CardsSort.swift in Sources */,
 				AA4BB3CA2166FC8900E53BDA /* SkillDescriptionTextView.swift in Sources */,
 				AA6E70761F74A64600A401AE /* Download.swift in Sources */,
