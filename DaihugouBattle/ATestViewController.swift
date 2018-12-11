@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+extension NSNotification.Name {
+    static let InjectBundleNotification = NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION")
+}
+
 class TestViewController: UIViewController{
     var table: Table!
     var spot: Spot!

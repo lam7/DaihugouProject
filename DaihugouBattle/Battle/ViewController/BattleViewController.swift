@@ -59,9 +59,7 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
             skillView.frame.origin.y = -skillView.frame.height
         }
     }
-//    var battleField: BattleField!
     var battleMaster: LocalBattleMaster!
-    weak var touchView: UIView?
     static var asyncBlock: ControllAsyncBlock!
     
     var ownerCardViews: [CardView]!
@@ -133,6 +131,7 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         spotView.ownerCardViews = ownerCardViews
         spotView.enemyCardViews = enemyCardViews
         spotView.spotCollectionView = spotCollectionView
+        spotCollectionView.chStatusView = self.characterStatusView
         
         battleMaster.battleField.table.delegate = self
     }

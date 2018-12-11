@@ -1213,7 +1213,7 @@
 		};
 		AA4AA03F1FE0E0D50099E71C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -1239,7 +1239,7 @@
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/myfile",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
