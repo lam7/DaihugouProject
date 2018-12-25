@@ -59,30 +59,20 @@ vvvvvsss</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7b-gr-xTK" customClass="LiquidFloatignActionPlusButton" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="510" y="10" width="48" height="48"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="H7b-gr-xTK" secondAttribute="height" multiplier="1:1" id="Tm3-o8-Gq3"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="2eE-cG-xai" firstAttribute="height" secondItem="Vk2-Ec-3yE" secondAttribute="height" id="0pV-oL-77t"/>
                             <constraint firstItem="ozb-LJ-gF0" firstAttribute="width" secondItem="Vk2-Ec-3yE" secondAttribute="width" id="2zd-il-m03"/>
-                            <constraint firstItem="H7b-gr-xTK" firstAttribute="top" secondItem="UY7-9j-89H" secondAttribute="top" constant="10" id="8kD-Yb-dzo"/>
                             <constraint firstItem="2eE-cG-xai" firstAttribute="centerY" secondItem="UY7-9j-89H" secondAttribute="centerY" id="93t-RP-XGd"/>
                             <constraint firstItem="UY7-9j-89H" firstAttribute="bottom" secondItem="CT6-gO-0Lg" secondAttribute="bottom" constant="50" id="ADA-PB-hyf"/>
                             <constraint firstItem="UY7-9j-89H" firstAttribute="trailing" secondItem="CT6-gO-0Lg" secondAttribute="trailing" constant="20" id="FR9-JU-Sv2"/>
                             <constraint firstItem="ozb-LJ-gF0" firstAttribute="height" secondItem="Vk2-Ec-3yE" secondAttribute="height" id="HAQ-cN-z66"/>
                             <constraint firstItem="isz-0n-Ba9" firstAttribute="height" secondItem="Vk2-Ec-3yE" secondAttribute="height" id="ILD-j4-fPI"/>
                             <constraint firstItem="CT6-gO-0Lg" firstAttribute="leading" secondItem="UY7-9j-89H" secondAttribute="leading" constant="20" id="ZDJ-O3-rMX"/>
-                            <constraint firstItem="UY7-9j-89H" firstAttribute="trailing" secondItem="H7b-gr-xTK" secondAttribute="trailing" constant="10" id="bW7-zK-T4v"/>
                             <constraint firstItem="isz-0n-Ba9" firstAttribute="centerX" secondItem="UY7-9j-89H" secondAttribute="centerX" id="cmN-uF-p3q"/>
                             <constraint firstItem="2eE-cG-xai" firstAttribute="width" secondItem="Vk2-Ec-3yE" secondAttribute="width" id="gaY-Bu-aGh"/>
-                            <constraint firstItem="H7b-gr-xTK" firstAttribute="height" secondItem="Vk2-Ec-3yE" secondAttribute="height" multiplier="0.15" id="hgv-Gs-ocC"/>
                             <constraint firstItem="isz-0n-Ba9" firstAttribute="width" secondItem="Vk2-Ec-3yE" secondAttribute="width" id="kwy-jx-jTC"/>
                             <constraint firstItem="m4c-1L-reJ" firstAttribute="leading" secondItem="UY7-9j-89H" secondAttribute="leading" id="o3D-ar-jyh"/>
                             <constraint firstItem="ozb-LJ-gF0" firstAttribute="centerY" secondItem="UY7-9j-89H" secondAttribute="centerY" id="ody-HX-UrG"/>
@@ -95,7 +85,6 @@ vvvvvsss</string>
                     </view>
                     <connections>
                         <outlet property="applicationLabel" destination="m4c-1L-reJ" id="bfJ-GS-G24"/>
-                        <outlet property="menuButton" destination="H7b-gr-xTK" id="FwY-JP-g9G"/>
                         <outlet property="particleView" destination="2eE-cG-xai" id="iuo-8l-Qak"/>
                         <outlet property="tapLabel" destination="CT6-gO-0Lg" id="NAe-wV-y4G"/>
                         <segue destination="Hn7-pw-5VK" kind="show" identifier="download" id="ubw-o8-Hnd"/>

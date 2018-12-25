@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C8A56AD61AD7424700B4673B"
                BuildableName = "RxSwift.framework"
-               BlueprintName = "RxSwift-iOS"
+               BlueprintName = "RxSwift"
                ReferencedContainer = "container:Rx.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8A56AD61AD7424700B4673B"
             BuildableName = "RxSwift.framework"
-            BlueprintName = "RxSwift-iOS"
+            BlueprintName = "RxSwift"
             ReferencedContainer = "container:Rx.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,7 +67,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8A56AD61AD7424700B4673B"
             BuildableName = "RxSwift.framework"
-            BlueprintName = "RxSwift-iOS"
+            BlueprintName = "RxSwift"
             ReferencedContainer = "container:Rx.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -85,7 +85,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C8A56AD61AD7424700B4673B"
             BuildableName = "RxSwift.framework"
-            BlueprintName = "RxSwift-iOS"
+            BlueprintName = "RxSwift"
             ReferencedContainer = "container:Rx.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

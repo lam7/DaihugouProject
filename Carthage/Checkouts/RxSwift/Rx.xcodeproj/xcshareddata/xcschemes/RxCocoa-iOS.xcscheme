@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C80938F51B8A71760088E94D"
                BuildableName = "RxCocoa.framework"
-               BlueprintName = "RxCocoa-iOS"
+               BlueprintName = "RxCocoa"
                ReferencedContainer = "container:Rx.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C80938F51B8A71760088E94D"
             BuildableName = "RxCocoa.framework"
-            BlueprintName = "RxCocoa-iOS"
+            BlueprintName = "RxCocoa"
             ReferencedContainer = "container:Rx.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C80938F51B8A71760088E94D"
             BuildableName = "RxCocoa.framework"
-            BlueprintName = "RxCocoa-iOS"
+            BlueprintName = "RxCocoa"
             ReferencedContainer = "container:Rx.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

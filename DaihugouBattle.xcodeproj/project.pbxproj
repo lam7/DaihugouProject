@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A748AC5F076B6D953651C58 /* Pods_DaihugouBattleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD58E60B209FBE98E9A14F6C /* Pods_DaihugouBattleTests.framework */; };
-		0F98B9D324614F2604B3621C /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B209296A6312E5FF139017 /* Pods_DaihugouBattle.framework */; };
+		21124AAB83DE66957D35E412 /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3D5D0E98CC556D6E3CF99D /* Pods_DaihugouBattle.framework */; };
 		AA0173C71F84959F00D9168A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0173C61F84959F00D9168A /* LoadingView.swift */; };
 		AA0173D11F84C97400D9168A /* GatyaParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D01F84C82700D9168A /* GatyaParticle.sks */; };
 		AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D91F850E6B00D9168A /* Assets.xcassets */; };
@@ -48,7 +47,6 @@
 		AA2C5AF420ECED60000B1E8B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5AF320ECED5F000B1E8B /* Icon.swift */; };
 		AA2C5AF620ECED90000B1E8B /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2C5AF520ECED90000B1E8B /* HomeButton.swift */; };
 		AA2CD47D20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */; };
-		AA2CD48120AC5A0200DFAC23 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2CD48020AC5A0100DFAC23 /* SnapKit.framework */; };
 		AA2EDE32212D5D52008FED44 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2EDE31212D5D52008FED44 /* CardView.swift */; };
 		AA2F20DC1FADC390002F70DA /* RoundCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F20DB1FADC390002F70DA /* RoundCornerButton.swift */; };
 		AA3209A5209DC9850059D51B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3209A4209DC9850059D51B /* main.swift */; };
@@ -138,7 +136,6 @@
 		AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */; };
 		AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */; };
 		AAA1F629217C29450072A8DD /* SelectedDeckInBattleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */; };
-		AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */; };
 		AAA637A121738B5000678992 /* DeckRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A021738B5000678992 /* DeckRelated.swift */; };
 		AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A22174B43900678992 /* DeckConfirmationView.swift */; };
 		AAA637A52174B5C700678992 /* DeckConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA637A42174B5C700678992 /* DeckConfirmationView.xib */; };
@@ -223,7 +220,8 @@
 		AAFC181F2077181B002B1C7B /* SelectTrueOrFalseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */; };
 		AAFC18232077269A002B1C7B /* CacheClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC18222077269A002B1C7B /* CacheClearView.swift */; };
 		AAFC182720776822002B1C7B /* GiftBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFC182620776821002B1C7B /* GiftBox.swift */; };
-		EFC62FAA8B4038F544DFACCC /* Pods_DaihugouBattleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */; };
+		C4EDF4DF535B7599870285BD /* Pods_DaihugouBattleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD328E6DD5A3595757C1FD9 /* Pods_DaihugouBattleTests.framework */; };
+		F47406BB526FAF5E498BC5D2 /* Pods_DaihugouBattleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A666848724B97AF6C6C8889 /* Pods_DaihugouBattleUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,13 +242,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		11B6307CC19B2BBA10E999FC /* Pods-DaihugouBattleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleTests/Pods-DaihugouBattleTests.release.xcconfig"; sourceTree = "<group>"; };
-		32B209296A6312E5FF139017 /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		40DBE4C48B9DF2B27FB785D7 /* Pods-DaihugouBattleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleUITests/Pods-DaihugouBattleUITests.release.xcconfig"; sourceTree = "<group>"; };
-		5EF36BF8114357DB16E38308 /* Pods-DaihugouBattleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleUITests/Pods-DaihugouBattleUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		9DDF551B3F7B6A3D05A95A76 /* Pods-DaihugouBattleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleTests/Pods-DaihugouBattleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9FD0ED004792413D452ABD74 /* Pods-DaihugouBattle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.release.xcconfig"; sourceTree = "<group>"; };
-		A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F6157F55B3031BB92BC2204 /* Pods-DaihugouBattle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.release.xcconfig"; sourceTree = "<group>"; };
+		2E3D5D0E98CC556D6E3CF99D /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		304FFD505096E05D9D21F703 /* Pods-DaihugouBattle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.debug.xcconfig"; sourceTree = "<group>"; };
+		6A666848724B97AF6C6C8889 /* Pods_DaihugouBattleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E4F2F1F29906ED453D359DE /* Pods-DaihugouBattleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleUITests/Pods-DaihugouBattleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		85089B1E425CB38D4F6DC822 /* Pods-DaihugouBattleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleUITests/Pods-DaihugouBattleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AA0173C61F84959F00D9168A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AA0173D01F84C82700D9168A /* GatyaParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaParticle.sks; sourceTree = "<group>"; };
 		AA0173D91F850E6B00D9168A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -290,8 +287,6 @@
 		AA2C5AF320ECED5F000B1E8B /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		AA2C5AF520ECED90000B1E8B /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 		AA2CD47C20AC52CB00DFAC23 /* Extension_UIViewAnimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIViewAnimate.swift; sourceTree = "<group>"; };
-		AA2CD47E20AC59D500DFAC23 /* SnapKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SnapKit.framework.dSYM; path = Carthage/Build/iOS/SnapKit.framework.dSYM; sourceTree = "<group>"; };
-		AA2CD48020AC5A0100DFAC23 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		AA2EDE31212D5D52008FED44 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AA2F20DB1FADC390002F70DA /* RoundCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornerButton.swift; sourceTree = "<group>"; };
 		AA3209A4209DC9850059D51B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -340,8 +335,6 @@
 		AA5DBAD3209B3C8E0034DFC0 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		AA5DBAD4209B3C8F0034DFC0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AA5DBAD7209B43CA0034DFC0 /* GameAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameAnalytics.framework; sourceTree = "<group>"; };
-		AA5DBADD209BDD300034DFC0 /* ShiftOperations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShiftOperations.framework; path = Carthage/Build/iOS/ShiftOperations.framework; sourceTree = "<group>"; };
-		AA5DBADE209BDD300034DFC0 /* Threadly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Threadly.framework; path = Carthage/Build/iOS/Threadly.framework; sourceTree = "<group>"; };
 		AA5DBADF209BDD310034DFC0 /* UITextField_Navigation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UITextField_Navigation.framework; path = Carthage/Build/iOS/UITextField_Navigation.framework; sourceTree = "<group>"; };
 		AA5DBAE0209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorViewAppExtension.framework; path = Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework; sourceTree = "<group>"; };
 		AA5DBAE1209BDD310034DFC0 /* FLEX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLEX.framework; path = Carthage/Build/iOS/FLEX.framework; sourceTree = "<group>"; };
@@ -385,7 +378,6 @@
 		AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesView.swift; sourceTree = "<group>"; };
 		AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInBattleView.xib; sourceTree = "<group>"; };
-		AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiquidFloating+.swift"; sourceTree = "<group>"; };
 		AAA637A021738B5000678992 /* DeckRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRelated.swift; sourceTree = "<group>"; };
 		AAA637A22174B43900678992 /* DeckConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckConfirmationView.swift; sourceTree = "<group>"; };
 		AAA637A42174B5C700678992 /* DeckConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckConfirmationView.xib; sourceTree = "<group>"; };
@@ -477,8 +469,9 @@
 		AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTrueOrFalseView.xib; sourceTree = "<group>"; };
 		AAFC18222077269A002B1C7B /* CacheClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheClearView.swift; sourceTree = "<group>"; };
 		AAFC182620776821002B1C7B /* GiftBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBox.swift; sourceTree = "<group>"; };
-		B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.debug.xcconfig"; sourceTree = "<group>"; };
-		CD58E60B209FBE98E9A14F6C /* Pods_DaihugouBattleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE9E59599396190896AB8006 /* Pods-DaihugouBattleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleTests/Pods-DaihugouBattleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CAD328E6DD5A3595757C1FD9 /* Pods_DaihugouBattleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA7ED5D45157233F9E19159 /* Pods-DaihugouBattleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattleTests/Pods-DaihugouBattleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,7 +485,6 @@
 				AA093EBB20AF06940005B0E4 /* SlowAnimations.framework in Frameworks */,
 				AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */,
 				AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */,
-				AA2CD48120AC5A0200DFAC23 /* SnapKit.framework in Frameworks */,
 				AA5DBAE5209BDD310034DFC0 /* UITextField_Navigation.framework in Frameworks */,
 				AA5DBAE6209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */,
 				AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */,
@@ -510,7 +502,7 @@
 				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
 				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
 				AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */,
-				0F98B9D324614F2604B3621C /* Pods_DaihugouBattle.framework in Frameworks */,
+				21124AAB83DE66957D35E412 /* Pods_DaihugouBattle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +512,7 @@
 			files = (
 				AA5DBAE9209BDFD00034DFC0 /* RxTest.framework in Frameworks */,
 				AA5DBAEA209BDFD00034DFC0 /* RxBlocking.framework in Frameworks */,
-				0A748AC5F076B6D953651C58 /* Pods_DaihugouBattleTests.framework in Frameworks */,
+				C4EDF4DF535B7599870285BD /* Pods_DaihugouBattleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFC62FAA8B4038F544DFACCC /* Pods_DaihugouBattleUITests.framework in Frameworks */,
+				F47406BB526FAF5E498BC5D2 /* Pods_DaihugouBattleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,24 +736,20 @@
 				AA4AA0381FE0E0C50099E71C /* NCMB.framework */,
 				AA5DBAE2209BDD310034DFC0 /* NVActivityIndicatorView.framework */,
 				AA5DBAE0209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework */,
-				32B209296A6312E5FF139017 /* Pods_DaihugouBattle.framework */,
-				CD58E60B209FBE98E9A14F6C /* Pods_DaihugouBattleTests.framework */,
-				A1B214DC2ABBD15367D0039F /* Pods_DaihugouBattleUITests.framework */,
 				AA4AA0351FE0E0C50099E71C /* Realm.framework */,
 				AA4AA0371FE0E0C50099E71C /* RealmSwift.framework */,
 				AA8ADD1720902D0500AEAFB1 /* RxBlocking.framework */,
 				AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */,
 				AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */,
 				AA8ADD1920902D0500AEAFB1 /* RxTest.framework */,
-				AA5DBADD209BDD300034DFC0 /* ShiftOperations.framework */,
 				AA093EBA20AF06940005B0E4 /* SlowAnimations.framework */,
-				AA2CD48020AC5A0100DFAC23 /* SnapKit.framework */,
-				AA2CD47E20AC59D500DFAC23 /* SnapKit.framework.dSYM */,
 				AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */,
-				AA5DBADE209BDD300034DFC0 /* Threadly.framework */,
 				AA6F043B2090874B00B4B65D /* UIKit.framework */,
 				AA5DBADF209BDD310034DFC0 /* UITextField_Navigation.framework */,
 				AA4AA0341FE0E0C50099E71C /* ZLSwipeableViewSwift.framework */,
+				2E3D5D0E98CC556D6E3CF99D /* Pods_DaihugouBattle.framework */,
+				CAD328E6DD5A3595757C1FD9 /* Pods_DaihugouBattleTests.framework */,
+				6A666848724B97AF6C6C8889 /* Pods_DaihugouBattleUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -772,7 +760,6 @@
 				AAFC18222077269A002B1C7B /* CacheClearView.swift */,
 				AAD65B341F88D7E8004A121B /* StartViewController.swift */,
 				AA472FA82021C4E200440C59 /* StartViewParticle.sks */,
-				AAA5B8F0212BC3330046FBD5 /* LiquidFloating+.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -785,7 +772,7 @@
 				AADE54691F723FC900DF83BF /* DaihugouBattleUITests */,
 				AADE54421F723FC600DF83BF /* Products */,
 				AA7B2FFF1F73DA9E00628FD3 /* Frameworks */,
-				BC0C7D54EB18A3F7320CC1C4 /* Pods */,
+				FD405998D731AD05793E7B60 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -963,15 +950,15 @@
 			path = Card;
 			sourceTree = "<group>";
 		};
-		BC0C7D54EB18A3F7320CC1C4 /* Pods */ = {
+		FD405998D731AD05793E7B60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */,
-				9FD0ED004792413D452ABD74 /* Pods-DaihugouBattle.release.xcconfig */,
-				9DDF551B3F7B6A3D05A95A76 /* Pods-DaihugouBattleTests.debug.xcconfig */,
-				11B6307CC19B2BBA10E999FC /* Pods-DaihugouBattleTests.release.xcconfig */,
-				5EF36BF8114357DB16E38308 /* Pods-DaihugouBattleUITests.debug.xcconfig */,
-				40DBE4C48B9DF2B27FB785D7 /* Pods-DaihugouBattleUITests.release.xcconfig */,
+				304FFD505096E05D9D21F703 /* Pods-DaihugouBattle.debug.xcconfig */,
+				1F6157F55B3031BB92BC2204 /* Pods-DaihugouBattle.release.xcconfig */,
+				AE9E59599396190896AB8006 /* Pods-DaihugouBattleTests.debug.xcconfig */,
+				EDA7ED5D45157233F9E19159 /* Pods-DaihugouBattleTests.release.xcconfig */,
+				7E4F2F1F29906ED453D359DE /* Pods-DaihugouBattleUITests.debug.xcconfig */,
+				85089B1E425CB38D4F6DC822 /* Pods-DaihugouBattleUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -983,16 +970,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADE546F1F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattle" */;
 			buildPhases = (
-				BAC778CAEDE4599F6371C4DB /* [CP] Check Pods Manifest.lock */,
+				36015D9F1B0F5E36B6260C7B /* [CP] Check Pods Manifest.lock */,
 				AADE543D1F723FC600DF83BF /* Sources */,
 				AADE543E1F723FC600DF83BF /* Frameworks */,
 				AADE543F1F723FC600DF83BF /* Resources */,
 				AAB19B2F20AEBA4E004161F5 /* Carthage Debug */,
-				D64819B94825C30412D5CB27 /* [CP] Embed Pods Frameworks */,
 				AA4AA03F1FE0E0D50099E71C /* Carthage */,
 				AA58985D207DC27F00AF2EF1 /* BuildVersion */,
 				AA5DBAD2209B3A260034DFC0 /* Fabric */,
-				38B27F42209C1DFC4F5169FC /* [CP] Copy Pods Resources */,
+				E439DE16EA01853F39BCFAA1 /* [CP] Embed Pods Frameworks */,
+				6683DDC419F2AEA36B2AFE97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1007,7 +994,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADE54721F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattleTests" */;
 			buildPhases = (
-				DFC52F5448081940FFB8DE97 /* [CP] Check Pods Manifest.lock */,
+				B3E3FA80AF3F5854AAB9BDA8 /* [CP] Check Pods Manifest.lock */,
 				AADE54571F723FC900DF83BF /* Sources */,
 				AADE54581F723FC900DF83BF /* Frameworks */,
 				AADE54591F723FC900DF83BF /* Resources */,
@@ -1027,7 +1014,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADE54751F723FC900DF83BF /* Build configuration list for PBXNativeTarget "DaihugouBattleUITests" */;
 			buildPhases = (
-				7A8B6CF9F3A92F0A5C803A51 /* [CP] Check Pods Manifest.lock */,
+				93CC269BE09D9C4DB52BBD6A /* [CP] Check Pods Manifest.lock */,
 				AADE54621F723FC900DF83BF /* Sources */,
 				AADE54631F723FC900DF83BF /* Frameworks */,
 				AADE54641F723FC900DF83BF /* Resources */,
@@ -1175,7 +1162,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		38B27F42209C1DFC4F5169FC /* [CP] Copy Pods Resources */ = {
+		36015D9F1B0F5E36B6260C7B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DaihugouBattle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6683DDC419F2AEA36B2AFE97 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1193,7 +1198,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7A8B6CF9F3A92F0A5C803A51 /* [CP] Check Pods Manifest.lock */ = {
+		93CC269BE09D9C4DB52BBD6A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1213,7 +1218,7 @@
 		};
 		AA4AA03F1FE0E0D50099E71C /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -1231,17 +1236,18 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/UITextField_Navigation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Floaty.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/myfile",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			showEnvVarsInLog = 0;
 		};
 		AA58985D207DC27F00AF2EF1 /* BuildVersion */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1309,65 +1315,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ \"$CONFIGURATION\" == \"Debug\" ]; then\n/usr/local/bin/carthage copy-frameworks\nfi\n";
 		};
-		BAC778CAEDE4599F6371C4DB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DaihugouBattle-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D64819B94825C30412D5CB27 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
-				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/LiquidFloatingActionButton/LiquidFloatingActionButton.framework",
-				"${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatUIKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LiquidFloatingActionButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewFlexLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFC52F5448081940FFB8DE97 /* [CP] Check Pods Manifest.lock */ = {
+		B3E3FA80AF3F5854AAB9BDA8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1383,6 +1331,46 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E439DE16EA01853F39BCFAA1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
+				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewFlexLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1512,7 +1500,6 @@
 				AA5AB98920ABC4F00084B7FC /* SelectableView.swift in Sources */,
 				AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */,
 				AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */,
-				AAA5B8F1212BC3330046FBD5 /* LiquidFloating+.swift in Sources */,
 				AA0241D6217DCC8600FA9EF2 /* FirebaseBattleRoom.swift in Sources */,
 				AAB401832085CB160077763D /* CollectionImageViewCell.swift in Sources */,
 				AA95767720232B860023402A /* SceneView.swift in Sources */,
@@ -1625,7 +1612,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1678,6 +1665,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -1686,7 +1674,7 @@
 		};
 		AADE54701F723FC900DF83BF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3E3B53E9D03000AA76364DA /* Pods-DaihugouBattle.debug.xcconfig */;
+			baseConfigurationReference = 304FFD505096E05D9D21F703 /* Pods-DaihugouBattle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1703,7 +1691,7 @@
 				INFOPLIST_FILE = DaihugouBattle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=80";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lam.DaihugouProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1715,7 +1703,7 @@
 		};
 		AADE54711F723FC900DF83BF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FD0ED004792413D452ABD74 /* Pods-DaihugouBattle.release.xcconfig */;
+			baseConfigurationReference = 1F6157F55B3031BB92BC2204 /* Pods-DaihugouBattle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1731,7 +1719,7 @@
 				INFOPLIST_FILE = DaihugouBattle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lam.DaihugouProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1743,7 +1731,7 @@
 		};
 		AADE54731F723FC900DF83BF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DDF551B3F7B6A3D05A95A76 /* Pods-DaihugouBattleTests.debug.xcconfig */;
+			baseConfigurationReference = AE9E59599396190896AB8006 /* Pods-DaihugouBattleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1765,7 +1753,7 @@
 		};
 		AADE54741F723FC900DF83BF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11B6307CC19B2BBA10E999FC /* Pods-DaihugouBattleTests.release.xcconfig */;
+			baseConfigurationReference = EDA7ED5D45157233F9E19159 /* Pods-DaihugouBattleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1787,7 +1775,7 @@
 		};
 		AADE54761F723FC900DF83BF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EF36BF8114357DB16E38308 /* Pods-DaihugouBattleUITests.debug.xcconfig */;
+			baseConfigurationReference = 7E4F2F1F29906ED453D359DE /* Pods-DaihugouBattleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1804,7 +1792,7 @@
 		};
 		AADE54771F723FC900DF83BF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40DBE4C48B9DF2B27FB785D7 /* Pods-DaihugouBattleUITests.release.xcconfig */;
+			baseConfigurationReference = 85089B1E425CB38D4F6DC822 /* Pods-DaihugouBattleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

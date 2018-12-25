@@ -19,6 +19,9 @@ class TestViewController: UIViewController{
     @IBOutlet weak var collection: SpotCollectionView!
     
     override func viewDidLoad() {
+        let s = BattleServerDecoder()
+        s.setUp()
+        
         table = Table()
         spot = Spot(table: table)
         

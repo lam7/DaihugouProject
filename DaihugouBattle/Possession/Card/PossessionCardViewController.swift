@@ -112,6 +112,7 @@ class SortFilterViewModel{
                 let element = event.element else {
                     return
             }
+            
             let cards = CardsSort.sort(self.cardsVar.value, by: element.0, isAsc: element.1)
             self.cardsVar.value = cards
             self.currentSort = element.0
