@@ -369,7 +369,7 @@ class UserInfo{
         userInfo.objectId = UserLogin.objectIdUserInfo
         let cards = deck.cards.sorted{ $0.id < $1.id }
         let ids = cards.map{ $0.id }
-        let name = deck.name
+        let name = (deck as? DeckRelated)?.name ?? ""
         userDeck.setObject(ids, forKey: "cardsId")
         userDeck.setObject(UserLogin.objectIdUserInfo, forKey: "objectIdUserInfo")
         userDeck.setObject(name, forKey: "name")
@@ -431,8 +431,9 @@ class UserInfo{
                 completion(nil, Errors.Card.notExistCardId(nil))
             }
             let name = userDeck.object(forKey: "name") as! String
-            let deck = DeckRelated(cards: cards.compactMap({ $0 }), name: name)
+            let deck = DeckRelated(cards: cards.compactMap({ $0 }))
             deck.objectId = objectId
+            deck.name = name
             completion(deck, nil)
         }
     }
@@ -476,8 +477,9 @@ class UserInfo{
                     }
 
                     let name = obj.object(forKey: "name") as! String
-                    let deck = DeckRelated(cards: cards.compactMap({ $0 }), name: name)
+                    let deck = DeckRelated(cards: cards.compactMap({ $0 }))
                     deck.objectId = obj.objectId
+                    deck.name = name
                     decks.append(deck)
                 }
                 completion(decks, nil)

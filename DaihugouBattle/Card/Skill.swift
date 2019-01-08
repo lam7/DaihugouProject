@@ -131,7 +131,7 @@ class SkillList{
             skillInfos[id] = info
         }
     }
-    public static func loadProperty(completion: @escaping (_: Error?) -> ()){
+    public static func loadProperty(completion: @escaping ErrorBlock){
         if !skillInfos.isEmpty{
             print("SkillList-LoadProperty Called more than second times.")
         }

@@ -17,7 +17,7 @@ class SelectedDeckInBattleView: UINibView{
     
     var deck: Deck!{
         didSet{
-            deckNameLabel.text = deck.name
+            deckNameLabel.text = (deck as? DeckRelated)?.name
         }
     }
     

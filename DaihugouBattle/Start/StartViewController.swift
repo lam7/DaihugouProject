@@ -100,8 +100,8 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
                             //                CardList.get(id: 33),CardList.get(id: 34),CardList.get(id: 35),CardList.get(id: 36),
                             //                CardList.get(id: 37),CardList.get(id: 38),CardList.get(id: 39),CardList.get(id: 40),
                             ].compactMap({ $0 })
-                        let ownerDeck = Deck(cards: cards, name: "オーナー")
-                        let enemtDeck = Deck(cards: cards, name: "敵")
+                        let ownerDeck = Deck(cards: cards)
+                        let enemtDeck = Deck(cards: cards)
                         controller._enemyDeck = enemtDeck
                         controller._ownerDeck = ownerDeck
                         self.present(controller, animated: true, completion: nil)

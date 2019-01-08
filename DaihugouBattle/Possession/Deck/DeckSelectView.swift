@@ -85,8 +85,9 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     func settingDeckButton(_ button: UIButton, deck: Deck){
         button.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
         button.tintColor = .flatWhite()
-        button.setTitle(deck.name, for: UIControl.State.normal)
-        button.titleLabel?.text = deck.name
+        let deckName = (deck as? DeckRelated)?.name
+        button.setTitle(deckName, for: UIControl.State.normal)
+        button.titleLabel?.text = deckName
     }
     
     func settingDeckLastButton(_ button: UIButton){

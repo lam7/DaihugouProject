@@ -376,6 +376,10 @@ extension CGRect{
     init(center frame: CGRect, width: CGFloat, height: CGFloat){
         self.init(x: frame.midX - width / 2, y: frame.midY - height / 2, width: width, height: height)
     }
+    
+    init(center: CGPoint, width: CGFloat, height: CGFloat){
+        self.init(x: center.x - width / 2, y: center.y - height / 2, width: width, height: height)
+    }
 }
 
 extension Array{

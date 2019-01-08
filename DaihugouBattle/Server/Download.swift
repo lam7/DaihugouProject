@@ -84,7 +84,7 @@ class DownloadData{
         var isErased: Bool
     }
     
-    func setUpServer(_ completion: @escaping (_: Error?) -> ()){
+    func setUpServer(_ completion: @escaping ErrorBlock){
         getDataInfoFromDataBase({
             [weak self] dataInfos,error  in
             guard let `self` = self else {

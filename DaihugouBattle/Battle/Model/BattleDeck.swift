@@ -12,11 +12,9 @@ class DeckBattle{
     private var deck: Deck
     private var cards: [Card]
     private var originalCards: [Card]{ return deck.cards }
-    var name: String{ return deck.name }
     
     init(deck: Deck){
         let cards = deck.cards.map({ CardBattle(card: $0) })
-        self.deck = Deck(cards: cards, name: deck.name)
         self.cards = cards
         self.deck = deck
     }

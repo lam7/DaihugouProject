@@ -229,7 +229,7 @@ class CardList{
     
     /// カードの初期化
     /// -　起動毎に通信しカード情報を得る
-    public static func loadProperty(completion: @escaping (_: Error?) -> ()){
+    public static func loadProperty(completion: @escaping ErrorBlock){
         //サーバーからカード情報を取得
         //maxは1000なので，これを超えたらサーバー側にクラスを追加
         SkillList.loadProperty{
@@ -351,7 +351,7 @@ class CardList{
                  CardBattle(card: CardList.get(9)!),CardBattle(card: CardList.get(9)!),CardBattle(card: CardList.get(11)!),
                  CardBattle(card: CardList.get(12)!),CardBattle(card: CardList.get(14)!),CardBattle(card: CardList.get(14)!),
                  CardBattle(card: CardList.get(15)!),CardBattle(card: CardList.get(12)!),CardBattle(card: CardList.get(17)!),
-                 CardBattle(card: CardList.get(18)!),CardBattle(card: CardList.get(18)!)], name: "テスト")
+                 CardBattle(card: CardList.get(18)!),CardBattle(card: CardList.get(18)!)])
         }
         public static var test2: Deck{
             return Deck(cards:
@@ -361,7 +361,7 @@ class CardList{
                  CardBattle(card: CardList.get(29)!),CardBattle(card: CardList.get(30)!),CardBattle(card: CardList.get(31)!),
                  CardBattle(card: CardList.get(32)!),CardBattle(card: CardList.get(33)!),CardBattle(card: CardList.get(34)!),
                  CardBattle(card: CardList.get(35)!),CardBattle(card: CardList.get(36)!),CardBattle(card: CardList.get(37)!),
-                 CardBattle(card: CardList.get(38)!),CardBattle(card: CardList.get(39)!)], name: "テスト２")
+                 CardBattle(card: CardList.get(38)!),CardBattle(card: CardList.get(39)!)])
         }
     }
 }

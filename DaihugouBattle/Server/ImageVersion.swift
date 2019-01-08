@@ -14,7 +14,7 @@ final class DefineServer{
     public static var shared: DefineServer = DefineServer()
     private init(){}
     
-    func loadProperty(_ completion: @escaping (_: Error?)-> ()){
+    func loadProperty(_ completion: @escaping ErrorBlock){
         infos = [:]
         let query = NCMBQuery(className: "define")
         query?.limit = 1000

@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import SVProgressHUD
 
 class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,6 +36,8 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
         }
     }
     
+    let disposeBag = DisposeBag()
+    
     override func didMoveToSuperview() {
         behindView = setUpBehindView()
     }
@@ -45,7 +49,32 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
     }
     
     @IBAction func touchUpRename(_ sender: UIButton){
-        
+        let inputNameView = InputNameView(frame: CGRect(center: UIScreen.main.bounds, width: 300, height: 100))
+        HUD.shared.show(.closableDark)
+        HUD.shared.container.addSubview(inputNameView)
+        inputNameView.okButton.rx.tap.subscribe{
+            [weak self] in
+            print("toutotahotno;nrg;ion;oigaro;iab")
+            guard let `self` = self else {
+                return
+            }
+            SVProgressHUD.show()
+            let name = inputNameView.textField.text ?? ""
+            self.deck.name = name
+            self.nameLabel.text = name
+            UserInfo.shared.append(deck: self.deck, completion: {
+                error in
+                guard let error = error,
+                    let vc = self.parentViewController() else{
+                    return
+                }
+                
+                vc.alert(error, actions: vc.OKAlertAction)
+            })
+            self.updateDecks?()
+            SVProgressHUD.dismiss()
+            HUD.shared.dismiss()
+        }.disposed(by: disposeBag)
     }
     
     @IBAction func touchUpChangingSleeve(_ sender: UIButton){

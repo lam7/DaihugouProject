@@ -16,8 +16,8 @@ class BattleCPUViewController: BattleViewController{
     override func prepareBattlePlayer(_ completion: @escaping () -> ()){
         print("prepareCPU")
         if _ownerDeck != nil && _enemyDeck != nil{
-            let ownerDeck = Deck(cards: _ownerDeck.cards.map({ CardBattle(card: $0) }), name: _ownerDeck.name)
-            let enemyDeck = Deck(cards: _enemyDeck.cards.map({ CardBattle(card: $0) }), name: _enemyDeck.name)
+            let ownerDeck = Deck(cards: _ownerDeck.cards.map({ CardBattle(card: $0) }))
+            let enemyDeck = Deck(cards: _enemyDeck.cards.map({ CardBattle(card: $0) }))
             self.battleMaster = LocalBattleMaster(ownerName: "オーナー", ownerId: 0, ownerDeck: ownerDeck, enemyName: "敵", enemyId: 1, enemyDeck: enemyDeck)
             completion()
             return
@@ -39,9 +39,9 @@ class BattleCPUViewController: BattleViewController{
                 return
             }else{
                 var random = decks.compactMap{$0}.random
-                ownerDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }), name: random.name)
+                ownerDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }))
                 random = decks.compactMap{$0}.random
-                enemyDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }), name: random.name)
+                enemyDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }))
             }
             
             //            var ownerDeck: Deck

@@ -30,9 +30,9 @@ class BattleMultiViewController: BattleViewController{
                return
             }else{
                 var random = decks.compactMap{$0}.random
-                ownerDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }), name: random.name)
+                ownerDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }))
                 random = decks.compactMap{$0}.random
-                enemyDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }), name: random.name)
+                enemyDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }))
             }
             
 //            var ownerDeck: Deck

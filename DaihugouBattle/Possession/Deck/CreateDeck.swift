@@ -53,7 +53,7 @@ class CreateDeck{
     ///所持カードをセットする
     final func set(possessionCards: CardCount){
         if let deck = self.deck{
-            let cards = deck.notExistDeckCards(in: possessionCards)
+            let cards = notExistDeckCards(in: possessionCards, deck: deck)
             var deckCards = convertCardCount(deck.cards)
             if !cards.isEmpty{
                 deckCards -= cards
@@ -104,7 +104,9 @@ class CreateDeck{
     ///デッキを作成
     final func create(_ name: String = "")-> Deck{
         if self.deck == nil{
-            return Deck(cards: deckCardsVar.value, name: name)
+            let deck = DeckRelated(cards: deckCardsVar.value)
+            deck.name = name
+            return deck
         }else{
             return DeckRelated(deck: deck!, cards: deckCardsVar.value)
         }

@@ -11,37 +11,36 @@ import Foundation
 class Deck: NSCopying{
     static func noDataDeck(_ numOfDeckCards: Int, type: Card.Type)-> Deck{
         let cards = (0..<numOfDeckCards).map({ _ in type.init(card: cardNoData) })
-        return Deck(cards: cards, name: "NoDataDeck")
+        return Deck(cards: cards)
     }
     
     /// デッキ
     private(set) var cards: [Card]
-    private(set) var name: String
     
-    init(cards: [Card], name: String){
+    init(cards: [Card]){
         self.cards = cards
-        self.name = name
-    }
-    
-    /// デッキに指定のカードがあるかどうか確認する
-    ///
-    /// - Parameter possessionCards: あるかどうか確認するカード
-    /// - Returns: デッキになかったカード
-    final func notExistDeckCards(in possessionCards: CardCount)-> CardCount{
-        var possessionCards = possessionCards
-        var notExistCards: CardCount = [:]
-        
-        for card in cards.reversed(){
-            if possessionCards[card] != nil && possessionCards[card]! >= 1{
-                possessionCards -= card
-            }else{
-                notExistCards += card
-            }
-        }
-        return notExistCards
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return Deck(cards: cards.map{ $0.copy() as! Card }, name: name)
+        return Deck(cards: cards.map{ $0.copy() as! Card })
     }
+}
+
+
+/// デッキに指定のカードがあるかどうか確認する
+///
+/// - Parameter possessionCards: あるかどうか確認するカード
+/// - Returns: デッキになかったカード
+func notExistDeckCards(in possessionCards: CardCount, deck: Deck)-> CardCount{
+    var possessionCards = possessionCards
+    var notExistCards: CardCount = [:]
+    
+    for card in deck.cards.reversed(){
+        if possessionCards[card] != nil && possessionCards[card]! >= 1{
+            possessionCards -= card
+        }else{
+            notExistCards += card
+        }
+    }
+    return notExistCards
 }
