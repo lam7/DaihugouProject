@@ -60,6 +60,7 @@ extension Errors{
     }
 }
 
+typealias ErrorBlock = (_: Error?) -> ()
 class UserInfo{
     private var nameVar = Variable("")
     private var actVar = Variable(0)
@@ -100,7 +101,7 @@ class UserInfo{
         }
     }
     
-    func update(_ completion: ((_: Error?) -> ())? = nil){
+    func update(_ completion: ErrorBlock? = nil){
         
         guard let object = NCMBObject(className: "userInfo") else{
             completion?(Errors.UserInfo.ncmbObjectFailure)
@@ -130,7 +131,7 @@ class UserInfo{
         }
     }
     
-    func reduce(gold: Int, completion: @escaping (_: Error?) -> ()){
+    func reduce(gold: Int, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -159,7 +160,7 @@ class UserInfo{
         }
     }
     
-    func reduce(crystal: Int, completion: @escaping (_: Error?) -> ()){
+    func reduce(crystal: Int, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -189,7 +190,7 @@ class UserInfo{
     }
     
     
-    func reduce(ticket: Int, completion: @escaping (_: Error?) -> ()){
+    func reduce(ticket: Int, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -218,7 +219,7 @@ class UserInfo{
         }
     }
     
-    func gain(gold amount: Int, completion: @escaping (_: Error?) -> ()){
+    func gain(gold amount: Int, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -248,7 +249,7 @@ class UserInfo{
         }
     }
     
-    func gain(crystal amount: Int, completion: @escaping (_: Error?) -> ()){
+    func gain(crystal amount: Int, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -279,7 +280,7 @@ class UserInfo{
     }
     
     
-    func gain(ticket amount: Int, completion: @escaping (_: Error?) -> ()){
+    func gain(ticket amount: Int, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -310,7 +311,7 @@ class UserInfo{
     }
     
     /// 取得したカードをサーバー側に送る
-    func append(cards: [Card], completion: @escaping (_: Error?) -> ()){
+    func append(cards: [Card], completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -352,7 +353,7 @@ class UserInfo{
     }
     
     /// 作成されたデッキをサーバー側に送る
-    func append(deck: Deck, completion: @escaping (_: Error?) -> ()){
+    func append(deck: Deck, completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo"),
             let userDeck = NCMBObject(className: "userDeck") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
@@ -484,7 +485,7 @@ class UserInfo{
         }
     }
     
-    func remove(deck objectId: String, completion: @escaping (_: Error?) -> ()){
+    func remove(deck objectId: String, completion: @escaping ErrorBlock){
         guard let userDeck = NCMBObject(className: "userDeck"),
             let userInfo = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
@@ -518,7 +519,7 @@ class UserInfo{
     }
     
     
-    func gift(item: GiftItemInfo, completion: @escaping (_: Error?) -> ()){
+    func gift(item: GiftItemInfo, completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo"),
             let giftedItem = NCMBObject(className: "giftedItem") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
@@ -560,7 +561,7 @@ class UserInfo{
         }
     }
     
-    func delete(giftItem objectId: String, completion: @escaping (_: Error?) -> ()){
+    func delete(giftItem objectId: String, completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo"),
             let giftedItem = NCMBObject(className: "giftedItem") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
@@ -592,7 +593,7 @@ class UserInfo{
         }
     }
     
-    func rename(player name: String, completion: @escaping (_: Error?) -> ()){
+    func rename(player name: String, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
             return
@@ -642,11 +643,11 @@ class UserLogin{
     private init(){
     }
     
-    static func localLogin(completion: @escaping (_: Error?) -> ()){
+    static func localLogin(completion: @escaping ErrorBlock){
         completion(nil)
     }
     
-    static func login(completion: @escaping (_: Error?) -> ()){
+    static func login(completion: @escaping ErrorBlock){
         uuid = UIDevice.current.identifierForVendor?.uuidString
         if uuid == nil{
             completion(Errors.UserLogin.notExistUUID)
@@ -707,7 +708,7 @@ class UserLogin{
     ///
     /// - FIXME: userInfo.saveとnewUser.saveInBackgroundの中間でアプリが落ちた時，不完全なデータが出来上がってしまうかもしれないので直す
     /// - TODO: これらの処理をjsにしてサーバー側で処理をさせる
-    private static func signUp(completion: @escaping (_: Error?) -> ()){
+    private static func signUp(completion: @escaping ErrorBlock){
         let newUser = NCMBUser()
         newUser.userName = uuid
         newUser.password = uuid
