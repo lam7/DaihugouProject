@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,55 +27,61 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="549" height="210"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="h87-J1-CJF">
-                    <rect key="frame" x="0.0" y="5" width="568" height="32"/>
+                    <rect key="frame" x="0.0" y="5" width="549" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-Ur-FaP">
-                            <rect key="frame" x="0.0" y="2" width="28" height="28"/>
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="zdU-Ur-FaP" secondAttribute="height" multiplier="1:1" id="l7U-Ku-bfc"/>
+                                <constraint firstAttribute="width" secondItem="zdU-Ur-FaP" secondAttribute="height" multiplier="1:1" id="SAF-x9-Wzi"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="×"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                            <state key="normal" title="×">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchUpClose:" destination="-1" eventType="touchUpInside" id="2vG-3X-Bzs"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5d-1N-gkc">
-                            <rect key="frame" x="70" y="0.0" width="341" height="32"/>
+                            <rect key="frame" x="72" y="0.0" width="329.5" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3s-1J-7ZT">
-                            <rect key="frame" x="453" y="1" width="115" height="30"/>
-                            <state key="normal" title="変更"/>
+                            <rect key="frame" x="443.5" y="0.0" width="105.5" height="30"/>
+                            <state key="normal" title="変更">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchUpRename:" destination="-1" eventType="touchUpInside" id="4Vd-CN-pjR"/>
                             </connections>
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="zdU-Ur-FaP" firstAttribute="top" secondItem="h87-J1-CJF" secondAttribute="top" constant="2" id="Qrk-9Q-sfO"/>
+                        <constraint firstItem="zdU-Ur-FaP" firstAttribute="height" secondItem="h87-J1-CJF" secondAttribute="height" id="Yt7-ve-pTi"/>
                         <constraint firstItem="m5d-1N-gkc" firstAttribute="width" secondItem="h87-J1-CJF" secondAttribute="width" multiplier="0.6" id="kwR-Ne-Cat"/>
                         <constraint firstItem="m5d-1N-gkc" firstAttribute="top" secondItem="h87-J1-CJF" secondAttribute="top" id="pej-uj-Ecg"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wTq-6T-ewT">
-                    <rect key="frame" x="0.0" y="42" width="568" height="220"/>
+                    <rect key="frame" x="13.5" y="40" width="522" height="128.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="0k7-dL-RSh">
-                            <rect key="frame" x="0.0" y="0.0" width="269" height="220"/>
+                            <rect key="frame" x="0.0" y="0.0" width="246" height="128.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="br9-Oj-ZBG">
-                                    <rect key="frame" x="0.0" y="0.0" width="269" height="161"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="246" height="69.5"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-EB-wQ1">
-                                    <rect key="frame" x="96" y="190" width="77" height="30"/>
-                                    <state key="normal" title="スキン変更"/>
+                                    <rect key="frame" x="84.5" y="98.5" width="77" height="30"/>
+                                    <state key="normal" title="スキン変更">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
                                         <action selector="touchUpChangingSkin:" destination="-1" eventType="touchUpInside" id="MnX-zN-Dam"/>
                                     </connections>
@@ -86,26 +92,28 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LD0-aR-Z9i">
-                            <rect key="frame" x="299" y="0.0" width="269" height="220"/>
+                            <rect key="frame" x="276" y="0.0" width="246" height="128.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カードスリープ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-GQ-9Aa">
-                                    <rect key="frame" x="0.0" y="0.0" width="136" height="38.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="136" height="22.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="sun-Sw-NoC">
-                                    <rect key="frame" x="0.0" y="38.5" width="269" height="55"/>
+                                    <rect key="frame" x="0.0" y="22.5" width="246" height="32"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gFR-q1-oCH">
-                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="gFR-q1-oCH" secondAttribute="height" multiplier="3:4" id="ZD7-ah-6cB"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLq-kR-fzt">
-                                            <rect key="frame" x="86.5" y="12.5" width="182.5" height="30"/>
-                                            <state key="normal" title="変更"/>
+                                            <rect key="frame" x="69" y="1" width="177" height="30"/>
+                                            <state key="normal" title="変更">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <action selector="touchUpChangingSleeve:" destination="-1" eventType="touchUpInside" id="LJD-6K-nK5"/>
                                             </connections>
@@ -113,13 +121,13 @@
                                     </subviews>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="インデックスグラフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJv-ks-Sjp">
-                                    <rect key="frame" x="0.0" y="93.5" width="156" height="38.5"/>
+                                    <rect key="frame" x="0.0" y="54.5" width="156" height="22.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svW-FG-ACc" customClass="DeckIndexBarGraph" customModule="DaihugouBattle" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="132" width="269" height="88"/>
+                                    <rect key="frame" x="0.0" y="77" width="246" height="51.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
@@ -139,25 +147,31 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VqK-Iv-kJh">
-                    <rect key="frame" x="0.0" y="267" width="568" height="48"/>
+                    <rect key="frame" x="0.0" y="173.5" width="549" height="31.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKI-37-y5G">
-                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="48"/>
-                            <state key="normal" title="デッキ削除"/>
+                            <rect key="frame" x="0.0" y="0.0" width="183" height="31.5"/>
+                            <state key="normal" title="デッキ削除">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchUpDeckRemoving:" destination="-1" eventType="touchUpInside" id="5IX-xE-Oyn"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTs-E5-uKE">
-                            <rect key="frame" x="189.5" y="0.0" width="189" height="48"/>
-                            <state key="normal" title="デッキ確認"/>
+                            <rect key="frame" x="183" y="0.0" width="183" height="31.5"/>
+                            <state key="normal" title="デッキ確認">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchUpDeckConfirming:" destination="-1" eventType="touchUpInside" id="IeL-q1-gvi"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJQ-vP-ASD">
-                            <rect key="frame" x="378.5" y="0.0" width="189.5" height="48"/>
-                            <state key="normal" title="デッキ編成"/>
+                            <rect key="frame" x="366" y="0.0" width="183" height="31.5"/>
+                            <state key="normal" title="デッキ編成">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchUpDeckForming:" destination="-1" eventType="touchUpInside" id="ldI-e4-B26"/>
                             </connections>
@@ -168,9 +182,8 @@
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="VqK-Iv-kJh" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="1dY-HL-rMa"/>
-                <constraint firstItem="wTq-6T-ewT" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Em1-jQ-Fs5"/>
+                <constraint firstItem="wTq-6T-ewT" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.95" id="Em1-jQ-Fs5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VqK-Iv-kJh" secondAttribute="bottom" constant="5" id="Hm4-Rl-WRW"/>
-                <constraint firstItem="h87-J1-CJF" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.1" id="JFZ-Y1-eCK"/>
                 <constraint firstItem="wTq-6T-ewT" firstAttribute="top" secondItem="h87-J1-CJF" secondAttribute="bottom" constant="5" id="PPP-p1-OxO"/>
                 <constraint firstItem="h87-J1-CJF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="QSY-Rk-2lx"/>
                 <constraint firstItem="VqK-Iv-kJh" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="TwH-lu-Ne3"/>
@@ -180,8 +193,9 @@
                 <constraint firstItem="wTq-6T-ewT" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="q6F-Xd-wi8"/>
                 <constraint firstItem="h87-J1-CJF" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="yc8-g1-KT3"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="138.38028169014083" y="155.625"/>
+            <point key="canvasLocation" x="212.85211267605635" y="727.5"/>
         </view>
     </objects>
 </document>

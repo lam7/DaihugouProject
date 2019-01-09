@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21124AAB83DE66957D35E412 /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3D5D0E98CC556D6E3CF99D /* Pods_DaihugouBattle.framework */; };
 		AA0173C71F84959F00D9168A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0173C61F84959F00D9168A /* LoadingView.swift */; };
 		AA0173D11F84C97400D9168A /* GatyaParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D01F84C82700D9168A /* GatyaParticle.sks */; };
 		AA0173DB1F850E6B00D9168A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0173D91F850E6B00D9168A /* Assets.xcassets */; };
@@ -140,6 +139,7 @@
 		AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A22174B43900678992 /* DeckConfirmationView.swift */; };
 		AAA637A52174B5C700678992 /* DeckConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA637A42174B5C700678992 /* DeckConfirmationView.xib */; };
 		AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA82E6F20B2A95000D70B38 /* Lottie.framework */; };
+		AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */; };
 		AAA86F6320AA7598002A3E8D /* SkillAbilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */; };
 		AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */; };
 		AAB0F4E220725979004D9C93 /* ManageAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F4E120725979004D9C93 /* ManageAudio.swift */; };
@@ -382,6 +382,7 @@
 		AAA637A22174B43900678992 /* DeckConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckConfirmationView.swift; sourceTree = "<group>"; };
 		AAA637A42174B5C700678992 /* DeckConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckConfirmationView.xib; sourceTree = "<group>"; };
 		AAA82E6F20B2A95000D70B38 /* Lottie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lottie.framework; path = Carthage/Build/iOS/Lottie.framework; sourceTree = "<group>"; };
+		AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAbilityList.swift; sourceTree = "<group>"; };
 		AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllAsyncBlock.swift; sourceTree = "<group>"; };
 		AAB0F4E120725979004D9C93 /* ManageAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAudio.swift; sourceTree = "<group>"; };
@@ -479,6 +480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */,
 				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
 				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
 				AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */,
@@ -502,7 +504,6 @@
 				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
 				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
 				AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */,
-				21124AAB83DE66957D35E412 /* Pods_DaihugouBattle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +720,7 @@
 		AA7B2FFF1F73DA9E00628FD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */,
 				AA4BB3CF216AECCD00E53BDA /* SwiftyGif.framework */,
 				AACDC0CC215F974700C30ADB /* SwiftyJSON.framework */,
 				AAB19B2B20AEBA05004161F5 /* AttributesInspector.framework */,
@@ -1186,7 +1188,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1195,7 +1197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		93CC269BE09D9C4DB52BBD6A /* [CP] Check Pods Manifest.lock */ = {
@@ -1339,7 +1341,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
 				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -1370,7 +1372,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

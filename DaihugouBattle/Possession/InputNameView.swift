@@ -13,4 +13,10 @@ class InputNameView: UINibView{
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var tapped: (()->())?
+    
+    @IBAction func touchUp(_ sender: UIButton){
+        tapped?()
+    }
 }

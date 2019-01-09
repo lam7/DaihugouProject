@@ -36,8 +36,6 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
         }
     }
     
-    let disposeBag = DisposeBag()
-    
     override func didMoveToSuperview() {
         behindView = setUpBehindView()
     }
@@ -52,9 +50,8 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
         let inputNameView = InputNameView(frame: CGRect(center: UIScreen.main.bounds, width: 300, height: 100))
         HUD.shared.show(.closableDark)
         HUD.shared.container.addSubview(inputNameView)
-        inputNameView.okButton.rx.tap.subscribe{
+        inputNameView.tapped = {
             [weak self] in
-            print("toutotahotno;nrg;ion;oigaro;iab")
             guard let `self` = self else {
                 return
             }
@@ -64,17 +61,16 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
             self.nameLabel.text = name
             UserInfo.shared.append(deck: self.deck, completion: {
                 error in
-                guard let error = error,
-                    let vc = self.parentViewController() else{
+                if let error = error,
+                    let vc = self.parentViewController(){
+                    vc.alert(error, actions: vc.OKAlertAction)
                     return
                 }
-                
-                vc.alert(error, actions: vc.OKAlertAction)
+                self.updateDecks?()
+                SVProgressHUD.dismiss()
+                HUD.shared.dismiss()
             })
-            self.updateDecks?()
-            SVProgressHUD.dismiss()
-            HUD.shared.dismiss()
-        }.disposed(by: disposeBag)
+        }
     }
     
     @IBAction func touchUpChangingSleeve(_ sender: UIButton){
