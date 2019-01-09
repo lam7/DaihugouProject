@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TapableView: UIView{
+@IBDesignable class TapableView: UIView{
     var tapGesture: UITapGestureRecognizer!
     var tapped: (()->())?
     override init(frame: CGRect) {
@@ -35,8 +35,19 @@ class TapableView: UIView{
 
 class HUD: NSObject{
     static var shared: HUD = HUD()
-    
     var container: UIView
+    
+    static var container: UIView{
+        return shared.container
+    }
+    
+    static func show(_ maskType: MaskType = .clear){
+        shared.show(maskType)
+    }
+    
+    static func dismiss(){
+        shared.dismiss()
+    }
     
     override init() {
         container = UIView()

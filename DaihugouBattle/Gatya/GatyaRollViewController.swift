@@ -11,10 +11,25 @@ import UIKit
 import SpriteKit
 
 class GatyaRollViewController: UIViewController{
+    @IBOutlet weak var tapableView: TapableView!{
+        didSet{
+            tapableView.tapped = {[weak self] in
+                self?.tapableView.isHidden = true
+                self?.characterDetailView.isHidden = true
+            }
+        }
+    }
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var characterDetailView: PossessionCardDetailView!
+    @IBOutlet weak var characterDetailView: PossessionCardDetailView!{
+        didSet{
+            characterDetailView.tappedClose = {[weak self] in
+                self?.tapableView.isHidden = true
+                self?.characterDetailView.isHidden = true
+            }
+        }
+    }
     @IBOutlet weak var cardsView: UIView!
     @IBOutlet weak var cardOriginalView: UIView!
     @IBOutlet weak var packImageView: UIImageView!
@@ -371,6 +386,7 @@ class GatyaRollViewController: UIViewController{
     
     
     private func  characterDetail(_ card: Card){
+        tapableView.isHidden = false
         characterDetailView.isHidden = false
         characterDetailView.card = card
     }

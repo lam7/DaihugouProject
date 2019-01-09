@@ -162,6 +162,10 @@
                                     <action selector="next:" destination="xlp-my-rpu" eventType="touchUpInside" id="khr-XG-SBw"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Kp-qVg" customClass="TapableView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96K-ij-P3g" customClass="PossessionCardDetailView" customModule="DaihugouBattle" customModuleProvider="target">
                                 <rect key="frame" x="50" y="30" width="468" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -171,6 +175,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="0gh-Gj-ATc"/>
+                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="1kk-Yj-ifG"/>
                             <constraint firstItem="uem-IH-K36" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="71s-qD-oXt"/>
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="8Kl-5F-GtJ"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="8xM-si-4Vu"/>
@@ -178,9 +183,11 @@
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="height" secondItem="iHI-b9-x2a" secondAttribute="height" multiplier="0.6" id="F39-3O-jQc"/>
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerY" secondItem="iHI-b9-x2a" secondAttribute="centerY" id="G1B-Zl-KYD"/>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="Gck-uC-y1F"/>
+                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="Id0-CV-zOd"/>
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="Kwh-qV-1Oq"/>
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" multiplier="0.5" id="LJ6-rG-5MN"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="trailing" secondItem="W8B-Ur-J3C" secondAttribute="trailing" constant="10" id="Osb-Sx-KME"/>
+                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="P6u-Jm-Da5"/>
                             <constraint firstItem="biD-43-NjD" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="PB4-44-I5u"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="Q9X-pe-Mqu"/>
                             <constraint firstItem="W8B-Ur-J3C" firstAttribute="top" secondItem="BfO-2B-2fJ" secondAttribute="top" constant="10" id="QMn-BM-jl9"/>
@@ -204,6 +211,7 @@
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="trailing" secondItem="rYc-hF-hFI" secondAttribute="trailing" id="oF1-Mg-uZR"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="bottom" secondItem="rYc-hF-hFI" secondAttribute="bottom" constant="20" id="oFj-bL-SgG"/>
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" constant="20" id="pS1-PK-CaL"/>
+                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="qvJ-in-ZUV"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="top" secondItem="a86-6P-sVe" secondAttribute="bottom" constant="5" id="tAb-5U-84u"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="leading" secondItem="rYc-hF-hFI" secondAttribute="leading" id="vdm-tT-oFG"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="zQ8-2h-pP4"/>
@@ -222,6 +230,7 @@
                         <outlet property="particleView" destination="cnF-pk-ch3" id="6N6-SV-NRp"/>
                         <outlet property="sceneView" destination="jop-Mx-4rV" id="9lU-J9-Fmz"/>
                         <outlet property="skipButton" destination="W8B-Ur-J3C" id="z9z-th-RhA"/>
+                        <outlet property="tapableView" destination="iDC-Kp-qVg" id="Awh-f7-xC8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZwR-Ko-I06" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,6 +334,6 @@
         <image name="buttonFrame" width="460" height="680"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uXl-7s-6H6"/>
+        <segue reference="nqO-wa-5cM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,6 +102,10 @@
                                     <outlet property="delegate" destination="jXU-gu-3cl" id="kA8-87-BQF"/>
                                 </connections>
                             </searchBar>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-eZ-A4p" customClass="TapableView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-FR-edE" customClass="CardSortFilterView" customModule="DaihugouBattle" customModuleProvider="target">
                                 <rect key="frame" x="66.5" y="19" width="534" height="337.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,7 +119,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="centerX" secondItem="L7l-jf-xvv" secondAttribute="centerX" id="0Pz-dT-Bw0"/>
                             <constraint firstItem="eMb-FR-edE" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="3fT-wc-i8j"/>
+                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="48P-L4-nCm"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="1:5" id="6QX-bZ-elg"/>
                             <constraint firstItem="L7l-jf-xvv" firstAttribute="bottom" secondItem="bji-io-cb9" secondAttribute="bottom" id="7v5-sU-MWm"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="Hir-zC-T5X"/>
@@ -126,6 +132,7 @@
                             <constraint firstItem="Rmp-6I-5Ve" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" id="OlO-BC-0Td"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="bottom" constant="10" id="PfM-Tx-yW4"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="Pw2-fb-iDs"/>
+                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" id="Sr7-Zf-ueD"/>
                             <constraint firstItem="eMb-FR-edE" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="0.8" id="Xc5-wf-vEr"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="aoj-qL-wM0"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="ard-y5-lQb"/>
@@ -134,6 +141,7 @@
                             <constraint firstItem="eMb-FR-edE" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="e1H-e6-7se"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" id="eXF-Oa-lnT"/>
                             <constraint firstItem="gJd-8d-Fwl" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="ffX-TQ-oNX"/>
+                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" id="izi-tU-npe"/>
                             <constraint firstItem="Rmp-6I-5Ve" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="mLR-wY-bv7"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="nHG-f2-v9m"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" constant="50" id="nhR-Qx-eiK"/>
@@ -152,6 +160,7 @@
                         <outlet property="collectionView" destination="bji-io-cb9" id="GM9-Vg-8AP"/>
                         <outlet property="searchBar" destination="gJd-8d-Fwl" id="B3C-Hl-TI4"/>
                         <outlet property="sortFilterView" destination="eMb-FR-edE" id="Lvb-sb-Mw4"/>
+                        <outlet property="tapableView" destination="a7D-eZ-A4p" id="fa2-Dn-iMv"/>
                         <segue destination="heL-WB-htU" kind="show" identifier="swipeable" id="GKh-qC-SlQ"/>
                     </connections>
                 </viewController>

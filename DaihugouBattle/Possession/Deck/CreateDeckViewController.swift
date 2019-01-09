@@ -79,6 +79,15 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
 }
 
 class CreateDeckViewController: UIViewController{
+    @IBOutlet weak var tapableView: TapableView!{
+        didSet{
+            tapableView.tapped = {[weak self] in
+                self?.tapableView.isHidden = true
+                self?.possessionSortFilterView.isHidden = true
+                self?.panGesture.isEnabled = true
+            }
+        }
+    }
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var touchedCardView: CardStandartFrontView!
     @IBOutlet weak var closeButton: UIButton!
@@ -106,9 +115,13 @@ class CreateDeckViewController: UIViewController{
         didSet{
             possessionSortFilterView.closeButton.rx.tap.subscribe{ [weak self] event in
                 self?.possessionSortFilterView.isHidden = true
-                }.disposed(by: disposeBag)
+                self?.tapableView.isHidden = true
+                self?.panGesture.isEnabled = true
+            }.disposed(by: disposeBag)
         }
     }
+    
+    @IBOutlet var panGesture: UIPanGestureRecognizer!
     
     private var possessionIncrementalText: Observable<String?> {
         return possessionSearchBar.rx.text.asObservable()
@@ -264,6 +277,8 @@ class CreateDeckViewController: UIViewController{
     
     @IBAction func touchUpSortFilter(_ sender: UIButton){
         possessionSortFilterView.isHidden = false
+        tapableView.isHidden = false
+        panGesture.isEnabled = false
     }
     
     @IBAction func touchUpClose(_ sender: UIButton){

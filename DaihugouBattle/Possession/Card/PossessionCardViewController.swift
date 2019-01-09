@@ -121,10 +121,29 @@ class SortFilterViewModel{
 }
 
 class PossessionCardViewController: UIViewController{
+    @IBOutlet weak var tapableView: TapableView!{
+        didSet{
+            tapableView.tapped = { [weak self] in
+                self?.hiddenViews()
+            }
+        }
+    }
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var sortFilterView: CardSortFilterView!
+    @IBOutlet weak var sortFilterView: CardSortFilterView!{
+        didSet{
+            sortFilterView.closeButton.rx.tap.subscribe{ [weak self] event in
+                self?.hiddenViews()
+            }.disposed(by: disposeBag)
+        }
+    }
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var characterDetailView: PossessionCardDetailView!
+    @IBOutlet weak var characterDetailView: PossessionCardDetailView!{
+        didSet{
+            characterDetailView.tappedClose = {[weak self] in
+                self?.hiddenViews()
+            }
+        }
+    }
     @IBOutlet weak var backgroundImageView: UIImageView!
     var dataSource: PossessionCollectionDataSource!
     var viewModel: SortFilterViewModel!
@@ -137,7 +156,6 @@ class PossessionCardViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
         
         collectionView.register(UINib(nibName: "CardSheetsStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -151,10 +169,12 @@ class PossessionCardViewController: UIViewController{
         
         viewModel = SortFilterViewModel(filterIndexs: sortFilterView.indexs.asObservable(), filterRarities: sortFilterView.rarities.asObservable(), filterText: incrementalText, sortBy: sortFilterView.sortBy.asObservable(), sortIsAsc: sortFilterView.sortIsAsc.asObservable())
         viewModel.cards.bind(to: collectionView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-        
-        sortFilterView.closeButton.rx.tap.subscribe{ [weak self] event in
-            self?.sortFilterView.isHidden = true
-        }.disposed(by: disposeBag)
+    }
+    
+    func hiddenViews(){
+        self.tapableView.isHidden = true
+        self.sortFilterView.isHidden = true
+        self.characterDetailView.isHidden = true
     }
     
     
@@ -171,6 +191,7 @@ class PossessionCardViewController: UIViewController{
     
     @IBAction func touchUpSortFilter(_ sender: UIButton){
         sortFilterView.isHidden = false
+        tapableView.isHidden = false
     }
 }
 
@@ -191,5 +212,6 @@ extension PossessionCardViewController: UICollectionViewDelegate, UICollectionVi
         let card = dataSource.cards[indexPath.row]
         characterDetailView.card = card
         characterDetailView.isHidden = false
+        tapableView.isHidden = false
     }
 }
