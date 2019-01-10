@@ -149,6 +149,7 @@ let NumTimesCanRollGatyaAtOneTime = 10
         let label = UILabel(frame: pickerView.frame)
         label.text = gatyaTypes[row].name
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         return label
     }
     

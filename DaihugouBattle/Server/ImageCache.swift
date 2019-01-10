@@ -15,7 +15,7 @@ final class RealmImageCache{
     private var cache = NSCache<Key, UIImage>()
     private var loadings: [String : [() -> ()]] = [:]
     
-    var countLimit: Int = 100{
+    var countLimit: Int = 0{
         didSet{
             cache.countLimit = countLimit
         }
@@ -81,8 +81,10 @@ final class RealmImageCache{
             }
             let i = self.drawImage(image)
             self.cache.setObject(i, forKey: self.convertKey(from: named))
-            self.loadings[named]?.forEach({ $0() })
-            self.loadings[named] = nil
+            DispatchQueue.main.async {
+                self.loadings[named]?.forEach({ $0() })
+                self.loadings[named] = nil
+            }
         }
     }
     
