@@ -119,7 +119,7 @@ class Card: Equatable, Hashable, NSCopying{
     ///レアリティ
     fileprivate(set) var rarity: CardRarity
     
-    fileprivate(set) var skill: Skill
+    fileprivate(set) var skills: [Skill]
     var hashValue: Int{
         return id.hashValue ^ hp.hashValue ^ atk.hashValue ^ index.hashValue
     }
@@ -131,7 +131,7 @@ class Card: Equatable, Hashable, NSCopying{
     }
     
     /// 最初のカード生成時の時のためのイニシャライザ
-    fileprivate init(id: Int, name: String, imageNamed: String, rarity: String, index: Int, hp: Int, atk: Int, skill: Skill){
+    fileprivate init(id: Int, name: String, imageNamed: String, rarity: String, index: Int, hp: Int, atk: Int, skills: [Skill]){
         self.id = id
         self.name = name
         self.imageNamed = imageNamed
@@ -139,9 +139,7 @@ class Card: Equatable, Hashable, NSCopying{
         self.index = index
         self.hp = hp
         self.atk = atk
-        ////-TODO: いずれ修正すること
-        self.skill = skill
-//        self.skill = skill
+        self.skills = skills
     }
     
     /// カードの複製を作る
@@ -155,7 +153,7 @@ class Card: Equatable, Hashable, NSCopying{
         self.index = card.index
         self.hp = card.hp
         self.atk = card.atk
-        self.skill = card.skill
+        self.skills = card.skills
     }
     
     func equal(_ to: Card)-> Bool{
@@ -180,7 +178,7 @@ class Card: Equatable, Hashable, NSCopying{
 }
 
 var cardNoData: Card{
-    return Card(id: 0, name: "", imageNamed: "", rarity: "N", index: 0, hp: 0, atk: 0, skill: Skill())
+    return Card(id: 0, name: "", imageNamed: "", rarity: "N", index: 0, hp: 0, atk: 0, skills: [Skill()])
 }
 
 class CardList{
@@ -238,6 +236,7 @@ class CardList{
                 completion(error)
                 return
             }
+            print("loadProperty CardList")
             let query = NCMBQuery(className: "cardInfo")
             query?.limit = 1000
             query?.findObjectsInBackground(){
@@ -292,15 +291,20 @@ class CardList{
                         print(obj.object(forKey: "skillNumber"))
                         fatalError("skill Error")
                     }
+                    guard let skillNumbers = obj.object(forKey: "skillNumbers") as? [Int] else{
+                        print(obj.object(forKey: "skillNumbers"))
+                        fatalError("skill Error")
+                    }
                     
                     //最初と最後の文字が"なのでそれらを消す
                     let newImageNamed = deleteDoubleQuotesFirstAndLast(imageNamed)
                     let newName = deleteDoubleQuotesFirstAndLast(name)
                     let newRarity = deleteDoubleQuotesFirstAndLast(rarity)
                     
-                    let card = Card(id: id, name: newName, imageNamed: newImageNamed, rarity: newRarity, index: index, hp: hp, atk: atk, skill: SkillList.get(id: skillNumber) ?? SkillList.get(id: 0)!)
+                    let card = Card(id: id, name: newName, imageNamed: newImageNamed, rarity: newRarity, index: index, hp: hp, atk: atk, skills: skillNumbers.map{ SkillList.get(id: $0) ?? SkillList.get(id: 0)! })
                     cards.append(card)
                 }
+                print("completion CardList")
                 completion(nil)
             }
         }
@@ -324,11 +328,12 @@ class CardList{
             let hp = obj["hp"].intValue
             let atk = obj["atk"].intValue
             let skillNumber = obj["skillNumber"].intValue
+            let skillNumbers = obj["skillNumbers"].arrayValue.map({ $0.intValue })
             let newImageNamed = deleteDoubleQuotesFirstAndLast(imageNamed)
             let newName = deleteDoubleQuotesFirstAndLast(name)
             let newRarity = deleteDoubleQuotesFirstAndLast(rarity)
             
-            let card = Card(id: id, name: newName, imageNamed: newImageNamed, rarity: newRarity, index: index, hp: hp, atk: atk, skill: SkillList.get(id: skillNumber) ?? SkillList.get(id: 0)!)
+            let card = Card(id: id, name: newName, imageNamed: newImageNamed, rarity: newRarity, index: index, hp: hp, atk: atk, skills: skillNumbers.map{ SkillList.get(id: $0) ?? SkillList.get(id: 0)! })
             cards.append(card)
         }
     }

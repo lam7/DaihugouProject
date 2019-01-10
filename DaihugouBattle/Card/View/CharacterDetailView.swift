@@ -24,7 +24,8 @@ import UIKit
         hpLabel.text = "体力 " + card.hp.description
         atkLabel.text = "攻撃力 " + card.atk.description
         indexLabel.text = "インデックス " + card.index.description
-        descriptionTextView.text = "レアリティ " + card.rarity.rawValue + "  \(card.skill.description)"
+        let text = card.skills.map{ $0.description }.reduce("", { $0 + $1 + "\n"})
+        descriptionTextView.text = "レアリティ " + card.rarity.rawValue + "\n" + text
     }
 }
 

@@ -21,7 +21,8 @@ import UIKit
             hpLabel.text = card.hp.description
             atkLabel.text = card.atk.description
             indexLabel.text = card.index.description
-            descriptionTextView.text = "レアリティ " + card.rarity.rawValue + " \(card.skill.description)"
+            let text = card.skills.map{ $0.description }.reduce("", { $0 + $1 + "\n"})
+            descriptionTextView.text = "レアリティ " + card.rarity.rawValue + "\n" + text
         }
     }
     @IBInspectable var descriptionTextColor: UIColor = .black{

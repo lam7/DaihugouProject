@@ -13,7 +13,7 @@ class CardsFilter{
     
     static func filter(_ cards: [Card], text: String)-> [Card]{
         if text == ""{ return  cards }
-        let skill: Check = { $0.skill.description.contains(text) }
+        let skill: Check = { !$0.skills.filter({ $0.description.contains(text) }).isEmpty }
         let name: Check  = {
             let string = $0.name.applyingTransform(.hiraganaToKatakana, reverse: true) ?? $0.name
             return string.contains(text)

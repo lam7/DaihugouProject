@@ -18,7 +18,12 @@ import UIKit
     }
     var card: Card?{
         didSet{
-            descriptionTextView.text = card?.skill.description ?? ""
+            guard let card = card else{
+                descriptionTextView.text = ""
+                return
+            }
+            let text = card.skills.map{ $0.description }.reduce("", { $0 + $1 + "\n"})
+            descriptionTextView.text = text
         }
     }
     

@@ -242,13 +242,13 @@ class Player: NSCopying{
     ///   - cards: スキルが発動するかもしれないカード
     ///   - activateType: スキルを発動させるタイプ。cardsの内このタイプのカードがスキルを発動させる
     func activateSkill(_ cards: [Card], activateType: Skill.ActivateType){
-        let cards = cards.filter({ $0.skill.activateType == activateType })
-        cards.forEach({
-            if $0.skill.check(self){
-                delegate?.activateSkill($0, activateType: activateType, player: self)
-                $0.skill.activate(self)
+        cards.forEach({ card in
+            card.skills.forEach{
+                if $0.activateType == activateType || $0.check(self){
+                    delegate?.activateSkill(card, activateType: activateType, player: self)
+                    $0.activate(self)
+                }
             }
-            
         })
     }
     
