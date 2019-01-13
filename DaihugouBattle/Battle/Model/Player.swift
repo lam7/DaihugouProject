@@ -244,7 +244,7 @@ class Player: NSCopying{
     func activateSkill(_ cards: [Card], activateType: Skill.ActivateType){
         cards.forEach({ card in
             card.skills.forEach{
-                if $0.activateType == activateType || $0.check(self){
+                if $0.activateType == activateType && $0.check(self){
                     delegate?.activateSkill(card, activateType: activateType, player: self)
                     $0.activate(self)
                 }
