@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 
 @IBDesignable class BattleSkillView: UINibView{
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!{
+        didSet{
+            descriptionTextView.isEditable = false
+        }
+    }
     @IBInspectable var descriptionBackgroundColor: UIColor = .white{
         didSet{
             descriptionTextView.backgroundColor = descriptionBackgroundColor
@@ -37,15 +41,19 @@ import UIKit
     @IBInspectable var appearDuratoin: TimeInterval = 0.3
     @IBInspectable var appearDelay: TimeInterval = 0.0
     
-    
+    var animationCount: Int = 0
     func animation(_ card: Card, completion: @escaping () -> ()){
         self.card = card
+        animationCount += 1
         appearAnimation(appearDuratoin, delay: appearDelay, completion: {
-            self.hiddenAnimation(self.hiddenDuration,  delay: self.hiddenDelay,completion: completion)
+            self.animationCount -= 1
+            if self.animationCount == 0{
+                self.hiddenAnimation(self.hiddenDuration,  delay: self.hiddenDelay,completion: completion)
+            }
         })
     }
     func hiddenAnimation(_ duration: TimeInterval, delay: TimeInterval = 0.0, completion: (() -> ())?){
-        let p = CGPoint(x: frame.minX, y: frame.minY - frame.height)
+        let p = CGPoint(x: frame.minX, y: -frame.height)
         UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
             self.frame.origin = p
         }, completion: { _ in
@@ -55,7 +63,7 @@ import UIKit
     }
     
     func appearAnimation(_ duration: TimeInterval, delay: TimeInterval = 0.0, completion: (() -> ())?){
-        let p = CGPoint(x: frame.minX, y: frame.minY + frame.height)
+        let p = CGPoint(x: frame.minX, y: 0)
         UIView.animate(withDuration: duration, delay: delay, options: .curveEaseOut, animations: {
             self.frame.origin = p
         }, completion: { _ in

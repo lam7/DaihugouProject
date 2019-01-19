@@ -143,7 +143,7 @@ class Player: NSCopying{
     
     ///スキルのためのとりあえずの一時的なもの
     ///いずれクラス設計をより良くする必要がある
-    var drawCards: ((_ amount: Int)-> ())?
+    var drawCards: ((_ amount: Int)-> ([Card]))!
 
     private init(player: Player){
         self.id = player.id

@@ -21,7 +21,8 @@ final class SkillAbilityList{
         }
         static let lists: [(_: AmountValue)-> ActivateValue] = [
             activate0,activate1,activate2,activate3,activate4,activate5,activate6,
-            activate7,activate8,activate9,activate10,activate11,activate12,activate13,activate14,activate15,activate16
+            activate7,activate8,activate9,activate10,activate11,activate12,activate13,
+            activate14,activate15,activate16,activate17,activate18
         ]
         static func perform(_ number: Int, with amount: AmountValue!)-> ActivateType{
             return lists[number](amount).value
@@ -64,7 +65,7 @@ final class SkillAbilityList{
         @objc static func activate4(_ amount: AmountValue!)-> ActivateValue{
             return ActivateValue{ player in
                 let amount = amount.value(player)
-                player.drawCards?(amount.intValue)
+                _ = player.drawCards(amount.intValue)
             }
         }
         
@@ -225,6 +226,28 @@ final class SkillAbilityList{
                 player.attack(atk)
             }
         }
+        
+        /// 相手に相手のHP * amountのダメージで攻撃する
+        @objc static func activate17(_ amount: AmountValue!)-> ActivateValue{
+            return ActivateValue{ player in
+                let amount = amount.value(player)
+                let damage = amount.floatValue * player.enemy.hp.f
+                player.attack(damage.i)
+                
+            }
+        }
+        
+        /// カードを2枚引き、引いたカードの攻撃力の合計値 × amountのダメージを与える
+        @objc static func activate18(_ amount: AmountValue!)-> ActivateValue{
+            return ActivateValue{ player in
+                let amount = amount.value(player)
+                let cards = player.drawCards(2)
+                let atk = cards.reduce(0, { $0 + $1.atk })
+                let damage = amount.floatValue * atk.f
+                player.attack(damage.i)
+                
+            }
+        }
     }
     
     final class Check: NSObject{
@@ -369,7 +392,7 @@ final class SkillAbilityList{
     
     final class Amount: NSObject{
         static let lists: [()-> AmountValue] = [
-            amount1, amount2, amount3, amount4,
+            amount1, amount2, amount3, amount4, amount5
         ]
         
         static func perform(_ number: Int)-> AmountValue{
@@ -403,6 +426,12 @@ final class SkillAbilityList{
         @objc static func amount4()-> AmountValue{
             return AmountValue{ player in
                 player.spot.enemyCards.count.nsNumber
+            }
+        }
+        
+        @objc static func amount5()-> AmountValue{
+            return AmountValue{ player in
+                player.enemy.hp.nsNumber
             }
         }
     }

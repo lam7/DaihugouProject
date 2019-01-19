@@ -93,26 +93,78 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-2c-2hJ">
-                                <rect key="frame" x="444" y="10" width="104" height="40"/>
+                                <rect key="frame" x="446" y="10" width="102" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持石" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkd-vq-G0z" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="104" height="17.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-e0-pqu">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="27.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_gold" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQ1-BK-Vgc">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="27.5"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持ゴールド" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-Pq-3Um" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="0.0" width="82" height="27.5"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持ゴールド" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-Pq-3Um" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22.5" width="104" height="17.5"/>
+                                        <constraints>
+                                            <constraint firstItem="UQ1-BK-Vgc" firstAttribute="leading" secondItem="DeP-e0-pqu" secondAttribute="leading" id="2Xv-eh-uAv"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pah-Pq-3Um" secondAttribute="trailing" id="71n-Yw-CnI"/>
+                                            <constraint firstItem="UQ1-BK-Vgc" firstAttribute="width" secondItem="DeP-e0-pqu" secondAttribute="width" multiplier="0.2" id="FXC-x1-H1y"/>
+                                            <constraint firstItem="UQ1-BK-Vgc" firstAttribute="height" secondItem="DeP-e0-pqu" secondAttribute="height" id="Jdl-wE-uBa"/>
+                                            <constraint firstItem="Pah-Pq-3Um" firstAttribute="height" secondItem="DeP-e0-pqu" secondAttribute="height" id="Jrz-ah-n6e"/>
+                                            <constraint firstItem="Pah-Pq-3Um" firstAttribute="top" secondItem="DeP-e0-pqu" secondAttribute="top" id="N0I-nn-jFn"/>
+                                            <constraint firstItem="Pah-Pq-3Um" firstAttribute="leading" secondItem="UQ1-BK-Vgc" secondAttribute="trailing" id="fcf-aU-oA2"/>
+                                            <constraint firstItem="UQ1-BK-Vgc" firstAttribute="top" secondItem="DeP-e0-pqu" secondAttribute="top" id="oYo-FX-g9u"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MF2-B6-odO">
+                                        <rect key="frame" x="0.0" y="32.5" width="102" height="27.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_crystal" translatesAutoresizingMaskIntoConstraints="NO" id="t57-xr-hkW">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="27.5"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持石" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Gkd-vq-G0z" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="0.0" width="82" height="27.5"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <constraints>
+                                            <constraint firstItem="t57-xr-hkW" firstAttribute="leading" secondItem="MF2-B6-odO" secondAttribute="leading" id="6We-75-9fw"/>
+                                            <constraint firstItem="t57-xr-hkW" firstAttribute="top" secondItem="MF2-B6-odO" secondAttribute="top" id="F7K-PS-Yft"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gkd-vq-G0z" secondAttribute="trailing" id="TQz-qj-Ofv"/>
+                                            <constraint firstItem="Gkd-vq-G0z" firstAttribute="top" secondItem="MF2-B6-odO" secondAttribute="top" id="aKF-z9-1ss"/>
+                                            <constraint firstItem="t57-xr-hkW" firstAttribute="height" secondItem="MF2-B6-odO" secondAttribute="height" id="mHD-SO-5u8"/>
+                                            <constraint firstItem="Gkd-vq-G0z" firstAttribute="leading" secondItem="t57-xr-hkW" secondAttribute="trailing" id="nSa-4S-LYJ"/>
+                                            <constraint firstItem="Gkd-vq-G0z" firstAttribute="height" secondItem="MF2-B6-odO" secondAttribute="height" id="pNh-jB-0cq"/>
+                                            <constraint firstItem="t57-xr-hkW" firstAttribute="width" secondItem="MF2-B6-odO" secondAttribute="width" multiplier="0.2" id="vOX-lV-yrc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Gkd-vq-G0z" secondAttribute="width" id="UXY-K6-ueu"/>
-                                    <constraint firstItem="Gkd-vq-G0z" firstAttribute="width" secondItem="Pah-Pq-3Um" secondAttribute="width" id="keG-e6-dey"/>
+                                    <constraint firstItem="MF2-B6-odO" firstAttribute="width" secondItem="4Lh-2c-2hJ" secondAttribute="width" id="QlT-6l-iJG"/>
+                                    <constraint firstItem="DeP-e0-pqu" firstAttribute="width" secondItem="4Lh-2c-2hJ" secondAttribute="width" id="xuR-CA-dtT"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ランク" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-Em-qfA">
@@ -261,7 +313,7 @@
                             <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="r0D-W2-Sh9" secondAttribute="trailing" id="Dtt-Ik-zGu"/>
                             <constraint firstItem="4Lh-2c-2hJ" firstAttribute="top" secondItem="QeO-Em-qfA" secondAttribute="top" id="FQq-kc-Jqo"/>
                             <constraint firstItem="BCI-2a-rXu" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="HI3-mW-4fg"/>
-                            <constraint firstItem="4Lh-2c-2hJ" firstAttribute="height" secondItem="QeO-Em-qfA" secondAttribute="height" id="Hxg-Xt-GJe"/>
+                            <constraint firstItem="4Lh-2c-2hJ" firstAttribute="height" secondItem="QeO-Em-qfA" secondAttribute="height" multiplier="1.5" id="Hxg-Xt-GJe"/>
                             <constraint firstItem="UFn-nZ-JCc" firstAttribute="top" secondItem="Q77-tw-6in" secondAttribute="top" id="Iyt-2H-xai"/>
                             <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="Q7W-ve-I0M" secondAttribute="bottom" id="KBK-Sr-szE"/>
                             <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="xg2-lJ-qbf" secondAttribute="bottom" id="LqE-yo-66B"/>
@@ -291,6 +343,7 @@
                             <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="BCI-2a-rXu" secondAttribute="trailing" id="rV0-DL-yeE"/>
                             <constraint firstItem="Q77-tw-6in" firstAttribute="trailing" secondItem="6nZ-lq-8zC" secondAttribute="trailing" id="tIa-ik-jRa"/>
                             <constraint firstItem="Q77-tw-6in" firstAttribute="bottom" secondItem="nZV-fC-V05" secondAttribute="bottom" id="tPO-UV-8gb"/>
+                            <constraint firstItem="4Lh-2c-2hJ" firstAttribute="width" secondItem="056-yu-FTx" secondAttribute="width" multiplier="0.18" id="tf6-Na-QXQ"/>
                             <constraint firstItem="6nZ-lq-8zC" firstAttribute="top" secondItem="PCA-sM-O9l" secondAttribute="bottom" id="v6M-yf-DGU"/>
                             <constraint firstItem="Q7W-ve-I0M" firstAttribute="leading" secondItem="Q77-tw-6in" secondAttribute="leading" id="wFg-ld-XiZ"/>
                             <constraint firstItem="UFn-nZ-JCc" firstAttribute="height" secondItem="056-yu-FTx" secondAttribute="height" multiplier="0.6" id="zIc-iB-OUE"/>
@@ -335,5 +388,7 @@
         <image name="IconHome" width="32" height="32"/>
         <image name="IconSetting" width="32" height="32"/>
         <image name="IconShop" width="32" height="32"/>
+        <image name="icon_crystal" width="266" height="366"/>
+        <image name="icon_gold" width="729" height="729"/>
     </resources>
 </document>

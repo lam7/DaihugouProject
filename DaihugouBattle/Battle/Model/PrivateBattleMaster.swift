@@ -107,22 +107,26 @@ class LocalBattleMaster: BattleMaster{
         completion(nil)
     }
     
-    private func drawOwnerCards(_ amount: Int = 1){
+    @discardableResult
+    private func drawOwnerCards(_ amount: Int = 1)-> [Card]{
         let cards = ownerDeck.drawCards(amount)
         if !cards.filter({ $0 == nil }).isEmpty{
             battleField.owner.attacked(9999)
-        }else{
-            battleField.owner.drawCards(cards.compactMap{ $0 })
+            return []
         }
+        battleField.owner.drawCards(cards.compactMap{ $0 })
+        return cards.compactMap({ $0 })
     }
     
-    private func drawEnemyCards(_ amount: Int = 1){
+    @discardableResult
+    private func drawEnemyCards(_ amount: Int = 1)-> [Card]{
         let cards = enemyDeck.drawCards(amount)
-        
-        battleField.enemy.drawCards(cards.compactMap{ $0 })
         if !cards.filter({ $0 == nil }).isEmpty{
             battleField.enemy.attacked(9999)
+            return []
         }
+        battleField.enemy.drawCards(cards.compactMap{ $0 })
+        return cards.compactMap({ $0 })
     }
     
     private func putDown(_ cards: [Card], player: Player) -> Error?{
