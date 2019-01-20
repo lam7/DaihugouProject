@@ -124,7 +124,7 @@ class Table: NSCopying{
         let sort = cards.sorted(){
             $0.index < $1.index
         }
-        guard let first = cards.first else{
+        guard let first = sort.first else{
             return false
         }
         

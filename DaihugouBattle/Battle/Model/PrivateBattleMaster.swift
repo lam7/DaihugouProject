@@ -147,7 +147,7 @@ class LocalBattleMaster: BattleMaster{
         player.activateSkill(cards, activateType: .fanfare)
         battleField.table.changeSpotStatus(by: cards)
         
-        player.changeAtkRate(inc: 0.1)
+        player.changeAtkRate(inc: 0.2)
         if player.id == battleField.owner.id{
             print("ownerCards")
             player.changeOrignalAtk(to: ownerOriginalAtk)
