@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NCMB.setApplicationKey(applicationkey, clientKey: clientkey)
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
-        
         Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection10.bundle")?.load()
     
         return true

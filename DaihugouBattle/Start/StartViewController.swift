@@ -11,6 +11,7 @@ import UIKit
 import Chameleon
 import RxSwift
 import Floaty
+import FirebaseAuth
 
 ///一番最初の画面
 class StartViewController: UIViewController, UIGestureRecognizerDelegate{
