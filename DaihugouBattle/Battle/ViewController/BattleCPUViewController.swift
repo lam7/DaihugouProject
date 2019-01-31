@@ -18,7 +18,7 @@ class BattleCPUViewController: BattleViewController{
         if _ownerDeck != nil && _enemyDeck != nil{
             let ownerDeck = Deck(cards: _ownerDeck.cards.map({ CardBattle(card: $0) }))
             let enemyDeck = Deck(cards: _enemyDeck.cards.map({ CardBattle(card: $0) }))
-            self.battleMaster = LocalBattleMaster(ownerName: "オーナー", ownerId: 0, ownerDeck: ownerDeck, enemyName: "敵", enemyId: 1, enemyDeck: enemyDeck)
+            self.battleMaster = LocalBattleMaster(ownerName: "オーナー", ownerId: "0", ownerDeck: ownerDeck, enemyName: "敵", enemyId: "1", enemyDeck: enemyDeck)
             completion()
             return
         }
@@ -52,7 +52,7 @@ class BattleCPUViewController: BattleViewController{
             //                ownerDeck = decks.random.copy() as! Deck
             //            }
             //この辺の処理は変える必要がある
-            self.battleMaster = LocalBattleMaster(ownerName: "オーナー", ownerId: 0, ownerDeck: ownerDeck, enemyName: "敵", enemyId: 1, enemyDeck: enemyDeck)
+            self.battleMaster = LocalBattleMaster(ownerName: "オーナー", ownerId: "0", ownerDeck: ownerDeck, enemyName: "敵", enemyId: "1", enemyDeck: enemyDeck)
             completion()
         }
     }

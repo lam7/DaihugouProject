@@ -14,7 +14,7 @@ class SelectedDeckInBattleView: UINibView{
     @IBOutlet weak var sortieButton: UIButton!
     @IBOutlet weak var deckNameLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
-    
+    var battleIdentifier: String!
     var deck: Deck!{
         didSet{
             deckNameLabel.text = (deck as? DeckRelated)?.name
@@ -32,7 +32,8 @@ class SelectedDeckInBattleView: UINibView{
     }
     
     @IBAction func touchUpSortie(_ sender: UIButton){
-        self.parentViewController()?.performSegue(withIdentifier: "battle", sender: deck)
+        self.parentViewController()?.performSegue(withIdentifier: battleIdentifier, sender: deck)
+        
     }
     
     @IBAction func touchUpClose(_ sender: UIButton){

@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias PlayerIdType = UInt64
+typealias PlayerIdType = String
 
 /// プレイヤーの行動をまとめたデリゲート
 protocol PlayerDelegate: class {

@@ -13,121 +13,338 @@ import FirebaseAuth
 protocol FirebaseBattleRoomDelegate: class{
     func enemyPutDown(_ cards: [Card])
     func enemyPass()
+    func enemyDraw(_ cards: [Card])
+}
+
+extension Errors{
+    class FirebaseBattle{
+        static let dataError = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "通信エラー",
+                                                                                        NSLocalizedFailureReasonErrorKey : "データの形式が正しくありません"])
+    }
 }
 
 class FirebaseBattleRoom{
     weak var delegate: FirebaseBattleRoomDelegate?
     
     private let rootRef = Database.database().reference()
-    private let userRef  = Database.database().reference().child("users")
-    private var roomId: String!
-    private var isBattling: Bool = false
+    private let userRef  = Database.database().reference().child("battleUsers")
+    private let ownerRef = Database.database().reference().child("battleUsers/\(UserLogin.uuid!)")
+    private let roomRef = Database.database().reference().child("battleRooms")
     
+    private var roomId: String = ""
+    private(set) var isBattling: Bool = false
+    private(set) var isYourTurn: Bool = false
+    private var turn: Int = 0
+    
+    private typealias UserDictionary = [String : User]
+    private typealias IdUser = (id: String, user: User)
+    private var maxHP: Int
+    private var isMaster: Bool = false
+    
+    private struct User{
+        var roomId: String
+        var isMatching: Bool
+        
+        init(roomId: String, isMatching: Bool){
+            self.roomId     = roomId
+            self.isMatching = isMatching
+        }
+        
+        init?(nsDictionary: NSDictionary){
+            guard let roomId = nsDictionary["roomId"] as? String,
+                let isMatching = nsDictionary["isMatching"] as? Bool else{
+                    return nil
+            }
+            
+            self.roomId     = roomId
+            self.isMatching = isMatching
+        }
+        
+        static func empty()-> User{
+            return User(roomId: "", isMatching: false)
+        }
+        
+        func nsDictionary()-> NSDictionary{
+            return [
+                "roomId" : roomId,
+                "isMatching" : isMatching
+            ]
+        }
+    }
+    
+    init(maxHP: Int){
+        self.maxHP = maxHP
+    }
+    private struct Room{
+        var masterObjectId: String
+        var masterName: String
+        var guestObjectId: String
+        var guestName: String
+        var isMasterTurn: Bool
+        var isBattling: Bool
+        var logs: [String]
+        
+        static func empty()-> Room{
+            return Room(masterObjectId: UserLogin.uuid, masterName: UserInfo.shared.nameValue, guestObjectId: "", guestName: "", isMasterTurn: Bool.random(), isBattling: false, logs: [])
+        }
+        
+        func nsDictionary()-> NSDictionary{
+            return [
+                "masterObjectId" : masterObjectId,
+                "masterName" : masterName,
+                "guestObjectId" : guestObjectId,
+                "guestName" : guestName,
+                "isBattling" : isBattling,
+                "isMasterTurn" : isMasterTurn,
+                "logs" : logs
+            ]
+        }
+    }
+    
+    /// ログインし部屋を探す
     func setUp(_ completion: @escaping (_ error: Error?) -> ()){
         login{ error in
             if let error = error{
                 completion(error)
                 return
             }
-            self.getRoom()
+            self.createUserInfo()
+            self.matchingRoom({error in
+                completion(error)
+            })
         }
     }
     
-    func login(_ completion: @escaping (_ error: Error?) -> ()){
+    private func login(_ completion: @escaping (_ error: Error?) -> ()){
         Auth.auth().signInAnonymously{
             user, error in
             completion(error)
         }
     }
     
-    func getRoom(){
-        //一回だけwaitingFlgが１のユーザを取得
-        userRef.queryOrdered(byChild: "isWaiting").queryEqual(toValue: "1").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let value = snapshot.value as? NSDictionary{
-                if value.count >= 1{
-                    //すでに待機中のプレイヤーがいる
-                    self.mathingRoom(value as! Dictionary<AnyHashable, Any>)
+    private func createUserInfo(){
+        ownerRef.setValue(User.empty().nsDictionary())
+    }
+
+    private func matchingRoom(_ completion: @escaping (_ error:  Error?) -> ()){
+        userRef.observeSingleEvent(of: .value){ snapshot in
+            guard let value = snapshot.value as? NSDictionary else{
+                return
+            }
+            let users = self.convertUserDictionary(value)
+            let idUser = self.getMatchableUser(users)
+            
+            if let idUser = idUser{
+                let roomId = idUser.user.roomId
+                self.isMaster = false
+                self.enterRoom(roomId){
+                    self.startBattle()
+                    completion(nil)
                 }
-            } else {
-                //待機中のプレイヤーがいないなら
-                self.roomMaster()
+            }else{
+                self.isMaster = true
+                self.createRoom()
+                self.observeIsMatching {
+                    self.updateIsMatching()
+                    self.startBattle()
+                    completion(nil)
+                }
             }
-        })
-    }
-    
-    private func roomMaster(){
-        //部屋を作り待機
-        createNewRoom()
-        observeIsMathing(getMessages)
-    }
-    
-    private func createNewRoom(){
-        self.roomId = UUID().uuidString
-        let user: [String : String] = [
-            "masterObjectId" : UserLogin.objectIdUserInfo,
-            "masterName" : UserInfo.shared.nameValue,
-            "isMatching" : "0",
-            "isWaiting" : "1",
-            "isMasterTurn" : (0...1).randomElement()!.description
-        ]
-        userRef.child(roomId).setValue(user)
-    }
-    
-    private func observeIsMathing(_ completion: @escaping () -> ()){
-        userRef.child(roomId).observe(DataEventType.childChanged, with: { (snapshot) in
-            let snapshotVal = snapshot.value as! String
-            let snapshotKey = snapshot.key
-            if (snapshotVal == "1" && snapshotKey == "isMatching"){
-                completion()
-            }
-        })
-    }
-    
-    private func getMessages(){
-        isBattling = true
-        
-        //【非同期】子要素が増えるたびにmessageに値を追加する。
-        
-        userRef.child(roomId).child("battleLogs").queryLimited(toLast: 1000).observe(DataEventType.childAdded, with: { (snapshot) in
-            let snapshotValue = snapshot.value as! NSDictionary
-            self.decodeMessage(snapshotValue)
-        })
-    }
-    
-    private func roomChild(_ rooms: Dictionary<AnyHashable, Any>){
-        mathingRoom(rooms)
-        getMessages()
-    }
-    
-    private func mathingRoom(_ value: Dictionary<AnyHashable, Any>){
-        //対戦を始める相手を決定する
-        for (key,val) in value {
-            //このへんでレート補正
-            roomId = key as? String
-            break
         }
-        print("チャット開始するルームId\(roomId!)")
     }
     
+    private func convertUserDictionary(_ users: NSDictionary)-> UserDictionary{
+        var results: UserDictionary = [:]
+        for user in users{
+            guard let id = user.key as? String,
+                let dictionary = user.value as? NSDictionary,
+                let user = User(nsDictionary: dictionary) else{
+                    continue
+            }
+            results[id] = user
+        }
+        return results
+    }
     
+    private func getMatchableUser(_ users: UserDictionary)-> IdUser?{
+        guard let user = users.filter({ $0.key != UserLogin.uuid && !$0.value.isMatching}).randomElement() else{
+            return nil
+        }
+        return IdUser(id: user.key, user: user.value)
+    }
+    
+    private func enterRoom(_ roomId: String, completion: @escaping ()->()){
+        let values = [
+            "guestObjectId" : UserLogin.uuid,
+            "guestName" : UserInfo.shared.nameValue,
+            "isBattling" : true
+            ] as [String : Any]
+        roomRef.child(roomId).updateChildValues(values)
+        self.roomId = roomId
+        updateIsMatching()
+        updateRoomId(roomId)
+        
+        roomRef.child(roomId).child("isMasterTurn").observeSingleEvent(of: .value, with: {
+            snapshot in
+            self.isYourTurn = snapshot.value as! Bool
+            completion()
+        })
+    }
+    
+    private func createRoom(){
+        let room = Room.empty()
+        self.isYourTurn = room.isMasterTurn
+        let roomId = UUID.init().uuidString
+        self.roomId = roomId
+        updateRoomId(roomId)
+        roomRef.child(roomId).setValue(room.nsDictionary())
+    }
+    
+    private func observeIsMatching(_ completion: @escaping ()->()){
+        roomRef.child(roomId).observeSingleEvent(of: .childChanged){ snapshot in
+            completion()
+        }
+    }
+    
+    private func updateRoomId(_ roomId: String){
+        ownerRef.updateChildValues(["roomId" : roomId])
+    }
+    
+    private func updateIsMatching(){
+        ownerRef.updateChildValues(["isMatching" : true])
+    }
+    
+    private func startBattle(){
+        observeLogs()
+    }
+    
+    private func observeLogs(){
+        roomRef.child("\(roomId)/logs").observe(.childChanged){ snapshot in
+            guard let logs = snapshot.value as? [Int : NSDictionary],
+                let log = logs.sorted(by: { $0.key < $1.key }).last?.value else{
+                return
+            }
+            if let id = log["id"] as? String,
+                id != UserLogin.uuid{
+                self.decodeMessage(log)
+            }
+        }
+    }
+    
+    func exchangePlayerInfo(_ completion: @escaping(_ maxHP: Int, _ name: String, _ id: String)->()){
+        let isMaster = self.isMaster ? "master" : "guest"
+        let isGuest = self.isMaster  ? "guest" : "master"
+        var name: String = ""
+        var id: String = ""
+        var maxHP: Int = 0
+        roomRef.child("\(roomId)").observeSingleEvent(of: .value){ snapshot in
+            guard let dictionary = snapshot.value as? NSDictionary else{
+                return
+            }
+            name = dictionary["\(isMaster)Name"] as! String
+            id   = dictionary["\(isMaster)ObjectId"] as! String
+        }
+        roomRef.child("\(roomId)/\(isGuest)MaxHP").observeSingleEvent(of: .value){ snapshot in
+            guard let hp = snapshot.value as? Int else{
+                return
+            }
+            maxHP = hp
+            
+            if self.isMaster{
+                self.roomRef.child("\(self.roomId)/isReady").setValue(true)
+                completion(maxHP, name, id)
+            }
+        }
+        roomRef.child("\(roomId)/\(isMaster)MaxHP").setValue(self.maxHP)
+        
+        if !self.isMaster{
+            roomRef.child("\(roomId)/isReady").observeSingleEvent(of: .value){ snapshot in
+                completion(maxHP, name, id)
+            }
+        }
+        
+    }
+
     private func decodeMessage(_ dictionary: NSDictionary){
-        guard let text = (dictionary["text"] as? String) else{ return }
-        let texts = text.components(separatedBy: ",")
-        let act = texts[0]
-        let value = texts[1]
+        guard let act = dictionary["act"] as? String else{ return }
+        let value = dictionary["value"]
         switch act{
         case "putDown":
-            let cards = (value as! [Int]).map{ CardList.get(id: $0)! }
-            delegate?.enemyPutDown(cards)
+            guard let array = value as? [Int] else{
+                print("--------------------------")
+                print("FirebaseBattleRoom Error")
+                print("value is mistake")
+                print(value)
+                return
+            }
+
+            let cards = array.map({ CardList.get(id: $0) })
+            guard !cards.contains(nil) else{
+                print("--------------------------")
+                print("FirebaseBattleRoom Error")
+                print("value is mistake")
+                print(array)
+                return
+            }
+            turn += 1
+            delegate?.enemyPutDown(cards.compactMap({ $0 }))
         case "pass":
+            turn += 1
             delegate?.enemyPass()
+        case "drawCards":
+            guard let array = value as? [Int] else{
+                print("--------------------------")
+                print("FirebaseBattleRoom Error")
+                print("value is mistake")
+                print(value)
+                return
+            }
+
+            let cards = array.map({ CardList.get(id: $0) })
+            guard !cards.contains(nil) else{
+                print("--------------------------")
+                print("FirebaseBattleRoom Error")
+                print("value is mistake")
+                print(array)
+                return
+            }
+            turn += 1
+            delegate?.enemyDraw(cards.compactMap({ $0 }))
         default:
             print("--------------------------")
             print("FirebaseBattleRoom Error")
-            print("act value is mistake")
-            print(text)
-            
+            print("act is mistake")
+            print(act)
         }
     }
-}
+    
+    func encodeMessagePutDown(_ cards: [Card]){
+        let post: [String : Any] = [
+            "id" : UserLogin.uuid,
+            "act" : "putDown",
+            "value" : cards.map({$0.id})
+        ]
+        turn += 1
+        roomRef.child(roomId).child("logs/\(turn)").setValue(post)
+    }
 
+    func encodeMessagePass(){
+        let post: [String : Any] = [
+            "id" : UserLogin.uuid,
+            "act" : "pass",
+            "value" : ""
+        ]
+        turn += 1
+        roomRef.child(roomId).child("logs/\(turn)").setValue(post)
+    }
+
+    func encodeMessageDraw(_ cards: [Card]){
+        let post: [String : Any] = [
+            "id" : UserLogin.uuid,
+            "act" : "drawCards",
+            "value" : cards.map({$0.id})
+        ]
+        turn += 1
+        roomRef.child(roomId).child("logs/\(turn)").setValue(post)
+    }
+}

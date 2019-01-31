@@ -14,8 +14,14 @@ import UIKit
             oldValue?.removeSafelyFromSuperview()
         }
     }
+    private var identifier = ""
     
     @IBAction func touchUp(_ sender: UIButton) {
+        if sender.tag == 1{
+            identifier = "battleMulti"
+        }else{
+            identifier = "battle"
+        }
         ManageAudio.shared.play("click.mp3")
         LoadingView.show()
         let deckSelectView = DeckSelectView(frame: bounds)
@@ -43,6 +49,7 @@ import UIKit
         let w = view.bounds.width * 0.6
         let h  = w * 0.5
         let v = SelectedDeckInBattleView(frame: CGRect(center: view.bounds, width: w, height: h))
+        v.battleIdentifier = identifier
         v.deck = deck
         view.addSubview(v)
     }
