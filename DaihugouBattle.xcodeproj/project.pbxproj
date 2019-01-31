@@ -190,6 +190,7 @@
 		AADE54991F724D4300DF83BF /* CreateDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54981F724D4300DF83BF /* CreateDeck.swift */; };
 		AAE087F620F59F5B00586167 /* TDPVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE087F520F59F5B00586167 /* TDPVIewController.swift */; };
 		AAE5B4072157D1F400463F28 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE5B4062157D1F400463F28 /* ImageCache.swift */; };
+		AAE5B9B7220294170084A16D /* BattleMulti.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE5B9B6220294170084A16D /* BattleMulti.storyboard */; };
 		AAE71DE220A28B7C00A591A4 /* Cametery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE71DE120A28B7C00A591A4 /* Cametery.swift */; };
 		AAE92B0C20D12F1900B530B9 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE92B0B20D12F1900B530B9 /* NameView.swift */; };
 		AAEC52172088DD4A001428A4 /* FrameLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEC52162088DD4A001428A4 /* FrameLayer.swift */; };
@@ -439,6 +440,7 @@
 		AADE54981F724D4300DF83BF /* CreateDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeck.swift; sourceTree = "<group>"; };
 		AAE087F520F59F5B00586167 /* TDPVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPVIewController.swift; sourceTree = "<group>"; };
 		AAE5B4062157D1F400463F28 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		AAE5B9B6220294170084A16D /* BattleMulti.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BattleMulti.storyboard; sourceTree = "<group>"; };
 		AAE71DE120A28B7C00A591A4 /* Cametery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cametery.swift; sourceTree = "<group>"; };
 		AAE92B0B20D12F1900B530B9 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		AAEC52162088DD4A001428A4 /* FrameLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameLayer.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				AAA637A021738B5000678992 /* DeckRelated.swift */,
 				AAF774DB21AECDF300655055 /* GifEffectScene.swift */,
 				AA065A3E21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift */,
+				AAE5B9B6220294170084A16D /* BattleMulti.storyboard */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE5B9B7220294170084A16D /* BattleMulti.storyboard in Resources */,
 				AACCD5A3216E293D0077273A /* InputNameView.xib in Resources */,
 				AA4BB3DA216AF84500E53BDA /* 勇者たちのララバイ.mp3 in Resources */,
 				AAF8A22720D72A0F0018F650 /* CardStandartCell.xib in Resources */,

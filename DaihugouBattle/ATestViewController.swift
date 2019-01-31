@@ -17,7 +17,7 @@ class TestViewController: UIViewController{
     @IBOutlet weak var collection: SpotCollectionView!
     
     override func viewDidLoad() {
-        let firebase = FirebaseBattleRoom()
+        let firebase = FirebaseBattleRoom(maxHP: 0)
         firebase.setUp({_ in })
 //        collection.cardsWithIdentifier = spot.cardsWithIdentifer
 //        collection.collectionView.reloadData()

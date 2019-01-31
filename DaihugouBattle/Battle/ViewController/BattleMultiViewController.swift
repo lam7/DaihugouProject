@@ -8,43 +8,27 @@
 
 import Foundation
 import UIKit
-
+import SVProgressHUD
 
 class BattleMultiViewController: BattleViewController{
+    var _ownerDeck: Deck!
+    
     override func prepareBattlePlayer(_ completion: @escaping () -> ()){
-        print("prepareMulti")
-        UserInfo.shared.getAllDeck{
-            [weak self] decks, error in
-            guard let `self` = self else {
-                return
-            }
+        let ownerDeck = Deck(cards: self._ownerDeck.cards.map({ CardBattle(card: $0) }))
+        let battleRoom = FirebaseBattleRoom(maxHP: ownerDeck.cards.reduce(0, { $0 + $1.hp }))
+        SVProgressHUD.show()
+        battleRoom.setUp{error in
             if let error = error{
-                dump(error)
-                self.dismiss(animated: true, completion: nil)
+                SVProgressHUD.showError(withStatus: "エラー")
+                SVProgressHUD.dismiss(withDelay: 1.5)
                 return
             }
-            
-            var ownerDeck: Deck
-            var enemyDeck: Deck
-            if decks.isEmpty{
-               return
-            }else{
-                var random = decks.compactMap{$0}.random
-                ownerDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }))
-                random = decks.compactMap{$0}.random
-                enemyDeck = Deck(cards: random.cards.map({ CardBattle(card: $0) }))
+            battleRoom.exchangePlayerInfo(){
+                maxHP, name, id in
+                SVProgressHUD.dismiss()
+                self.battleMaster = FirebaseBattleMaster(ownerName: UserInfo.shared.nameValue, ownerId: UserLogin.uuid, ownerDeck: self._ownerDeck, enemyName: name, enemyId: id, enemyMaxHP: maxHP, battleRoom: battleRoom)
+                completion()
             }
-            
-//            var ownerDeck: Deck
-//            let enemyDeck: Deck = CardList.CardDeck.noData
-//            if decks.isEmpty{
-//                ownerDeck = CardList.CardDeck.test2
-//            }else{
-//                ownerDeck = decks.random.copy() as! Deck
-//            }
-            //この辺の処理は変える必要がある
-            self.battleMaster = LocalBattleMaster(ownerName: "オーナー", ownerId: 0, ownerDeck: ownerDeck, enemyName: "敵", enemyId: 1, enemyDeck: enemyDeck)
-            completion()
         }
     }
 }

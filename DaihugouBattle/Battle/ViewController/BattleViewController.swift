@@ -59,7 +59,7 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
             skillView.frame.origin.y = -skillView.frame.height
         }
     }
-    var battleMaster: LocalBattleMaster!
+    var battleMaster: BattleMaster!
     static var asyncBlock: ControllAsyncBlock!
     
     var ownerCardViews: [CardView]!

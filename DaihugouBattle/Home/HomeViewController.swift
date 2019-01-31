@@ -171,6 +171,9 @@ class HomeViewController: UIViewController{
             let controller = segue.destination as! BattleCPUViewController
             controller._ownerDeck = sender as? Deck
             controller._enemyDeck = sender as? Deck
+        }else if segue.identifier == "battleMulti"{
+            let controller = segue.destination as! BattleMultiViewController
+            controller._ownerDeck = sender as? Deck
         }else if segue.identifier == "deckForming"{
             let controller = segue.destination as! CreateDeckViewController
             let s = sender as? Deck

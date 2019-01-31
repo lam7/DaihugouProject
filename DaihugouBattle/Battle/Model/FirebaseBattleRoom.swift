@@ -11,9 +11,6 @@ import Firebase
 import FirebaseAuth
 
 protocol FirebaseBattleRoomDelegate: class{
-    func matching()
-    func startOwnerTurn()
-    func startEnemyTurn()
     func enemyPutDown(_ cards: [Card])
     func enemyPass()
     func enemyDraw(_ cards: [Card])
@@ -34,13 +31,15 @@ class FirebaseBattleRoom{
     private let ownerRef = Database.database().reference().child("battleUsers/\(UserLogin.uuid!)")
     private let roomRef = Database.database().reference().child("battleRooms")
     
-    private var roomId: String!
+    private var roomId: String = ""
     private(set) var isBattling: Bool = false
     private(set) var isYourTurn: Bool = false
     private var turn: Int = 0
     
     private typealias UserDictionary = [String : User]
     private typealias IdUser = (id: String, user: User)
+    private var maxHP: Int
+    private var isMaster: Bool = false
     
     private struct User{
         var roomId: String
@@ -73,6 +72,9 @@ class FirebaseBattleRoom{
         }
     }
     
+    init(maxHP: Int){
+        self.maxHP = maxHP
+    }
     private struct Room{
         var masterObjectId: String
         var masterName: String
@@ -107,7 +109,9 @@ class FirebaseBattleRoom{
                 return
             }
             self.createUserInfo()
-            self.matchingRoom({_ in})
+            self.matchingRoom({error in
+                completion(error)
+            })
         }
     }
     
@@ -132,14 +136,18 @@ class FirebaseBattleRoom{
             
             if let idUser = idUser{
                 let roomId = idUser.user.roomId
+                self.isMaster = false
                 self.enterRoom(roomId){
                     self.startBattle()
+                    completion(nil)
                 }
             }else{
+                self.isMaster = true
                 self.createRoom()
                 self.observeIsMatching {
                     self.updateIsMatching()
                     self.startBattle()
+                    completion(nil)
                 }
             }
         }
@@ -207,17 +215,7 @@ class FirebaseBattleRoom{
     }
     
     private func startBattle(){
-        delegate?.matching()
-        startTurn()
         observeLogs()
-    }
-    
-    private func startTurn(){
-        if isYourTurn{
-            delegate?.startOwnerTurn()
-        }else{
-            delegate?.startEnemyTurn()
-        }
     }
     
     private func observeLogs(){
@@ -231,6 +229,40 @@ class FirebaseBattleRoom{
                 self.decodeMessage(log)
             }
         }
+    }
+    
+    func exchangePlayerInfo(_ completion: @escaping(_ maxHP: Int, _ name: String, _ id: String)->()){
+        let isMaster = self.isMaster ? "master" : "guest"
+        let isGuest = self.isMaster  ? "guest" : "master"
+        var name: String = ""
+        var id: String = ""
+        var maxHP: Int = 0
+        roomRef.child("\(roomId)").observeSingleEvent(of: .value){ snapshot in
+            guard let dictionary = snapshot.value as? NSDictionary else{
+                return
+            }
+            name = dictionary["\(isMaster)Name"] as! String
+            id   = dictionary["\(isMaster)ObjectId"] as! String
+        }
+        roomRef.child("\(roomId)/\(isGuest)MaxHP").observeSingleEvent(of: .value){ snapshot in
+            guard let hp = snapshot.value as? Int else{
+                return
+            }
+            maxHP = hp
+            
+            if self.isMaster{
+                self.roomRef.child("\(self.roomId)/isReady").setValue(true)
+                completion(maxHP, name, id)
+            }
+        }
+        roomRef.child("\(roomId)/\(isMaster)MaxHP").setValue(self.maxHP)
+        
+        if !self.isMaster{
+            roomRef.child("\(roomId)/isReady").observeSingleEvent(of: .value){ snapshot in
+                completion(maxHP, name, id)
+            }
+        }
+        
     }
 
     private func decodeMessage(_ dictionary: NSDictionary){
@@ -254,8 +286,10 @@ class FirebaseBattleRoom{
                 print(array)
                 return
             }
+            turn += 1
             delegate?.enemyPutDown(cards.compactMap({ $0 }))
         case "pass":
+            turn += 1
             delegate?.enemyPass()
         case "drawCards":
             guard let array = value as? [Int] else{
@@ -274,6 +308,7 @@ class FirebaseBattleRoom{
                 print(array)
                 return
             }
+            turn += 1
             delegate?.enemyDraw(cards.compactMap({ $0 }))
         default:
             print("--------------------------")
@@ -285,7 +320,7 @@ class FirebaseBattleRoom{
     
     func encodeMessagePutDown(_ cards: [Card]){
         let post: [String : Any] = [
-            "id" : UserLogin.objectIdUserInfo,
+            "id" : UserLogin.uuid,
             "act" : "putDown",
             "value" : cards.map({$0.id})
         ]
@@ -293,9 +328,9 @@ class FirebaseBattleRoom{
         roomRef.child(roomId).child("logs/\(turn)").setValue(post)
     }
 
-    func encodeMessagePass(_ cards: [Card]){
+    func encodeMessagePass(){
         let post: [String : Any] = [
-            "id" : UserLogin.objectIdUserInfo,
+            "id" : UserLogin.uuid,
             "act" : "pass",
             "value" : ""
         ]
@@ -305,7 +340,7 @@ class FirebaseBattleRoom{
 
     func encodeMessageDraw(_ cards: [Card]){
         let post: [String : Any] = [
-            "id" : UserLogin.objectIdUserInfo,
+            "id" : UserLogin.uuid,
             "act" : "drawCards",
             "value" : cards.map({$0.id})
         ]
