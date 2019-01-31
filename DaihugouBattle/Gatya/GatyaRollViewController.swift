@@ -87,6 +87,7 @@ class GatyaRollViewController: UIViewController{
         backgroundImageView.image = DataRealm.get(imageNamed: "gatyaStandartBackground.png")
         ManageAudio.shared.addAudioFromRealm("se_gatya_iainuki.mp3", audioType: .se)
         ManageAudio.shared.addAudioFromRealm("se_card_flip.mp3", audioType: .se)
+        ManageAudio.shared.addAudioFromRealm("shakin2.mp3", audioType: .se)
         particleView.scene.setUpNormalParticle()        
         createCardView()
         sceneView.presentScene(GifEffectScene.self)
@@ -324,6 +325,12 @@ class GatyaRollViewController: UIViewController{
                     return
                 }
                 ManageAudio.shared.playMultiple("se_card_flip.mp3")
+                if card.card?.rarity == .UR{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        ManageAudio.shared.playMultiple("shakin2.mp3")
+                    }
+                    viewScaleAnimation(card.bothSidesView, duration: 0.9)
+                }
                 self.particleView.scene.perform(0.2, card: card.card!, view: card, completion: {})
                 card.bothSidesView.flip(0.3){
                     [weak self] in
@@ -337,10 +344,13 @@ class GatyaRollViewController: UIViewController{
                         }
                     }
                     
-                    self.showAllCard(0.3){
-                        self.currentStep = .finish
-                        self.displayButton()
-                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8, execute: {
+                        self.showAllCard(0.3){
+                            self.currentStep = .finish
+                            self.displayButton()
+                        }
+                    })
+
                 }
             }
         case .finish?:
@@ -353,6 +363,16 @@ class GatyaRollViewController: UIViewController{
         case .some(_):
             break
         }
+    }
+    
+    private func viewScaleAnimation(_ view: UIView, duration: TimeInterval){
+        UIView.animate(withDuration: duration * 2 / 3, delay: 0, options: .curveEaseOut, animations: {
+            view.transform = CGAffineTransform(scaleX: 3, y: 3)
+        }, completion: { _ in
+            UIView.animate(withDuration: duration / 3, delay: 0, options: .curveEaseIn, animations: {
+                view.transform = CGAffineTransform.identity
+            }, completion: nil)
+        })
     }
     
     private func getCard(from touch: UITouch)-> CardView?{

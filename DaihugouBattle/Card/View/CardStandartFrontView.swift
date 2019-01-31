@@ -139,6 +139,7 @@ class CardStandartFrontView: UIView, DisplayableCard{
         })
         
         set(name: card?.name)
+        set(frame: card?.rarity)
     }
 
     func set(name to: Any?) {
@@ -180,7 +181,27 @@ class CardStandartFrontView: UIView, DisplayableCard{
     }
 
     func set(frame to: Any?) {
-
+        guard let to = to as? CardRarity else{
+            return
+        }
+        switch to{
+        case .UR:
+            frontFrameLayer.colorSetType = .ur
+            backFrameLayer.colorSetType = .ur
+        case .SR:
+            frontFrameLayer.colorSetType = .sr
+            backFrameLayer.colorSetType = .sr
+        case .R:
+            frontFrameLayer.colorSetType = .r
+            backFrameLayer.colorSetType = .r
+        case .N:
+            frontFrameLayer.colorSetType = .n
+            backFrameLayer.colorSetType = .n
+        }
+        frontFrameLayer.setNeedsLayout()
+        backFrameLayer.setNeedsLayout()
+        frontFrameLayer.layoutIfNeeded()
+        backFrameLayer.layoutIfNeeded()
     }
 }
 

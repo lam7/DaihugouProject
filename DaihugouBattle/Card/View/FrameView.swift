@@ -25,8 +25,23 @@ class CardBackFrameLayer: CALayer{
         }
     }
     
+    enum ColorSetType: Int{
+        case ur, sr, r, n
+        private static let ColorSet: [[UIColor]] = [
+            [#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1), #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1), #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)],
+            [#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)],
+            [#colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1), #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1), #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)],
+            [#colorLiteral(red: 0.2, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 0.6, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 0.1176470588, green: 0, blue: 0, alpha: 1)],
+            ]
+        
+        func colors()-> [UIColor]{
+            return ColorSetType.ColorSet[self.rawValue]
+        }
+    }
+    
+    var colorSetType: ColorSetType = .n
+    
     override func draw(in ctx: CGContext) {
-        let gradientColors: [UIColor] = [#colorLiteral(red: 0.2, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 0.6, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 0.1176470588, green: 0, blue: 0, alpha: 1)]
         let gradientLocations: [CGFloat] = [0, 0.6, 1]
         let h = frame.height
         let topLeft = CGPoint(x: 0, y: imageRect.minY)
@@ -42,7 +57,7 @@ class CardBackFrameLayer: CALayer{
         path.close()
         path.addClip()
         
-        let colors = gradientColors.map({$0.cgColor}) as CFArray
+        let colors = colorSetType.colors().map({$0.cgColor}) as CFArray
         let space = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradient(colorsSpace: space, colors: colors, locations: gradientLocations)!
         ctx.drawLinearGradient(gradient, start: .zero, end: CGPoint(x: frame.width, y: frame.height), options: [])
@@ -65,6 +80,22 @@ class CardFrontFrameLayer: CALayer{
             UIGraphicsEndImageContext()
         }
     }
+    
+    enum ColorSetType: Int{
+        case ur, sr, r, n
+        private static let ColorSet: [[UIColor]] = [
+            [#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)],
+            [#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1), #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1), #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)],
+            [#colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1), #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)],
+            [#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1), #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)],
+        ]
+        
+        func colors()-> [UIColor]{
+            return ColorSetType.ColorSet[self.rawValue]
+        }
+    }
+    
+    var colorSetType: ColorSetType = .n
     
     override func draw(in ctx: CGContext) {
         let w = frame.width
@@ -127,11 +158,9 @@ class CardFrontFrameLayer: CALayer{
    
         path.addClip()
         
-        let gradientColors: [UIColor] = [#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1), #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)]
-        
         let gradientLocations: [CGFloat] = [0, 0.3, 1]
         
-        let colors = gradientColors.map({$0.cgColor}) as CFArray
+        let colors = colorSetType.colors().map({$0.cgColor}) as CFArray
         let space = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradient(colorsSpace: space, colors: colors, locations: gradientLocations)!
         ctx.drawLinearGradient(gradient, start: .zero, end: CGPoint(x: frame.width, y: frame.height), options: [])

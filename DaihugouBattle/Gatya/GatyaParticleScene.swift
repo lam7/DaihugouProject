@@ -23,7 +23,7 @@ class GatyaParticleScene: SKScene{
     func perform(_ delay: TimeInterval = 0.0, card: Card, view: UIView, completion: @escaping () -> ()){
         let particle = particleOriginal.copy() as! SKEmitterNode
         particle.setScale(0.8)
-        let colors: [UIColor] = [.flatYellow(), .flatRed(), .flatSkyBlue(), .flatWhite()]
+        let colors: [UIColor] = [.flatPurple(), .flatYellow(), .flatWhite(), .flatRed()]
         let index = CardRarity.allCases.firstIndex(of: card.rarity)!
         particle.particleColor = colors[index]
         particle.particleColorBlendFactor = 1
