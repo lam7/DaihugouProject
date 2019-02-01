@@ -77,7 +77,16 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageView.image = DataRealm.get(imageNamed: "BattleBackgroundDoukutu.png")
-        
+        connectView()
+    }
+    
+    private func connectView(){
+        ownerView.chStatusView = self.characterStatusView
+        enemyView.chStatusView = self.characterStatusView
+        ownerView.skillView = self.skillView
+        enemyView.skillView = self.skillView
+        spotView.spotCollectionView = self.spotCollectionView
+        spotCollectionView.chStatusView = self.characterStatusView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,24 +111,21 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
                 return
             }
             self.prepareBattleView()
-            //バトル開始
-            self.battleMaster.gameStart({_ in})
+            self.battleReady()
         }
+    }
+    
+    func battleReady(){
     }
     
     
     func prepareBattlePlayer(_ completion: @escaping () -> ()){
-        
     }
     
     func prepareBattleView(){
         BattleViewController.asyncBlock = ControllAsyncBlock()
         self.battleMaster.delegate = self
         
-        ownerView.chStatusView = self.characterStatusView
-        enemyView.chStatusView = self.characterStatusView
-        ownerView.skillView = self.skillView
-        enemyView.skillView = self.skillView
         ownerView.death = self.deathOwner
         enemyView.death = self.deathEnemy
         
@@ -130,8 +136,6 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         spotView.set(battleMaster: battleMaster)
         spotView.ownerCardViews = ownerCardViews
         spotView.enemyCardViews = enemyCardViews
-        spotView.spotCollectionView = spotCollectionView
-        spotCollectionView.chStatusView = self.characterStatusView
         
         battleMaster.battleField.table.delegate = self
     }

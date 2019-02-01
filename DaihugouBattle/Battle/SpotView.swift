@@ -112,7 +112,17 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
             }
             
             self.spotCollectionView.insertData((cards: cards, isOwnerTurn: isOwner))
-            let cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
+            var cardViews: [CardView] = []
+            if isOwner{
+               cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
+            }else{
+                let views = self.cardNoDataViewsInEnemyHand()
+                cardViews = views[0..<cards.count].map{ $0 }
+                for i in 0..<cards.count{
+                    cardViews[i].card = cards[i]
+                }
+            }
+            
             //カードを出す位置までアニメーションさせる
             let points = self.points(cardViews)
             for (i, cardView) in cardViews.enumerated(){
@@ -168,6 +178,12 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     func cardView(_ card: CardBattle)-> CardView{
         let cardViews = ownerCardViews + enemyCardViews
         return cardViews.filter({ $0.card == card }).first!
+    }
+    
+    func cardNoDataViewsInEnemyHand()-> [CardView]{
+        return enemyCardViews.filter{
+            $0.card != nil && self.battleMaster.battleField.enemy.hand.contains($0.card!)
+        }
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
