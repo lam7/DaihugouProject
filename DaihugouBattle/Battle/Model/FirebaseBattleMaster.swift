@@ -87,15 +87,19 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
         if cards.isEmpty{ return nil }
         
         var hand = player.hand
-        //ハンドに全てのカードがあるかチェック
-        guard cards.filter({ hand.contains($0) }).count == cards.count else{
-            return Errors.Battle.notExistCardsInHand
+        if player.id == battleField.owner.id{
+            //ハンドに全てのカードがあるかチェック
+            guard cards.filter({ hand.contains($0) }).count == cards.count else{
+                return Errors.Battle.notExistCardsInHand
+            }
         }
-        
         for card in cards{
-            let index = hand.index(of: card)!
+            guard let index = hand.index(of: card) else{
+                continue
+            }
             hand.remove(at: index)
         }
+        
         
         player.putDown(cards)
         player.activateSkill(cards, activateType: .fanfare)
