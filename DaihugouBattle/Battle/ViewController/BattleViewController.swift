@@ -74,10 +74,14 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         return CGSize(width: width, height: height)
     }()
     
+    override func loadView() {
+        super.loadView()
+        connectView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageView.image = DataRealm.get(imageNamed: "BattleBackgroundDoukutu.png")
-        connectView()
     }
     
     private func connectView(){

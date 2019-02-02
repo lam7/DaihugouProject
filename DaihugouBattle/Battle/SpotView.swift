@@ -116,10 +116,13 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
             if isOwner{
                cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
             }else{
-                let views = self.cardNoDataViewsInEnemyHand()
+                let views = self.cardViewsInEnemyHand()
                 cardViews = views[0..<cards.count].map{ $0 }
                 for i in 0..<cards.count{
                     cardViews[i].card = cards[i]
+                }
+                if cardViews.isEmpty{
+                    
                 }
             }
             
@@ -132,10 +135,13 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
                 cardView.bothSidesView.flip(0, isFront: true)
                 let point = points[i]
                 let move = CABasicAnimation.move(0.4, to: point)
-                self.animComp.add(move, completion: {
-                    //アニメーションが終わったら、攻撃力ラベルを更新する
-                    self.asyncBlock.next()
-                })
+                if i == cardViews.count - 1{
+                    self.animComp.add(move, completion: {
+                        //アニメーションが終わったら、攻撃力ラベルを更新する
+                        self.asyncBlock.next()
+                    })
+                }
+                
                 cardView.layer.add(move, forKey: "putDown")
             }
         }
@@ -180,7 +186,7 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
         return cardViews.filter({ $0.card == card }).first!
     }
     
-    func cardNoDataViewsInEnemyHand()-> [CardView]{
+    func cardViewsInEnemyHand()-> [CardView]{
         return enemyCardViews.filter{
             $0.card != nil && self.battleMaster.battleField.enemy.hand.contains($0.card!)
         }
