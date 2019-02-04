@@ -116,14 +116,7 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
             if isOwner{
                cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
             }else{
-                let views = self.cardViewsInEnemyHand()
-                cardViews = views[0..<cards.count].map{ $0 }
-                for i in 0..<cards.count{
-                    cardViews[i].card = cards[i]
-                }
-                if cardViews.isEmpty{
-                    
-                }
+                cardViews = self.cardViewsInEnemyHand(cards as! [CardBattle])
             }
             
             //カードを出す位置までアニメーションさせる
@@ -173,22 +166,34 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
         }
     }
     
-//    func changeCardStrength(_ cardStrength: CardStrength) {
-//
-//    }
-//
-//    func changeSpotStatus(_ status: SpotStatus) {
-//
-//    }
-    
     func cardView(_ card: CardBattle)-> CardView{
         let cardViews = ownerCardViews + enemyCardViews
         return cardViews.filter({ $0.card == card }).first!
     }
     
-    func cardViewsInEnemyHand()-> [CardView]{
-        return enemyCardViews.filter{
-            $0.card != nil && self.battleMaster.battleField.enemy.hand.contains($0.card!)
+    func enemyCardView(_ card: CardBattle)-> CardView?{
+        let cardViews = enemyCardViews!
+        return cardViews.filter({ $0.card == card }).first
+    }
+    
+    func cardViewsInEnemyHand(_ cards: [CardBattle])-> [CardView]{
+        var results: [CardView] = []
+        for card in cards{
+            if let cv = enemyCardView(card){
+                results.append(cv)
+            }else{
+                let cv = cardNoDataViewInEnemyHand()!
+                cv.card = card
+                results.append(cv)
+            }
+        }
+        
+        return results
+    }
+    
+    func cardNoDataViewInEnemyHand()-> CardView?{
+        return enemyCardViews.first{
+            $0.card == cardNoData && self.battleMaster.battleField.enemy.hand.contains($0.card!)
         }
     }
     

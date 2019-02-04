@@ -65,7 +65,7 @@ final class SkillAbilityList{
         @objc static func activate4(_ amount: AmountValue!)-> ActivateValue{
             return ActivateValue{ player in
                 let amount = amount.value(player)
-                _ = player.drawCards(amount.intValue)
+                 _ = player.drawCards?(amount.intValue)
             }
         }
         
@@ -241,7 +241,9 @@ final class SkillAbilityList{
         @objc static func activate18(_ amount: AmountValue!)-> ActivateValue{
             return ActivateValue{ player in
                 let amount = amount.value(player)
-                let cards = player.drawCards(2)
+                guard let cards = player.drawCards?(2) else{
+                    return
+                }
                 let atk = cards.reduce(0, { $0 + $1.atk })
                 let damage = amount.floatValue * atk.f
                 player.attack(damage.i)

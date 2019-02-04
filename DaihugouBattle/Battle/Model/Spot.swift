@@ -49,6 +49,9 @@ class Spot: NSCopying{
     ///   - card: 加えるカード配列
     ///   - isOwner: オーナー側が出したカードかどうか
     func putDown(_ cards: [Card], isOwner: Bool){
+        print("\(isOwner) + putDown")
+        dump(cards)
+        print("----------------------")
         cardsWithIdentifer.append((cards, isOwner))
         delegate?.didPutDown(cards, isOwner: isOwner)
     }

@@ -18,16 +18,10 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         
         BattleViewController.asyncBlock.add{
             self.ownerView.arrangeHandAnimation(0.25, player: owner, completion: BattleViewController.asyncBlock.next)
-            print("-----ChangeCardStrength-----")
-            dump(cardStrength)
-            print("-----------------------------")
         }
     }
     
     func changeSpotStatus(_ status: SpotStatus) {
-        print("-----ChangeSpotStatus-----")
-        dump(status)
-        print("-----------------------------")
     }
     
     @IBOutlet weak var backgroundImageView: UIImageView!

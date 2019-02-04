@@ -84,23 +84,20 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     }
     
     private func putDown(_ cards: [Card], player: Player) -> Error?{
-        if cards.isEmpty{ return nil }
-        
-        var hand = player.hand
+        if cards.isEmpty{
+            return nil
+        }
+        let hand = player.hand
         if player.id == battleField.owner.id{
             //ハンドに全てのカードがあるかチェック
-            guard cards.filter({ hand.contains($0) }).count == cards.count else{
-                return Errors.Battle.notExistCardsInHand
-            }
+//            guard cards.filter({ hand.contains($0) }).count == cards.count else{
+//                return Errors.Battle.notExistCardsInHand
+//            }
         }
-        for card in cards{
-            guard let index = hand.index(of: card) else{
-                continue
-            }
-            hand.remove(at: index)
-        }
-        
-        
+        let cards  = cards is [CardBattle] ? cards : cards.map{ CardBattle(card: $0) }
+        print("ppppppppppppppppppppppppppppppppppppppppppppppp")
+        dump(cards)
+        print("---------------------------------------------")
         player.putDown(cards)
         player.activateSkill(cards, activateType: .fanfare)
         battleField.table.changeSpotStatus(by: cards)
