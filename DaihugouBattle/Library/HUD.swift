@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 @IBDesignable class TapableView: UIView{
     var tapGesture: UITapGestureRecognizer!
@@ -45,6 +46,10 @@ class HUD: NSObject{
         shared.show(maskType)
     }
     
+    static func show(_ maskType: MaskType = .clear, belowSubview: UIView){
+        shared.show(maskType, belowSubview: belowSubview)
+    }
+    
     static func dismiss(){
         shared.dismiss()
     }
@@ -55,16 +60,31 @@ class HUD: NSObject{
     }
     
     enum MaskType{
-        case closableDark, closableClear, dark, clear
+        case closableDark, closableClear, closableDarkBlur, dark, darkBlur, clear
         
         fileprivate func view()-> UIView{
+            func setDarkView(_ view: UIView){
+                view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.7003616266)
+            }
+            
+            func setDarkBlurView(_ view: UIView){
+                let blur = UIBlurEffect(style: .dark)
+                let effectView = UIVisualEffectView(effect: blur)
+                effectView.snp.makeConstraints{ make in
+                    make.size.equalTo(view)
+                    make.top.equalTo(view)
+                    make.leading.equalTo(view)
+                }
+                view.addSubview(effectView)
+            }
+            
             switch self{
             case .closableDark:
                 let view = TapableView(frame: .zero)
                 view.tapped = {
                     HUD.shared.dismiss()
                 }
-                view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.7003616266)
+                setDarkView(view)
                 return view
             case .closableClear:
                 let view = TapableView(frame: .zero)
@@ -72,9 +92,23 @@ class HUD: NSObject{
                     HUD.shared.dismiss()
                 }
                 return view
+            case .closableDarkBlur:
+                let view = TapableView(frame: .zero)
+                view.tapped = {
+                    HUD.shared.dismiss()
+                }
+                setDarkBlurView(view)
+                return view
             case .dark:
                 let view = UIView(frame: .zero)
-                view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.7003616266)
+                setDarkView(view)
+                return view
+            case .darkBlur:
+                let view = TapableView(frame: .zero)
+                view.tapped = {
+                    HUD.shared.dismiss()
+                }
+                setDarkBlurView(view)
                 return view
             case .clear:
                 let view = UIView(frame: .zero)
@@ -83,16 +117,31 @@ class HUD: NSObject{
         }
     }
     
-    func show(_ maskType: MaskType = .clear){
+    private func clearContainer(){
         container.removeAllSubviews()
         container.removeSafelyFromSuperview()
-        container = maskType.view()
-        let view = searchFrontWindow()
-        view.addSubview(container)
+    }
+    
+    private func setContainer(_ window: UIWindow){
         container.frame.origin = CGPoint.zero
-        container.frame.size = view.frame.size
         container.autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
         container.isHidden = false
+    }
+    
+    func show(_ maskType: MaskType = .clear){
+        clearContainer()
+        let window = searchFrontWindow()
+        container = maskType.view()
+        window.addSubview(container)
+        setContainer(window)
+    }
+    
+    func show(_ maskType: MaskType = .clear, belowSubview: UIView){
+        clearContainer()
+        let window = searchFrontWindow()
+        container = maskType.view()
+        window.insertSubview(container, belowSubview: belowSubview)
+        setContainer(window)
     }
     
     func dismiss(){
