@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,23 +25,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d2j-nl-7JP">
-                    <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                    <rect key="frame" x="14" y="16" width="540" height="288"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NYG-nX-v9b">
-                            <rect key="frame" x="0.0" y="0.0" width="568" height="32"/>
+                            <rect key="frame" x="0.0" y="0.0" width="540" height="29"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" プレゼント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqk-IM-Gov">
-                                    <rect key="frame" x="0.0" y="0.0" width="284" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="270" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rgY-wQ-XGJ">
-                                    <rect key="frame" x="284" y="0.0" width="284" height="33"/>
+                                    <rect key="frame" x="270" y="0.0" width="270" height="30"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <segments>
                                         <segment title="未受け取り"/>
                                         <segment title="履歴"/>
                                     </segments>
+                                    <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <connections>
                                         <action selector="changed:" destination="-1" eventType="valueChanged" id="HEt-pP-nF7"/>
                                     </connections>
@@ -50,31 +51,33 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="＊期限が切れたプレゼントは自動的に削除されます" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpa-mS-ke8">
-                            <rect key="frame" x="0.0" y="37" width="568" height="33.5"/>
+                            <rect key="frame" x="0.0" y="34" width="540" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fqw-7Z-Co8">
-                            <rect key="frame" x="0.0" y="75.5" width="568" height="192"/>
-                            <color key="backgroundColor" red="0.15390598773956299" green="0.56898003816604614" blue="0.98532384634017944" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="67" width="540" height="173"/>
+                            <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Nxh-5D-jV0"/>
                                 <outlet property="delegate" destination="-1" id="FhG-Ze-Cjs"/>
                             </connections>
                         </tableView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mkN-Wd-vfs">
-                            <rect key="frame" x="0.0" y="272.5" width="568" height="47.5"/>
+                            <rect key="frame" x="0.0" y="245" width="540" height="43"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSb-ub-w6A">
-                                    <rect key="frame" x="0.0" y="0.0" width="284" height="47.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="270" height="43"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="とじる"/>
                                     <connections>
                                         <action selector="touchUpClose:" destination="-1" eventType="touchUpInside" id="thj-WQ-7oP"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2z-ws-Dhv">
-                                    <rect key="frame" x="284" y="0.0" width="284" height="47.5"/>
+                                    <rect key="frame" x="270" y="0.0" width="270" height="43"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="一括受け取り"/>
                                     <connections>
                                         <action selector="touchUpCollective:" destination="-1" eventType="touchUpInside" id="PIf-Kx-4TC"/>
@@ -94,20 +97,20 @@
                     </constraints>
                 </stackView>
                 <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y5X-BO-H8J">
-                    <rect key="frame" x="0.5" y="0.5" width="568" height="320"/>
+                    <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="color" red="0.0" green="0.33592686510000003" blue="0.70875161919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="0.64049267768859863" green="0.90886014699935913" blue="0.92753058671951294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="d2j-nl-7JP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="3St-83-gPI"/>
                 <constraint firstItem="d2j-nl-7JP" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ASl-Sw-QGr"/>
                 <constraint firstItem="Y5X-BO-H8J" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="CpW-Qb-5qR"/>
-                <constraint firstItem="d2j-nl-7JP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="DCF-T2-L32"/>
+                <constraint firstItem="d2j-nl-7JP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.95" id="DCF-T2-L32"/>
                 <constraint firstItem="Y5X-BO-H8J" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="U0B-jW-rQc"/>
                 <constraint firstItem="Y5X-BO-H8J" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Vpu-Ux-Usm"/>
-                <constraint firstItem="d2j-nl-7JP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="bQH-FX-clQ"/>
+                <constraint firstItem="d2j-nl-7JP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.9" id="bQH-FX-clQ"/>
                 <constraint firstItem="Y5X-BO-H8J" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="yCJ-aP-1rP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
