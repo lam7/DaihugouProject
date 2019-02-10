@@ -394,7 +394,7 @@ final class SkillAbilityList{
     
     final class Amount: NSObject{
         static let lists: [()-> AmountValue] = [
-            amount1, amount2, amount3, amount4, amount5
+            amount1, amount2, amount3, amount4, amount5, amount6, amount7
         ]
         
         static func perform(_ number: Int)-> AmountValue{
@@ -434,6 +434,18 @@ final class SkillAbilityList{
         @objc static func amount5()-> AmountValue{
             return AmountValue{ player in
                 player.enemy.hp.nsNumber
+            }
+        }
+        
+        @objc static func amount6()-> AmountValue{
+            return AmountValue{ player in
+                player.battleField.spot.ownerCards.reduce(0, {$0 + $1.atk}).nsNumber
+            }
+        }
+        
+        @objc static func amount7()-> AmountValue{
+            return AmountValue{ player in
+                player.battleField.spot.enemyCards.reduce(0, {$0 + $1.atk}).nsNumber
             }
         }
     }
