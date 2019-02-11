@@ -187,6 +187,7 @@ class FirebaseBattleRoom{
         roomRef.child(roomId).child("isMasterTurn").observeSingleEvent(of: .value, with: {
             snapshot in
             self.isYourTurn = snapshot.value as! Bool
+            self.isYourTurn.toggle()
             completion()
         })
     }
@@ -219,9 +220,9 @@ class FirebaseBattleRoom{
     }
     
     private func observeLogs(){
-        roomRef.child("\(roomId)/logs").observe(.childChanged){ snapshot in
-            guard let logs = snapshot.value as? [Int : NSDictionary],
-                let log = logs.sorted(by: { $0.key < $1.key }).last?.value else{
+        roomRef.child("\(roomId)/logs").observe(.childAdded){ snapshot in
+            print("--------------gremgregmrepgremopgermgoperg----------")
+            guard let log = snapshot.value as? NSDictionary else{
                 return
             }
             if let id = log["id"] as? String,
@@ -244,10 +245,11 @@ class FirebaseBattleRoom{
             name = dictionary["\(isMaster)Name"] as! String
             id   = dictionary["\(isMaster)ObjectId"] as! String
         }
-        roomRef.child("\(roomId)/\(isGuest)MaxHP").observeSingleEvent(of: .value){ snapshot in
+        roomRef.child("\(roomId)/\(isGuest)MaxHP").observe(.value){ snapshot in
             guard let hp = snapshot.value as? Int else{
                 return
             }
+            self.roomRef.child("\(self.roomId)/\(isGuest)MaxHP").removeAllObservers()
             maxHP = hp
             
             if self.isMaster{
@@ -258,11 +260,41 @@ class FirebaseBattleRoom{
         roomRef.child("\(roomId)/\(isMaster)MaxHP").setValue(self.maxHP)
         
         if !self.isMaster{
-            roomRef.child("\(roomId)/isReady").observeSingleEvent(of: .value){ snapshot in
+            roomRef.child("\(roomId)/isReady").observe(.value){ snapshot in
+                guard let isReady = snapshot.value as? Bool else{
+                    return
+                }
+                self.roomRef.child("\(self.roomId)/isReady").removeAllObservers()
                 completion(maxHP, name, id)
             }
         }
-        
+    }
+    
+    func drawInitial(_ cards: [Card], completion: @escaping(_ cards: [Card])->()){
+        let isMaster = self.isMaster ? "master" : "guest"
+        let isGuest = self.isMaster  ? "guest" : "master"
+        roomRef.child("\(roomId)/\(isMaster)drawInitial").setValue(cards.map({$0.id}))
+        roomRef.child("\(roomId)/\(isGuest)drawInitial").observe(.value){ snapshot in
+            guard let ids = snapshot.value as? [Int] else{
+                return
+            }
+            self.roomRef.child("\(self.roomId)/\(isGuest)drawInitial").removeAllObservers()
+            let cards = ids.map({ CardList.get(id: $0) ?? cardNoData })
+            completion(cards)
+        }
+    }
+    
+    func ready(_ completion: @escaping()->()){
+        let isMaster = self.isMaster ? "master" : "guest"
+        let isGuest = self.isMaster  ? "guest" : "master"
+        roomRef.child("\(roomId)/\(isMaster)Ready").setValue(true)
+        roomRef.child("\(roomId)/\(isGuest)Ready").observe(.value){ snapshot in
+            guard let isReady = snapshot.value as? Bool else{
+                return
+            }
+            self.roomRef.child("\(self.roomId)/\(isGuest)Ready").removeAllObservers()
+            completion()
+        }
     }
 
     private func decodeMessage(_ dictionary: NSDictionary){

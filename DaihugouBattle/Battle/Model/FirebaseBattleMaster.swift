@@ -56,14 +56,18 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     func gameStart(_ completion: @escaping (Error?) -> ()){
         isOwnerTurn = battleRoom.isYourTurn
         ownerDeck.shuffle()
-        drawOwnerCards(NumberOfInitialHands)
         
-        if isOwnerTurn{
-            ownerTurn()
-        }else{
-            enemyTurn()
+        let cards = ownerDeck.drawCards(NumberOfInitialHands).compactMap({ $0 })
+        battleField.owner.drawCards(cards)
+        battleRoom.drawInitial(cards){ c in
+            self.enemyDraw(c)
+            if self.isOwnerTurn{
+                self.ownerTurn()
+            }else{
+                self.enemyTurn()
+            }
+            completion(nil)
         }
-        completion(nil)
     }
     
     @discardableResult
@@ -80,19 +84,20 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     }
     
     private func putDown(_ cards: [Card], player: Player) -> Error?{
-        if cards.isEmpty{ return nil }
-        
-        var hand = player.hand
-        //ハンドに全てのカードがあるかチェック
-        guard cards.filter({ hand.contains($0) }).count == cards.count else{
-            return Errors.Battle.notExistCardsInHand
+        if cards.isEmpty{
+            return nil
         }
-        
-        for card in cards{
-            let index = hand.index(of: card)!
-            hand.remove(at: index)
+        let hand = player.hand
+        if player.id == battleField.owner.id{
+            //ハンドに全てのカードがあるかチェック
+//            guard cards.filter({ hand.contains($0) }).count == cards.count else{
+//                return Errors.Battle.notExistCardsInHand
+//            }
         }
-        
+        let cards  = cards is [CardBattle] ? cards : cards.map{ CardBattle(card: $0) }
+        print("ppppppppppppppppppppppppppppppppppppppppppppppp")
+        dump(cards)
+        print("---------------------------------------------")
         player.putDown(cards)
         player.activateSkill(cards, activateType: .fanfare)
         battleField.table.changeSpotStatus(by: cards)
@@ -178,12 +183,14 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     }
     
     func enemyPass() {
+        print("enemyPasssssssssss")
         attack(true)
         battleField.table.changeSpotStatus(by: [])
         enemyTurnEnd()
     }
     
     func enemyDraw(_ cards: [Card]) {
+        let cards = cards.map{ _ in CardBattle(card: cardNoData) }
         if cards.isEmpty{
             battleField.enemy.attacked(9999)
             return

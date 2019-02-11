@@ -56,4 +56,9 @@ class BattleCPUViewController: BattleViewController{
             completion()
         }
     }
+    
+    override func battleReady(){
+        //バトル開始
+        self.battleMaster.gameStart({_ in})
+    }
 }

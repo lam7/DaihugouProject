@@ -57,10 +57,12 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
                 let view = self.viewWithTag(x + (y * (y - 1) / 2))!
                 let center = view.superview!.convert(view.center, to: self)
                 raw.append(center)
-                view.removeFromSuperview()
-                view.superview?.removeFromSuperview()
             }
             r.append(raw)
+        }
+        
+        for y in 1...9{
+            self.viewWithTag(1000 + y)?.removeFromSuperview()
         }
         return r
     }
@@ -452,11 +454,14 @@ class OwnerView: PlayerView{
                 let view = minHandSupportView.viewWithTag(10000 + x + (y * (y - 1) / 2))!
                 let frame = view.superview!.convert(view.frame, to: self)
                 raw.append(frame)
-                view.removeFromSuperview()
-                view.superview?.removeFromSuperview()
             }
             r.append(raw)
         }
+        
+        for y in 1...9{
+            self.viewWithTag(2000 + y)?.removeFromSuperview()
+        }
+        
         return r
     }()
     

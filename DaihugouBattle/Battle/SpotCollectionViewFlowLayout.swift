@@ -40,13 +40,10 @@ class SpotCollectionViewFlowLayout: UICollectionViewFlowLayout{
                 origin.y = 0
                 layoutAttributes.zIndex = 1024
                 layoutAttributes.frame = CGRect(origin: origin, size: size)
-                dump(layoutAttributes.frame)
                 
                 for row in 0 ..< numberOfItemsInSection{
                     let attrs = layoutAttributesForItem(at: IndexPath(row: row, section: section))
                     attrs?.center.x -= headerWidth
-                    print("famefeim:om")
-                    dump(attrs?.frame)
                 }
             }
         }

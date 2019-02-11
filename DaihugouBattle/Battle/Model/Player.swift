@@ -143,7 +143,7 @@ class Player: NSCopying{
     
     ///スキルのためのとりあえずの一時的なもの
     ///いずれクラス設計をより良くする必要がある
-    var drawCards: ((_ amount: Int)-> ([Card]))!
+    var drawCards: ((_ amount: Int)-> ([Card]))?
 
     private init(player: Player){
         self.id = player.id
@@ -257,6 +257,8 @@ class Player: NSCopying{
     fileprivate func deleteHand(_ cards: [Card]){
         for card in cards{
             if let index = hand.index(of: card){
+                hand.remove(at: index)
+            }else if let index = hand.index(of: cardNoData){
                 hand.remove(at: index)
             }else{
                 print("------------------------------------------------")

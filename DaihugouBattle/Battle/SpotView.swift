@@ -112,7 +112,13 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
             }
             
             self.spotCollectionView.insertData((cards: cards, isOwnerTurn: isOwner))
-            let cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
+            var cardViews: [CardView] = []
+            if isOwner{
+               cardViews = (cards as! [CardBattle]).map({ self.cardView($0) })
+            }else{
+                cardViews = self.cardViewsInEnemyHand(cards as! [CardBattle])
+            }
+            
             //カードを出す位置までアニメーションさせる
             let points = self.points(cardViews)
             for (i, cardView) in cardViews.enumerated(){
@@ -122,10 +128,13 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
                 cardView.bothSidesView.flip(0, isFront: true)
                 let point = points[i]
                 let move = CABasicAnimation.move(0.4, to: point)
-                self.animComp.add(move, completion: {
-                    //アニメーションが終わったら、攻撃力ラベルを更新する
-                    self.asyncBlock.next()
-                })
+                if i == cardViews.count - 1{
+                    self.animComp.add(move, completion: {
+                        //アニメーションが終わったら、攻撃力ラベルを更新する
+                        self.asyncBlock.next()
+                    })
+                }
+                
                 cardView.layer.add(move, forKey: "putDown")
             }
         }
@@ -157,17 +166,35 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
         }
     }
     
-//    func changeCardStrength(_ cardStrength: CardStrength) {
-//
-//    }
-//
-//    func changeSpotStatus(_ status: SpotStatus) {
-//
-//    }
-    
     func cardView(_ card: CardBattle)-> CardView{
         let cardViews = ownerCardViews + enemyCardViews
         return cardViews.filter({ $0.card == card }).first!
+    }
+    
+    func enemyCardView(_ card: CardBattle)-> CardView?{
+        let cardViews = enemyCardViews!
+        return cardViews.filter({ $0.card == card }).first
+    }
+    
+    func cardViewsInEnemyHand(_ cards: [CardBattle])-> [CardView]{
+        var results: [CardView] = []
+        for card in cards{
+            if let cv = enemyCardView(card){
+                results.append(cv)
+            }else{
+                let cv = cardNoDataViewInEnemyHand()!
+                cv.card = card
+                results.append(cv)
+            }
+        }
+        
+        return results
+    }
+    
+    func cardNoDataViewInEnemyHand()-> CardView?{
+        return enemyCardViews.first{
+            $0.card == cardNoData && self.battleMaster.battleField.enemy.hand.contains($0.card!)
+        }
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {

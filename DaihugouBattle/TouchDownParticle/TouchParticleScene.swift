@@ -30,6 +30,7 @@ class TouchDownParticleScene: SKScene{
         backgroundColor = .clear
         particleLayer.addChild(TouchMovedParticle)
         TouchMovedParticle.targetNode = particleLayer
+        touchMovedParticleBirthRate = TouchMovedParticle.particleBirthRate
     }
     
     private func initOriginalRay(){
@@ -125,9 +126,7 @@ class TouchDownParticleScene: SKScene{
     func touchesBegan(_ location: CGPoint) {
         let l = CGPoint(x: location.x, y: frame.height - location.y)
         touchBeganAnimation(0.8, location: l, completion: {})
-        if touchMovedParticleBirthRate != 0{
-            TouchMovedParticle.particleBirthRate = touchMovedParticleBirthRate
-        }
+        TouchMovedParticle.particleBirthRate = touchMovedParticleBirthRate
         TouchMovedParticle.position = l
     }
     
@@ -137,12 +136,10 @@ class TouchDownParticleScene: SKScene{
     }
     
     func touchesEnded(_ location: CGPoint) {
-        touchMovedParticleBirthRate = TouchMovedParticle.particleBirthRate
         TouchMovedParticle.particleBirthRate = 0
     }
     
     func touchesCancelled(_ location: CGPoint) {
-        touchMovedParticleBirthRate = TouchMovedParticle.particleBirthRate
         TouchMovedParticle.particleBirthRate = 0
     }
     
