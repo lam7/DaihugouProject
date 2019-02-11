@@ -368,5 +368,32 @@ class CardList{
                  CardBattle(card: CardList.get(35)!),CardBattle(card: CardList.get(36)!),CardBattle(card: CardList.get(37)!),
                  CardBattle(card: CardList.get(38)!),CardBattle(card: CardList.get(39)!)])
         }
+        
+        public static var sample: Deck{
+            let deck = DeckRelated(cards:
+                [CardBattle(card: CardList.get(id: 1)!),CardBattle(card: CardList.get(id: 1)!),
+                 CardBattle(card: CardList.get(id: 1)!),CardBattle(card: CardList.get(id: 1)!),
+                 CardBattle(card: CardList.get(id: 2)!),CardBattle(card: CardList.get(id: 2)!),
+                 CardBattle(card: CardList.get(id: 2)!),CardBattle(card: CardList.get(id: 2)!),
+                 CardBattle(card: CardList.get(id: 3)!),CardBattle(card: CardList.get(id: 3)!),
+                 CardBattle(card: CardList.get(id: 3)!),CardBattle(card: CardList.get(id: 3)!),
+                 CardBattle(card: CardList.get(id: 4)!),CardBattle(card: CardList.get(id: 4)!),
+                 CardBattle(card: CardList.get(id: 4)!),CardBattle(card: CardList.get(id: 4)!),
+                 CardBattle(card: CardList.get(id: 5)!),CardBattle(card: CardList.get(id: 5)!),
+                 CardBattle(card: CardList.get(id: 5)!),CardBattle(card: CardList.get(id: 5)!),
+                 CardBattle(card: CardList.get(id: 6)!),CardBattle(card: CardList.get(id: 6)!),
+                 CardBattle(card: CardList.get(id: 6)!),CardBattle(card: CardList.get(id: 6)!),
+                 CardBattle(card: CardList.get(id: 7)!),CardBattle(card: CardList.get(id: 7)!),
+                 CardBattle(card: CardList.get(id: 7)!),CardBattle(card: CardList.get(id: 7)!),
+                 CardBattle(card: CardList.get(id: 8)!),CardBattle(card: CardList.get(id: 8)!),
+                 CardBattle(card: CardList.get(id: 8)!),CardBattle(card: CardList.get(id: 8)!),
+                 CardBattle(card: CardList.get(id: 9)!),CardBattle(card: CardList.get(id: 9)!),
+                 CardBattle(card: CardList.get(id: 9)!),CardBattle(card: CardList.get(id: 9)!),
+                 CardBattle(card: CardList.get(id: 10)!),CardBattle(card: CardList.get(id: 10)!),
+                 CardBattle(card: CardList.get(id: 10)!),CardBattle(card: CardList.get(id: 10)!),
+                 ])
+            deck.name = "サンプル"
+            return deck
+        }
     }
 }

@@ -36,6 +36,7 @@ import UIKit
                 }
                 controller.alert(error, actions: controller.OKAlertAction)
             }
+            let decks = !decks.isEmpty ? decks : [CardList.CardDeck.sample]
             deckSelectView.decks = decks
         }
     }

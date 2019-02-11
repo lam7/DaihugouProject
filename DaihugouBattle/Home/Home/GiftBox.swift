@@ -89,6 +89,7 @@ class GiftBox{
             giftedItemIds = giftedItemIds.map({ return deleteDoubleQuotesFirstAndLast($0) })
             query.whereKey("objectIdUserInfo", equalTo: UserLogin.objectIdUserInfo)
             
+            
             query.findObjectsInBackground{ objects,error in
                 if let error = error{
                     completion(error, [])

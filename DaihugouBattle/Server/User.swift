@@ -672,7 +672,15 @@ class UserLogin{
                         }
                         // 再ログインをする
                         self.login(){ reLoginError in
-                            completion(reLoginError)
+                            let timeStamp = Date()
+                            let d = 60 * 60 * 24 * 365
+                            let timeLimit = timeStamp.addingTimeInterval(TimeInterval(d))
+                            let giftItemInfo1 = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo2 = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            UserInfo.shared.gift(item: giftItemInfo2){ giftError in
+                                UserInfo.shared.gift(item: giftItemInfo1){ _ in }
+                                completion(giftError)
+                            }
                         }
                     }
                 }
@@ -722,8 +730,8 @@ class UserLogin{
             }
             
             let userInfo = NCMBObject(className: "userInfo")
-            userInfo?.setObject(1000, forKey: "gold")
-            userInfo?.setObject(1000, forKey: "crystal")
+            userInfo?.setObject(10000, forKey: "gold")
+            userInfo?.setObject(10000, forKey: "crystal")
             userInfo?.setObject(10, forKey: "ticket")
             userInfo?.setObject("", forKey: "name")
             userInfo?.setObject("", forKey: "card")
