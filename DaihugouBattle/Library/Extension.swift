@@ -160,6 +160,12 @@ public func +<T: Any>(lhs: [T], rhs: T)-> [T]{
     return copy
 }
 
+public func +<T: Any>(lhs: T, rhs: [T])-> [T]{
+    var copy = rhs
+    copy.append(lhs)
+    return copy
+}
+
 public func +=<T: Any>(lhs: inout [T], rhs: T){
     lhs.append(rhs)
 }

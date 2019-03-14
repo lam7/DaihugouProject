@@ -18,6 +18,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
     @IBOutlet weak var particleView: ParticleView!
     @IBOutlet weak var applicationLabel: UILabel!
     @IBOutlet weak var tapLabel: UILabel!
+    @IBOutlet weak var projectEffectView: ProjectEffectView!
     weak var menuButton: Floaty!
     private var isFirstTap = true
     
@@ -124,7 +125,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             //            CardList.loadPropertyLocal()
             //            self.performSegue(withIdentifier: "test", sender: self)
         })
-           }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -135,6 +136,8 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         UIView.animateKeyframes(withDuration: 1.8, delay: 0, options: [UIView.KeyframeAnimationOptions.repeat, UIView.KeyframeAnimationOptions.autoreverse], animations: {
             self.tapLabel.alpha = 0.1
         }, completion: nil)
+        
+        projectEffectView.fadeoutAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

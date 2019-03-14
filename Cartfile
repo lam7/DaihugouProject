@@ -15,3 +15,4 @@
     github "SwiftyJSON/SwiftyJSON"
     github "kirualex/SwiftyGif"
     github "kciter/Floaty"
+    github "kciter/GlitchLabel"

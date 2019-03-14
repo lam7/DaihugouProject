@@ -181,7 +181,7 @@ class PossessionCardViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         LoadingView.show()
         let cards = UserInfo.shared.cardsValue.map({ $0.key })
-        let nameds = cards.map{ $0.imageNamed } + "cardBack.png"
+        let nameds = "cardBack.png" + cards.map{ $0.imageNamed }
         RealmImageCache.shared.loadImagesBackground(nameds){
             self.viewModel.originalCards = cards
             LoadingView.hide()
