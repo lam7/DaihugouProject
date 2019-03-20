@@ -127,7 +127,7 @@ class GiftBox{
 protocol GiftedItemEffect: class{
     var id: Int{ get }
     func name(_ giftItemInfo: GiftItemInfo)-> String
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (_ error: Error?) -> ())
+    func effect(_ giftedItems: [GiftItemInfo], completion: @escaping (_ error: Error?) -> ())
 }
 
 
@@ -136,10 +136,9 @@ class GiftedItemGold: GiftedItemEffect{
     func name(_ giftItemInfo: GiftItemInfo) -> String {
         return "\(giftItemInfo.subId)G"
     }
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (_ error: Error?) -> ()){
-        let amount = giftedItem.subId * giftedItem.count
+    func effect(_ giftedItems: [GiftItemInfo], completion: @escaping (_ error: Error?) -> ()){
+        let amount = giftedItems.reduce(0, {t, giftedItem in t + giftedItem.subId * giftedItem.count})
         UserInfo.shared.gain(gold: amount, completion: completion)
-        
     }
 }
 
@@ -149,8 +148,8 @@ class GiftedItemCrystal: GiftedItemEffect{
     func name(_ giftItemInfo: GiftItemInfo) -> String {
         return "\(giftItemInfo.subId)C"
     }
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (_ error: Error?) -> ()){
-        let amount = giftedItem.subId * giftedItem.count
+    func effect(_ giftedItems: [GiftItemInfo], completion: @escaping (_ error: Error?) -> ()){
+        let amount = giftedItems.reduce(0, {t, giftedItem in t + giftedItem.subId * giftedItem.count})
         UserInfo.shared.gain(crystal: amount, completion: completion)
         
     }
@@ -165,27 +164,35 @@ class GiftedItemCard: GiftedItemEffect{
         }
         return ""
     }
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (Error?) -> ()) {
-        let cardId = giftedItem.subId
-        guard let card = CardList.get(id: cardId) else{
-            completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil))
-            return
+    func effect(_ giftedItems: [GiftItemInfo], completion: @escaping (Error?) -> ()) {
+        var cards: [Card] = []
+        for giftedItem in giftedItems{
+            guard let card = CardList.get(id: giftedItem.subId) else{
+                completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil))
+                return
+            }
+            cards += [Card](repeating: card, count: giftedItem.subId)
         }
-        let cards = [Card](repeating: card, count: giftedItem.count)
         UserInfo.shared.append(cards: cards, completion: completion)
     }
 }
 
 class GiftedItemList{
     private static var list: [GiftedItemEffect] = [GiftedItemCrystal(), GiftedItemCard(), GiftedItemGold()]
-    static func effect(_ giftedItem: GiftItemInfo, completion: @escaping (Error?) -> ()){
-        for l in list{
-            if l.id == giftedItem.id{
-                l.effect(giftedItem, completion: completion)
-                return
+    
+    static func effect(_ giftedItems: [GiftItemInfo], completion: @escaping (Error?) -> ()){
+        var items = giftedItems
+        while !items.isEmpty{
+            let id = items.first!.id
+            let filter = items.filter{ $0.id == id }
+            items = items.filter{ $0.id != id }
+            for l in list{
+                if l.id == id{
+                    l.effect(filter, completion: completion)
+                    break
+                }
             }
         }
-        completion(NSError(domain: "com.Daihugou", code: 0, userInfo: nil))
     }
     
     static func name(_ giftedItem: GiftItemInfo)-> String{

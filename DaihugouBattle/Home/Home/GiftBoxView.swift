@@ -20,17 +20,18 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var collectiveButton: UIButton!
     
     var giftItemInfos: [(String, GiftItemInfo)] = []
-    var isGaining: Bool = false
     @IBAction func touchUpClose(_ sender: UIButton){
         self.removeFromSuperview()
     }
     
     @IBAction func touchUpCollective(_ sender: UIButton){
+        var infos: [(String, GiftItemInfo)] = []
         for i in 0..<20{
             if let info = giftItemInfos[safe: i]{
-                gain(info)
+                infos.append(info)
             }
         }
+        gain(infos)
     }
     
     @IBAction func changed(_ sender: UISegmentedControl){
@@ -57,11 +58,9 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
         activityIndicator.transform.scaledBy(x: 10, y: 10)
     }
     
-    func gain(_ giftItemInfo: (String, GiftItemInfo)){
-        if isGaining{ return }
+    func gain(_ giftItemInfos: [(String, GiftItemInfo)]){
         activityIndicator.isHidden = false
-        isGaining = true
-        GiftedItemList.effect(giftItemInfo.1){ error in
+        GiftedItemList.effect(giftItemInfos.map{ $0.1 }){ error in
             if let error = error{
                 let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
@@ -70,7 +69,7 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
                 alert.addAction(action)
                 self.parentViewController()?.present(alert, animated: true, completion: nil)
             }
-            UserInfo.shared.delete(giftItem: giftItemInfo.0){ error in
+            UserInfo.shared.delete(giftItem: giftItemInfos.map{ $0.0 }){ error in
                 if let error = error{
                     let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
                     let action = UIAlertAction(title: "OK", style: .default, handler: {_ in

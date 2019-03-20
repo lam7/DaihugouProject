@@ -11,7 +11,7 @@ import UIKit
 
 class GiftBoxCell: UITableViewCell{
     weak var view: UIView!
-    var gainBlock: ((_: (String,GiftItemInfo)) -> ())?
+    var gainBlock: ((_: [(String,GiftItemInfo)]) -> ())?
     private var giftItemInfo: (String, GiftItemInfo)!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -93,6 +93,6 @@ class GiftBoxCell: UITableViewCell{
     }
     
     @IBAction func touchUpGain(_ sender: UIButton){
-        gainBlock?(giftItemInfo)
+        gainBlock?([giftItemInfo])
     }
 }

@@ -595,6 +595,41 @@ class UserInfo{
         }
     }
     
+    func delete(giftItem objectIds: [String], completion: @escaping ErrorBlock){
+        guard let userInfo = NCMBObject(className: "userInfo") else{
+            completion(Errors.UserInfo.ncmbObjectFailure)
+            return
+        }
+        userInfo.objectId = UserLogin.objectIdUserInfo
+        userInfo.fetchInBackground{
+            error in
+            if let error = error{
+                completion(error)
+                return
+            }
+            var gifts = userInfo.object(forKey: "giftedItemObjectIds") as! [String]
+            
+            for objectId in objectIds{
+                gifts.removeAll(objectId)
+                guard let giftedItem = NCMBObject(className: "giftedItem") else{
+                    completion(Errors.UserInfo.ncmbObjectFailure)
+                    return
+                }
+                giftedItem.objectId = objectId
+                giftedItem.setObject(true, forKey: "isReceived")
+                giftedItem.saveInBackground{ _ in }
+            }
+            userInfo.setObject(gifts, forKey: "giftedItemObjectIds")
+            userInfo.saveInBackground{
+                saveError in
+                if let saveError = saveError{
+                    completion(saveError)
+                    return
+                }
+            }
+        }
+    }
+    
     func rename(player name: String, completion: @escaping ErrorBlock){
         guard let object = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
