@@ -52,16 +52,15 @@ class RandomCPU{
         if (player.spot.allCards.last?.index ?? 0) >= 6 && Int.random(in: 0..<100) < 40{
             return []
         }
-        let handCount = player.hand.count
         switch player.table.spotStatus {
         case .empty:
             switch Int.random(in: 0..<100){
             case 0..<45:
                 return randomSingle()
-            case 45..<75:
-                return randomPair(4) ?? randomPair(3) ?? randomPair(2) ?? []
+            case 45..<80:
+                return randomPair() ?? randomSingle()
             default:
-                return randomStair(5) ?? randomStair(4) ?? randomStair(3) ?? []
+                return randomStair() ?? randomSingle()
             }
         case .single:
             return randomSingle()
@@ -97,6 +96,20 @@ class RandomCPU{
         return nil
     }
     
+    private func randomPair()-> [Card]?{
+        guard player.hand.count < 2 else{
+            return nil
+        }
+        let pairCounts = (2..<player.hand.count).map({ $0 }).shuffled()
+        for pairCount in pairCounts{
+            guard let pair = randomPair(pairCount) else{
+                continue
+            }
+            return pair
+        }
+        return nil
+    }
+    
     private func randomStair(_ stairCount: Int)-> [Card]?{
         //乱数でハンドの組み合わせを決める
         let hand = player.hand.shuffled()
@@ -113,6 +126,20 @@ class RandomCPU{
             if player.spot.canPutDown(cards){
                 return cards
             }
+        }
+        return nil
+    }
+    
+    private func randomStair()-> [Card]?{
+        guard player.hand.count < 3 else{
+            return nil
+        }
+        let stairCounts = (3..<player.hand.count).map({ $0 }).shuffled()
+        for stairCount in stairCounts{
+            guard let stair = randomStair(stairCount) else{
+                continue
+            }
+            return stair
         }
         return nil
     }
