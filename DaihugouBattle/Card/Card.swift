@@ -327,7 +327,6 @@ class CardList{
             let index = obj["index"].intValue
             let hp = obj["hp"].intValue
             let atk = obj["atk"].intValue
-            let skillNumber = obj["skillNumber"].intValue
             let skillNumbers = obj["skillNumbers"].arrayValue.map({ $0.intValue })
             let newImageNamed = deleteDoubleQuotesFirstAndLast(imageNamed)
             let newName = deleteDoubleQuotesFirstAndLast(name)

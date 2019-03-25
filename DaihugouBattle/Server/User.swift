@@ -274,7 +274,6 @@ class UserInfo{
                 }
                 self.crystalVar.value = object.object(forKey: "crystal") as! Int
                 completion(nil)
-//                self.update(completion)
             }
         }
     }
@@ -305,7 +304,6 @@ class UserInfo{
                 }
                 self.ticketVar.value = object.object(forKey: "ticket") as! Int
                 completion(nil)
-//                self.update(completion)
             }
         }
     }
@@ -521,7 +519,7 @@ class UserInfo{
     }
     
     
-    func gift(item: GiftItemInfo, completion: @escaping ErrorBlock){
+    func gift(item: GiftedItemInfo, completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo"),
             let giftedItem = NCMBObject(className: "giftedItem") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
@@ -563,15 +561,116 @@ class UserInfo{
         }
     }
     
-    func delete(giftItem objectId: String, completion: @escaping ErrorBlock){
-        guard let userInfo = NCMBObject(className: "userInfo"),
-            let giftedItem = NCMBObject(className: "giftedItem") else{
+    func getAllGiftedItemInfo(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItemInfo]) -> ()){
+        guard let object = NCMBObject(className: "userInfo"),
+            let query = NCMBQuery(className: "giftedItem") else{
+                completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
+                return
+        }
+        var giftedItemInfos: [GiftedItemInfo] = []
+        
+        object.objectId = UserLogin.objectIdUserInfo
+        object.fetchInBackground{ error in
+            if let error = error{
+                completion(error, [])
+                return
+            }
+            var giftedItemIds = object.object(forKey: "giftedItemObjectIds") as! [String]
+            giftedItemIds = giftedItemIds.map({ return deleteDoubleQuotesFirstAndLast($0) })
+            query.whereKey("objectId", containedIn: giftedItemIds)
+            query.findObjectsInBackground{ objects,error in
+                if let error = error{
+                    completion(error, [])
+                }
+                guard let objects = objects else{
+                    completion(Errors.UserInfo.ncmbObjectFailure, [])
+                    return
+                }
+                for object in objects{
+                    guard let obj = object as? NCMBObject,
+                        let timeStamp = obj.object(forKey: "timeStamp") as? Date,
+                        let timeLimit = obj.object(forKey: "timeLimit") as? Date,
+                        let id = obj.intValue(forKey: "id"),
+                        let subId = obj.intValue(forKey: "subId"),
+                        let title = obj.object(forKey: "title") as? String,
+                        let description = obj.object(forKey: "description") as? String,
+                        let count = obj.intValue(forKey: "count"),
+                        let imageNamed = obj.object(forKey: "imageNamed") as? String,
+                        let isReceived = obj.object(forKey: "isReceived") as? Bool,
+                        let objectId = obj.objectId else{
+                            fatalError("object Error")
+                    }
+                    
+                    if timeLimit.compare(Date()) == ComparisonResult.orderedAscending || isReceived{
+                        continue
+                    }
+                    let giftedItem = GiftedItemInfo(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: title, description: description, count: count, imageNamed: imageNamed)
+                    giftedItemInfos.append(giftedItem)
+                }
+                completion(nil, giftedItemInfos)
+            }
+        }
+    }
+    
+    func getReceivedGiftedItemInfos(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItemInfo]) -> ()){
+        guard let object = NCMBObject(className: "userInfo"),
+            let query = NCMBQuery(className: "giftedItem") else{
+                completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
+                return
+        }
+        var giftedItemInfos: [GiftedItemInfo] = []
+        
+        object.objectId = UserLogin.objectIdUserInfo
+        object.fetchInBackground{ error in
+            if let error = error{
+                completion(error, [])
+                return
+            }
+            var giftedItemIds = object.object(forKey: "receivedGiftedItemObjectIds") as! [String]
+            giftedItemIds = giftedItemIds.map({ return deleteDoubleQuotesFirstAndLast($0) })
+            query.whereKey("objectId", containedIn: giftedItemIds)
+            query.findObjectsInBackground{ objects,error in
+                if let error = error{
+                    completion(error, [])
+                }
+                guard let objects = objects else{
+                    completion(Errors.UserInfo.ncmbObjectFailure, [])
+                    return
+                }
+                for object in objects{
+                    guard let obj = object as? NCMBObject,
+                        let timeStamp = obj.object(forKey: "timeStamp") as? Date,
+                        let timeLimit = obj.object(forKey: "timeLimit") as? Date,
+                        let id = obj.intValue(forKey: "id"),
+                        let subId = obj.intValue(forKey: "subId"),
+                        let title = obj.object(forKey: "title") as? String,
+                        let description = obj.object(forKey: "description") as? String,
+                        let count = obj.intValue(forKey: "count"),
+                        let imageNamed = obj.object(forKey: "imageNamed") as? String,
+                        let isReceived = obj.object(forKey: "isReceived") as? Bool,
+                        let objectId = obj.objectId else{
+                            fatalError("object Error")
+                    }
+                    let giftedItem = GiftedItemInfo(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: title, description: description, count: count, imageNamed: imageNamed)
+                    giftedItemInfos.append(giftedItem)
+                }
+                completion(nil, giftedItemInfos)
+            }
+        }
+    }
+    
+    func gain(giftedItems: [GiftedItemInfo], completion: @escaping ErrorBlock){
+        let user = UserInfo()
+        
+    }
+    
+    /// UserInfoクラスのgiftedItemObjectIdsから指定Idを消す
+    func delete(giftedItem objectId: String, completion: @escaping ErrorBlock){
+        guard let userInfo = NCMBObject(className: "userInfo") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
                 return
         }
         userInfo.objectId = UserLogin.objectIdUserInfo
-        giftedItem.objectId = objectId
-        giftedItem.setObject(true, forKey: "isReceived")
         userInfo.fetchInBackground{
             error in
             if let error = error{
@@ -583,18 +682,33 @@ class UserInfo{
             userInfo.setObject(gifts, forKey: "giftedItemObjectIds")
             userInfo.saveInBackground{
                 saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                giftedItem.saveInBackground{
-                    error in
-                    completion(error)
-                }
+                completion(saveError)
             }
         }
     }
     
+    /// UserInfoクラスのreceivedGiftedItemObjectIdsから指定Idを消す
+    func delete(receivedGiftedItem objectId: String, completion: @escaping ErrorBlock){
+        guard let userInfo = NCMBObject(className: "userInfo") else{
+            completion(Errors.UserInfo.ncmbObjectFailure)
+            return
+        }
+        userInfo.objectId = UserLogin.objectIdUserInfo
+        userInfo.fetchInBackground{
+            error in
+            if let error = error{
+                completion(error)
+                return
+            }
+            var gifts = userInfo.object(forKey: "receivedGiftedItemObjectIds") as! [String]
+            gifts.removeAll(objectId)
+            userInfo.setObject(gifts, forKey: "receivedGiftedItemObjectIds")
+            userInfo.saveInBackground{
+                saveError in
+                completion(saveError)
+            }
+        }
+    }
     func delete(giftItem objectIds: [String], completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo") else{
             completion(Errors.UserInfo.ncmbObjectFailure)
@@ -710,8 +824,8 @@ class UserLogin{
                             let timeStamp = Date()
                             let d = 60 * 60 * 24 * 365
                             let timeLimit = timeStamp.addingTimeInterval(TimeInterval(d))
-                            let giftItemInfo1 = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
-                            let giftItemInfo2 = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo1 = GiftedItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo2 = GiftedItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
                             UserInfo.shared.gift(item: giftItemInfo2){ giftError in
                                 UserInfo.shared.gift(item: giftItemInfo1){ _ in }
                                 completion(giftError)

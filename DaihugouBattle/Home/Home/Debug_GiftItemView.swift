@@ -37,7 +37,7 @@ class Debug_GiftItemView: UINibView{
         let h = 60 * 60 * hour
         let m = 60 * minute
         let timeLimit = timeStamp.addingTimeInterval(d + h + m)
-        let giftItemInfo = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: "", description: description, count: count, imageNamed: "TreasureChest.png")
+        let giftItemInfo = GiftedItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: "", description: description, count: count, imageNamed: "TreasureChest.png")
         UserInfo.shared.gift(item: giftItemInfo, completion: {error in
             print(error)
             print("success")
