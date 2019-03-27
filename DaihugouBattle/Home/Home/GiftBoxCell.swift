@@ -11,8 +11,8 @@ import UIKit
 
 class GiftBoxCell: UITableViewCell{
     weak var view: UIView!
-    var gainBlock: ((_: [(String,GiftedItemInfo)]) -> ())?
-    private var giftItemInfo: (String, GiftedItemInfo)!
+    var gainBlock: ((_: [(String,GiftedItem)]) -> ())?
+    private var giftItemInfo: (String, GiftedItem)!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -53,9 +53,9 @@ class GiftBoxCell: UITableViewCell{
         return Bundle(for: type(of: self)).loadNibNamed("GiftBoxCell", owner: self, options: nil)?.first as! UIView
     }
     
-    func set(giftItemInfo: (String, GiftedItemInfo)){
+    func set(giftItemInfo: (String, GiftedItem)){
         self.giftItemInfo = giftItemInfo
-        let giftItemInfo: GiftedItemInfo = giftItemInfo.1
+        let giftItemInfo: GiftedItem = giftItemInfo.1
         
         itemImageView.image   = DataRealm.get(imageNamed: giftItemInfo.imageNamed)
         nameLabel.text        = GiftedItemList.name(giftItemInfo)

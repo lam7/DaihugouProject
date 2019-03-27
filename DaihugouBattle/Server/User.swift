@@ -138,17 +138,10 @@ class UserInfo{
         }
         object.objectId = UserLogin.objectIdUserInfo
         object.fetchInBackground(){ error in
-            if let error = error{
+            if let error = error ?? self.reduce(gold: gold, object: object){
                 completion(error)
                 return
             }
-            var selfGold = object.object(forKey: "gold") as! Int
-            if selfGold - gold < 0{
-                completion(Errors.UserInfo.notEnoughGold)
-                return
-            }
-            selfGold -= gold
-            object.setObject(selfGold, forKey: "gold")
             object.saveInBackground(){ saveError in
                 if let saveError = saveError{
                     completion(saveError)
@@ -158,6 +151,16 @@ class UserInfo{
                 completion(nil)
             }
         }
+    }
+    
+    private func reduce(gold: Int, object: NCMBObject)-> Error?{
+        var selfGold = object.object(forKey: "gold") as! Int
+        if selfGold - gold < 0{
+            return Errors.UserInfo.notEnoughGold
+        }
+        selfGold -= gold
+        object.setObject(selfGold, forKey: "gold")
+        return nil
     }
     
     func reduce(crystal: Int, completion: @escaping ErrorBlock){
@@ -519,7 +522,7 @@ class UserInfo{
     }
     
     
-    func gift(item: GiftedItemInfo, completion: @escaping ErrorBlock){
+    func gift(item: GiftedItem, completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo"),
             let giftedItem = NCMBObject(className: "giftedItem") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
@@ -561,13 +564,13 @@ class UserInfo{
         }
     }
     
-    func getAllGiftedItemInfo(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItemInfo]) -> ()){
+    func getGiftedItemInfos(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItem]) -> ()){
         guard let object = NCMBObject(className: "userInfo"),
             let query = NCMBQuery(className: "giftedItem") else{
                 completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
                 return
         }
-        var giftedItemInfos: [GiftedItemInfo] = []
+        var giftedItemInfos: [GiftedItem] = []
         
         object.objectId = UserLogin.objectIdUserInfo
         object.fetchInBackground{ error in
@@ -590,21 +593,18 @@ class UserInfo{
                     guard let obj = object as? NCMBObject,
                         let timeStamp = obj.object(forKey: "timeStamp") as? Date,
                         let timeLimit = obj.object(forKey: "timeLimit") as? Date,
+                        timeLimit.compare(Date()) == ComparisonResult.orderedDescending,
                         let id = obj.intValue(forKey: "id"),
                         let subId = obj.intValue(forKey: "subId"),
-                        let title = obj.object(forKey: "title") as? String,
                         let description = obj.object(forKey: "description") as? String,
                         let count = obj.intValue(forKey: "count"),
                         let imageNamed = obj.object(forKey: "imageNamed") as? String,
                         let isReceived = obj.object(forKey: "isReceived") as? Bool,
-                        let objectId = obj.objectId else{
+                        !isReceived,
+                        let objectId = obj.objectId,
+                        let giftedItem = try? GiftedItem(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, description: description, count: count, imageNamed: imageNamed) else{
                             fatalError("object Error")
                     }
-                    
-                    if timeLimit.compare(Date()) == ComparisonResult.orderedAscending || isReceived{
-                        continue
-                    }
-                    let giftedItem = GiftedItemInfo(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: title, description: description, count: count, imageNamed: imageNamed)
                     giftedItemInfos.append(giftedItem)
                 }
                 completion(nil, giftedItemInfos)
@@ -612,13 +612,13 @@ class UserInfo{
         }
     }
     
-    func getReceivedGiftedItemInfos(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItemInfo]) -> ()){
+    func getReceivedGiftedItemInfos(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItem]) -> ()){
         guard let object = NCMBObject(className: "userInfo"),
             let query = NCMBQuery(className: "giftedItem") else{
                 completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
                 return
         }
-        var giftedItemInfos: [GiftedItemInfo] = []
+        var giftedItemInfos: [GiftedItem] = []
         
         object.objectId = UserLogin.objectIdUserInfo
         object.fetchInBackground{ error in
@@ -643,15 +643,15 @@ class UserInfo{
                         let timeLimit = obj.object(forKey: "timeLimit") as? Date,
                         let id = obj.intValue(forKey: "id"),
                         let subId = obj.intValue(forKey: "subId"),
-                        let title = obj.object(forKey: "title") as? String,
                         let description = obj.object(forKey: "description") as? String,
                         let count = obj.intValue(forKey: "count"),
                         let imageNamed = obj.object(forKey: "imageNamed") as? String,
                         let isReceived = obj.object(forKey: "isReceived") as? Bool,
-                        let objectId = obj.objectId else{
+                        isReceived,
+                        let objectId = obj.objectId,
+                        let giftedItem = try? GiftedItem(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, description: description, count: count, imageNamed: imageNamed) else{
                             fatalError("object Error")
                     }
-                    let giftedItem = GiftedItemInfo(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: title, description: description, count: count, imageNamed: imageNamed)
                     giftedItemInfos.append(giftedItem)
                 }
                 completion(nil, giftedItemInfos)
@@ -659,9 +659,67 @@ class UserInfo{
         }
     }
     
-    func gain(giftedItems: [GiftedItemInfo], completion: @escaping ErrorBlock){
-        let user = UserInfo()
+    func gain(_ effectInfo: GiftedItemEffectInfo, completion: @escaping ErrorBlock){
+        guard let object = NCMBObject(className: "userInfo") else{
+            completion(Errors.UserInfo.ncmbObjectFailure)
+            return
+        }
         
+        if effectInfo.crystal < 0 || effectInfo.gold < 0 || effectInfo.ticket < 0{
+            completion(Errors.UserInfo.gainMinus)
+            return
+        }
+        
+        object.objectId = UserLogin.objectIdUserInfo
+        object.fetchInBackground(){ error in
+            if let error = error{
+                completion(error)
+                return
+            }
+            if effectInfo.ticket > 0{
+                var selfTicket = object.object(forKey: "ticket") as! Int
+                selfTicket += effectInfo.ticket
+                object.setObject(selfTicket, forKey: "ticket")
+            }
+            if effectInfo.gold > 0{
+                var selfGold = object.object(forKey: "gold") as! Int
+                selfGold += effectInfo.gold
+                object.setObject(selfGold, forKey: "gold")
+            }
+            if effectInfo.crystal > 0{
+                var selfCrystal = object.object(forKey: "crystal") as! Int
+                selfCrystal += effectInfo.crystal
+                object.setObject(selfCrystal, forKey: "crystal")
+            }
+            if !effectInfo.cards.isEmpty{
+                var selfCardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
+                loop: for i in 0..<effectInfo.cards.count{
+                    for j in 0..<selfCardsIdCount.count{
+                        if selfCardsIdCount[j][0] == effectInfo.cards[i].id{
+                            selfCardsIdCount[j][1] += 1
+                            continue loop
+                        }
+                    }
+                    selfCardsIdCount.append([effectInfo.cards[i].id, 1])
+                }
+                selfCardsIdCount.sort(by: { $0.first! < $1.first! })
+                object.setObject(selfCardsIdCount, forKey: "cardsIdCount")
+            }
+            
+            object.saveInBackground(){ saveError in
+                if let saveError = saveError{
+                    completion(saveError)
+                    return
+                }
+                self.ticketVar.value    = object.object(forKey: "ticket") as! Int
+                self.goldVar.value      = object.object(forKey: "gold") as! Int
+                self.crystalVar.value   = object.object(forKey: "crystal") as! Int
+                let cardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
+                let convert = self.convertCardCount(from: cardsIdCount)
+                self.cardsVar.value = convert.1
+                completion(convert.0)
+            }
+        }
     }
     
     /// UserInfoクラスのgiftedItemObjectIdsから指定Idを消す
@@ -824,8 +882,8 @@ class UserLogin{
                             let timeStamp = Date()
                             let d = 60 * 60 * 24 * 365
                             let timeLimit = timeStamp.addingTimeInterval(TimeInterval(d))
-                            let giftItemInfo1 = GiftedItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
-                            let giftItemInfo2 = GiftedItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, title: "", description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo1 = GiftedItem(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo2 = GiftedItem(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
                             UserInfo.shared.gift(item: giftItemInfo2){ giftError in
                                 UserInfo.shared.gift(item: giftItemInfo1){ _ in }
                                 completion(giftError)

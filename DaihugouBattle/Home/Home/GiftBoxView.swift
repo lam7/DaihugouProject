@@ -19,13 +19,13 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var collectiveButton: UIButton!
     
-    var giftItemInfos: [(String, GiftedItemInfo)] = []
+    var giftItemInfos: [(String, GiftedItem)] = []
     @IBAction func touchUpClose(_ sender: UIButton){
         self.removeFromSuperview()
     }
     
     @IBAction func touchUpCollective(_ sender: UIButton){
-        var infos: [(String, GiftedItemInfo)] = []
+        var infos: [(String, GiftedItem)] = []
         for i in 0..<20{
             if let info = giftItemInfos[safe: i]{
                 infos.append(info)
@@ -58,7 +58,7 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
         activityIndicator.transform.scaledBy(x: 10, y: 10)
     }
     
-    func gain(_ giftItemInfos: [(String, GiftedItemInfo)]){
+    func gain(_ giftItemInfos: [(String, GiftedItem)]){
         activityIndicator.isHidden = false
         GiftedItemList.effect(giftItemInfos.map{ $0.1 }){ error in
             if let error = error{
