@@ -66,7 +66,6 @@
 		AA487E881F820E6F00342B49 /* CardBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487E871F820E6F00342B49 /* CardBattle.swift */; };
 		AA487E901F82181800342B49 /* BattleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA487E8F1F82181800342B49 /* BattleScene.sks */; };
 		AA487E921F821E4600342B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA487E911F821E4600342B49 /* Main.storyboard */; };
-		AA4AA0391FE0E0C50099E71C /* Chameleon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0331FE0E0C40099E71C /* Chameleon.framework */; };
 		AA4AA03A1FE0E0C50099E71C /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0341FE0E0C50099E71C /* ZLSwipeableViewSwift.framework */; };
 		AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0351FE0E0C50099E71C /* Realm.framework */; };
 		AA4AA03C1FE0E0C50099E71C /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0361FE0E0C50099E71C /* Hero.framework */; };
@@ -82,7 +81,6 @@
 		AA4BB3DA216AF84500E53BDA /* 勇者たちのララバイ.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */; };
 		AA50C0A91F83656D00A4B853 /* PossessionCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA50C0A81F83656D00A4B853 /* PossessionCardViewController.swift */; };
 		AA514B1B2211896F00EBADE7 /* ProjectEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA514B1A2211896F00EBADE7 /* ProjectEffectView.swift */; };
-		AA514B1D22125B8E00EBADE7 /* GlitchLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA514B1C22125B8E00EBADE7 /* GlitchLabel.framework */; };
 		AA524A39207DB67100F4E11B /* PossessionCardDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA524A38207DB67100F4E11B /* PossessionCardDetailView.xib */; };
 		AA5541902146163C003A008B /* PrivateBattleMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA55418F2146163C003A008B /* PrivateBattleMaster.swift */; };
 		AA554192214616F0003A008B /* ControllBattleDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA554191214616F0003A008B /* ControllBattleDeck.swift */; };
@@ -487,7 +485,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA514B1D22125B8E00EBADE7 /* GlitchLabel.framework in Frameworks */,
 				AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */,
 				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
 				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
@@ -508,7 +505,6 @@
 				AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */,
 				AA8ADD1620902D0300AEAFB1 /* Hydra.framework in Frameworks */,
 				AA4AA03C1FE0E0C50099E71C /* Hero.framework in Frameworks */,
-				AA4AA0391FE0E0C50099E71C /* Chameleon.framework in Frameworks */,
 				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
 				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
 				AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */,
@@ -1243,7 +1239,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/NCMB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Chameleon.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
@@ -1259,7 +1254,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Floaty.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GlitchLabel.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1364,32 +1358,30 @@
 				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
 				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GlitchLabel/GlitchLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/Firebase/Firebase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GlitchLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewFlexLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Firebase.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1640,6 +1632,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1692,6 +1685,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1721,7 +1715,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1750,7 +1744,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -33,7 +33,7 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var battleButton: UIButton!
     @IBOutlet weak var gatyaButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
-    @IBOutlet weak var backgroundLottieView: LOTAnimatedControl!
+    @IBOutlet weak var backgroundLottieView: AnimationView!
     
     let disposeBag = DisposeBag()
     
@@ -56,9 +56,9 @@ class HomeViewController: UIViewController{
         
         if let data = DataRealm.get(dataNamed: "the_final_frontier.json"){
             backgroundLottieView.translatesAutoresizingMaskIntoConstraints = true
-            backgroundLottieView.animationView.setAnimation(data: data)
-            backgroundLottieView.animationView.play()
-            backgroundLottieView.animationView.loopAnimation = true
+            backgroundLottieView.animation = Animation.data(data)
+            backgroundLottieView.play()
+            backgroundLottieView.loopMode = .loop
         }
         
 //        let tutorial = InductionDeckCreateTutorial(self)

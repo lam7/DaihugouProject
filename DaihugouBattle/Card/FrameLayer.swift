@@ -45,7 +45,7 @@ class FrameLayer: CALayer{
         downLayer = CALayer()
         leftLayer = CALayer()
         rightLayer = CALayer()
-        color = UIColor.flatBlue().cgColor
+        color = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         lineWidth = 1.0
         let layers = [topLayer, downLayer, leftLayer, rightLayer]
         layers.forEach({ self.addSublayer($0!) })

@@ -16,6 +16,7 @@ target 'DaihugouBattle' do
   pod 'MMPopLabel'
   pod 'Reveal-SDK', :configurations => ['Debug']
   pod 'SnapKit', '~> 4.0.0'
+  pod 'GlitchLabel'
 # Pods for DaihugouBattle
 
   target 'DaihugouBattleTests' do

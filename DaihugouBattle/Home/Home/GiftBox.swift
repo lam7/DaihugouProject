@@ -176,7 +176,7 @@ fileprivate class GiftedItemCard: GiftedItemEffect{
 }
 
 class Giftbox{
-    private(set) var giftedItems =
+//    private(set) var giftedItems =
     func receive(_ giftedItem: GiftedItem){
         var effectInfo = GiftedItemEffectInfo.empty()
         giftedItem.updateEffectInfo(&effectInfo)

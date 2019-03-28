@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Chameleon
 
 @IBDesignable class CacheClearView: UIView, SelectTrueOrFalseDelegate{
     weak var tfView: SelectTrueOrFalseView!
@@ -27,13 +26,13 @@ import Chameleon
         let tfView = SelectTrueOrFalseView(frame: bounds)
         tfView.delegate = self
         tfView.titleLabel.text = "キャッシュクリア"
-        tfView.backgroundColor = UIColor.flatCoffee()
+        tfView.backgroundColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
         tfView.descriptionLabel.text =
         "キャッシュデータを削除すると動作が軽くなる場合があります\nまた、プレイデータは削除されません。\nキャッシュクリア後に、改めてデータをダウンロードします。\nキャッシュクリアを実行しますか？"
-        tfView.descriptionLabel.backgroundColor = UIColor.flatCoffeeColorDark()
+        tfView.descriptionLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tfView.descriptionLabel.numberOfLines = 4
-        tfView.trueButton.backgroundColor = UIColor.flatRed()
-        tfView.falseButton.backgroundColor = UIColor.flatGreen()
+        tfView.trueButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        tfView.falseButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         addSubview(tfView)
         self.tfView = tfView
     }

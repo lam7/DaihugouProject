@@ -1,0 +1,6 @@
+framework module GlitchLabel {
+  umbrella header "GlitchLabel-umbrella.h"
+
+  export *
+  module * { export * }
+}

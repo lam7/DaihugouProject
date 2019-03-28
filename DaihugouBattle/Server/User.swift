@@ -182,7 +182,7 @@ struct UserInfoUpdateServerModel{
     }
     
     func reduce(gold amount: UInt)-> UserInfoUpdateServerModel{
-        self.gold -= amount
+        self.gold = (self.gold ?? 0) - amount
         return self
     }
     func reduce(crystal amount: UInt)-> UserInfoUpdateServerModel{
