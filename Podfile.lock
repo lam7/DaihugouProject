@@ -115,7 +115,6 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
-  - Reveal-SDK (21)
   - SnapKit (4.0.1)
   - UICollectionViewFlexLayout (1.1.0)
 
@@ -130,7 +129,6 @@ DEPENDENCIES:
   - GlitchLabel
   - GoogleSignIn
   - MMPopLabel
-  - Reveal-SDK
   - SnapKit (~> 4.0.0)
   - UICollectionViewFlexLayout
 
@@ -158,7 +156,6 @@ SPEC REPOS:
     - MMPopLabel
     - nanopb
     - Protobuf
-    - Reveal-SDK
     - SnapKit
     - UICollectionViewFlexLayout
 
@@ -185,10 +182,9 @@ SPEC CHECKSUMS:
   MMPopLabel: d9909f18cacd5200f005ef3f0790c9490357b57a
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  Reveal-SDK: 3523e0eb7c562811c51bb71da6e523a6373702c8
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   UICollectionViewFlexLayout: 6020f0abc7dfe0c8aa7bcd95b9abeed98de849a1
 
-PODFILE CHECKSUM: 5f825bda88b870826dc7b7524a9277184eebc280
+PODFILE CHECKSUM: cc4af727b61b65cb6291fd28094e3711170a2595
 
 COCOAPODS: 1.6.0.beta.2

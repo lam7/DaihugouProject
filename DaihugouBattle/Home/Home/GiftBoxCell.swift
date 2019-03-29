@@ -58,7 +58,7 @@ class GiftBoxCell: UITableViewCell{
         let giftItemInfo: GiftedItem = giftItemInfo.1
         
         itemImageView.image   = DataRealm.get(imageNamed: giftItemInfo.imageNamed)
-        nameLabel.text        = GiftedItemList.name(giftItemInfo)
+//        nameLabel.text        = giftItemInfo.
         countLabel.text       = "× \(giftItemInfo.count.description)"
         descriptionLabel.text = giftItemInfo.description
         

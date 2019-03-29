@@ -14,7 +14,6 @@ target 'DaihugouBattle' do
   pod 'FlatUIKit'
   pod 'UICollectionViewFlexLayout'  
   pod 'MMPopLabel'
-  pod 'Reveal-SDK', :configurations => ['Debug']
   pod 'SnapKit', '~> 4.0.0'
   pod 'GlitchLabel'
 # Pods for DaihugouBattle

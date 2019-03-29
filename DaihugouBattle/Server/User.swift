@@ -36,6 +36,8 @@ extension Errors{
                                                                                      NSLocalizedFailureReasonErrorKey : "そのデッキは存在しません"])
         static let notExistDeleteCard = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "カード削除エラー",
                                                                                             NSLocalizedFailureReasonErrorKey : "カードを所持しておりません"])
+        static let alreadyCalledUpdate = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "更新エラー",
+                                                                                            NSLocalizedFailureReasonErrorKey : "すでに更新済みです"])
     }
 }
 
@@ -55,7 +57,25 @@ extension Errors{
 
 typealias ErrorBlock = (_: Error?) -> ()
 
-struct UserInfoUpdateServerModel{
+extension NCMBObject{
+    func fetchObjectInBackground(_ completion: @escaping (Result<NCMBObject, Error>)->()){
+        self.fetchInBackground{
+            error in
+            completion(.init(success: self, optionalFailure: error))
+        }
+    }
+}
+
+extension Result{
+    init(success: Success, optionalFailure: Failure?){
+        if let failure = optionalFailure{
+            self = .failure(failure)
+        }
+        self = .success(success)
+    }
+}
+
+class UserInfoUpdateServerModel{
     private var name: String?
     private var act: Int?
     private var gold: Int?
@@ -63,46 +83,42 @@ struct UserInfoUpdateServerModel{
     private var ticket: Int?
     private var cards: [Card]?
     private var removeCards: [Card]?
+    private var deckIds: [String]?
+    private var removeDeckIds: [String]?
+    private var giftIds: [String]?
+    private var removeGiftIds: [String]?
+    private static let reservedupdateBlock = ControllAsyncBlock()
+    private var isUpdating: Bool = false
     
-    init(){}
-    
-    private func fetch(_ completion: @escaping (Result<NCMBObject, Error>)->()){
+    func fetch(_ completion: @escaping (Result<NCMBObject, Error>)->()){
         guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
+            completion(.failure(Errors.UserInfo.ncmbObjectFailure))
             return
         }
+        
         object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground{ error in
-            completion(Result(object, error))
-        }
+        object.fetchObjectInBackground(completion)
     }
     
-    private func update(_ ncmbOjbect: NCMBObject)-> Error?{
+    func update(_ ncmbOjbect: NCMBObject)-> Error?{
         var error: Error?
         error = gainOrReduce(ncmbOjbect, id: "act", dif: act) ?? error
         error = gainOrReduce(ncmbOjbect, id: "gold", dif: gold) ?? error
         error = gainOrReduce(ncmbOjbect, id: "crystal", dif: crystal) ?? error
         error = gainOrReduce(ncmbOjbect, id: "ticket", dif: ticket) ?? error
         error = updateCards(ncmbOjbect)
-        if let error = error{
-            return error
-        }
         if let name = name{
             ncmbOjbect.setObject(name, forKey: "name")
         }
+        return error
     }
-    
     private func updateCards(_ ncmbObject: NCMBObject)-> Error?{
-        var cardsIdCount = ncmbOjbect.object(forKey: "cardsIdCount") as! [[Int]]
-        let convert = self.convertCardCount(from: cardsIdCount)
-        if let error = convert.0{
-            return error
-        }
+        var cardsIdCount = ncmbObject.object(forKey: "cardsIdCount") as! [[Int]]
         var cards = self.cards ?? []
         loop: for i in 0..<cards.count{
             for j in 0..<cardsIdCount.count{
                 if cardsIdCount[j][0] == cards[i].id{
-                    selfCardsIdCount[j][1] += 1
+                    cardsIdCount[j][1] += 1
                     continue loop
                 }
             }
@@ -112,19 +128,20 @@ struct UserInfoUpdateServerModel{
         loop: for i in 0..<cards.count{
             for j in 0..<cardsIdCount.count{
                 if cardsIdCount[j][0] == cards[i].id{
-                    selfCardsIdCount[j][1] -= 1
-                    if selfCardsIdCount[j][1] < 0{
-                        break
+                    cardsIdCount[j][1] -= 1
+                    if cardsIdCount[j][1] < 0{
+                        cardsIdCount.remove(at: j)
                     }
                     continue loop
                 }
             }
             return Errors.UserInfo.notExistDeleteCard
         }
-        if removeCards != nil || cards != nil{
+        if self.removeCards != nil || self.cards != nil{
             cardsIdCount.sort(by: { $0.first! < $1.first! })
-            ncmbOjbect.setValue(cardsIdCount, forKeyPath: "cardsIdCount")
+            ncmbObject.setObject(cardsIdCount, forKey: "cardsIdCount")
         }
+        return nil
     }
             
     private func gainOrReduce(_ ncmbOjbect: NCMBObject, id: String, dif: Int?)-> Error?{
@@ -137,6 +154,7 @@ struct UserInfoUpdateServerModel{
             return Errors.UserInfo.notEnough
         }
         ncmbOjbect.setObject(sum, forKey: id)
+        return nil
     }
     
     private func save(_ ncmbObject: NCMBObject, completion: @escaping ErrorBlock){
@@ -144,26 +162,45 @@ struct UserInfoUpdateServerModel{
     }
     
     func fetchAndUpadte(_ completion: @escaping ErrorBlock){
-        fetch{ result in
-            switch result{
-            case .success(let userInfo):
-                update(userInfo)
-                userInfo.saveInBackground(completion)
-            case .failure(let error):
-                completion(error)
+        if isUpdating{
+            completion(Errors.UserInfo.alreadyCalledUpdate)
+            return
+        }
+        isUpdating = true
+        UserInfoUpdateServerModel.reservedupdateBlock.add {
+            self.fetch{ result in
+                switch result{
+                case .success(let userInfo):
+                    if let error = self.update(userInfo){
+                        completion(error)
+                        UserInfoUpdateServerModel.reservedupdateBlock.next()
+                        return
+                    }
+                    
+                    userInfo.saveInBackground{ saveError in
+                        if let saveError = saveError{
+                            completion(saveError)
+                        }
+                        completion(nil)
+                        UserInfoUpdateServerModel.reservedupdateBlock.next()
+                    }
+                case .failure(let error):
+                    completion(error)
+                    UserInfoUpdateServerModel.reservedupdateBlock.next()
+                }
             }
         }
     }
     
     private func updateServer(_ userInfo: NCMBObject, deck: Deck, completion: @escaping(Result<String, Error>)->()){
         guard let userDeck = NCMBObject(className: "userDeck") else{
-                completion(Result("",Errors.UserInfo.ncmbObjectFailure))
+                completion(.failure(Errors.UserInfo.ncmbObjectFailure))
                 return
         }
         let deckObjectId = (deck as? DeckRelated)?.objectId
         let userInfoDecks = userInfo.object(forKey: "deckIds") as! [String]
         if deckObjectId == nil && userInfoDecks.count + 1 >= MaxPossessionDecksNum{
-                completion(Result("", Errors.UserInfo.overDeckNum))
+                completion(.failure(Errors.UserInfo.overDeckNum))
         }
         let cards = deck.cards.sorted{ $0.id < $1.id }
         let ids = cards.map{ $0.id }
@@ -177,40 +214,84 @@ struct UserInfoUpdateServerModel{
         
         userDeck.saveInBackground{
             error in
-            completion(Result(userDeck.objectId, error))
+            completion(.init(success: userDeck.objectId, optionalFailure: error))
         }
     }
     
+    @discardableResult
     func reduce(gold amount: UInt)-> UserInfoUpdateServerModel{
-        self.gold = (self.gold ?? 0) - amount
+        self.gold = self.gold ?? 0 - amount
         return self
     }
+    @discardableResult
     func reduce(crystal amount: UInt)-> UserInfoUpdateServerModel{
-        self.crystal -= amount
+        self.crystal = self.crystal ?? 0 - amount
         return self
     }
+    @discardableResult
     func reduce(ticket amount: UInt)-> UserInfoUpdateServerModel{
-        self.ticket -= amount
+        self.ticket = self.ticket ?? 0 - amount
         return self
     }
+    @discardableResult
     func gain(gold amount: UInt)-> UserInfoUpdateServerModel{
-        self.gold += amount
+        self.gold = self.gold ?? 0 + amount
         return self
     }
+    @discardableResult
     func gain(crystal amount: UInt)-> UserInfoUpdateServerModel{
-        self.crystal += amount
+        self.crystal = self.crystal ?? 0 + amount
         return self
     }
-    func gain(tikcet amount: UInt)-> UserInfoUpdateServerModel{
-        self.ticket += amount
+    @discardableResult
+    func gain(ticket amount: UInt)-> UserInfoUpdateServerModel{
+        self.ticket = self.ticket ?? 0 + amount
         return self
     }
+    @discardableResult
     func append(cards: [Card])-> UserInfoUpdateServerModel{
-        self.cards += cards
+        self.cards = self.cards ?? [] + cards
         return self
     }
-    func remove(cards: [Card])-> UserInfoUpdateServerModel{
-        self.removeCards += cards
+    @discardableResult
+    func remove(cards array: [Card])-> UserInfoUpdateServerModel{
+        self.removeCards = self.removeCards ?? [] + array
+        return self
+    }
+    @discardableResult
+    func rename(player name: String)-> UserInfoUpdateServerModel{
+        self.name = name
+        return self
+    }
+    @discardableResult
+    func gift(item array: [String])-> UserInfoUpdateServerModel{
+        self.giftIds = self.giftIds ?? [] + array
+        return self
+    }
+    @discardableResult
+    func append(deck objectId: String)-> UserInfoUpdateServerModel{
+        self.deckIds = self.deckIds ?? [] + objectId
+        return self
+    }
+    @discardableResult
+    func remove(deck objectId: String)-> UserInfoUpdateServerModel{
+        self.removeDeckIds = self.removeDeckIds ?? [] + objectId
+        return self
+    }
+    
+    func clear()-> UserInfoUpdateServerModel{
+        name = nil
+        act = nil
+        gold = nil
+        crystal = nil
+        ticket = nil
+        cards = nil
+        removeCards = nil
+        isUpdating = false
+        deckIds = nil
+        removeDeckIds = nil
+        giftIds = nil
+        removeGiftIds = nil
         return self
     }
 }
@@ -254,7 +335,6 @@ class UserInfo{
                 completion?(error)
                 return
             }
-
             self.nameVar.value    = object.object(forKey: "name") as! String
             self.actVar.value     = object.object(forKey: "act") as! Int
             self.goldVar.value    = object.object(forKey: "gold") as! Int
@@ -305,146 +385,35 @@ class UserInfo{
             }
         }
     }
-    private var userInfoUpdateServerModel: UserInfoUpdateServerModel?
-    func reduce(crystal amount: UInt)-> UserInfoUpdateServerModel{
-        userInfoUpdateServerModel.reduce(crystal: amount)
+    func reduce(crystal amount: Int, completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().reduce(crystal: UInt(amount)).fetchAndUpadte(completion)
     }
-    func reduce(crystal amount: UInt, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().reduce(crystal: amount).fetchAndUpadte(completoin)
+    func reduce(ticket amount: Int, completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().reduce(ticket: UInt(amount)).fetchAndUpadte(completion)
     }
-    func reduce(ticket amount: UInt, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().reduce(ticket: amount).fetchAndUpadte(completoin)
+    func reduce(gold amount: Int, completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().reduce(gold: UInt(amount)).fetchAndUpadte(completion)
     }
-    
-    func gain(gold amount: Int, completion: @escaping ErrorBlock){
-        guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
-            return
-        }
-        if amount < 0{
-            completion(Errors.UserInfo.gainMinus)
-            return
-        }
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground(){ error in
-            if let error = error{
-                completion(error)
-                return
-            }
-            var selfGold = object.object(forKey: "gold") as! Int
-            selfGold += amount
-            object.setObject(selfGold, forKey: "gold")
-            object.saveInBackground(){ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                self.goldVar.value = object.object(forKey: "gold") as! Int
-                completion(nil)
-//                self.update(completion)
-            }
-        }
-    }
-    
     func gain(crystal amount: Int, completion: @escaping ErrorBlock){
-        guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
-            return
-        }
-        if amount < 0{
-            completion(Errors.UserInfo.gainMinus)
-            return
-        }
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground(){ error in
-            if let error = error{
-                completion(error)
-                return
-            }
-            var selfCrystal = object.object(forKey: "crystal") as! Int
-            selfCrystal += amount
-            object.setObject(selfCrystal, forKey: "crystal")
-            object.saveInBackground(){ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                self.crystalVar.value = object.object(forKey: "crystal") as! Int
-                completion(nil)
-            }
-        }
+        UserInfoUpdateServerModel().gain(crystal: UInt(amount)).fetchAndUpadte(completion)
     }
-    
-    
     func gain(ticket amount: Int, completion: @escaping ErrorBlock){
-        guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
-            return
-        }
-        if amount < 0{
-            completion(Errors.UserInfo.gainMinus)
-            return
-        }
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground(){ error in
-            if let error = error{
-                completion(error)
-                return
-            }
-            var selfTicket = object.object(forKey: "ticket") as! Int
-            selfTicket += amount
-            object.setObject(selfTicket, forKey: "ticket")
-            object.saveInBackground(){ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                self.ticketVar.value = object.object(forKey: "ticket") as! Int
-                completion(nil)
-            }
-        }
+        UserInfoUpdateServerModel().gain(ticket: UInt(amount)).fetchAndUpadte(completion)
     }
-    
-    /// 取得したカードをサーバー側に送る
+    func gain(gold amount: Int, completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().gain(gold: UInt(amount)).fetchAndUpadte(completion)
+    }
     func append(cards: [Card], completion: @escaping ErrorBlock){
-        guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
-            return
-        }
-        object.objectId = UserLogin.objectIdUserInfo
-        
-        object.fetchInBackground(){ error in
-            if let error = error{
-                completion(error)
-                return
-            }
-            var selfCardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
-            loop: for i in 0..<cards.count{
-                for j in 0..<selfCardsIdCount.count{
-                    if selfCardsIdCount[j][0] == cards[i].id{
-                        selfCardsIdCount[j][1] += 1
-                        continue loop
-                    }
-                }
-                selfCardsIdCount.append([cards[i].id, 1])
-            }
-            selfCardsIdCount.sort(by: { $0.first! < $1.first! })
-            object.setObject(selfCardsIdCount, forKey: "cardsIdCount")
-            object.saveInBackground(){ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                let cardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
-                let convert = self.convertCardCount(from: cardsIdCount)
-                if let error = convert.0{
-                    completion(error)
-                    return
-                }
-                self.cardsVar.value = convert.1
-                completion(nil)
-            }
-        }
+        UserInfoUpdateServerModel().append(cards: cards).fetchAndUpadte(completion)
+    }
+    func remove(cards: [Card], completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().remove(cards: cards).fetchAndUpadte(completion)
+    }
+    func rename(player name: String, completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().rename(player: name).fetchAndUpadte(completion)
+    }
+    private func append(deck: String, completion: @escaping ErrorBlock){
+        UserInfoUpdateServerModel().append(deck: deck).fetchAndUpadte(completion)
     }
     
     /// 作成されたデッキをサーバー側に送る
@@ -595,7 +564,7 @@ class UserInfo{
                 return
             }
             var deckIds = userInfo.object(forKey: "deckObjectIds") as! [String]
-            guard let index = deckIds.index(of: objectId) else{
+            guard let index = deckIds.firstIndex(of: objectId) else{
                 completion(Errors.UserInfo.notExistDeleteDeck)
                 return
             }
@@ -657,6 +626,7 @@ class UserInfo{
             }
         }
     }
+    
     
     func getGiftedItemInfos(_ completion: @escaping (_ error: Error?, _ giftedItemInfos: [GiftedItem]) -> ()){
         guard let object = NCMBObject(className: "userInfo"),
@@ -753,69 +723,6 @@ class UserInfo{
         }
     }
     
-    func gain(_ effectInfo: GiftedItemEffectInfo, completion: @escaping ErrorBlock){
-        guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
-            return
-        }
-        
-        if effectInfo.crystal < 0 || effectInfo.gold < 0 || effectInfo.ticket < 0{
-            completion(Errors.UserInfo.gainMinus)
-            return
-        }
-        
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground(){ error in
-            if let error = error{
-                completion(error)
-                return
-            }
-            if effectInfo.ticket > 0{
-                var selfTicket = object.object(forKey: "ticket") as! Int
-                selfTicket += effectInfo.ticket
-                object.setObject(selfTicket, forKey: "ticket")
-            }
-            if effectInfo.gold > 0{
-                var selfGold = object.object(forKey: "gold") as! Int
-                selfGold += effectInfo.gold
-                object.setObject(selfGold, forKey: "gold")
-            }
-            if effectInfo.crystal > 0{
-                var selfCrystal = object.object(forKey: "crystal") as! Int
-                selfCrystal += effectInfo.crystal
-                object.setObject(selfCrystal, forKey: "crystal")
-            }
-            if !effectInfo.cards.isEmpty{
-                var selfCardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
-                loop: for i in 0..<effectInfo.cards.count{
-                    for j in 0..<selfCardsIdCount.count{
-                        if selfCardsIdCount[j][0] == effectInfo.cards[i].id{
-                            selfCardsIdCount[j][1] += 1
-                            continue loop
-                        }
-                    }
-                    selfCardsIdCount.append([effectInfo.cards[i].id, 1])
-                }
-                selfCardsIdCount.sort(by: { $0.first! < $1.first! })
-                object.setObject(selfCardsIdCount, forKey: "cardsIdCount")
-            }
-            
-            object.saveInBackground(){ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                self.ticketVar.value    = object.object(forKey: "ticket") as! Int
-                self.goldVar.value      = object.object(forKey: "gold") as! Int
-                self.crystalVar.value   = object.object(forKey: "crystal") as! Int
-                let cardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
-                let convert = self.convertCardCount(from: cardsIdCount)
-                self.cardsVar.value = convert.1
-                completion(convert.0)
-            }
-        }
-    }
-    
     /// UserInfoクラスのgiftedItemObjectIdsから指定Idを消す
     func delete(giftedItem objectId: String, completion: @escaping ErrorBlock){
         guard let userInfo = NCMBObject(className: "userInfo") else{
@@ -896,30 +803,6 @@ class UserInfo{
         }
     }
     
-    func rename(player name: String, completion: @escaping ErrorBlock){
-        guard let object = NCMBObject(className: "userInfo") else{
-            completion(Errors.UserInfo.ncmbObjectFailure)
-            return
-        }
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground(){ error in
-            if let error = error{
-                completion(error)
-                return
-            }
-            object.setObject(name, forKey: "name")
-            object.saveInBackground(){ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                    return
-                }
-                self.nameVar.value = object.object(forKey: "name") as! String
-                completion(nil)
-//                self.update(completion)
-            }
-        }
-    }
-    
     private func convertCardCount(from cardsIdCount: [[Int]])-> (Error?, CardCount){
         var cards: CardCount = [:]
         for cardIdCount in cardsIdCount{
@@ -976,8 +859,8 @@ class UserLogin{
                             let timeStamp = Date()
                             let d = 60 * 60 * 24 * 365
                             let timeLimit = timeStamp.addingTimeInterval(TimeInterval(d))
-                            let giftItemInfo1 = GiftedItem(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
-                            let giftItemInfo2 = GiftedItem(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo1 = try! GiftedItem(timeStamp: timeStamp, timeLimit: timeLimit, id: 1, subId: 999999, description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
+                            let giftItemInfo2 = try! GiftedItem(timeStamp: timeStamp, timeLimit: timeLimit, id: 2, subId: 999999, description: "初回プレゼント", count: 1, imageNamed: "TreasureChest.png")
                             UserInfo.shared.gift(item: giftItemInfo2){ giftError in
                                 UserInfo.shared.gift(item: giftItemInfo1){ _ in }
                                 completion(giftError)

@@ -60,27 +60,27 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
     
     func gain(_ giftItemInfos: [(String, GiftedItem)]){
         activityIndicator.isHidden = false
-        GiftedItemList.effect(giftItemInfos.map{ $0.1 }){ error in
-            if let error = error{
-                let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
-                    self.removeFromSuperview()
-                })
-                alert.addAction(action)
-                self.parentViewController()?.present(alert, animated: true, completion: nil)
-            }
-            UserInfo.shared.delete(giftItem: giftItemInfos.map{ $0.0 }){ error in
-                if let error = error{
-                    let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
-                        self.removeFromSuperview()
-                    })
-                    alert.addAction(action)
-                    self.parentViewController()?.present(alert, animated: true, completion: nil)
-                }
-                self.updateInfosReceived()
-            }
-        }
+//        GiftedItemList.effect(giftItemInfos.map{ $0.1 }){ error in
+//            if let error = error{
+//                let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
+//                let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
+//                    self.removeFromSuperview()
+//                })
+//                alert.addAction(action)
+//                self.parentViewController()?.present(alert, animated: true, completion: nil)
+//            }
+//            UserInfo.shared.delete(giftItem: giftItemInfos.map{ $0.0 }){ error in
+//                if let error = error{
+//                    let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
+//                    let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
+//                        self.removeFromSuperview()
+//                    })
+//                    alert.addAction(action)
+//                    self.parentViewController()?.present(alert, animated: true, completion: nil)
+//                }
+//                self.updateInfosReceived()
+//            }
+//        }
     }
     
     func present(_ error: Error?)-> Bool{
@@ -98,36 +98,36 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
     
     func updateInfosReceived(){
         activityIndicator.isHidden = false
-        GiftBox.receivedItems(){
-            [weak self]error, infos in
-            guard let `self` = self else {
-                return
-            }
-            if self.present(error){
-                return
-            }
-            self.collectiveButton.isEnabled = true
-            self.giftItemInfos = infos
-            self.giftTableView.reloadData()
-            self.activityIndicator.isHidden = true
-        }
+//        GiftBox.receivedItems(){
+//            [weak self]error, infos in
+//            guard let `self` = self else {
+//                return
+//            }
+//            if self.present(error){
+//                return
+//            }
+//            self.collectiveButton.isEnabled = true
+//            self.giftItemInfos = infos
+//            self.giftTableView.reloadData()
+//            self.activityIndicator.isHidden = true
+//        }
     }
     
     func updateInfosHistory(){
         activityIndicator.isHidden = false
-        GiftBox.historyItems(){
-            [weak self]error, infos in
-            guard let `self` = self else {
-                return
-            }
-            if self.present(error){
-                return
-            }
-            self.collectiveButton.isEnabled = false
-            self.giftItemInfos = infos
-            self.giftTableView.reloadData()
-            self.activityIndicator.isHidden = true
-        }
+//        GiftBox.historyItems(){
+//            [weak self]error, infos in
+//            guard let `self` = self else {
+//                return
+//            }
+//            if self.present(error){
+//                return
+//            }
+//            self.collectiveButton.isEnabled = false
+//            self.giftItemInfos = infos
+//            self.giftTableView.reloadData()
+//            self.activityIndicator.isHidden = true
+//        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

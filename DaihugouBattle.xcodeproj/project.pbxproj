@@ -66,9 +66,7 @@
 		AA487E881F820E6F00342B49 /* CardBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487E871F820E6F00342B49 /* CardBattle.swift */; };
 		AA487E901F82181800342B49 /* BattleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA487E8F1F82181800342B49 /* BattleScene.sks */; };
 		AA487E921F821E4600342B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA487E911F821E4600342B49 /* Main.storyboard */; };
-		AA4AA03A1FE0E0C50099E71C /* ZLSwipeableViewSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0341FE0E0C50099E71C /* ZLSwipeableViewSwift.framework */; };
 		AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0351FE0E0C50099E71C /* Realm.framework */; };
-		AA4AA03C1FE0E0C50099E71C /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0361FE0E0C50099E71C /* Hero.framework */; };
 		AA4AA03D1FE0E0C50099E71C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0371FE0E0C50099E71C /* RealmSwift.framework */; };
 		AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0381FE0E0C50099E71C /* NCMB.framework */; };
 		AA4AA0411FE0E39F0099E71C /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4AA0401FE0E39F0099E71C /* EFCountingLabel.swift */; };
@@ -96,7 +94,6 @@
 		AA5DBADA209BDD2C0034DFC0 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */; };
 		AA5DBADB209BDD2C0034DFC0 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */; };
 		AA5DBAE5209BDD310034DFC0 /* UITextField_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBADF209BDD310034DFC0 /* UITextField_Navigation.framework */; };
-		AA5DBAE6209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE0209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework */; };
 		AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE1209BDD310034DFC0 /* FLEX.framework */; };
 		AA5DBAE8209BDD310034DFC0 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE2209BDD310034DFC0 /* NVActivityIndicatorView.framework */; };
 		AA5DBAE9209BDFD00034DFC0 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1920902D0500AEAFB1 /* RxTest.framework */; };
@@ -493,10 +490,8 @@
 				AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */,
 				AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */,
 				AA5DBAE5209BDD310034DFC0 /* UITextField_Navigation.framework in Frameworks */,
-				AA5DBAE6209BDD310034DFC0 /* NVActivityIndicatorViewAppExtension.framework in Frameworks */,
 				AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */,
 				AA5DBAE8209BDD310034DFC0 /* NVActivityIndicatorView.framework in Frameworks */,
-				AA4AA03A1FE0E0C50099E71C /* ZLSwipeableViewSwift.framework in Frameworks */,
 				AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */,
 				AA5DBADA209BDD2C0034DFC0 /* RxSwift.framework in Frameworks */,
 				AA5DBADB209BDD2C0034DFC0 /* RxCocoa.framework in Frameworks */,
@@ -504,7 +499,6 @@
 				AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */,
 				AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */,
 				AA8ADD1620902D0300AEAFB1 /* Hydra.framework in Frameworks */,
-				AA4AA03C1FE0E0C50099E71C /* Hero.framework in Frameworks */,
 				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
 				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
 				AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */,
@@ -1055,7 +1049,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1239,15 +1233,12 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/NCMB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ZLSwipeableViewSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FLEX.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorViewAppExtension.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/UITextField_Navigation.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
@@ -1695,7 +1686,6 @@
 			baseConfigurationReference = 304FFD505096E05D9D21F703 /* Pods-DaihugouBattle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DaihugouBattle/DaihugouBattle.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1711,7 +1701,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lam-7.daipro";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lam7.daihugouProject1111;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1725,7 +1715,6 @@
 			baseConfigurationReference = 1F6157F55B3031BB92BC2204 /* Pods-DaihugouBattle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DaihugouBattle/DaihugouBattle.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1740,7 +1729,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lam-7.daipro";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lam7.daihugouProject1111;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;

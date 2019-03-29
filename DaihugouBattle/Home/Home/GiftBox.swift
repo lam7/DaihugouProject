@@ -16,22 +16,30 @@ extension Errors{
     }
 }
 struct GiftedItem{
-    var objectId: String
+    var objectId: String?
     var timeStamp: Date
     var timeLimit: Date
-    var id: Int{
-        didSet{
-            
-        }
-    }
+    var id: Int
     var subId: Int
-    var title: String
     var description: String
     var count: Int
     var imageNamed: String
+    var title: String
     private static let GiftedItemEffectInstances: [GiftedItemEffect.Type] = [GiftedItemGold.self, GiftedItemCard.self, GiftedItemCrystal.self]
-    private var giftedItemEffect: GiftedItemEffect
+    private var giftedItemEffect: GiftedItemEffect!
     
+    init(timeStamp: Date, timeLimit: Date, id: Int, subId: Int, description: String, count: Int, imageNamed: String) throws {
+        self.timeStamp = timeStamp
+        self.timeLimit = timeLimit
+        self.id = id
+        self.subId = subId
+        self.description = description
+        self.count = count
+        self.imageNamed = imageNamed
+        self.title = ""
+        self.giftedItemEffect = try getGiftedItemEffect()
+        self.title = giftedItemEffect.name()
+    }
     init(objectId: String, timeStamp: Date, timeLimit: Date, id: Int, subId: Int, description: String, count: Int, imageNamed: String) throws {
         self.objectId = objectId
         self.timeStamp = timeStamp
@@ -41,6 +49,7 @@ struct GiftedItem{
         self.description = description
         self.count = count
         self.imageNamed = imageNamed
+        self.title = ""
         self.giftedItemEffect = try getGiftedItemEffect()
         self.title = giftedItemEffect.name()
     }
@@ -53,10 +62,6 @@ struct GiftedItem{
             return giftedItemEffect
         }
         throw Errors.GiftedItem.notExistId
-    }
-    
-    func updateEffectInfo(_ effectInfo: inout GiftedItemEffectInfo){
-        giftedItemEffect.updateEffectInfo(&effectInfo)
     }
     
     func timeStampFormat()-> String{
@@ -91,16 +96,9 @@ struct GiftedItem{
         }
         return text
     }
-}
-
-struct GiftedItemEffectInfo{
-    var crystal: Int
-    var gold: Int
-    var ticket: Int
-    var cards: [Card]
     
-    static func empty()-> GiftedItemEffectInfo{
-        return GiftedItemEffectInfo(crystal: 0, gold: 0, ticket: 0, cards: [])
+    func receive(_ model: inout UserInfoUpdateServerModel){
+        giftedItemEffect.effect(&model)
     }
 }
 
@@ -121,7 +119,7 @@ class GiftedItemEffect{
         return ""
     }
     
-    func updateEffectInfo(_ effectInfo: inout GiftedItemEffectInfo){
+    func effect(_ model: inout UserInfoUpdateServerModel){
         
     }
 }
@@ -135,8 +133,8 @@ fileprivate class GiftedItemGold: GiftedItemEffect{
         return "\(giftedItem.subId)G"
     }
     
-    override func updateEffectInfo(_ effectInfo: inout GiftedItemEffectInfo) {
-        effectInfo.gold += giftedItem.subId * giftedItem.count
+    override func effect(_ model: inout UserInfoUpdateServerModel){
+        model.gain(gold: UInt(giftedItem.subId * giftedItem.count))
     }
 }
 
@@ -149,8 +147,8 @@ fileprivate class GiftedItemCrystal: GiftedItemEffect{
         return "\(giftedItem.subId)C"
     }
     
-    override func updateEffectInfo(_ effectInfo: inout GiftedItemEffectInfo) {
-        effectInfo.crystal += giftedItem.subId * giftedItem.count
+    override func effect(_ model: inout UserInfoUpdateServerModel){
+        model.gain(crystal: UInt(giftedItem.subId * giftedItem.count))
     }
 }
 
@@ -166,36 +164,36 @@ fileprivate class GiftedItemCard: GiftedItemEffect{
         return ""
     }
     
-    override func updateEffectInfo(_ effectInfo: inout GiftedItemEffectInfo) {
+    override func effect(_ model: inout UserInfoUpdateServerModel){
         guard let card = CardList.get(id: giftedItem.subId) else{
             print("Gift card: \(giftedItem.subId) not founded")
             return
         }
-        effectInfo.cards += card
+        let cards = (0..<giftedItem.count).map({_ in card.copy() as! Card })
+        model.append(cards: cards)
     }
 }
 
 class Giftbox{
-//    private(set) var giftedItems =
+    private(set) var giftedItems: [GiftedItem] = []
+    private(set) var receivedGiftedItems: [GiftedItem] = []
+    
     func receive(_ giftedItem: GiftedItem){
-        var effectInfo = GiftedItemEffectInfo.empty()
-        giftedItem.updateEffectInfo(&effectInfo)
+//        giftedItem.updateEffectInfo(&effectInfo)
         
     }
     
-    func receiveAll(_ giftedItems: [GiftedItem]){
-        var effectInfo = GiftedItemEffectInfo.empty()
-        for giftedItem in giftedItems{
-            giftedItem.updateEffectInfo(&effectInfo)
-        }
+    func receiveAll(){
+//        var effectInfo = GiftedItemEffectInfo.empty()
+//        for giftedItem in giftedItems{
+//            giftedItem.updateEffectInfo(&effectInfo)
+//        }
         
     }
     
-    
-    
-    func setup(_ completion: @escaping (Error?)->()){
+    func setup(_ completion: @escaping ErrorBlock){
         UserInfo.shared.getGiftedItemInfos{ error, giftedItems in
-            
+            self.giftedItems = giftedItems
             completion(error)
         }
     }

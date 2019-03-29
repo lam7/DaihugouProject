@@ -11,7 +11,7 @@ import UIKit
 
 
 protocol SelectableView{
-    weak var displayView: UIView?{get set}
+    var displayView: UIView?{get set}
     func clearView()
 }
 

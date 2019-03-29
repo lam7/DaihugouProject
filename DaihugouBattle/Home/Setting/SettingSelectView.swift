@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 
 protocol BlockableOutsideTouchView where Self: UIView{
-    weak var behindView: UIView?{get set}
+    var behindView: UIView?{get set}
     
     func setUpBehindView()-> UIView?
 }
