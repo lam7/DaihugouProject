@@ -89,18 +89,20 @@ class UserInfoUpdateServerModel{
     private var removeGiftIds: [String]?
     private static let reservedupdateBlock = ControllAsyncBlock()
     private var isUpdating: Bool = false
+    var userInfo: NCMBObject!
     
-    func fetch(_ completion: @escaping (Result<NCMBObject, Error>)->()){
+    func fetch(_ completion: @escaping (Error?)->()){
         guard let object = NCMBObject(className: "userInfo") else{
-            completion(.failure(Errors.UserInfo.ncmbObjectFailure))
+            completion(Errors.UserInfo.ncmbObjectFailure)
             return
         }
         
         object.objectId = UserLogin.objectIdUserInfo
-        object.fetchObjectInBackground(completion)
+        object.fetchInBackground(completion)
+        self.userInfo = object
     }
     
-    func update(_ ncmbOjbect: NCMBObject)-> Error?{
+    private func update(_ ncmbOjbect: NCMBObject)-> Error?{
         var error: Error?
         error = gainOrReduce(ncmbOjbect, id: "act", dif: act) ?? error
         error = gainOrReduce(ncmbOjbect, id: "gold", dif: gold) ?? error
@@ -157,35 +159,47 @@ class UserInfoUpdateServerModel{
         return nil
     }
     
-    private func save(_ ncmbObject: NCMBObject, completion: @escaping ErrorBlock){
-        ncmbObject.saveInBackground(completion)
-    }
-    
-    func fetchAndUpadte(_ completion: @escaping ErrorBlock){
+    func save(_ completion: @escaping ErrorBlock){
         if isUpdating{
             completion(Errors.UserInfo.alreadyCalledUpdate)
             return
         }
         isUpdating = true
         UserInfoUpdateServerModel.reservedupdateBlock.add {
-            self.fetch{ result in
-                switch result{
-                case .success(let userInfo):
-                    if let error = self.update(userInfo){
-                        completion(error)
-                        UserInfoUpdateServerModel.reservedupdateBlock.next()
-                        return
-                    }
-                    
-                    userInfo.saveInBackground{ saveError in
-                        if let saveError = saveError{
-                            completion(saveError)
-                        }
-                        completion(nil)
-                        UserInfoUpdateServerModel.reservedupdateBlock.next()
-                    }
-                case .failure(let error):
+            self.userInfo.saveInBackground{ saveError in
+                if let saveError = saveError{
+                    completion(saveError)
+                }
+                completion(nil)
+                UserInfo.shared.update(self.userInfo)
+                UserInfoUpdateServerModel.reservedupdateBlock.next()
+            }
+        }
+    }
+    
+    func fetchAndSave(_ completion: @escaping ErrorBlock){
+        if isUpdating{
+            completion(Errors.UserInfo.alreadyCalledUpdate)
+            return
+        }
+        isUpdating = true
+        UserInfoUpdateServerModel.reservedupdateBlock.add {
+            self.fetch{ error in
+                if let error = error{
                     completion(error)
+                    UserInfoUpdateServerModel.reservedupdateBlock.next()
+                    return
+                }
+                if let error = self.update(self.userInfo){
+                    completion(error)
+                    UserInfoUpdateServerModel.reservedupdateBlock.next()
+                    return
+                }
+                self.userInfo.saveInBackground{ saveError in
+                    if let saveError = saveError ?? UserInfo.shared.update(self.userInfo){
+                        completion(saveError)
+                    }
+                    completion(nil)
                     UserInfoUpdateServerModel.reservedupdateBlock.next()
                 }
             }
@@ -198,7 +212,7 @@ class UserInfoUpdateServerModel{
                 return
         }
         let deckObjectId = (deck as? DeckRelated)?.objectId
-        let userInfoDecks = userInfo.object(forKey: "deckIds") as! [String]
+        let userInfoDecks = userInfo.object(forKey: "deckObjectIds") as! [String]
         if deckObjectId == nil && userInfoDecks.count + 1 >= MaxPossessionDecksNum{
                 completion(.failure(Errors.UserInfo.overDeckNum))
         }
@@ -324,6 +338,30 @@ class UserInfo{
     
     private init(){}
     
+    func update(_ object: NCMBObject)-> Error?{
+        guard let name = object.object(forKey: "name") as? String,
+            let act = object.object(forKey: "act") as? Int,
+            let gold = object.object(forKey: "gold") as? Int,
+            let crystal = object.object(forKey: "crystal") as? Int,
+            let ticket = object.object(forKey: "ticket") as? Int,
+            let deckIds = object.object(forKey: "deckObjectIds") as? [String],
+            let cardsIdCount = object.object(forKey: "cardsIdCount") as? [[Int]] else{
+                return Errors.UserInfo.ncmbObjectFailure
+        }
+        let convert = self.convertCardCount(from: cardsIdCount)
+        if let error = convert.0{
+            return error
+        }
+        self.nameVar.value    = name
+        self.actVar.value     = act
+        self.goldVar.value    = gold
+        self.crystalVar.value = crystal
+        self.ticketVar.value  = ticket
+        self.deckIdsVar.value = deckIds
+        self.cardsVar.value = convert.1
+        return nil
+    }
+    
     func update(_ completion: ErrorBlock? = nil){
         guard let object = NCMBObject(className: "userInfo") else{
             completion?(Errors.UserInfo.ncmbObjectFailure)
@@ -331,23 +369,10 @@ class UserInfo{
         }
         object.objectId = UserLogin.objectIdUserInfo
         object.fetchInBackground(){ error in
-            if let error = error{
+            if let error = error ?? self.update(object){
                 completion?(error)
                 return
             }
-            self.nameVar.value    = object.object(forKey: "name") as! String
-            self.actVar.value     = object.object(forKey: "act") as! Int
-            self.goldVar.value    = object.object(forKey: "gold") as! Int
-            self.crystalVar.value = object.object(forKey: "crystal") as! Int
-            self.ticketVar.value  = object.object(forKey: "ticket") as! Int
-            self.deckIdsVar.value = object.object(forKey: "deckObjectIds") as! [String]
-            let cardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
-            let convert = self.convertCardCount(from: cardsIdCount)
-            if let error = convert.0{
-                completion?(error)
-                return
-            }
-            self.cardsVar.value = convert.1
             completion?(nil)
         }
     }
@@ -385,91 +410,78 @@ class UserInfo{
             }
         }
     }
+    
     func reduce(crystal amount: Int, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().reduce(crystal: UInt(amount)).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().reduce(crystal: UInt(amount)).fetchAndSave(completion)
     }
     func reduce(ticket amount: Int, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().reduce(ticket: UInt(amount)).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().reduce(ticket: UInt(amount)).fetchAndSave(completion)
     }
     func reduce(gold amount: Int, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().reduce(gold: UInt(amount)).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().reduce(gold: UInt(amount)).fetchAndSave(completion)
     }
     func gain(crystal amount: Int, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().gain(crystal: UInt(amount)).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().gain(crystal: UInt(amount)).fetchAndSave(completion)
     }
     func gain(ticket amount: Int, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().gain(ticket: UInt(amount)).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().gain(ticket: UInt(amount)).fetchAndSave(completion)
     }
     func gain(gold amount: Int, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().gain(gold: UInt(amount)).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().gain(gold: UInt(amount)).fetchAndSave(completion)
     }
     func append(cards: [Card], completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().append(cards: cards).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().append(cards: cards).fetchAndSave(completion)
     }
     func remove(cards: [Card], completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().remove(cards: cards).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().remove(cards: cards).fetchAndSave(completion)
     }
     func rename(player name: String, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().rename(player: name).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().rename(player: name).fetchAndSave(completion)
     }
     private func append(deck: String, completion: @escaping ErrorBlock){
-        UserInfoUpdateServerModel().append(deck: deck).fetchAndUpadte(completion)
+        UserInfoUpdateServerModel().append(deck: deck).fetchAndSave(completion)
     }
     
     /// 作成されたデッキをサーバー側に送る
     func append(deck: Deck, completion: @escaping ErrorBlock){
-        guard let userInfo = NCMBObject(className: "userInfo"),
-            let userDeck = NCMBObject(className: "userDeck") else{
+        guard let userDeck = NCMBObject(className: "userDeck") else{
                 completion(Errors.UserInfo.ncmbObjectFailure)
                 return
         }
-        let deckObjectId = (deck as? DeckRelated)?.objectId
-        if deckObjectId == nil{
-            guard UserInfo.shared.deckIdsValue.count + 1 < MaxPossessionDecksNum else{
-                completion(Errors.UserInfo.overDeckNum)
+        let model = UserInfoUpdateServerModel()
+        model.fetch(){ error in
+            if let error = error{
+                completion(error)
                 return
             }
-        }
-        userInfo.objectId = UserLogin.objectIdUserInfo
-        let cards = deck.cards.sorted{ $0.id < $1.id }
-        let ids = cards.map{ $0.id }
-        let name = (deck as? DeckRelated)?.name ?? ""
-        userDeck.setObject(ids, forKey: "cardsId")
-        userDeck.setObject(UserLogin.objectIdUserInfo, forKey: "objectIdUserInfo")
-        userDeck.setObject(name, forKey: "name")
-        if let objectId = (deck as? DeckRelated)?.objectId{
-            userDeck.objectId = objectId
-        }
-        
-        userDeck.saveInBackground{
-            saveError in
-            if let saveError = saveError{
-                completion(saveError)
-                return
-            }
-            
-            if deckObjectId != nil{
-                completion(nil)
-                return
-            }
-            userInfo.fetchInBackground{
-                error in
-                if let error = error{
-                    completion(error)
+            let deckObjectId = (deck as? DeckRelated)?.objectId
+            if deckObjectId == nil{
+                guard (model.userInfo.object(forKey: "deckObjectIds") as! [String]).count < MaxPossessionDecksNum else{
+                    completion(Errors.UserInfo.overDeckNum)
                     return
                 }
-                var deckIds = userInfo.object(forKey: "deckObjectIds") as! [String]
-                deckIds.append(userDeck.objectId)
-                userInfo.setObject(deckIds, forKey: "deckObjectIds")
-                userInfo.saveInBackground{
-                    saveError in
-                    if let saveError = saveError{
-                        completion(saveError)
-                        return
-                    }
-                    self.deckIdsVar.value = userInfo.object(forKey: "deckObjectIds") as! [String]
-                    completion(nil)
+            }
+            let cards = deck.cards.sorted{ $0.id < $1.id }
+            let ids = cards.map{ $0.id }
+            let name = (deck as? DeckRelated)?.name ?? ""
+            userDeck.setObject(ids, forKey: "cardsId")
+            userDeck.setObject(UserLogin.objectIdUserInfo, forKey: "objectIdUserInfo")
+            userDeck.setObject(name, forKey: "name")
+            if let objectId = deckObjectId{
+                userDeck.objectId = objectId
+            }
+            userDeck.saveInBackground{
+                saveError in
+                if let saveError = saveError{
+                    completion(saveError)
+                    return
                 }
+                
+                if deckObjectId != nil{
+                    completion(nil)
+                    return
+                }
+                model.append(deck: userDeck.objectId).fetchAndSave(completion)
             }
         }
     }
