@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-extension NSNotification.Name {
-    static let InjectBundleNotification = NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION")
-}
+//extension NSNotification.Name {
+//    static let InjectBundleNotification = NSNotification.Name("INJECTION_BUNDLE_NOTIFICATION")
+//}
 
 class TestViewController: UIViewController{
     @IBOutlet weak var collection: SpotCollectionView!

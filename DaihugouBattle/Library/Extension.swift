@@ -230,6 +230,25 @@ public func /=(lhs: inout CGSize, rhs: CGFloat){
     lhs = lhs / rhs
 }
 
+public func -(lhs: Int, rhs: UInt)-> Int{
+    return lhs - Int(rhs)
+}
+
+public func -=(lhs: inout Int, rhs: UInt){
+    lhs = lhs - Int(rhs)
+}
+
+
+public func +(lhs: Int, rhs: UInt)-> Int{
+    return lhs + Int(rhs)
+}
+public func +(lhs: UInt, rhs: Int)-> Int{
+    return Int(lhs) + rhs
+}
+public func +=(lhs: inout Int, rhs: UInt){
+    lhs = lhs + Int(rhs)
+}
+
 //public func print(file: String = #file, function: String = #function, line: Int = #line, _ message: String = "") {
 //    print("\(file).\(function) #\(line): \(message)" as Any)
 //}

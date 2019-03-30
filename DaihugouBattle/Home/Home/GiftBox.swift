@@ -8,194 +8,169 @@
 
 import Foundation
 import UIKit
-import NCMB
 
-struct GiftItemInfo{
+extension Errors{
+    class GiftedItem{
+        static let notExistId = NSError(domain: ErrorDomain, code: code, userInfo: [NSLocalizedDescriptionKey : "ギフトエラー",
+                                                                                  NSLocalizedFailureReasonErrorKey : "指定Idが存在しません"])
+    }
+}
+class GiftedItem{
+    var objectId: String?
     var timeStamp: Date
     var timeLimit: Date
     var id: Int
     var subId: Int
-    var title: String
     var description: String
     var count: Int
     var imageNamed: String
-}
-class GiftBox{
-    static func receivedItems(_ completion: @escaping (_ error: Error?, _ giftedItemsInfo: [(String, GiftItemInfo)]) -> ()){
-        guard let object = NCMBObject(className: "userInfo"),
-            let query = NCMBQuery(className: "giftedItem") else{
-            completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
-            return
-        }
-        var giftedItems: [(String, GiftItemInfo)] = []
-        
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground{ error in
-            if let error = error{
-                completion(error, [])
-            }
-            var giftedItemIds = object.object(forKey: "giftedItemObjectIds") as! [String]
-            giftedItemIds = giftedItemIds.map({ return deleteDoubleQuotesFirstAndLast($0) })
-            query.whereKey("objectIdUserInfo", equalTo: UserLogin.objectIdUserInfo)
-            
-            query.findObjectsInBackground{ objects,error in
-                if let error = error{
-                    completion(error, [])
-                }
-                guard let objects = objects else{
-                    completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
-                    return
-                }
-                for object in objects{
-                    guard let obj = object as? NCMBObject,
-                        let timeStamp = obj.object(forKey: "timeStamp") as? Date,
-                        let timeLimit = obj.object(forKey: "timeLimit") as? Date,
-                        let id = obj.intValue(forKey: "id"),
-                        let subId = obj.intValue(forKey: "subId"),
-                        let title = obj.object(forKey: "title") as? String,
-                        let description = obj.object(forKey: "description") as? String,
-                        let count = obj.intValue(forKey: "count"),
-                        let imageNamed = obj.object(forKey: "imageNamed") as? String,
-                        let isReceived = obj.object(forKey: "isReceived") as? Bool,
-                        let objectId = obj.objectId else{
-                            fatalError("object Error")
-                    }
-                    
-                    if timeLimit.compare(Date()) == ComparisonResult.orderedAscending || isReceived{
-                        continue
-                    }
-                    let giftedItem = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: title, description: description, count: count, imageNamed: imageNamed)
-                    giftedItems.append((objectId, giftedItem))
-                }
-                completion(nil, giftedItems)
-            }
-        }
+    var title: String
+    var isReceived: Bool = false
+    private static let GiftedItemEffectInstances: [GiftedItemEffect.Type] = [GiftedItemGold.self, GiftedItemCard.self, GiftedItemCrystal.self]
+    private var giftedItemEffect: GiftedItemEffect!
+    
+    init(timeStamp: Date, timeLimit: Date, id: Int, subId: Int, description: String, count: Int, imageNamed: String) throws {
+        self.timeStamp = timeStamp
+        self.timeLimit = timeLimit
+        self.id = id
+        self.subId = subId
+        self.description = description
+        self.count = count
+        self.imageNamed = imageNamed
+        self.title = ""
+        self.giftedItemEffect = try getGiftedItemEffect()
+        self.title = giftedItemEffect.name()
+    }
+    init(objectId: String, timeStamp: Date, timeLimit: Date, id: Int, subId: Int, description: String, count: Int, imageNamed: String) throws {
+        self.objectId = objectId
+        self.timeStamp = timeStamp
+        self.timeLimit = timeLimit
+        self.id = id
+        self.subId = subId
+        self.description = description
+        self.count = count
+        self.imageNamed = imageNamed
+        self.title = ""
+        self.giftedItemEffect = try getGiftedItemEffect()
+        self.title = giftedItemEffect.name()
     }
     
-    static func historyItems(_ completion: @escaping (_ error: Error?, _ giftedItemsInfo: [(String, GiftItemInfo)]) -> ()){
-        guard let object = NCMBObject(className: "userInfo"),
-            let query = NCMBQuery(className: "giftedItem") else{
-                completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
-                return
-        }
-        var giftedItems: [(String, GiftItemInfo)] = []
-        
-        object.objectId = UserLogin.objectIdUserInfo
-        object.fetchInBackground{ error in
-            if let error = error{
-                completion(error, [])
+    private func getGiftedItemEffect() throws -> GiftedItemEffect{
+        for instance in GiftedItem.GiftedItemEffectInstances{
+            guard let giftedItemEffect = instance.init(giftedItem: self) else{
+                continue
             }
-            var giftedItemIds = object.object(forKey: "giftedItemObjectIds") as! [String]
-            giftedItemIds = giftedItemIds.map({ return deleteDoubleQuotesFirstAndLast($0) })
-            query.whereKey("objectIdUserInfo", equalTo: UserLogin.objectIdUserInfo)
-            
-            
-            query.findObjectsInBackground{ objects,error in
-                if let error = error{
-                    completion(error, [])
-                }
-                guard let objects = objects else{
-                    completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil), [])
-                    return
-                }
-                for object in objects{
-                    guard let obj = object as? NCMBObject,
-                        let timeStamp = obj.object(forKey: "timeStamp") as? Date,
-                        let timeLimit = obj.object(forKey: "timeLimit") as? Date,
-                        let id = obj.intValue(forKey: "id"),
-                        let subId = obj.intValue(forKey: "subId"),
-                        let title = obj.object(forKey: "title") as? String,
-                        let description = obj.object(forKey: "description") as? String,
-                        let count = obj.intValue(forKey: "count"),
-                        let imageNamed = obj.object(forKey: "imageNamed") as? String,
-                        let isReceived = obj.object(forKey: "isReceived") as? Bool,
-                        let objectId = obj.objectId else{
-                            fatalError("object Error")
-                    }
-                    
-                    if isReceived{
-                        let giftedItem = GiftItemInfo(timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, title: title, description: description, count: count, imageNamed: imageNamed)
-                        giftedItems.append((objectId, giftedItem))
-                    }
-                }
-                completion(nil, giftedItems)
-            }
+            return giftedItemEffect
         }
+        throw Errors.GiftedItem.notExistId
+    }
+    
+    func timeStampFormat()-> String{
+        let f       = DateFormatter()
+        f.dateStyle = DateFormatter.Style.medium
+        f.timeStyle = DateFormatter.Style.short
+        f.locale    = Locale(identifier: "ja_JP")
+        return f.string(from: timeStamp)
+    }
+    
+    func remainingTime()-> Double{
+        let now = Date()
+        return timeLimit.timeIntervalSince(now)
+    }
+    
+    func remainingTimeFormat()-> String{
+        var remainingTime = self.remainingTime()
+        let day           = (remainingTime / (60 * 60 * 24)).i
+        remainingTime     -= 60 * 60 * 24 * day.d
+        let hour          = (remainingTime / (60 * 60)).i
+        remainingTime     -= 60 * 60 * hour.d
+        let minute        = (remainingTime / 60).i
+        var text = "期限切れ"
+        if minute > 0 {
+            text = "あと\(minute)分"
+        }
+        if hour > 0{
+            text = "あと\(hour)時間"
+        }
+        if day > 0 {
+            text = "あと\(day)日"
+        }
+        return text
+    }
+    
+    func receive(_ model: inout UserInfoUpdateServerModel){
+        giftedItemEffect.effect(&model)
     }
 }
 
-protocol GiftedItemEffect: class{
-    var id: Int{ get }
-    func name(_ giftItemInfo: GiftItemInfo)-> String
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (_ error: Error?) -> ())
-}
-
-
-class GiftedItemGold: GiftedItemEffect{
-    var id: Int = 1
-    func name(_ giftItemInfo: GiftItemInfo) -> String {
-        return "\(giftItemInfo.subId)G"
+class GiftedItemEffect{
+    var id: Int{
+        return 0
     }
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (_ error: Error?) -> ()){
-        let amount = giftedItem.subId * giftedItem.count
-        UserInfo.shared.gain(gold: amount, completion: completion)
+    private(set) var giftedItem: GiftedItem!
+    
+    required init?(giftedItem: GiftedItem){
+        guard id == giftedItem.id else{
+            return nil
+        }
+        self.giftedItem = giftedItem
+    }
+    
+    func name()-> String{
+        return ""
+    }
+    
+    func effect(_ model: inout UserInfoUpdateServerModel){
         
     }
 }
 
-class GiftedItemCrystal: GiftedItemEffect{
-    var id: Int = 2
-    
-    func name(_ giftItemInfo: GiftItemInfo) -> String {
-        return "\(giftItemInfo.subId)C"
+fileprivate class GiftedItemGold: GiftedItemEffect{
+    override var id: Int{
+        return 1
     }
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (_ error: Error?) -> ()){
-        let amount = giftedItem.subId * giftedItem.count
-        UserInfo.shared.gain(crystal: amount, completion: completion)
-        
+    
+    override func name() -> String {
+        return "\(giftedItem.subId)G"
+    }
+    
+    override func effect(_ model: inout UserInfoUpdateServerModel){
+        model.gain(gold: UInt(giftedItem.subId * giftedItem.count))
     }
 }
 
-class GiftedItemCard: GiftedItemEffect{
-    var id: Int = 3
+fileprivate class GiftedItemCrystal: GiftedItemEffect{
+    override var id: Int{
+        return 2
+    }
     
-    func name(_ giftItemInfo: GiftItemInfo) -> String {
-        if let name = CardList.get(id: giftItemInfo.subId)?.name{
+    override func name() -> String {
+        return "\(giftedItem.subId)C"
+    }
+    
+    override func effect(_ model: inout UserInfoUpdateServerModel){
+        model.gain(crystal: UInt(giftedItem.subId * giftedItem.count))
+    }
+}
+
+fileprivate class GiftedItemCard: GiftedItemEffect{
+    override var id: Int{
+        return 3
+    }
+    
+    override func name() -> String {
+        if let name = CardList.get(id: giftedItem.subId)?.name{
             return name
         }
         return ""
     }
-    func effect(_ giftedItem: GiftItemInfo, completion: @escaping (Error?) -> ()) {
-        let cardId = giftedItem.subId
-        guard let card = CardList.get(id: cardId) else{
-            completion(NSError(domain: "com.Daihugou.app", code: 0, userInfo: nil))
+    
+    override func effect(_ model: inout UserInfoUpdateServerModel){
+        guard let card = CardList.get(id: giftedItem.subId) else{
+            print("Gift card: \(giftedItem.subId) not founded")
             return
         }
-        let cards = [Card](repeating: card, count: giftedItem.count)
-        UserInfo.shared.append(cards: cards, completion: completion)
+        let cards = (0..<giftedItem.count).map({_ in card.copy() as! Card })
+        model.append(cards: cards)
     }
 }
-
-class GiftedItemList{
-    private static var list: [GiftedItemEffect] = [GiftedItemCrystal(), GiftedItemCard(), GiftedItemGold()]
-    static func effect(_ giftedItem: GiftItemInfo, completion: @escaping (Error?) -> ()){
-        for l in list{
-            if l.id == giftedItem.id{
-                l.effect(giftedItem, completion: completion)
-                return
-            }
-        }
-        completion(NSError(domain: "com.Daihugou", code: 0, userInfo: nil))
-    }
-    
-    static func name(_ giftedItem: GiftItemInfo)-> String{
-        for l in list{
-            if l.id == giftedItem.id{
-                return l.name(giftedItem)
-            }
-        }
-        return ""
-    }
-}
-
-

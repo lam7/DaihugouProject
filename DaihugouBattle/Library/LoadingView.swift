@@ -8,26 +8,32 @@
 
 import Foundation
 import UIKit
-import Chameleon
 import Lottie
 
 
-extension LOTAnimationView{
-    convenience init(data: Data){
-        let animationJSON = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-        self.init(json: animationJSON as! Dictionary)
+extension Animation{
+    static func data(_ data: Data)-> Animation?{
+        do {
+            /// Decode animation.
+            let animation = try JSONDecoder().decode(Animation.self, from: data)
+            return animation
+        } catch {
+            /// Decoding error.
+            return nil
+        }
     }
-    
-    func setAnimation(data: Data){
-        let animationJSON = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-        self.setAnimation(json: animationJSON as! Dictionary)
+}
+extension AnimationView{
+    convenience init(data: Data){
+        let animation = Animation.data(data)
+        self.init(animation: animation)
     }
 }
 
 class LoadingView: NSObject{
     
     private static let shared: LoadingView = LoadingView()
-    var lotAnimationView: LOTAnimationView!
+    var lotAnimationView: AnimationView!
     var backgroundView: UIView!
     
     override init() {
@@ -38,16 +44,16 @@ class LoadingView: NSObject{
     private func setUp(){
         let frame = UIScreen.main.bounds
         
-        let v = LOTAnimationView(data: DataRealm.get(dataNamed: "loading1.json")!)
+        let v = AnimationView(data: DataRealm.get(dataNamed: "loading1.json")!)
         let height = frame.height / 3
         let width = frame.width / 3
         v.frame = CGRect(x: frame.width - width - 10, y: frame.height - height - 10, width: width, height: height)
         v.contentMode = .scaleAspectFit
-        v.loopAnimation = true
+        v.loopMode = .loop
         lotAnimationView = v
         
         backgroundView = UIView(frame: UIScreen.main.bounds)
-        backgroundView.backgroundColor = .flatBlue()
+        backgroundView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         backgroundView.layer.zPosition = CGFloat.leastNormalMagnitude
         backgroundView.addSubview(lotAnimationView)
     }

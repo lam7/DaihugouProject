@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Chameleon
 
 protocol DeckSelectDelegate: class{
     func selected(_ deck: Deck?)
@@ -84,7 +83,7 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     
     func settingDeckButton(_ button: UIButton, deck: Deck){
         button.backgroundColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
-        button.tintColor = .flatWhite()
+        button.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let deckName = (deck as? DeckRelated)?.name
         button.setTitle(deckName, for: UIControl.State.normal)
         button.titleLabel?.text = deckName
@@ -208,7 +207,7 @@ class FormingDeckSelectView: DeckSelectView{
     
     override func settingDeckLastButton(_ button: UIButton) {
         button.backgroundColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 0.6957940925)
-        button.tintColor = .flatWhite()
+        button.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         button.setTitle("デッキ作成", for: UIControl.State.normal)
         button.titleLabel?.text = "デッキ作成"
     }

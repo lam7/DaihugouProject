@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Chameleon
 import RxSwift
 import Floaty
 import FirebaseAuth

@@ -33,7 +33,7 @@ class CardAtkView: UIView{
     private func setUp(){
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [UIColor.flatRed().cgColor, UIColor.flatWhite().cgColor]
+        gradientLayer.colors = [#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
         self.layer.addSublayer(gradientLayer)
         self.gradientLayer = gradientLayer
         

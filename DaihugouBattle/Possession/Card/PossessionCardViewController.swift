@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Hero
-import Chameleon
 import RxCocoa
 import RxSwift
 import PhotosUI
