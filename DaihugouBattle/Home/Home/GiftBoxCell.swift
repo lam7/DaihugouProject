@@ -17,6 +17,7 @@ class GiftBoxCell: UITableViewCell{
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLimitLabel: UILabel!
+    @IBOutlet weak var timeLimitDescriptionLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var gainButton: UIButton!
     
@@ -62,6 +63,7 @@ class GiftBoxCell: UITableViewCell{
         timeStampLabel.text = giftItemInfo.timeStampFormat()
         
         timeLimitLabel.isHidden = giftItemInfo.isReceived
+        timeLimitDescriptionLabel.isHidden = giftItemInfo.isReceived
         gainButton.isHidden = giftItemInfo.isReceived
         
     }

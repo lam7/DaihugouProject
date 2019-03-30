@@ -86,7 +86,7 @@
                         <constraint firstItem="mkN-Wd-vfs" firstAttribute="width" secondItem="d2j-nl-7JP" secondAttribute="width" id="ief-QC-fma"/>
                     </constraints>
                 </stackView>
-                <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y5X-BO-H8J">
+                <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y5X-BO-H8J">
                     <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="color" red="0.0" green="0.33592686510000003" blue="0.70875161919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

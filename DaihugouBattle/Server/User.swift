@@ -134,7 +134,7 @@ class UserInfoUpdateServerModel{
         
         objectIds = ncmbObject.object(forKey: "receivedGiftedItemObjectIds") as! [String]
         (self.receivedGiftIds ?? []).forEach{
-            objectIds.insert($0, at: 0)
+            objectIds.append($0)
         }
         let num = min(objectIds.count, MaxReceivedGiftedItemsNum)
         objectIds = objectIds[objectIds.count - num ..< num].map{ $0 }

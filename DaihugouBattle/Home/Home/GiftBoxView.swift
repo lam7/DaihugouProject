@@ -47,7 +47,7 @@ class GiftBoxViewModel{
     var giftedItems: Observable<[GiftedItem]>{
         return giftedItemsVar.asObservable()
     }
-    init(segmentedControl: Observable<Int>, receiveGiftedItem: Observable<GiftedItem>, collectiveGiftedItems: Observable<Void>, activityIndicatorHidden: Binder<Bool>, alert: PublishRelay<Error>){
+    init(segmentedControl: Observable<Int>, receiveGiftedItem: Observable<GiftedItem>, collectiveGiftedItems: Observable<Void>, collectiveGiftedItemsEnable: Binder<Bool>, activityIndicatorHidden: Binder<Bool>, alert: PublishRelay<Error>){
         
         let activityVar: Variable<Bool> = Variable(false)
         activityVar.asObservable().bind(to: activityIndicatorHidden).disposed(by: disposeBag)
@@ -99,8 +99,10 @@ class GiftBoxViewModel{
             }
             let isReceived = element == 1
             if isReceived{
+                collectiveGiftedItemsEnable.onNext(false)
                 self._receivedGiftedItemsVar.asDriver().drive(self.giftedItemsVar).disposed(by: self.disposeBag)
             }else{
+                collectiveGiftedItemsEnable.onNext(true)
                 self._giftedItemsVar.asDriver().drive(self.giftedItemsVar).disposed(by: self.disposeBag)
             }
         }.disposed(by: disposeBag)
@@ -154,10 +156,7 @@ class GiftBoxView: UINibView, UITableViewDelegate{
             }
             vc.alert(error, actions: vc.OKAlertAction)
         }.disposed(by: disposeBag)
-        dataSource.gainGiftedItemRelay.subscribe({ _ in
-            print("tttttttttttttt")
-        })
-        viewModel = GiftBoxViewModel(segmentedControl: segmentedControl.rx.selectedSegmentIndex.asObservable(), receiveGiftedItem: dataSource.gainGiftedItemRelay.asObservable(), collectiveGiftedItems: collectiveButton.rx.tap.asObservable(), activityIndicatorHidden: activityIndicator.rx.isHidden, alert: alertRelay)
+        viewModel = GiftBoxViewModel(segmentedControl: segmentedControl.rx.selectedSegmentIndex.asObservable(), receiveGiftedItem: dataSource.gainGiftedItemRelay.asObservable(), collectiveGiftedItems: collectiveButton.rx.tap.asObservable(), collectiveGiftedItemsEnable: collectiveButton.rx.isEnabled, activityIndicatorHidden: activityIndicator.rx.isAnimating, alert: alertRelay)
         viewModel.giftedItems.bind(to: giftTableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     

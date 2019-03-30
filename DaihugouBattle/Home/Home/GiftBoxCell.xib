@@ -17,6 +17,7 @@
                 <outlet property="gainButton" destination="BHN-a1-jaI" id="a2p-Iv-CNd"/>
                 <outlet property="itemImageView" destination="T2D-t9-Xnx" id="Z0H-w5-mk4"/>
                 <outlet property="nameLabel" destination="VQk-KH-7Jb" id="eIc-0M-fyc"/>
+                <outlet property="timeLimitDescriptionLabel" destination="2lI-pY-Uwc" id="SGK-C4-0Uo"/>
                 <outlet property="timeLimitLabel" destination="7Mf-N9-uam" id="5Eb-kr-soP"/>
                 <outlet property="timeStampLabel" destination="hZc-xm-euq" id="Yh5-HE-bBN"/>
             </connections>
