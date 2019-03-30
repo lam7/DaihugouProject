@@ -15,7 +15,7 @@ extension Errors{
                                                                                   NSLocalizedFailureReasonErrorKey : "指定Idが存在しません"])
     }
 }
-struct GiftedItem{
+class GiftedItem{
     var objectId: String?
     var timeStamp: Date
     var timeLimit: Date
@@ -25,6 +25,7 @@ struct GiftedItem{
     var count: Int
     var imageNamed: String
     var title: String
+    var isReceived: Bool = false
     private static let GiftedItemEffectInstances: [GiftedItemEffect.Type] = [GiftedItemGold.self, GiftedItemCard.self, GiftedItemCrystal.self]
     private var giftedItemEffect: GiftedItemEffect!
     
@@ -171,30 +172,5 @@ fileprivate class GiftedItemCard: GiftedItemEffect{
         }
         let cards = (0..<giftedItem.count).map({_ in card.copy() as! Card })
         model.append(cards: cards)
-    }
-}
-
-class Giftbox{
-    private(set) var giftedItems: [GiftedItem] = []
-    private(set) var receivedGiftedItems: [GiftedItem] = []
-    
-    func receive(_ giftedItem: GiftedItem){
-//        giftedItem.updateEffectInfo(&effectInfo)
-        
-    }
-    
-    func receiveAll(){
-//        var effectInfo = GiftedItemEffectInfo.empty()
-//        for giftedItem in giftedItems{
-//            giftedItem.updateEffectInfo(&effectInfo)
-//        }
-        
-    }
-    
-    func setup(_ completion: @escaping ErrorBlock){
-        UserInfo.shared.getGiftedItemInfos{ error, giftedItems in
-            self.giftedItems = giftedItems
-            completion(error)
-        }
     }
 }

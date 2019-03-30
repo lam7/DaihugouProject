@@ -34,3 +34,5 @@ class Errors{
 let StandartDeckCardsNum: Int = 40
 /// 最大デッキ所持数
 let MaxPossessionDecksNum: Int = 18
+/// 表示受け取り済みアイテム最大値
+let MaxReceivedGiftedItemsNum: Int = 20

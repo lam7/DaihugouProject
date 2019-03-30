@@ -19,7 +19,6 @@ import UIKit
         let giftView = GiftBoxView(frame: bounds)
         addSubview(giftView)
         UIView.animateOpenWindow(giftView)
-        giftView.updateInfosReceived()
         displayView = giftView
     }
     

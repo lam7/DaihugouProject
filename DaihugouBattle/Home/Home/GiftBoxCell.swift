@@ -11,8 +11,7 @@ import UIKit
 
 class GiftBoxCell: UITableViewCell{
     weak var view: UIView!
-    var gainBlock: ((_: [(String,GiftedItem)]) -> ())?
-    private var giftItemInfo: (String, GiftedItem)!
+    private var giftItemInfo: GiftedItem!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -20,8 +19,6 @@ class GiftBoxCell: UITableViewCell{
     @IBOutlet weak var timeLimitLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var gainButton: UIButton!
-    
-
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,46 +50,19 @@ class GiftBoxCell: UITableViewCell{
         return Bundle(for: type(of: self)).loadNibNamed("GiftBoxCell", owner: self, options: nil)?.first as! UIView
     }
     
-    func set(giftItemInfo: (String, GiftedItem)){
+    func set(giftItemInfo: GiftedItem){
         self.giftItemInfo = giftItemInfo
-        let giftItemInfo: GiftedItem = giftItemInfo.1
         
         itemImageView.image   = DataRealm.get(imageNamed: giftItemInfo.imageNamed)
-//        nameLabel.text        = giftItemInfo.
+        nameLabel.text        = giftItemInfo.title
         countLabel.text       = "× \(giftItemInfo.count.description)"
+        
         descriptionLabel.text = giftItemInfo.description
+        timeLimitLabel.text = giftItemInfo.remainingTimeFormat()
+        timeStampLabel.text = giftItemInfo.timeStampFormat()
         
-        let f                   = DateFormatter()
+        timeLimitLabel.isHidden = giftItemInfo.isReceived
+        gainButton.isHidden = giftItemInfo.isReceived
         
-        f.dateStyle             = DateFormatter.Style.medium
-        f.timeStyle             = DateFormatter.Style.short
-        f.locale                = Locale(identifier: "ja_JP")
-        timeStampLabel.text     = f.string(from: giftItemInfo.timeStamp)
-        let now: Date           = Date(timeIntervalSinceNow: 0)
-        var dTime: TimeInterval = giftItemInfo.timeLimit.timeIntervalSince(now)
-        if dTime < 0{
-            timeLimitLabel.text = "時間切れ"
-            return
-        }
-        let dayTime: Int  = 60 * 60 * 24
-        let day: Int      = dTime.i / dayTime
-        dTime -= Double(day *  dayTime)
-        let hourTime: Int = 60 * 60
-        let hour: Int     = dTime.i / hourTime
-        dTime -= Double(hour * hourTime)
-        let minute: Int   = dTime.i / 60
-        if day != 0{
-            timeLimitLabel.text = "あと\(day)日"
-            return
-        }
-        if hour != 0{
-            timeLimitLabel.text = "あと\(hour)時間"
-            return
-        }
-        timeLimitLabel.text = "あと\(minute)分"
-    }
-    
-    @IBAction func touchUpGain(_ sender: UIButton){
-        gainBlock?([giftItemInfo])
     }
 }

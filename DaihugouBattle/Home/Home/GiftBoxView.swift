@@ -8,40 +8,128 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
+class GiftBoxTableDataSource: NSObject, RxTableViewDataSourceType, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GiftBoxCell
+        let giftedItem = giftedItems[indexPath.row]
+        cell.set(giftItemInfo: giftedItem)
+        cell.gainButton.rx.tap.subscribe{ _ in
+            self.gainGiftedItemRelay.accept(giftedItem)
+        }.disposed(by: disposeBag)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, observedEvent: Event<[GiftedItem]>) {
+        Binder(self) { dataSource, element in
+            dataSource.giftedItems = element
+            tableView.reloadData()
+        }.on(observedEvent)
+    }
 
+    var gainGiftedItemRelay: PublishRelay<GiftedItem> = PublishRelay()
+    private let disposeBag = DisposeBag()
+    typealias Element = [GiftedItem]
+    var giftedItems: Element = []
 
-class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
-//    @IBOutlet weak var segmentedHistory: UISegmentedControl!
-    @IBOutlet weak var giftTableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return giftedItems.count
+    }
+}
+
+class GiftBoxViewModel{
+    private var _giftedItemsVar: Variable<[GiftedItem]> = Variable([])
+    private var _receivedGiftedItemsVar:Variable<[GiftedItem]> = Variable([])
+    private var giftedItemsVar: Variable<[GiftedItem]> = Variable([])
+    private let disposeBag = DisposeBag()
+    var giftedItems: Observable<[GiftedItem]>{
+        return giftedItemsVar.asObservable()
+    }
+    init(segmentedControl: Observable<Int>, receiveGiftedItem: Observable<GiftedItem>, collectiveGiftedItems: Observable<Void>, activityIndicatorHidden: Binder<Bool>, alert: PublishRelay<Error>){
+        
+        let activityVar: Variable<Bool> = Variable(false)
+        activityVar.asObservable().bind(to: activityIndicatorHidden).disposed(by: disposeBag)
+        func getAllGiftedItemInfos(){
+            activityVar.value = true     
+            UserInfo.shared.getAllGiftedItemInfos{ result in
+                switch result{
+                case .success(let (giftedItems, receivedGiftedItems)):
+                    self._giftedItemsVar.value = giftedItems
+                    self._receivedGiftedItemsVar.value = receivedGiftedItems
+                    activityVar.value = false
+                case .failure(let error):
+                    alert.accept(error)
+                }
+            }
+        }
+        
+        getAllGiftedItemInfos()
+        
+        receiveGiftedItem.subscribe{ event in
+            guard let element = event.element else{
+                return
+            }
+            activityVar.value = true
+            UserInfo.shared.receive(items: [element]){
+                error in
+                if let error = error{
+                    alert.accept(error)
+                }
+                activityVar.value = false
+                getAllGiftedItemInfos()
+            }
+        }.disposed(by: disposeBag)
+        
+        collectiveGiftedItems.subscribe{ _ in
+            activityVar.value = true
+            UserInfo.shared.receive(items: self._giftedItemsVar.value){ error in
+                if let error = error{
+                    alert.accept(error)
+                }
+                activityVar.value = false
+                getAllGiftedItemInfos()
+            }
+        }.disposed(by: disposeBag)
+        
+        segmentedControl.subscribe{ event in
+            guard let element = event.element else{
+                return
+            }
+            let isReceived = element == 1
+            if isReceived{
+                self._receivedGiftedItemsVar.asDriver().drive(self.giftedItemsVar).disposed(by: self.disposeBag)
+            }else{
+                self._giftedItemsVar.asDriver().drive(self.giftedItemsVar).disposed(by: self.disposeBag)
+            }
+        }.disposed(by: disposeBag)
+    }
+}
+
+class GiftBoxView: UINibView, UITableViewDelegate{
+    @IBOutlet weak var giftTableView: UITableView!{
+        didSet{
+            giftTableView.register(GiftBoxCell.self, forCellReuseIdentifier: "giftBoxCell")
+            giftTableView.delegate = self
+            giftTableView.dataSource = dataSource
+        }
+    }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!{
+        didSet{
+            activityIndicator.transform.scaledBy(x: 10, y: 10)
+        }
+    }
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var collectiveButton: UIButton!
-    
-    var giftItemInfos: [(String, GiftedItem)] = []
+    var dataSource: GiftBoxTableDataSource!
+    var viewModel: GiftBoxViewModel!
+    private let disposeBag = DisposeBag()
     @IBAction func touchUpClose(_ sender: UIButton){
         self.removeFromSuperview()
+        
     }
-    
-    @IBAction func touchUpCollective(_ sender: UIButton){
-        var infos: [(String, GiftedItem)] = []
-        for i in 0..<20{
-            if let info = giftItemInfos[safe: i]{
-                infos.append(info)
-            }
-        }
-        gain(infos)
-    }
-    
-    @IBAction func changed(_ sender: UISegmentedControl){
-        if sender.selectedSegmentIndex == 0{
-            updateInfosReceived()
-        }else{
-            updateInfosHistory()
-        }
-    }
-
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,102 +142,23 @@ class GiftBoxView: UINibView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func setUp(){
-        giftTableView.register(GiftBoxCell.self, forCellReuseIdentifier: "giftBoxCell")
+        giftTableView.register(GiftBoxCell.self, forCellReuseIdentifier: "cell")
         activityIndicator.transform.scaledBy(x: 10, y: 10)
-    }
-    
-    func gain(_ giftItemInfos: [(String, GiftedItem)]){
-        activityIndicator.isHidden = false
-//        GiftedItemList.effect(giftItemInfos.map{ $0.1 }){ error in
-//            if let error = error{
-//                let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
-//                let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
-//                    self.removeFromSuperview()
-//                })
-//                alert.addAction(action)
-//                self.parentViewController()?.present(alert, animated: true, completion: nil)
-//            }
-//            UserInfo.shared.delete(giftItem: giftItemInfos.map{ $0.0 }){ error in
-//                if let error = error{
-//                    let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
-//                    let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
-//                        self.removeFromSuperview()
-//                    })
-//                    alert.addAction(action)
-//                    self.parentViewController()?.present(alert, animated: true, completion: nil)
-//                }
-//                self.updateInfosReceived()
-//            }
-//        }
-    }
-    
-    func present(_ error: Error?)-> Bool{
-        if let error = error{
-            let alert = UIAlertController(title: "通信エラー", message: error.localizedDescription, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
-                self.removeFromSuperview()
-            })
-            alert.addAction(action)
-            self.parentViewController()?.present(alert, animated: true, completion: nil)
-            return true
-        }
-        return false
-    }
-    
-    func updateInfosReceived(){
-        activityIndicator.isHidden = false
-//        GiftBox.receivedItems(){
-//            [weak self]error, infos in
-//            guard let `self` = self else {
-//                return
-//            }
-//            if self.present(error){
-//                return
-//            }
-//            self.collectiveButton.isEnabled = true
-//            self.giftItemInfos = infos
-//            self.giftTableView.reloadData()
-//            self.activityIndicator.isHidden = true
-//        }
-    }
-    
-    func updateInfosHistory(){
-        activityIndicator.isHidden = false
-//        GiftBox.historyItems(){
-//            [weak self]error, infos in
-//            guard let `self` = self else {
-//                return
-//            }
-//            if self.present(error){
-//                return
-//            }
-//            self.collectiveButton.isEnabled = false
-//            self.giftItemInfos = infos
-//            self.giftTableView.reloadData()
-//            self.activityIndicator.isHidden = true
-//        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return giftItemInfos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "giftBoxCell", for: indexPath) as! GiftBoxCell
-        guard let info = giftItemInfos[safe: indexPath.row] else{
-            print("GiftBoxView: tableView giftItemInfos not contains row at \(indexPath.row)")
-            return cell
-        }
-        cell.set(giftItemInfo: info)
-        if segmentedControl.selectedSegmentIndex == 0{
-            cell.gainButton.isHidden = false
-            cell.gainBlock = gain(_:)
-        }else{
-            cell.gainButton.isHidden = true
-        }
         
-        
-        return cell
+        dataSource = GiftBoxTableDataSource()
+        let alertRelay = PublishRelay<Error>()
+        alertRelay.subscribe{ event in
+            guard let error = event.element,
+                let vc = self.parentViewController() else{
+                return
+            }
+            vc.alert(error, actions: vc.OKAlertAction)
+        }.disposed(by: disposeBag)
+        dataSource.gainGiftedItemRelay.subscribe({ _ in
+            print("tttttttttttttt")
+        })
+        viewModel = GiftBoxViewModel(segmentedControl: segmentedControl.rx.selectedSegmentIndex.asObservable(), receiveGiftedItem: dataSource.gainGiftedItemRelay.asObservable(), collectiveGiftedItems: collectiveButton.rx.tap.asObservable(), activityIndicatorHidden: activityIndicator.rx.isHidden, alert: alertRelay)
+        viewModel.giftedItems.bind(to: giftTableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
