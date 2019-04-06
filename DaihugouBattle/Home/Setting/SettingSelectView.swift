@@ -23,7 +23,7 @@ extension BlockableOutsideTouchView{
             return nil
         }
         
-        var frame = CGRect(x: -vc.bounds.width, y: -vc.bounds.height, width: vc.bounds.width * 2, height: vc.bounds.height * 2)
+        let frame = CGRect(x: -vc.bounds.width, y: -vc.bounds.height, width: vc.bounds.width * 2, height: vc.bounds.height * 2)
         let color = UIColor.darkGray.withAlphaComponent(0.6)
         let behind = UIView(frame: frame)
         behind.backgroundColor = color

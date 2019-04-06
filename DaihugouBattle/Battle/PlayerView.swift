@@ -443,7 +443,7 @@ class OwnerView: PlayerView{
         }
     }
     
-    lazy var minHandSupportView: UIView = self.viewWithTag(200)  as! UIView
+    lazy var minHandSupportView: UIView = self.viewWithTag(200)!
     
     fileprivate lazy var minHandFrame: [[CGRect]] = {
         var r: [[CGRect]] = []

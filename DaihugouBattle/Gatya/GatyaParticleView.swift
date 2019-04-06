@@ -30,7 +30,7 @@ class GatyaParticleView: UIView{
         sceneView.presentScene(GatyaParticleScene.self)
         addSubview(sceneView)
         self.sceneView = sceneView
-        scene = sceneView.scene as! GatyaParticleScene
+        scene = sceneView.scene as? GatyaParticleScene
         scene.scaleMode = .aspectFit
     }
 }

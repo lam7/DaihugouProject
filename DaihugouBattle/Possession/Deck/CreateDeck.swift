@@ -91,7 +91,7 @@ class CreateDeck{
     ///- errors: なにかしらのエラーが発生した場合NSErrorを返す。localizedDescriptionにタイトルをlocalizedFailureReasonにエラーが起きたろ理由を示す。
     final func remove(_ card: Card) throws{
         try checkRemove(card, possessionCards: possessionCardsVar.value, deckCards: convertCardCount(deckCardsVar.value))
-        if let i = deckCardsVar.value.index(of: card){
+        if let i = deckCardsVar.value.firstIndex(of: card){
             deckCardsVar.value.remove(at: i)
             if possessionCardsVar.value[card] == nil{
                possessionCardsVar.value[card] = 1

@@ -16,11 +16,11 @@ class BattleMultiViewController: BattleViewController{
     override func prepareBattlePlayer(_ completion: @escaping () -> ()){
         let ownerDeck = Deck(cards: self._ownerDeck.cards.map({ CardBattle(card: $0) }))
         let hp = ownerDeck.cards.reduce(0, { $0 + $1.hp })
-        print("\(UserLogin.uuid)   \(hp)")
+        print("\(String(describing: UserLogin.uuid))   \(hp)")
         battleRoom = FirebaseBattleRoom(maxHP: hp)
         SVProgressHUD.show()
         battleRoom.setUp{error in
-            if let error = error{
+            if error != nil{
                 SVProgressHUD.showError(withStatus: "エラー")
                 SVProgressHUD.dismiss(withDelay: 1.5)
                 return

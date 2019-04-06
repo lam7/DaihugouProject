@@ -34,8 +34,8 @@ enum CardStrength{
     ///   - compared: 比べられる方
     /// - Returns: compareの方が強いかどうか
     func compare(_ compare: Int, _ compared: Int)-> Bool{
-        guard let i1 = strength.index(of: compare),
-            let i2 = strength.index(of: compared) else{
+        guard let i1 = strength.firstIndex(of: compare),
+            let i2 = strength.firstIndex(of: compared) else{
                 print("CardStrength_compare")
                 print("Not Contains \(compare) \(compared)")
                 return false

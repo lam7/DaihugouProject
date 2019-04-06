@@ -139,7 +139,7 @@ class LocalBattleMaster: BattleMaster{
         }
         
         for card in cards{
-            let index = hand.index(of: card)!
+            let index = hand.firstIndex(of: card)!
             hand.remove(at: index)
         }
         

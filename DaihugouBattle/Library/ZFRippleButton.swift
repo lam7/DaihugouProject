@@ -9,24 +9,8 @@
 import UIKit
 import QuartzCore
 
-open class BackgroundHighlightedButton: UIButton {
-    @IBInspectable var highlightedBackgroundColor :UIColor?
-    @IBInspectable var nonHighlightedBackgroundColor :UIColor?
-    override open var isHighlighted :Bool {
-        didSet {
-            if isHighlighted {
-                self.backgroundColor = highlightedBackgroundColor
-            }
-            else {
-                self.backgroundColor = nonHighlightedBackgroundColor
-            }
-        }
-    }
-}
-
 @IBDesignable
-open class ZFRippleButton: BackgroundHighlightedButton {
-    
+open class ZFRippleButton: UIButton {
     @IBInspectable open var ripplePercent: Float = 0.8 {
         didSet {
             setupRippleView()
@@ -57,8 +41,8 @@ open class ZFRippleButton: BackgroundHighlightedButton {
     @IBInspectable open var trackTouchLocation: Bool = false
     @IBInspectable open var touchUpAnimationTime: Double = 0.6
     
-    let rippleView = UIView()
-    let rippleBackgroundView = UIView()
+    weak var rippleView: UIView!
+    weak var rippleBackgroundView: UIView!
     
     fileprivate var tempShadowRadius: CGFloat = 0
     fileprivate var tempShadowOpacity: Float = 0
@@ -92,17 +76,21 @@ open class ZFRippleButton: BackgroundHighlightedButton {
     }
     
     fileprivate func setup() {
-        setupRippleView()
-        
+        let rippleView = UIView()
+        let rippleBackgroundView = UIView()
         rippleBackgroundView.backgroundColor = rippleBackgroundColor
         rippleBackgroundView.frame = bounds
         rippleBackgroundView.addSubview(rippleView)
         rippleBackgroundView.alpha = 0
         addSubview(rippleBackgroundView)
+        self.rippleView = rippleView
+        self.rippleBackgroundView = rippleBackgroundView
         
         layer.shadowRadius = 0
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowColor = UIColor(white: 0.0, alpha: 0.5).cgColor
+        
+        setupRippleView()
     }
     
     fileprivate func setupRippleView() {
@@ -168,10 +156,10 @@ open class ZFRippleButton: BackgroundHighlightedButton {
     
     fileprivate func animateToNormal() {
         UIView.animate(withDuration: 0.1, delay: 0, options: UIView.AnimationOptions.allowUserInteraction, animations: {
-            self.rippleBackgroundView.alpha = 1
+            self.rippleBackgroundView?.alpha = 1
             }, completion: {(success: Bool) -> () in
                 UIView.animate(withDuration: self.touchUpAnimationTime, delay: 0, options: UIView.AnimationOptions.allowUserInteraction, animations: {
-                    self.rippleBackgroundView.alpha = 0
+                    self.rippleBackgroundView?.alpha = 0
                     }, completion: nil)
         })
         

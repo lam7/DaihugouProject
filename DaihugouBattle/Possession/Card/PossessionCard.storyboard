@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
-    <device id="retina4_7" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,11 +11,11 @@
             <objects>
                 <viewController id="heL-WB-htU" customClass="ZLSwipeableViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tdq-Pz-re9">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtC-ST-yWb" customClass="ZLSwipeableView" customModule="ZLSwipeableViewSwift">
-                                <rect key="frame" x="133.5" y="37.5" width="400" height="300"/>
+                                <rect key="frame" x="120" y="175" width="360" height="270"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RtC-ST-yWb" secondAttribute="height" multiplier="4:3" id="EBM-o9-R3l"/>
@@ -47,14 +43,14 @@
             <objects>
                 <viewController id="jXU-gu-3cl" customClass="PossessionCardViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FOL-Bj-37a">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rmp-6I-5Ve">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="10" width="600" height="600"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bji-io-cb9">
-                                <rect key="frame" x="0.0" y="50" width="667" height="325"/>
+                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="30" id="RuK-fV-QZr">
                                     <size key="itemSize" width="50" height="50"/>
@@ -69,7 +65,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ4-52-LGg">
-                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="40"/>
+                                <rect key="frame" x="0.0" y="20" width="120" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="戻る">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xe-S0-SlV">
-                                <rect key="frame" x="363.5" y="0.0" width="40" height="40"/>
+                                <rect key="frame" x="330" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9xe-S0-SlV" secondAttribute="height" multiplier="1:1" id="Wkk-xR-dcT"/>
                                 </constraints>
@@ -92,7 +88,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-8d-Fwl">
-                                <rect key="frame" x="403.5" y="0.0" width="263.5" height="40"/>
+                                <rect key="frame" x="370" y="20" width="230" height="40"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -103,15 +99,15 @@
                                 </connections>
                             </searchBar>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-eZ-A4p" customClass="TapableView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="10" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-FR-edE" customClass="CardSortFilterView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="66.5" y="19" width="534" height="337.5"/>
+                                <rect key="frame" x="60" y="40" width="480" height="540"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64z-H9-xTF" customClass="PossessionCardDetailView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="50" y="19" width="567" height="337.5"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64z-H9-xTF" customClass="ClosableCharacterDetailView" customModule="DaihugouBattle" customModuleProvider="target">
+                                <rect key="frame" x="45" y="40" width="510" height="540"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <viewLayoutGuide key="safeArea" id="Sfa-i1-1a3"/>

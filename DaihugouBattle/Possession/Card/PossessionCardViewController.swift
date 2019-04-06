@@ -43,7 +43,7 @@ class PossessionCollectionDataSource: NSObject, RxCollectionViewDataSourceType, 
     
     /// カード画像を展開しておく。
     ///　サブスレッドであらかじめ画像をロードしておくことでかくつきを減らす
-    func numberOfSections(in tableView: UITableView) -> Int {
+    private func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -136,9 +136,9 @@ class PossessionCardViewController: UIViewController{
         }
     }
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var characterDetailView: PossessionCardDetailView!{
+    @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!{
         didSet{
-            characterDetailView.tappedClose = {[weak self] in
+            characterDetailView.close = {[weak self] in
                 self?.hiddenViews()
             }
         }

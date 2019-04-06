@@ -125,7 +125,7 @@ class UserInfoUpdateServerModel{
     private func updateGift(_ ncmbObject: NCMBObject)-> Error?{
         var objectIds = ncmbObject.object(forKey: "giftedItemObjectIds") as! [String]
         for giftId in self.removeGiftIds ?? []{
-            guard let index = objectIds.index(of: giftId) else{
+            guard let index = objectIds.firstIndex(of: giftId) else{
                 return Errors.UserInfo.notExistGiftedItem
             }
             objectIds.remove(at: index)
@@ -198,7 +198,7 @@ class UserInfoUpdateServerModel{
                     completion(saveError)
                 }
                 completion(nil)
-                UserInfo.shared.update(self.userInfo)
+                _ = UserInfo.shared.update(self.userInfo)
                 UserInfoUpdateServerModel.reservedupdateBlock.next()
             }
         }
@@ -307,11 +307,11 @@ class UserInfoUpdateServerModel{
     @discardableResult
     func receive(items: [GiftedItem])-> UserInfoUpdateServerModel{
         var `self` = self
-        var items = items.filter{ $0.objectId != nil }
+        let items = items.filter{ $0.objectId != nil }
         for item in items{
             item.receive(&self)
         }
-        var itemsId = items.map({ $0.objectId! })
+        let itemsId = items.map({ $0.objectId! })
         self.removeGiftIds = self.removeGiftIds ?? [] + itemsId
         self.receivedGiftIds = self.receivedGiftIds ?? [] + itemsId
         
@@ -718,7 +718,7 @@ class UserInfo{
                         let count = obj.intValue(forKey: "count"),
                         let imageNamed = obj.object(forKey: "imageNamed") as? String,
                         let objectId = obj.objectId,
-                        var giftedItem = try? GiftedItem(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, description: description, count: count, imageNamed: imageNamed) else{
+                        let giftedItem = try? GiftedItem(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, description: description, count: count, imageNamed: imageNamed) else{
                             continue
                     }
                     if self.giftedIdsValue.contains(objectId){

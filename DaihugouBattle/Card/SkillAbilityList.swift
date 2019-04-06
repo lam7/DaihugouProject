@@ -87,7 +87,7 @@ final class SkillAbilityList{
                         card = cards.remove(at: 0)
                     }else{
                         card = t.random
-                        cards.remove(at: cards.index(of: card)!)
+                        cards.remove(at: cards.firstIndex(of: card)!)
                     }
                     
                     tmp.append(card)
@@ -115,7 +115,7 @@ final class SkillAbilityList{
                         card = cards.remove(at: 0)
                     }else{
                         card = t.random
-                        cards.remove(at: cards.index(of: card)!)
+                        cards.remove(at: cards.firstIndex(of: card)!)
                     }
                     
                     tmp.append(card)
@@ -217,7 +217,7 @@ final class SkillAbilityList{
                 var copy = player.hand
                 guard let h1 = copy.randomElement() else{ return }
                 var cards: [Card] = [h1]
-                copy.remove(at: copy.index(of: h1)!)
+                copy.remove(at: copy.firstIndex(of: h1)!)
                 if let h2 = copy.randomElement(){ cards.append(h2) }
                 player.removeHand(cards)
                 

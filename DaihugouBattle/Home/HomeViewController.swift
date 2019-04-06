@@ -17,7 +17,7 @@ let SSY = UIScreen.main.bounds.size.height
 let CardSize: CGSize = CGSize(width: 600.cf, height: 800.cf)
 
 class HomeViewController: UIViewController{
-    weak var currentView: UIView!
+    private weak var currentView: UIView!
     private var isFirst = true    
     @IBOutlet weak var homeView: UIView!
     @IBOutlet weak var cardView: UIView!
@@ -27,31 +27,39 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var crystalLabel: EFCountingLabel!
     @IBOutlet weak var goldLabel: EFCountingLabel!
-    @IBOutlet var viewButtons: [UIButton]!
+    var viewButtons: [UIButton]{
+        return [homeButton, cardButton, battleButton, gatyaButton, settingButton]
+    }
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var cardButton: UIButton!
     @IBOutlet weak var battleButton: UIButton!
     @IBOutlet weak var gatyaButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var backgroundLottieView: AnimationView!
-    
     let disposeBag = DisposeBag()
+    static var initialSelectViewType: SelectViewType = .home
+    
+    enum SelectViewType: Int{
+        case home, card, battle, gatya, setting
+    }
+    
+    func convertToView(_ type: SelectViewType)-> UIView!{
+        let views = [homeView, cardView, battleView, gatyaView, settingView]
+        return views[type.rawValue]
+    }
+    
+    func convertToButton(_ type: SelectViewType)-> UIButton!{
+        let buttons = [homeButton, cardButton, battleButton, gatyaButton, settingButton]
+        return buttons[type.rawValue]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initView(battleView)
         setUpLabel()
         UserInfo.shared.update{error in
             if let error = error{
                 dump(error)
             }
-        }
-        crystalLabel.formatBlock = {
-            $0.i.description + "C"
-        }
-        
-        goldLabel.formatBlock = {
-            $0.i.description + "G"
         }
         
         if let data = DataRealm.get(dataNamed: "the_final_frontier.json"){
@@ -67,11 +75,14 @@ class HomeViewController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         if isFirst{
-            initView(battleView)
+            let v = convertToView(HomeViewController.initialSelectViewType)
+            let b = convertToButton(HomeViewController.initialSelectViewType)
+            initView(v)
+            b?.isSelected = true
             isFirst = false
         }else{
             initView(nil)
-        }        
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         let bgm = DefineServer.shared.value("homeBGM") as! String
@@ -104,6 +115,14 @@ class HomeViewController: UIViewController{
         UserInfo.shared.name
             .bind(to: rankLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        crystalLabel.formatBlock = {
+            $0.i.description + "C"
+        }
+        
+        goldLabel.formatBlock = {
+            $0.i.description + "G"
+        }
     }
     
     private func initView(_ st: UIView?){
@@ -144,18 +163,27 @@ class HomeViewController: UIViewController{
     @IBAction func touchUp(_ sender: UIButton){
         ManageAudio.shared.play("click.mp3")
         viewButtons.forEach{
-            $0.isHighlighted = false
+            $0.isSelected = false
         }
-        sender.isHighlighted = true
+        sender.isSelected = true
         (currentView as? SelectableView)?.clearView()
         switch sender.tag{
-        case homeButton.tag: moveView(homeView)
-        case cardButton.tag: moveView(cardView)
-        case battleButton.tag: moveView(battleView)
+        case homeButton.tag:
+            HomeViewController.initialSelectViewType = .home
+            moveView(homeView)
+        case cardButton.tag:
+            HomeViewController.initialSelectViewType = .card
+            moveView(cardView)
+        case battleButton.tag:
+            HomeViewController.initialSelectViewType = .battle
+            moveView(battleView)
         case gatyaButton.tag:
+            HomeViewController.initialSelectViewType = .gatya
             (gatyaView as? GatyaSelectView)?.initGatyaType()
             moveView(gatyaView)
-        case settingButton.tag: moveView(settingView)
+        case settingButton.tag:
+            HomeViewController.initialSelectViewType = .home
+            moveView(settingView)
         default:
             break
         }
@@ -164,7 +192,6 @@ class HomeViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "gatya"{
-            print("prepareGatya")
             let controller = segue.destination as! GatyaRollViewController
             controller.gatya = sender as? Gatya
         }else if segue.identifier == "battle"{

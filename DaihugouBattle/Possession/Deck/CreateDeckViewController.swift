@@ -16,7 +16,7 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
     var cards: [Card] = []
     
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    private func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -28,13 +28,13 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
             if dataSource.cards.count < element.count{
                 var t = element
                 for card in dataSource.cards{
-                    t.remove(at: t.index(of: card)!)
+                    t.remove(at: t.firstIndex(of: card)!)
                 }
                 dataSource.cards = element
                 
                 var indexPaths: [IndexPath] = []
                 for c in t{
-                    guard let i = dataSource.cards.index(of: c) else{ continue }
+                    guard let i = dataSource.cards.firstIndex(of: c) else{ continue }
                     let indexPath = IndexPath(row: i, section: 0)
                     print(indexPath)
                     indexPaths.append(indexPath)
@@ -46,11 +46,11 @@ class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UIColl
             }else{
                 var t = dataSource.cards
                 for card in element{
-                    t.remove(at: t.index(of: card)!)
+                    t.remove(at: t.firstIndex(of: card)!)
                 }
                 var indexPaths: [IndexPath] = []
                 for c in t{
-                    guard let i = dataSource.cards.index(of: c) else{ continue }
+                    guard let i = dataSource.cards.firstIndex(of: c) else{ continue }
                     let indexPath = IndexPath(row: i, section: 0)
                     print(indexPath)
                     indexPaths.append(indexPath)

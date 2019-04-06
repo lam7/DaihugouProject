@@ -120,10 +120,13 @@ class Card: Equatable, Hashable, NSCopying{
     fileprivate(set) var rarity: CardRarity
     
     fileprivate(set) var skills: [Skill]
-    var hashValue: Int{
-        return id.hashValue ^ hp.hashValue ^ atk.hashValue ^ index.hashValue
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(hp)
+        hasher.combine(atk)
+        hasher.combine(index)
     }
-    
     /// キャラ画像
     var image: UIImage?{
         return RealmImageCache.shared.image(imageNamed)
@@ -287,7 +290,7 @@ class CardList{
                         print(obj.object(forKey: "atk"))
                         fatalError("atk Error")
                     }
-                    guard let skillNumber = obj.intValue(forKey: "skillNumber")else{
+                    guard let skillNumber = obj.intValue(forKey: "skillNumber") else{
                         print(obj.object(forKey: "skillNumber"))
                         fatalError("skill Error")
                     }

@@ -489,7 +489,7 @@ extension Array where Element: Equatable{
     
     @discardableResult
     public mutating func removeFirst(safe element: Element)-> Element?{
-        guard let i = index(of: element) else{
+        guard let i = firstIndex(of: element) else{
             return nil
         }
         return remove(at: i)
@@ -793,17 +793,17 @@ public extension EnumEnumerable where Case: Hashable {
     }
 
     /// - Returns: enumerate of enum
-    public static func enumerate() -> EnumeratedSequence<AnySequence<Case>> {
+    static func enumerate() -> EnumeratedSequence<AnySequence<Case>> {
         return AnySequence(self.iterator).enumerated()
     }
     
     /// - Returns: array of enum
-    public static var cases: [Case] {
+    static var cases: [Case] {
         return Array(self.iterator)
     }
     
     /// - Returns: number of enum
-    public static var count: Int {
+    static var count: Int {
         return self.cases.count
     }
 }

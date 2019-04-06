@@ -26,7 +26,7 @@ import UIKit
 //    //-TODO: ひもづけ
 //    @IBOutlet weak var filterView: CardSortFilterView?
 //    //-TODO: ひもづけ
-//    @IBOutlet weak var characterDetailView: PossessionCardDetailView?
+//    @IBOutlet weak var characterDetailView: ClosableCharacterDetailView?
 //
 //
 //    func update(_ indexs: [Int], _ rarities: [CardRarity]){

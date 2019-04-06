@@ -42,7 +42,7 @@ protocol Nibable: class where Self: UIView{
 extension Nibable{
     func loadNib(_ className: String?){
         let nibName = className ?? self.className
-        nibView = Bundle(for: type(of: self)).loadNibNamed(nibName, owner: self, options: nil)?.first as! UIView
+        nibView = Bundle(for: type(of: self)).loadNibNamed(nibName, owner: self, options: nil)?.first as? UIView
         
         // use bounds not frame or it'll be offset
         nibView.frame = bounds

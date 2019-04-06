@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 import SnapKit
+import RxSwift
 
 @IBDesignable class TapableView: UIView{
     var tapGesture: UITapGestureRecognizer!
     var tapped: (()->())?
+    let disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -126,10 +129,10 @@ class HUD: NSObject{
         container.frame.origin = CGPoint.zero
         container.autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
         container.isHidden = false
+        container.frame = window.bounds
     }
     
     func show(_ maskType: MaskType = .clear){
-        clearContainer()
         let window = searchFrontWindow()
         container = maskType.view()
         window.addSubview(container)
@@ -137,7 +140,6 @@ class HUD: NSObject{
     }
     
     func show(_ maskType: MaskType = .clear, belowSubview: UIView){
-        clearContainer()
         let window = searchFrontWindow()
         container = maskType.view()
         window.insertSubview(container, belowSubview: belowSubview)
@@ -145,8 +147,7 @@ class HUD: NSObject{
     }
     
     func dismiss(){
-        container.removeAllSubviews()
-        container.removeSafelyFromSuperview()
+        clearContainer()
     }
     
     ///表示されているWindowの中で最前面で、アラートでないものを返す

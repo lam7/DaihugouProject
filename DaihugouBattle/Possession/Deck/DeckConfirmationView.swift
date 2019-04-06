@@ -18,7 +18,6 @@ class DeckConfirmationView: UINibView, UICollectionViewDelegate, UICollectionVie
             collectionView.dataSource = self
         }
     }
-    
     @IBAction func touchUpClose(_ sender: UIButton){
         self.removeFromSuperview()
     }
@@ -44,4 +43,14 @@ class DeckConfirmationView: UINibView, UICollectionViewDelegate, UICollectionVie
         return CGSize(width: w, height: h)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let card = deckCards[indexPath.row]
+        let characterDetailView = ClosableCharacterDetailView(frame: CharacterDetailViewFrame)
+        characterDetailView.card = card
+        HUD.show(.closableDark)
+        HUD.container.addSubview(characterDetailView)
+        characterDetailView.close = {
+            HUD.dismiss()
+        }
+    }
 }

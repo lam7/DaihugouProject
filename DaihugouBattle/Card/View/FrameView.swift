@@ -101,7 +101,7 @@ class CardFrontFrameLayer: CALayer{
         let w = frame.width
         let h = frame.height
         let cx = frame.midX
-        let cy = frame.midY
+        
         let imageRect = self.imageRect
         
         let path = UIBezierPath()
@@ -222,7 +222,7 @@ class CardFrame: UIView{
         let w = rect.width
         let h = rect.height
         let cx = rect.midX
-        let cy = rect.midY
+        
         let imageRect = self.imageRect
         
         var path = UIBezierPath()

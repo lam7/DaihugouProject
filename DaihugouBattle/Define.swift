@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let ErrorDomain = "daipro"
 
@@ -36,3 +37,10 @@ let StandartDeckCardsNum: Int = 40
 let MaxPossessionDecksNum: Int = 18
 /// 表示受け取り済みアイテム最大値
 let MaxReceivedGiftedItemsNum: Int = 20
+
+var CharacterDetailViewFrame: CGRect{
+    let bounds = UIScreen.main.bounds
+    let width = bounds.width * 0.8
+    let height = bounds.height * 0.9
+    return CGRect(x: bounds.width - width / 2, y: bounds.height - height / 2, width: width, height: height)
+}

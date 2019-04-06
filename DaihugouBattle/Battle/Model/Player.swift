@@ -251,9 +251,9 @@ class Player: NSCopying{
     /// - Parameter cards: 取り除くカード
     fileprivate func deleteHand(_ cards: [Card]){
         for card in cards{
-            if let index = hand.index(of: card){
+            if let index = hand.firstIndex(of: card){
                 hand.remove(at: index)
-            }else if let index = hand.index(of: cardNoData){
+            }else if let index = hand.firstIndex(of: cardNoData){
                 hand.remove(at: index)
             }else{
                 print("------------------------------------------------")

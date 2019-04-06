@@ -22,7 +22,7 @@ class Cametery{
     }
     
     func pop(_ card: Card)-> Card?{
-        guard let index = cards.index(of: card) else{
+        guard let index = cards.firstIndex(of: card) else{
             return nil
         }
         

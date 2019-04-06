@@ -159,7 +159,7 @@ import RxSwift
                 let button = self.sortByButtons.filter({ $0.value == element }).first?.key else { return }
             self.sortByButtons.forEach({ $0.key.isSelected = false })
             button.isSelected = true
-        }
+        }.disposed(by: disposeBag)
         
         sortOrderAscButton.rx.tap.subscribe{[weak self] _ in
             guard let `self` = self,

@@ -182,11 +182,9 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     }
     func selectButtonAction(_ sender: UIButton) {
         if let deck = decks[safe: sender.tag]{
-            
             delegate?.selected(deck)
         }else if sender.tag == decks.count{
             delegate?.selected(nil)
-            
         }
     }
 //

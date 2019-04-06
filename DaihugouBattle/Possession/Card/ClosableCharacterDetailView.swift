@@ -1,5 +1,5 @@
 //
-//  PossessionCardDetailView.swift
+//  ClosableCharacterDetailView.swift
 //  DaihugouBattle
 //
 //  Created by Main on 2017/11/14.
@@ -9,16 +9,21 @@
 import Foundation
 import UIKit
 
-@IBDesignable class PossessionCardDetailView: UINibView{
+
+protocol Closable{
+    var close: (()->())?{ get set }
+}
+
+@IBDesignable class ClosableCharacterDetailView: UINibView, Closable{
     var card: Card!{
         didSet{
             characterDetailView.set(card: card)
         }
     }
     @IBOutlet weak var characterDetailView: CharacterDetailView!
-    @IBOutlet weak var cloesButton: UIButton!
-    var tappedClose: (()->())?
+    @IBOutlet weak var closeButton: UIButton!
+    var close: (()->())?
     @IBAction func touchUp(_ sender: UIButton){
-        tappedClose?()
+        close?()
     }
 }

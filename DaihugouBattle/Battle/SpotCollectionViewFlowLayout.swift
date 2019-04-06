@@ -22,7 +22,7 @@ class SpotCollectionViewFlowLayout: UICollectionViewFlowLayout{
     
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard var elements =  super.layoutAttributesForElements(in: rect),
+        guard let elements =  super.layoutAttributesForElements(in: rect),
             let collectionView = self.collectionView else{
             return nil
         }

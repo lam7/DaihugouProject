@@ -82,7 +82,6 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     private func points(_ cards: [CardView])-> [CGPoint]{
         let randomPoint = self.randomPoint
         let cardSize = cards[0].frame.size
-        let midX = (cardSize.width * cards.count) / 2
         var result: [CGPoint] = []
         for i in 0..<cards.count{
             if i < cards.count / 2{
@@ -202,6 +201,5 @@ class SpotView: UIView, SpotDelegate, CAAnimationDelegate{
     }
     
     @IBAction func touchUpSpot(_ sender: UIButton) {
-        let spotCollectionView = SpotCollectionView(frame: bounds)
     }
 }
