@@ -719,7 +719,7 @@ class UserInfo{
                         let imageNamed = obj.object(forKey: "imageNamed") as? String,
                         let objectId = obj.objectId,
                         var giftedItem = try? GiftedItem(objectId: objectId, timeStamp: timeStamp, timeLimit: timeLimit, id: id, subId: subId, description: description, count: count, imageNamed: imageNamed) else{
-                            fatalError("object Error")
+                            continue
                     }
                     if self.giftedIdsValue.contains(objectId){
                         giftedItem.isReceived = false

@@ -232,11 +232,6 @@ class Player: NSCopying{
     }
     
     /// スキルを発動させる
-    /// -
-    /// - cards: スキルを発動させるカード
-    /// - activateType:
-    
-    /// スキルを発動させる
     ///
     /// - Parameters:
     ///   - cards: スキルが発動するかもしれないカード
