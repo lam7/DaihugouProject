@@ -22,6 +22,7 @@ class DeckConfirmationView: UINibView, UICollectionViewDelegate, UICollectionVie
     @IBAction func touchUpClose(_ sender: UIButton){
         self.removeFromSuperview()
     }
+    
     var deckCards: [Card]!{
         didSet{
             collectionView.reloadData()
@@ -34,7 +35,6 @@ class DeckConfirmationView: UINibView, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardStandartCell
         cell.card = deckCards[indexPath.row]
-        cell.isHidden = true
         return cell
     }
     
