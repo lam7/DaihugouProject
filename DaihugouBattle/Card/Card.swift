@@ -304,7 +304,8 @@ class CardList{
                     let newName = deleteDoubleQuotesFirstAndLast(name)
                     let newRarity = deleteDoubleQuotesFirstAndLast(rarity)
                     
-                    let card = Card(id: id, name: newName, imageNamed: newImageNamed, rarity: newRarity, index: index, hp: hp, atk: atk, skills: skillNumbers.map{ SkillList.get(id: $0) ?? SkillList.get(id: 0)! })
+                    let card = Card(id: id, name: newName, imageNamed: newImageNamed, rarity: newRarity, index: index, hp: hp, atk: atk, skills:
+                        skillNumbers.filter({ $0 != 0 }).map{ SkillList.get(id: $0)! })
                     cards.append(card)
                 }
                 print("completion CardList")

@@ -20,6 +20,19 @@ class Skill{
     
     enum ActivateType: String{
         case fanfare, lastword, ownerTurnStart, ownerTurnEnd, enemyTurnStart, enemyTurnEnd, beforeAttack
+        
+        var description: String{
+            switch self{
+            case .fanfare: return "ファンファーレ"
+            case .lastword: return "ラストワード"
+            case .ownerTurnStart: return "ターン開始時"
+            case .ownerTurnEnd: return "ターン終了時"
+            case .enemyTurnStart: return "敵のターン開始時"
+            case .enemyTurnEnd: return "敵のターン終了時"
+            case .beforeAttack: return "攻撃時"
+            @unknown default: return ""
+            }
+        }
     }
     
     init(){
@@ -28,7 +41,7 @@ class Skill{
     }
     
     fileprivate init(description: String, activateType: ActivateType, activates: [SkillAbilityList.ActivateType], checks: [SkillAbilityList.CheckType]){
-        self.description = description
+        self.description = activateType.description + " " + description
         self.activateType = activateType
         self.activates = activates
         self.checks = checks

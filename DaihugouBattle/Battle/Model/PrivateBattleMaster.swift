@@ -34,7 +34,6 @@ protocol BattleFieldDelegate: class{
 protocol BattleMaster{
     var delegate: BattleFieldDelegate?{ get set }
     var battleField: BattleField!{ get }
-    var spotAtkRate: Float!{ get }
     func ownerPutDown(_ cards: [Card],  completion: @escaping (_ error: Error?) -> ())
     func ownerPass(_  completion: @escaping (_ error: Error?) -> ())
     func gameStart(_  completion: @escaping (_ error: Error?) -> ())
@@ -46,21 +45,19 @@ class LocalBattleMaster: BattleMaster{
     private var cpu: RandomCPU
     private var ownerDeck: DeckBattle
     private var enemyDeck: DeckBattle
-    private var atkRate: BattleStandartAtkRate = BattleStandartAtkRate()
     private(set) var isOwnerTurn: Bool
     private(set) var ownerElapsedTurn: Int
     private(set) var enemyElapsedTurn: Int
+    private let atkRatePerCard: Float = DefineServer.shared.floatValue("battleStandartAtkRate")
     
     //最初にドローする枚数
-    private let NumberOfInitialHands = 5
-    private let NumberOfRevolution = 4
+    private let NumberOfInitialHands = DefineServer.shared.nsNumber("battleStandartInitialHands").intValue
+    private let NumberOfRevolution = DefineServer.shared.nsNumber("battleStandartRevolution").intValue
     
-    var spotAtkRate: Float!{ return atkRate.spotAtkRate(battleField.table.spotStatus) }
     private var ownerOriginalAtk: Int{ return battleField.spot.ownerCards.reduce(0, { $0 + $1.atk })}
     private var ownerAtkRate: Float{ return battleField.owner.atkRate }
     private var ownerAtk: Int{
         var atk = ownerOriginalAtk
-        atk = Int(atk * spotAtkRate)
         atk = Int(atk * ownerAtkRate)
         return atk
     }
@@ -68,7 +65,6 @@ class LocalBattleMaster: BattleMaster{
     private var enemyAtkRate: Float{ return battleField.enemy.atkRate }
     private var enemyAtk: Int{
         var atk = enemyOriginalAtk
-        atk = Int(atk * spotAtkRate)
         atk = Int(atk * enemyAtkRate)
         return atk
     }
@@ -86,10 +82,6 @@ class LocalBattleMaster: BattleMaster{
 
         owner.drawCards = self.drawOwnerCards
         enemy.drawCards = self.drawEnemyCards
-    }
-    
-    func calcPlayerAtk(_ cards: [Card], player: Player, completion: @escaping (Error?) -> ()) {
-        
     }
     
     func gameStart(_ completion: @escaping (Error?) -> ()){
@@ -111,7 +103,7 @@ class LocalBattleMaster: BattleMaster{
     private func drawOwnerCards(_ amount: Int = 1)-> [Card]{
         let cards = ownerDeck.drawCards(amount)
         if !cards.filter({ $0 == nil }).isEmpty{
-            battleField.owner.attacked(9999)
+            battleField.owner.attacked(Int.max)
             return []
         }
         battleField.owner.drawCards(cards.compactMap{ $0 })
@@ -122,7 +114,7 @@ class LocalBattleMaster: BattleMaster{
     private func drawEnemyCards(_ amount: Int = 1)-> [Card]{
         let cards = enemyDeck.drawCards(amount)
         if !cards.filter({ $0 == nil }).isEmpty{
-            battleField.enemy.attacked(9999)
+            battleField.enemy.attacked(Int.max)
             return []
         }
         battleField.enemy.drawCards(cards.compactMap{ $0 })
@@ -147,7 +139,8 @@ class LocalBattleMaster: BattleMaster{
         player.activateSkill(cards, activateType: .fanfare)
         battleField.table.changeSpotStatus(by: cards)
         
-        player.changeAtkRate(inc: 0.2)
+        let atkRate = atkRatePerCard * cards.count
+        player.changeAtkRate(inc: atkRate)
         if player.id == battleField.owner.id{
             print("ownerCards")
             player.changeOrignalAtk(to: ownerOriginalAtk)
@@ -247,7 +240,7 @@ class LocalBattleMaster: BattleMaster{
         let p1Cards = isFirstOwner ? battleField.spot.ownerCards : battleField.spot.enemyCards
         let p2Cards = !isFirstOwner ? battleField.spot.ownerCards : battleField.spot.enemyCards
         
-        
+        p1.changeAtkRate(inc: 0.5)
         p1.activateSkill(p1Cards, activateType: .beforeAttack)
         let p1Atk = isFirstOwner ? ownerAtk : enemyAtk
         p1.attack(p1Atk)

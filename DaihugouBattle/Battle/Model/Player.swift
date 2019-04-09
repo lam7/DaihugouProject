@@ -86,7 +86,7 @@ protocol PlayerDelegate: class {
     func didPutDown(_ cards: [Card], player: Player)
     
     /// スキルが発動する直前に呼ばれる
-    func activateSkill(_ card: Card, activateType: Skill.ActivateType, player: Player)
+    func activateSkill(_ card: Card, skill: Skill, player: Player)
     
     func changeAtk(_ to: Int, player: Player)
     
@@ -240,7 +240,7 @@ class Player: NSCopying{
         cards.forEach({ card in
             card.skills.forEach{
                 if $0.activateType == activateType && $0.check(self){
-                    delegate?.activateSkill(card, activateType: activateType, player: self)
+                    delegate?.activateSkill(card, skill: $0, player: self)
                     $0.activate(self)
                 }
             }

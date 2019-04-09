@@ -116,6 +116,7 @@ class UserInfoUpdateServerModel{
         error = gainOrReduce(ncmbObject, id: "ticket", dif: ticket) ?? error
         error = updateCards(ncmbObject) ?? error
         error = updateGift(ncmbObject) ?? error
+        error = updateDeck(ncmbObject) ?? error
         if let name = name{
             ncmbObject.setObject(name, forKey: "name")
         }
@@ -173,6 +174,19 @@ class UserInfoUpdateServerModel{
         return nil
     }
     
+    private func updateDeck(_ ncmbObject: NCMBObject)-> Error?{
+        var deckObjectIds = ncmbObject.object(forKey: "deckObjectIds") as! [String]
+        let decks = self.deckIds ?? []
+        decks.forEach{
+            deckObjectIds.insert($0, at: 0)
+        }
+        if deckObjectIds.count >= MaxPossessionDecksNum{
+            return Errors.UserInfo.overDeckNum
+        }
+        ncmbObject.setObject(deckObjectIds, forKey: "deckObjectIds")
+        return nil
+    }
+    
     private func gainOrReduce(_ ncmbOjbect: NCMBObject, id: String, dif: Int?)-> Error?{
         guard let dif = dif else{
             return nil
@@ -194,11 +208,8 @@ class UserInfoUpdateServerModel{
         isUpdating = true
         UserInfoUpdateServerModel.reservedupdateBlock.add {
             self.userInfo.saveInBackground{ saveError in
-                if let saveError = saveError{
-                    completion(saveError)
-                }
-                completion(nil)
-                _ = UserInfo.shared.update(self.userInfo)
+                let error = saveError ?? UserInfo.shared.update(self.userInfo)
+                completion(error)
                 UserInfoUpdateServerModel.reservedupdateBlock.next()
             }
         }

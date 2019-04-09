@@ -13,21 +13,14 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     private(set) var battleField: BattleField!
     private var battleRoom: FirebaseBattleRoom
     private var ownerDeck: DeckBattle
-    private var atkRate: BattleStandartAtkRate = BattleStandartAtkRate()
     private(set) var isOwnerTurn: Bool
     private(set) var ownerElapsedTurn: Int
     private(set) var enemyElapsedTurn: Int
     
-    //最初にドローする枚数
-    private let NumberOfInitialHands = 5
-    private let NumberOfRevolution = 4
-    
-    var spotAtkRate: Float!{ return atkRate.spotAtkRate(battleField.table.spotStatus) }
     private var ownerOriginalAtk: Int{ return battleField.spot.ownerCards.reduce(0, { $0 + $1.atk })}
     private var ownerAtkRate: Float{ return battleField.owner.atkRate }
     private var ownerAtk: Int{
         var atk = ownerOriginalAtk
-        atk = Int(atk * spotAtkRate)
         atk = Int(atk * ownerAtkRate)
         return atk
     }
@@ -35,10 +28,12 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     private var enemyAtkRate: Float{ return battleField.enemy.atkRate }
     private var enemyAtk: Int{
         var atk = enemyOriginalAtk
-        atk = Int(atk * spotAtkRate)
         atk = Int(atk * enemyAtkRate)
         return atk
     }
+    private let atkRatePerCard: Float = DefineServer.shared.floatValue("battleStandartAtkRate")
+    private let NumberOfInitialHands = DefineServer.shared.nsNumber("battleStandartInitialHands").intValue
+    private let NumberOfRevolution = DefineServer.shared.nsNumber("battleStandartRevolution").intValue
     
     init(ownerName: String, ownerId: PlayerIdType, ownerDeck: Deck, enemyName: String, enemyId: PlayerIdType, enemyMaxHP: Int, battleRoom: FirebaseBattleRoom){
         let owner = Owner(name: ownerName, id: ownerId, maxHP: ownerDeck.cards.reduce(0, { $0 + $1.hp }))
@@ -95,14 +90,11 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
 //            }
         }
         let cards  = cards is [CardBattle] ? cards : cards.map{ CardBattle(card: $0) }
-        print("ppppppppppppppppppppppppppppppppppppppppppppppp")
-        dump(cards)
-        print("---------------------------------------------")
         player.putDown(cards)
         player.activateSkill(cards, activateType: .fanfare)
         battleField.table.changeSpotStatus(by: cards)
         
-        player.changeAtkRate(inc: 0.2)
+        player.changeAtkRate(inc: cards.count * atkRatePerCard)
         if player.id == battleField.owner.id{
             print("ownerCards")
             player.changeOrignalAtk(to: ownerOriginalAtk)

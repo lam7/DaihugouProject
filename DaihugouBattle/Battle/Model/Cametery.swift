@@ -25,9 +25,6 @@ class Cametery{
         guard let index = cards.firstIndex(of: card) else{
             return nil
         }
-        
         return cards.remove(at: index)
     }
-    
-    
 }

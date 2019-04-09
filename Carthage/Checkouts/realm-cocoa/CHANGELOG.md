@@ -1,3 +1,17 @@
+3.14.1 Release notes (2019-04-04)
+=============================================================
+
+### Fixed
+
+* Fix "Cannot find interface declaration for 'RealmSwiftObject', superclass of
+  'MyRealmObjectClass'" errors when building for a simulator with Xcode 10.2
+  with "Install Objective-C Compatibility Header" enabled.
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.11.0 or later.
+
 3.14.0 Release notes (2019-03-27)
 =============================================================
 

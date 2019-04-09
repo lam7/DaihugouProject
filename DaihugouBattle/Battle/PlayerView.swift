@@ -331,20 +331,21 @@ class PlayerView: UIView, PlayerDelegate, CAAnimationDelegate{
         }
     }
     
-    func activateSkill(_ card: Card, activateType: Skill.ActivateType, player: Player) {
+    func activateSkill(_ card: Card, skill: Skill, player: Player) {
         let width: CGFloat = 120
         let height: CGFloat = width * 4 / 3
         let x = frame.midX - width / 2
         let y = frame.midY - height / 2
         asyncBlock.add {
-            self.skillView.animation(card, completion: self.asyncBlock.next)
+            self.skillView.animation(skill)
             let imageView = UIImageView(frame: CGRect(x: x, y: y, width: width, height: height))
             imageView.image = card.image
             self.addSubview(imageView)
-            UIView.animate(withDuration: 1.6, animations: {
+            UIView.animate(withDuration: 0.8, animations: {
                 imageView.alpha = 0
             }, completion: { _ in
                 imageView.removeFromSuperview()
+                self.asyncBlock.next()
             })
             let animation = CABasicAnimation(keyPath: "position.y")
             animation.toValue = imageView.center.y + 20

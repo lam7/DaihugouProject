@@ -12,6 +12,7 @@ import Firebase
 import Fabric
 import Crashlytics
 import HyperionCore
+import FLEX
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -59,6 +60,10 @@ class ApplicationSendTouchEvent: UIApplication{
     // respondersにtouchとeventが持つほとんどのプロパティは、恐らく欲しい値になっていない
     override func sendEvent(_ event: UIEvent) {
         super.sendEvent(event)
+        
+        if event.type == .presses{
+            FLEXManager.shared()?.showExplorer()
+        }
         
         if TDPView.shared.superview == nil{
             //タッチ判定をさせないようにし、最前面に画面いっぱいに配置

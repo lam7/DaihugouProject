@@ -20,14 +20,9 @@ import UIKit
             descriptionTextView.backgroundColor = descriptionBackgroundColor
         }
     }
-    var card: Card?{
+    var skill: Skill?{
         didSet{
-            guard let card = card else{
-                descriptionTextView.text = ""
-                return
-            }
-            let text = card.skills.map{ $0.description }.reduce("", { $0 + $1 + "\n"})
-            descriptionTextView.text = text
+            descriptionTextView.text = skill?.description ?? ""
         }
     }
     
@@ -36,39 +31,27 @@ import UIKit
             descriptionTextView.textColor = textColor
         }
     }
-    @IBInspectable var hiddenDuration: TimeInterval = 0.3
+    
     @IBInspectable var hiddenDelay: TimeInterval = 2.0
-    @IBInspectable var appearDuratoin: TimeInterval = 0.3
+    @IBInspectable var hiddenDuration: TimeInterval = 0.2
+    @IBInspectable var appearDuration: TimeInterval = 0.2
     @IBInspectable var appearDelay: TimeInterval = 0.0
     
     var animationCount: Int = 0
-    func animation(_ card: Card, completion: @escaping () -> ()){
-        self.card = card
-        animationCount += 1
-        appearAnimation(appearDuratoin, delay: appearDelay, completion: {
-            self.animationCount -= 1
-            if self.animationCount == 0{
-                self.hiddenAnimation(self.hiddenDuration,  delay: self.hiddenDelay,completion: completion)
-            }
-        })
-    }
-    func hiddenAnimation(_ duration: TimeInterval, delay: TimeInterval = 0.0, completion: (() -> ())?){
-        let p = CGPoint(x: frame.minX, y: -frame.height)
-        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
-            self.frame.origin = p
-        }, completion: { _ in
-            self.frame.origin = p
-            completion?()
-        })
-    }
-    
-    func appearAnimation(_ duration: TimeInterval, delay: TimeInterval = 0.0, completion: (() -> ())?){
-        let p = CGPoint(x: frame.minX, y: 0)
-        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseOut, animations: {
-            self.frame.origin = p
-        }, completion: { _ in
-            self.frame.origin = p
-            completion?()
-        })
+    func animation(_ skill: Skill){
+        self.skill = skill
+        
+        let appearAnimation = CABasicAnimation.moveY(appearDuration, to: bounds.height / 2)
+        let hiddenAnimation = CABasicAnimation.moveY(hiddenDuration, to: -bounds.height / 2)
+        
+        appearAnimation.beginTime = CACurrentMediaTime() + appearDelay
+        appearAnimation.timingFunction = .easeIn
+        
+        hiddenAnimation.beginTime = CACurrentMediaTime() + appearDelay + appearDuration + hiddenDelay
+        hiddenAnimation.timingFunction = .easeOut
+        
+        layer.removeAllAnimations()
+        layer.add(appearAnimation, forKey: "appear")
+        layer.add(hiddenAnimation, forKey: "hidden")
     }
 }

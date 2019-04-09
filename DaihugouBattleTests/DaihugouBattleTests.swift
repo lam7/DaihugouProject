@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DaihugouBattle
+//@testable import DaihugouBattle
 
 class DaihugouBattleTests: XCTestCase {
     
