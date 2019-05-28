@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7lw-71-JVE">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -59,51 +59,51 @@
                         <viewControllerLayoutGuide type="bottom" id="6U5-vh-uOl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="056-yu-FTx">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackground" translatesAutoresizingMaskIntoConstraints="NO" id="nZV-fC-V05" userLabel="Background View">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFn-nZ-JCc" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="222.5" y="0.0" width="345.5" height="192"/>
+                                <rect key="frame" x="262" y="0.0" width="405" height="225"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UFn-nZ-JCc" secondAttribute="height" multiplier="306:170" id="o3N-qe-5n9"/>
                                 </constraints>
                             </view>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg2-lJ-qbf" customClass="HomeSelectView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <rect key="frame" x="0.0" y="57" width="667" height="287"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCA-sM-O9l" customClass="CardSelectView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <rect key="frame" x="0.0" y="57" width="667" height="287"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0D-W2-Sh9" customClass="BattleSelectView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <rect key="frame" x="0.0" y="57" width="667" height="287"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCI-2a-rXu" customClass="SettingSelectView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <rect key="frame" x="0.0" y="57" width="667" height="287"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7W-ve-I0M" customClass="GatyaSelectView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="568" height="243.5"/>
+                                <rect key="frame" x="0.0" y="57" width="667" height="287"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-2c-2hJ">
-                                <rect key="frame" x="446" y="10" width="102" height="60"/>
+                                <rect key="frame" x="527" y="10" width="120" height="70.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-e0-pqu">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="32.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_gold" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UQ1-BK-Vgc">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="27.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="32.5"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持ゴールド" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Pah-Pq-3Um" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="0.0" width="82" height="27.5"/>
+                                                <rect key="frame" x="24" y="0.0" width="96" height="32.5"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,14 +129,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MF2-B6-odO">
-                                        <rect key="frame" x="0.0" y="32.5" width="102" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="37.5" width="120" height="33"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_crystal" translatesAutoresizingMaskIntoConstraints="NO" id="t57-xr-hkW">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="27.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="33"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持石" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Gkd-vq-G0z" customClass="EFCountingLabel" customModule="DaihugouBattle" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="0.0" width="82" height="27.5"/>
+                                                <rect key="frame" x="24" y="0.0" width="96" height="33"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,17 +168,17 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ランク" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-Em-qfA">
-                                <rect key="frame" x="10" y="10" width="142" height="40"/>
+                                <rect key="frame" x="10" y="10" width="167" height="47"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="6nZ-lq-8zC" userLabel="Buttons">
-                                <rect key="frame" x="0.0" y="293.5" width="568" height="26.5"/>
+                                <rect key="frame" x="0.0" y="344" width="667" height="31"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-eF-8T6" customClass="HomeSelectViewButton" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="31"/>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="ホーム" image="IconHome">
@@ -209,7 +209,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sja-8L-Nma" customClass="HomeSelectViewButton" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="119.5" y="0.0" width="89.5" height="26.5"/>
+                                        <rect key="frame" x="139.5" y="0.0" width="109.5" height="31"/>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="カード" image="IconCard">
@@ -240,7 +240,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-T3-SxW" customClass="HomeSelectViewButton" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="239" y="0.0" width="90" height="26.5"/>
+                                        <rect key="frame" x="279" y="0.0" width="109" height="31"/>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="バトル" image="IconBattle">
@@ -271,7 +271,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpq-4S-q8j" customClass="HomeSelectViewButton" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="359" y="0.0" width="89.5" height="26.5"/>
+                                        <rect key="frame" x="418" y="0.0" width="109.5" height="31"/>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="ガチャ" image="IconShop">
@@ -302,7 +302,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqx-xb-Zc5" customClass="HomeSelectViewButton" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="478.5" y="0.0" width="89.5" height="26.5"/>
+                                        <rect key="frame" x="557.5" y="0.0" width="109.5" height="31"/>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="設定" image="IconSetting">
