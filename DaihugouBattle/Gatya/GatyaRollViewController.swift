@@ -49,6 +49,7 @@ class GatyaRollViewController: UIViewController{
     ///
     /// 値が大きいほど早くなる
     private var animationSpeedRate: TimeInterval = 1.0
+    private var isFirstAnimation: Bool = true
     private lazy var listCardFrame: [CGRect] = {
         var frames: [CGRect] = []
         for i in 1...8{
@@ -100,7 +101,6 @@ class GatyaRollViewController: UIViewController{
             self.animationCardViews.add(cardView)
             self.cardsView.addSubview(cardView)
         }
-        
     }
 
     
@@ -111,7 +111,10 @@ class GatyaRollViewController: UIViewController{
         
         packImageView.image = DataRealm.get(imageNamed: "gatyaStandart.png")
         gatya.roll(){
-            cards, error in
+            [weak self] cards, error in
+            guard let `self` = self else{
+                return
+            }
             if let error = error{
                 self.present(error, completion: nil)
                 return
@@ -140,8 +143,8 @@ class GatyaRollViewController: UIViewController{
     private func present(_ error: Error, completion: (() -> ())!){
         let errorAlart = UIAlertController(title: "エラー", message: nil, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "前の画面に戻る", style: .default, handler: {
-            action in
-            self.dismiss(animated: true, completion: nil)
+            [weak self] action in
+            self?.dismiss(animated: true, completion: nil)
         })
         errorAlart.addAction(alertAction)
         errorAlart.message = error.localizedDescription
@@ -177,6 +180,10 @@ class GatyaRollViewController: UIViewController{
         (self.sceneView.scene as! GifEffectScene).startGif()
         ManageAudio.shared.play("se_gatya_iainuki.mp3")
         CATransaction.setCompletionBlock{
+            [weak self] in
+            guard let `self` = self else{
+                return
+            }
             completion()
             CATransaction.begin()
             let moveAnimation = CABasicAnimation.move(0.8, by: CGPoint(x: 30, y: 8))
@@ -213,8 +220,50 @@ class GatyaRollViewController: UIViewController{
         return group
     }
     
+    private func animationAfterSecond(_ completion: @escaping() -> ()){
+        let count = self.animationCardViews.objects.count
+        let radius = self.view.frame.size.height / 3
+        for i in 0 ..< count{
+            let moveArc    = self.circleAnimation(0, radius: radius, angle: CGFloat.pi * 2 * i / count)
+            let rotate0    = CABasicAnimation.rotateZ(0, to: 0)
+            
+            let group      = CAAnimationGroup()
+            group.animations = [moveArc, rotate0]
+            group.duration = 0
+            group.fillMode = convertToCAMediaTimingFillMode(convertFromCAMediaTimingFillMode(CAMediaTimingFillMode.forwards))
+            group.isRemovedOnCompletion = false
+            let layer = self.animationCardViews.objects[i].layer
+            CATransaction.setCompletionBlock({
+                [weak self] in
+                guard let `self` = self,
+                    let v = self.animationCardViews.objects[safe: i] else {
+                        return
+                }
+                v.center = layer.presentation()!.position
+                v.center.x -= self.view.frame.width
+                layer.removeAnimation(forKey: "gatyaAnimation")
+                UIView.animate(withDuration: 0.3, animations: {
+                    v.center.x += self.view.frame.width
+                }, completion: {
+                    [weak self] _ in
+                    guard let `self` = self else{
+                        return
+                    }
+                    v.center.x += self.view.frame.width
+                })
+                
+                if i == count - 1{
+                    completion()
+                }
+            })
+            layer.add(group, forKey: "gatyaAnimation")
+            
+            CATransaction.commit()
+        }
+    }
+
     
-    private func animation(_ completion: @escaping () -> ()){
+    private func animationFirst(_ completion: @escaping() -> ()){
         let radius = self.view.frame.size.height / 3
         let waitDuration   = 0.05 / animationSpeedRate
         let moveUpDuration = 0.5 / animationSpeedRate
@@ -222,6 +271,10 @@ class GatyaRollViewController: UIViewController{
         let rotateDuration = 0.1 / animationSpeedRate
         let packDuration = 1.2 / animationSpeedRate
         packAnimation(packDuration){
+            [weak self] in
+            guard let `self` = self else{
+                return
+            }
             self.particleView.scene.perform(pack: self.view, completion: {})
             let count = self.animationCardViews.objects.count
             for i in 0 ..< count{
@@ -237,7 +290,7 @@ class GatyaRollViewController: UIViewController{
                 moveCircle.beginTime = rotate90.beginTime + rotate90.duration + waitDuration * count
                 moveArc.beginTime = moveCircle.beginTime + moveCircle.duration
                 rotate0.beginTime = moveArc.beginTime + moveArc.duration
-        
+                
                 let group      = CAAnimationGroup()
                 group.animations = [moveUp, rotate90, moveCircle, moveArc, rotate0]
                 group.duration = rotate0.beginTime + rotate0.duration
@@ -248,7 +301,7 @@ class GatyaRollViewController: UIViewController{
                     [weak self] in
                     guard let `self` = self,
                         let v = self.animationCardViews.objects[safe: i] else {
-                        return
+                            return
                     }
                     v.center = layer.presentation()!.position
                     layer.removeAnimation(forKey: "gatyaAnimation")
@@ -257,9 +310,19 @@ class GatyaRollViewController: UIViewController{
                     }
                 })
                 layer.add(group, forKey: "gatyaAnimation")
-
+                
                 CATransaction.commit()
             }
+        }
+    }
+    
+    private func animation(_ completion: @escaping () -> ()){
+        if isFirstAnimation{
+            isFirstAnimation = false
+            animationFirst(completion)
+        }else{
+            animationFirst(completion)
+//            animationAfterSecond(<#T##completion: () -> ()##() -> ()#>)
         }
     }
     
@@ -305,6 +368,10 @@ class GatyaRollViewController: UIViewController{
             isPerform = true
             self.particleView.scene.stopNormal()
             self.animation {
+                [weak self] in
+                guard let `self` = self else{
+                    return
+                }
                 self.isPerform = false
                 self.currentStep = .cardTouch
             }
@@ -425,13 +492,14 @@ class GatyaRollViewController: UIViewController{
     @IBAction func next(_ sender: Any) {
         UIView.animate(withDuration: 0.8, animations: {
             self.okButton.alpha = 0
-        }, completion: {_ in
+        }, completion: {
+            [weak self] _ in
+            guard let `self` = self else{
+                return
+            }
             self.okButton.isHidden = true
         })
-        // 2回目以降は倍速で
-        if animationSpeedRate == 1.0{
-            animationSpeedRate = 2.0
-        }
+        
         self.flowingAnimation(0.8){
             [weak self] in
             guard let `self` = self else {
