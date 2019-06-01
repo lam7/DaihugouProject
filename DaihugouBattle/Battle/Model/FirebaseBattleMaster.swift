@@ -14,23 +14,13 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
     private var battleRoom: FirebaseBattleRoom
     private var ownerDeck: DeckBattle
     private(set) var isOwnerTurn: Bool
-    private(set) var ownerElapsedTurn: Int
-    private(set) var enemyElapsedTurn: Int
     
     private var ownerOriginalAtk: Int{ return battleField.spot.ownerCards.reduce(0, { $0 + $1.atk })}
     private var ownerAtkRate: Float{ return battleField.owner.atkRate }
-    private var ownerAtk: Int{
-        var atk = ownerOriginalAtk
-        atk = Int(atk * ownerAtkRate)
-        return atk
-    }
+    private var ownerAtk: Int{ return battleField.owner.atk }
     private var enemyOriginalAtk: Int{ return battleField.spot.enemyCards.reduce(0, { $0 + $1.atk })}
     private var enemyAtkRate: Float{ return battleField.enemy.atkRate }
-    private var enemyAtk: Int{
-        var atk = enemyOriginalAtk
-        atk = Int(atk * enemyAtkRate)
-        return atk
-    }
+    private var enemyAtk: Int{ return battleField.enemy.atk }
     private let atkRatePerCard: Float = DefineServer.shared.floatValue("battleStandartAtkRate")
     private let NumberOfInitialHands = DefineServer.shared.nsNumber("battleStandartInitialHands").intValue
     private let NumberOfRevolution = DefineServer.shared.nsNumber("battleStandartRevolution").intValue
@@ -40,12 +30,16 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
         let enemy = Enemy(name: enemyName, id: enemyId, maxHP: enemyMaxHP)
         battleField = BattleField(owner: owner, enemy: enemy)
         self.ownerDeck = DeckBattle(deck: ownerDeck)
-        ownerElapsedTurn = 0
-        enemyElapsedTurn = 0
-        isOwnerTurn = false
+        self.isOwnerTurn = false
         self.battleRoom = battleRoom
         self.battleRoom.delegate = self
         owner.drawCards = self.drawOwnerCards
+        owner.calcAtk = self.calcAtk
+        enemy.calcAtk = self.calcAtk
+    }
+    
+    private func calcAtk(_ originalAtk: Int, atkRate: Float)-> Int{
+        return Int(originalAtk * atkRate)
     }
     
     func gameStart(_ completion: @escaping (Error?) -> ()){
@@ -98,11 +92,9 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
         if player.id == battleField.owner.id{
             print("ownerCards")
             player.changeOrignalAtk(to: ownerOriginalAtk)
-            player.changeAtk(to: ownerAtk)
         }else{
             print("enemyCards")
             player.changeOrignalAtk(to: enemyOriginalAtk)
-            player.changeAtk(to: enemyAtk)
         }
         
         if cards.count >= NumberOfRevolution{
@@ -223,8 +215,6 @@ class FirebaseBattleMaster: BattleMaster, FirebaseBattleRoomDelegate{
         p2.changeOrignalAtk(to: 0)
         p1.changeAtkRate(to: 1.0)
         p2.changeAtkRate(to: 1.0)
-        p1.changeAtk(to: 0)
-        p2.changeAtk(to: 0)
         
         //テーブルにあるカードを流す
         battleField.spot.removeAll()

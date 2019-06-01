@@ -46,8 +46,6 @@ class LocalBattleMaster: BattleMaster{
     private var ownerDeck: DeckBattle
     private var enemyDeck: DeckBattle
     private(set) var isOwnerTurn: Bool
-    private(set) var ownerElapsedTurn: Int
-    private(set) var enemyElapsedTurn: Int
     private let atkRatePerCard: Float = DefineServer.shared.floatValue("battleStandartAtkRate")
     
     //最初にドローする枚数
@@ -56,18 +54,10 @@ class LocalBattleMaster: BattleMaster{
     
     private var ownerOriginalAtk: Int{ return battleField.spot.ownerCards.reduce(0, { $0 + $1.atk })}
     private var ownerAtkRate: Float{ return battleField.owner.atkRate }
-    private var ownerAtk: Int{
-        var atk = ownerOriginalAtk
-        atk = Int(atk * ownerAtkRate)
-        return atk
-    }
+    private var ownerAtk: Int{ return battleField.owner.atk }
     private var enemyOriginalAtk: Int{ return battleField.spot.enemyCards.reduce(0, { $0 + $1.atk })}
     private var enemyAtkRate: Float{ return battleField.enemy.atkRate }
-    private var enemyAtk: Int{
-        var atk = enemyOriginalAtk
-        atk = Int(atk * enemyAtkRate)
-        return atk
-    }
+    private var enemyAtk: Int{ return battleField.enemy.atk }
     
     init(ownerName: String, ownerId: PlayerIdType, ownerDeck: Deck, enemyName: String, enemyId: PlayerIdType, enemyDeck: Deck){
         let owner = Owner(name: ownerName, id: ownerId, maxHP: ownerDeck.cards.reduce(0, { $0 + $1.hp }))
@@ -76,12 +66,16 @@ class LocalBattleMaster: BattleMaster{
         cpu = RandomCPU(player: enemy)
         self.ownerDeck = DeckBattle(deck: ownerDeck)
         self.enemyDeck = DeckBattle(deck: enemyDeck)
-        ownerElapsedTurn = 0
-        enemyElapsedTurn = 0
-        isOwnerTurn = false
+        self.isOwnerTurn = false
 
         owner.drawCards = self.drawOwnerCards
         enemy.drawCards = self.drawEnemyCards
+        owner.calcAtk = self.calcAtk
+        enemy.calcAtk = self.calcAtk
+    }
+    
+    private func calcAtk(_ originalAtk: Int, atkRate: Float)-> Int{
+        return Int(originalAtk * atkRate)
     }
     
     func gameStart(_ completion: @escaping (Error?) -> ()){
@@ -136,7 +130,6 @@ class LocalBattleMaster: BattleMaster{
         }
         
         player.putDown(cards)
-        player.activateSkill(cards, activateType: .fanfare)
         battleField.table.changeSpotStatus(by: cards)
         
         let atkRate = atkRatePerCard * cards.count
@@ -144,12 +137,12 @@ class LocalBattleMaster: BattleMaster{
         if player.id == battleField.owner.id{
             print("ownerCards")
             player.changeOrignalAtk(to: ownerOriginalAtk)
-            player.changeAtk(to: ownerAtk)
         }else{
             print("enemyCards")
             player.changeOrignalAtk(to: enemyOriginalAtk)
-            player.changeAtk(to: enemyAtk)
         }
+        
+        player.activateSkill(cards, activateType: .fanfare)
         
         if cards.count >= NumberOfRevolution{
             let current = battleField.table.currentCardStrength
@@ -240,7 +233,6 @@ class LocalBattleMaster: BattleMaster{
         let p1Cards = isFirstOwner ? battleField.spot.ownerCards : battleField.spot.enemyCards
         let p2Cards = !isFirstOwner ? battleField.spot.ownerCards : battleField.spot.enemyCards
         
-        p1.changeAtkRate(inc: 0.5)
         p1.activateSkill(p1Cards, activateType: .beforeAttack)
         let p1Atk = isFirstOwner ? ownerAtk : enemyAtk
         p1.attack(p1Atk)
@@ -258,8 +250,6 @@ class LocalBattleMaster: BattleMaster{
         p2.changeOrignalAtk(to: 0)
         p1.changeAtkRate(to: 1.0)
         p2.changeAtkRate(to: 1.0)
-        p1.changeAtk(to: 0)
-        p2.changeAtk(to: 0)
         
         //テーブルにあるカードを流す
         battleField.spot.removeAll()

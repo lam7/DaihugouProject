@@ -132,8 +132,8 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         ManageAudio.shared.play("勇者たちのララバイ.mp3")
         
         //ラベルを点滅させる
-        UIView.animateKeyframes(withDuration: 1.8, delay: 0, options: [UIView.KeyframeAnimationOptions.repeat, UIView.KeyframeAnimationOptions.autoreverse], animations: {
-            self.tapLabel.alpha = 0.1
+        UIView.animateKeyframes(withDuration: 1.8, delay: 0, options: [UIView.KeyframeAnimationOptions.repeat, UIView.KeyframeAnimationOptions.autoreverse], animations: {[weak self] in
+            self?.tapLabel.alpha = 0.1
         }, completion: nil)
         
         projectEffectView.fadeoutAnimation()

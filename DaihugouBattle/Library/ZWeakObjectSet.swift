@@ -82,6 +82,10 @@ public class ZWeakObjectSet<T: AnyObject>: Sequence {
 	public func remove(_ objects: [T]) {
 		self._objects.subtract(objects.map { ZWeakObject($0) })
 	}
+    
+    public func removeAll() {
+        self._objects.removeAll()
+    }
 
 	public func makeIterator() -> ZWeakObjectSetIterator<T> {
 		return ZWeakObjectSetIterator(self.objects)

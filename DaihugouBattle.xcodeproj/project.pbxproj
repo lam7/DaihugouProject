@@ -200,7 +200,6 @@
 		AAF28CA521B6627E0010B847 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */; };
 		AAF36D751FCA98F1009809F6 /* GatyaParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */; };
 		AAF46D9D20CE31EE0046F268 /* ATestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */; };
-		AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF46DA420CE32F50046F268 /* BattleAtk.swift */; };
 		AAF479061FD582610074AFC5 /* TDPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF479051FD582610074AFC5 /* TDPView.swift */; };
 		AAF479081FD584750074AFC5 /* TouchParticleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF479071FD584750074AFC5 /* TouchParticleScene.swift */; };
 		AAF774DC21AECDF300655055 /* GifEffectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF774DB21AECDF300655055 /* GifEffectScene.swift */; };
@@ -453,7 +452,6 @@
 		AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
 		AAF36D741FCA98F1009809F6 /* GatyaParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatyaParticleScene.swift; sourceTree = "<group>"; };
 		AAF46D9C20CE31ED0046F268 /* ATestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATestViewController.swift; sourceTree = "<group>"; };
-		AAF46DA420CE32F50046F268 /* BattleAtk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleAtk.swift; sourceTree = "<group>"; };
 		AAF479051FD582610074AFC5 /* TDPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPView.swift; sourceTree = "<group>"; };
 		AAF479071FD584750074AFC5 /* TouchParticleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchParticleScene.swift; sourceTree = "<group>"; };
 		AAF774DB21AECDF300655055 /* GifEffectScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifEffectScene.swift; sourceTree = "<group>"; };
@@ -634,7 +632,6 @@
 				AADE547A1F72440A00DF83BF /* CardStrength.swift */,
 				AAE71DE120A28B7C00A591A4 /* Cametery.swift */,
 				AADE54851F72440E00DF83BF /* CPU.swift */,
-				AAF46DA420CE32F50046F268 /* BattleAtk.swift */,
 				AA5541D5214E056B003A008B /* BattleDeck.swift */,
 				AA0241D3217D9C6B00FA9EF2 /* FirebaseBattleMaster.swift */,
 				AA0241D5217DCC8600FA9EF2 /* FirebaseBattleRoom.swift */,
@@ -1478,7 +1475,6 @@
 				AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */,
 				AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */,
 				AAF16EE020C8D2C20007417F /* CardStandartBackView.swift in Sources */,
-				AAF46DA520CE32F60046F268 /* BattleAtk.swift in Sources */,
 				AA6D9651217A1D2E004E4A25 /* SelectionButton.swift in Sources */,
 				AA0173DF1F85124400D9168A /* BattleViewController.swift in Sources */,
 				AAF28CA321B6378F0010B847 /* CollectionHeaderView.swift in Sources */,

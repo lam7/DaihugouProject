@@ -84,13 +84,17 @@ class GatyaRollViewController: UIViewController{
         ManageAudio.shared.addAudioFromRealm("se_gatya_iainuki.mp3", audioType: .se)
         ManageAudio.shared.addAudioFromRealm("se_card_flip.mp3", audioType: .se)
         ManageAudio.shared.addAudioFromRealm("shakin2.mp3", audioType: .se)
-        particleView.scene.setUpNormalParticle()        
+        particleView.scene.setUpNormalParticle()
         createCardView()
         sceneView.presentScene(GifEffectScene.self)
         if let image = DataRealm.get(imageNamed: "gatya_kourin.png"){
             let images = image.divImage(2, yNum: 8)
             (sceneView.scene as! GifEffectScene).createNode(gif: images, position: packImageView.center, scale: 0.5)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        animationCardViews.removeAll()
     }
     
     private func createCardView(){
@@ -189,6 +193,10 @@ class GatyaRollViewController: UIViewController{
             let moveAnimation = CABasicAnimation.move(0.8, by: CGPoint(x: 30, y: 8))
             let hiddenAnimation = CABasicAnimation.hidden(0.8, to: true)
             CATransaction.setCompletionBlock{
+                [weak self] in
+                guard let `self` = self else{
+                    return
+                }
                 self.packImageView.layer.removeAllAnimations()
                 self.packImageView.isHidden = true
             }

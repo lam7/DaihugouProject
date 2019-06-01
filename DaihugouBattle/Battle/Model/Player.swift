@@ -110,7 +110,11 @@ class Player: NSCopying{
     
     fileprivate (set) var originalAtk: Int
     
-    fileprivate (set) var atk: Int
+    var atk: Int{
+        return calcAtk(originalAtk, atkRate)
+    }
+    
+    var calcAtk: (_ originalAtk: Int, _ atkRate: Float)->(Int)
     
     ///プレイヤー名
     fileprivate (set) var name: String
@@ -154,7 +158,7 @@ class Player: NSCopying{
         self.maxHP = player.maxHP
         self.battleField = player.battleField
         self.originalAtk = player.originalAtk
-        self.atk = player.atk
+        self.calcAtk = player.calcAtk
         self.atkRate = player.atkRate
     }
     
@@ -166,8 +170,10 @@ class Player: NSCopying{
         self.hp = maxHP
         self.maxHP = maxHP
         self.originalAtk = 0
-        self.atk = 0
         self.atkRate = 1.0
+        self.calcAtk = {
+            ($0.f * $1).i
+        }
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
@@ -309,6 +315,7 @@ class Player: NSCopying{
             atkRate = clip
             delegate?.decreaseAtkRate(atkRate - clip, player: copy() as! Player)
         }
+        delegate?.changeAtk(atk, player: copy() as! Player)
     }
     
     func changeAtkRate(dec amount: Float){
@@ -316,21 +323,19 @@ class Player: NSCopying{
         let clip = d < 0 ? atkRate : amount
         atkRate -= clip
         delegate?.decreaseAtkRate(clip, player: copy() as! Player)
+        delegate?.changeAtk(atk, player: copy() as! Player)
     }
     
     func changeAtkRate(inc amount: Float){
         atkRate += amount
         delegate?.increaseAtkRate(amount, player: copy() as! Player)
-    }
-    
-    func changeAtk(to amount: Int){
-        self.atk = amount
-        delegate?.changeAtk(amount, player: copy() as! Player)
+        delegate?.changeAtk(atk, player: copy() as! Player)
     }
     
     func changeOrignalAtk(to amount: Int){
         self.originalAtk = amount
         delegate?.changeOrignalAtk(amount, player: copy() as! Player)
+        delegate?.changeAtk(atk, player: copy() as! Player)
     }
 }
 
