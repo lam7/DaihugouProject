@@ -93,7 +93,7 @@ class SortFilterViewModel{
     let disposeBag = DisposeBag()
     
     init(filterIndexs: Observable<Set<Int>>, filterRarities: Observable<Set<CardRarity>>, filterText: Observable<String?>, sortBy: Observable<CardsSort.SortBy>, sortIsAsc: Observable<Bool>){
-        let filter = Observable.combineLatest(filterIndexs, filterRarities, filterText).debounce(0.01, scheduler: MainScheduler.instance)
+        let filter = Observable.combineLatest(filterIndexs, filterRarities, filterText).debounce(RxTimeInterval.milliseconds(10), scheduler: MainScheduler.instance)
         filter.subscribe{
             [weak self] event in
             guard let `self` = self,
@@ -105,7 +105,7 @@ class SortFilterViewModel{
             self.cardsVar.value = cards
             }.disposed(by: disposeBag)
 
-        let sort = Observable.combineLatest(sortBy, sortIsAsc).debounce(0.01, scheduler: MainScheduler.instance)
+        let sort = Observable.combineLatest(sortBy, sortIsAsc).debounce(RxTimeInterval.milliseconds(10), scheduler: MainScheduler.instance)
         sort.subscribe{[weak self] event in
             guard let `self` = self,
                 let element = event.element else {
@@ -138,9 +138,9 @@ class PossessionCardViewController: UIViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!{
         didSet{
-            characterDetailView.close = {[weak self] in
-                self?.hiddenViews()
-            }
+//            characterDetailView.close = {[weak self] in
+//                self?.hiddenViews()
+//            }
         }
     }
     @IBOutlet weak var backgroundImageView: UIImageView!

@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-@objc
 /// An Objective-C compatible wrapper around Lottie's Animation class.
 /// Use in tandem with CompatibleAnimationView when using Lottie in Objective-C
+@objc
 public final class CompatibleAnimation: NSObject {
 
   @objc
@@ -35,13 +35,14 @@ public final class CompatibleAnimation: NSObject {
   private let bundle: Bundle
 }
 
-@objc
 /// An Objective-C compatible wrapper around Lottie's AnimationView.
+@objc
 public final class CompatibleAnimationView: UIView {
 
   @objc
   init(compatibleAnimation: CompatibleAnimation) {
     animationView = AnimationView(animation: compatibleAnimation.animation)
+    self.compatibleAnimation = compatibleAnimation
     super.init(frame: .zero)
     commonInit()
   }
@@ -67,9 +68,9 @@ public final class CompatibleAnimationView: UIView {
   }
 
   @objc
-  public var loopAnimation: Bool = false {
+  public var loopAnimationCount: CGFloat = 0 {
     didSet {
-      animationView.loopMode = loopAnimation ? .loop : .playOnce
+      animationView.loopMode = loopAnimationCount == -1 ? .loop : .repeat(Float(loopAnimationCount))
     }
   }
 

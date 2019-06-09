@@ -144,9 +144,9 @@ final class CompletableTest_ : CompletableTest, RxTestCase {
     ("test_concat_sequence", CompletableTest.test_concat_sequence),
     ("test_concat_collection", CompletableTest.test_concat_collection),
     ("test_concat_variadic", CompletableTest.test_concat_variadic),
-    ("test_merge_collection", CompletableTest.test_merge_collection),
-    ("test_merge_array", CompletableTest.test_merge_array),
-    ("test_merge_variadic", CompletableTest.test_merge_variadic),
+    ("test_zip_collection", CompletableTest.test_zip_collection),
+    ("test_zip_array", CompletableTest.test_zip_array),
+    ("test_zip_variadic", CompletableTest.test_zip_variadic),
     ("testDefaultErrorHandler", CompletableTest.testDefaultErrorHandler),
     ] }
 }
@@ -232,7 +232,6 @@ final class DriverTest_ : DriverTest, RxTestCase {
     ("testDriverSharing_WhenErroring", DriverTest.testDriverSharing_WhenErroring),
     ("testDriverSharing_WhenCompleted", DriverTest.testDriverSharing_WhenCompleted),
     ("testBehaviorRelayAsDriver", DriverTest.testBehaviorRelayAsDriver),
-    ("testVariableAsDriver", DriverTest.testVariableAsDriver),
     ("testAsDriver_onErrorJustReturn", DriverTest.testAsDriver_onErrorJustReturn),
     ("testAsDriver_onErrorDriveWith", DriverTest.testAsDriver_onErrorDriveWith),
     ("testAsDriver_onErrorRecover", DriverTest.testAsDriver_onErrorRecover),
@@ -339,6 +338,8 @@ final class MaybeTest_ : MaybeTest, RxTestCase {
     ("test_do", MaybeTest.test_do),
     ("test_filter", MaybeTest.test_filter),
     ("test_map", MaybeTest.test_map),
+    ("test_compactMap", MaybeTest.test_compactMap),
+    ("test_compactMapNil", MaybeTest.test_compactMapNil),
     ("test_flatMap", MaybeTest.test_flatMap),
     ("test_ifEmptyDefault", MaybeTest.test_ifEmptyDefault),
     ("test_ifEmptySwitchToMaybe", MaybeTest.test_ifEmptySwitchToMaybe),
@@ -583,6 +584,20 @@ final class ObservableCombineLatestTest_ : ObservableCombineLatestTest, RxTestCa
     ("testCombineLatest_typicalN", ObservableCombineLatestTest.testCombineLatest_typicalN),
     ("testCombineLatest_NAry_symmetric", ObservableCombineLatestTest.testCombineLatest_NAry_symmetric),
     ("testCombineLatest_NAry_asymmetric", ObservableCombineLatestTest.testCombineLatest_NAry_asymmetric),
+    ] }
+}
+
+final class ObservableCompactMapTest_ : ObservableCompactMapTest, RxTestCase {
+    #if os(macOS)
+    required override init() {
+        super.init()
+    }
+    #endif
+
+    static var allTests: [(String, (ObservableCompactMapTest_) -> () -> Void)] { return [
+    ("test_compactMapNilFromClosure", ObservableCompactMapTest.test_compactMapNilFromClosure),
+    ("test_compactMapNilFromElement", ObservableCompactMapTest.test_compactMapNilFromElement),
+    ("test_compactMapDisposed", ObservableCompactMapTest.test_compactMapDisposed),
     ] }
 }
 
@@ -1131,6 +1146,27 @@ final class ObservableReduceTest_ : ObservableReduceTest, RxTestCase {
     ] }
 }
 
+final class ObservableRelayBindTest_ : ObservableRelayBindTest, RxTestCase {
+    #if os(macOS)
+    required override init() {
+        super.init()
+    }
+    #endif
+
+    static var allTests: [(String, (ObservableRelayBindTest_) -> () -> Void)] { return [
+    ("testBindToPublishRelay", ObservableRelayBindTest.testBindToPublishRelay),
+    ("testBindToPublishRelays", ObservableRelayBindTest.testBindToPublishRelays),
+    ("testBindToOptionalPublishRelay", ObservableRelayBindTest.testBindToOptionalPublishRelay),
+    ("testBindToOptionalPublishRelays", ObservableRelayBindTest.testBindToOptionalPublishRelays),
+    ("testBindToPublishRelayNoAmbiguity", ObservableRelayBindTest.testBindToPublishRelayNoAmbiguity),
+    ("testBindToBehaviorRelay", ObservableRelayBindTest.testBindToBehaviorRelay),
+    ("testBindToBehaviorRelays", ObservableRelayBindTest.testBindToBehaviorRelays),
+    ("testBindToOptionalBehaviorRelay", ObservableRelayBindTest.testBindToOptionalBehaviorRelay),
+    ("testBindToOptionalBehaviorRelays", ObservableRelayBindTest.testBindToOptionalBehaviorRelays),
+    ("testBindToBehaviorRelayNoAmbiguity", ObservableRelayBindTest.testBindToBehaviorRelayNoAmbiguity),
+    ] }
+}
+
 final class ObservableRepeatTest_ : ObservableRepeatTest, RxTestCase {
     #if os(macOS)
     required override init() {
@@ -1541,7 +1577,10 @@ final class ObservableThrottleTest_ : ObservableThrottleTest, RxTestCase {
     ("test_ThrottleTimeSpan_Empty", ObservableThrottleTest.test_ThrottleTimeSpan_Empty),
     ("test_ThrottleTimeSpan_Error", ObservableThrottleTest.test_ThrottleTimeSpan_Error),
     ("test_ThrottleTimeSpan_NoEnd", ObservableThrottleTest.test_ThrottleTimeSpan_NoEnd),
-    ("test_ThrottleTimeSpan_WithRealScheduler", ObservableThrottleTest.test_ThrottleTimeSpan_WithRealScheduler),
+    ("test_ThrottleTimeSpan_WithRealScheduler_seconds", ObservableThrottleTest.test_ThrottleTimeSpan_WithRealScheduler_seconds),
+    ("test_ThrottleTimeSpan_WithRealScheduler_milliseconds", ObservableThrottleTest.test_ThrottleTimeSpan_WithRealScheduler_milliseconds),
+    ("test_ThrottleTimeSpan_WithRealScheduler_microseconds", ObservableThrottleTest.test_ThrottleTimeSpan_WithRealScheduler_microseconds),
+    ("test_ThrottleTimeSpan_WithRealScheduler_nanoseconds", ObservableThrottleTest.test_ThrottleTimeSpan_WithRealScheduler_nanoseconds),
     ] }
 }
 
@@ -1817,12 +1856,15 @@ final class SharedSequenceOperatorTests_ : SharedSequenceOperatorTests, RxTestCa
     static var allTests: [(String, (SharedSequenceOperatorTests_) -> () -> Void)] { return [
     ("testAsDriver_deferred", SharedSequenceOperatorTests.testAsDriver_deferred),
     ("testAsDriver_map", SharedSequenceOperatorTests.testAsDriver_map),
+    ("testAsDriver_compactMap", SharedSequenceOperatorTests.testAsDriver_compactMap),
+    ("testAsDriver_compactMapNil", SharedSequenceOperatorTests.testAsDriver_compactMapNil),
     ("testAsDriver_filter", SharedSequenceOperatorTests.testAsDriver_filter),
     ("testAsDriver_switchLatest", SharedSequenceOperatorTests.testAsDriver_switchLatest),
     ("testAsDriver_flatMapLatest", SharedSequenceOperatorTests.testAsDriver_flatMapLatest),
     ("testAsDriver_flatMapFirst", SharedSequenceOperatorTests.testAsDriver_flatMapFirst),
     ("testAsDriver_doOn", SharedSequenceOperatorTests.testAsDriver_doOn),
     ("testAsDriver_doOnNext", SharedSequenceOperatorTests.testAsDriver_doOnNext),
+    ("testAsDriver_doAfterNext", SharedSequenceOperatorTests.testAsDriver_doAfterNext),
     ("testAsDriver_doOnCompleted", SharedSequenceOperatorTests.testAsDriver_doOnCompleted),
     ("testAsDriver_distinctUntilChanged1", SharedSequenceOperatorTests.testAsDriver_distinctUntilChanged1),
     ("testAsDriver_distinctUntilChanged2", SharedSequenceOperatorTests.testAsDriver_distinctUntilChanged2),
@@ -1950,6 +1992,8 @@ final class SingleTest_ : SingleTest, RxTestCase {
     ("test_do", SingleTest.test_do),
     ("test_filter", SingleTest.test_filter),
     ("test_map", SingleTest.test_map),
+    ("test_compactMap", SingleTest.test_compactMap),
+    ("test_compactMapNil", SingleTest.test_compactMapNil),
     ("test_flatMap", SingleTest.test_flatMap),
     ("test_flatMapMaybe", SingleTest.test_flatMapMaybe),
     ("test_flatMapCompletable", SingleTest.test_flatMapCompletable),
@@ -1963,20 +2007,6 @@ final class SingleTest_ : SingleTest, RxTestCase {
     ("testZipCollection_tuple", SingleTest.testZipCollection_tuple),
     ("testZipCollection_tuple_when_empty", SingleTest.testZipCollection_tuple_when_empty),
     ("testDefaultErrorHandler", SingleTest.testDefaultErrorHandler),
-    ] }
-}
-
-final class VariableTest_ : VariableTest, RxTestCase {
-    #if os(macOS)
-    required override init() {
-        super.init()
-    }
-    #endif
-
-    static var allTests: [(String, (VariableTest_) -> () -> Void)] { return [
-    ("testVariable_initialValues", VariableTest.testVariable_initialValues),
-    ("testVariable_sendsCompletedOnDealloc", VariableTest.testVariable_sendsCompletedOnDealloc),
-    ("testVariable_READMEExample", VariableTest.testVariable_READMEExample),
     ] }
 }
 
@@ -2046,6 +2076,7 @@ func XCTMain(_ tests: [() -> Void]) {
         testCase(ObservableBufferTest_.allTests),
         testCase(ObservableCatchTest_.allTests),
         testCase(ObservableCombineLatestTest_.allTests),
+        testCase(ObservableCompactMapTest_.allTests),
         testCase(ObservableConcatTest_.allTests),
         testCase(ObservableDebugTest_.allTests),
         testCase(ObservableDefaultIfEmptyTest_.allTests),
@@ -2070,6 +2101,7 @@ func XCTMain(_ tests: [() -> Void]) {
         testCase(ObservablePrimitiveSequenceTest_.allTests),
         testCase(ObservableRangeTest_.allTests),
         testCase(ObservableReduceTest_.allTests),
+        testCase(ObservableRelayBindTest_.allTests),
         testCase(ObservableRepeatTest_.allTests),
         testCase(ObservableRetryWhenTest_.allTests),
         testCase(ObservableSampleTest_.allTests),
@@ -2108,7 +2140,6 @@ func XCTMain(_ tests: [() -> Void]) {
         testCase(SharingSchedulerTest_.allTests),
         testCase(SignalTests_.allTests),
         testCase(SingleTest_.allTests),
-        testCase(VariableTest_.allTests),
         testCase(VirtualSchedulerTest_.allTests),
     ])
 //}

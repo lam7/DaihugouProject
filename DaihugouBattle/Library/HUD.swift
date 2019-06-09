@@ -37,6 +37,75 @@ import RxSwift
     }
 }
 
+protocol HUDable where Self: UIView{
+    func show()
+    func show(belowSubview: UIView)
+    func dismiss()
+}
+
+extension HUDable{
+    func show(){
+        let windows = UIApplication.shared.windows
+        var w: UIWindow!
+        for window in windows.reversed(){
+            let windowOnMainScreen = window.screen == UIScreen.main
+            let windowIsVisible = !window.isHidden && window.alpha > 0
+            let windowLevelSupported = window.windowLevel == UIWindow.Level.normal
+            if windowOnMainScreen && windowIsVisible && windowLevelSupported{
+                w = window
+            }
+        }
+        w = w ?? UIApplication.shared.keyWindow
+        
+        w.addSubview(self)
+        frame.origin = CGPoint.zero
+        autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
+        isHidden = false
+        frame = w.bounds
+    }
+    
+    func show(belowSubview: UIView){
+        let windows = UIApplication.shared.windows
+        var w: UIWindow!
+        for window in windows.reversed(){
+            let windowOnMainScreen = window.screen == UIScreen.main
+            let windowIsVisible = !window.isHidden && window.alpha > 0
+            let windowLevelSupported = window.windowLevel == UIWindow.Level.normal
+            if windowOnMainScreen && windowIsVisible && windowLevelSupported{
+                w = window
+            }
+        }
+        w = w ?? UIApplication.shared.keyWindow
+        
+        w.insertSubview(self, belowSubview: belowSubview)
+        frame.origin = CGPoint.zero
+        autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
+        isHidden = false
+        frame = w.bounds
+    }
+    
+    func dismiss(){
+        removeAllSubviews()
+        removeSafelyFromSuperview()
+    }
+}
+
+class HUDClosableView: TapableView, HUDable{
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        tapped = dismiss
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        tapped = dismiss
+    }
+}
+
+class HUDView: UIView, HUDable{
+    
+}
+
 class HUD: NSObject{
     static var shared: HUD = HUD()
     var container: UIView
@@ -63,7 +132,7 @@ class HUD: NSObject{
     }
     
     enum MaskType{
-        case closableDark, closableClear, closableDarkBlur, dark, darkBlur, clear
+        case outOfFrameDark, outOfFrameClear, outOfFrameDarkBlur, closableDark, closableClear, closableDarkBlur, dark, darkBlur, clear
         
         fileprivate func view()-> UIView{
             func setDarkView(_ view: UIView){
@@ -82,86 +151,69 @@ class HUD: NSObject{
             }
             
             switch self{
+            case .outOfFrameDark:
+                let view = OutOfFrameCloseView(frame: .zero)
+                setDarkView(view)
+                return view
+            case .outOfFrameClear:
+                let view = OutOfFrameCloseView(frame: .zero)
+                return view
+            case .outOfFrameDarkBlur:
+                let view = OutOfFrameCloseView(frame: .zero)
+                setDarkBlurView(view)
+                return view
             case .closableDark:
-                let view = TapableView(frame: .zero)
+                let view = HUDClosableView(frame: .zero)
                 view.tapped = {
                     HUD.shared.dismiss()
                 }
                 setDarkView(view)
                 return view
             case .closableClear:
-                let view = TapableView(frame: .zero)
+                let view = HUDClosableView(frame: .zero)
                 view.tapped = {
                     HUD.shared.dismiss()
                 }
                 return view
             case .closableDarkBlur:
-                let view = TapableView(frame: .zero)
+                let view = HUDClosableView(frame: .zero)
                 view.tapped = {
                     HUD.shared.dismiss()
                 }
                 setDarkBlurView(view)
                 return view
             case .dark:
-                let view = UIView(frame: .zero)
+                let view = HUDView(frame: .zero)
                 setDarkView(view)
                 return view
             case .darkBlur:
-                let view = TapableView(frame: .zero)
-                view.tapped = {
-                    HUD.shared.dismiss()
-                }
+                let view = HUDView(frame: .zero)
                 setDarkBlurView(view)
                 return view
             case .clear:
-                let view = UIView(frame: .zero)
+                let view = HUDView(frame: .zero)
                 return view
             }
         }
     }
     
-    private func clearContainer(){
-        container.removeAllSubviews()
-        container.removeSafelyFromSuperview()
-    }
-    
-    private func setContainer(_ window: UIWindow){
-        container.frame.origin = CGPoint.zero
-        container.autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
-        container.isHidden = false
-        container.frame = window.bounds
-    }
-    
     func show(_ maskType: MaskType = .clear){
-        let window = searchFrontWindow()
         container = maskType.view()
-        window.addSubview(container)
-        setContainer(window)
+        if let container = container as? HUDable{
+            container.show()
+        }
     }
     
     func show(_ maskType: MaskType = .clear, belowSubview: UIView){
-        let window = searchFrontWindow()
         container = maskType.view()
-        window.insertSubview(container, belowSubview: belowSubview)
-        setContainer(window)
+        if let container = container as? HUDable{
+            container.show(belowSubview: belowSubview)
+        }
     }
     
     func dismiss(){
-        clearContainer()
-    }
-    
-    ///表示されているWindowの中で最前面で、アラートでないものを返す
-    private func searchFrontWindow()-> UIWindow{
-        let windows = UIApplication.shared.windows
-        for window in windows.reversed(){
-            let windowOnMainScreen = window.screen == UIScreen.main
-            let windowIsVisible = !window.isHidden && window.alpha > 0
-            let windowLevelSupported = window.windowLevel == UIWindow.Level.normal
-            if windowOnMainScreen && windowIsVisible && windowLevelSupported{
-                return window
-            }
+        if let container = container as? HUDable{
+            container.dismiss()
         }
-        //ここに来るかどうかは微妙
-        return UIApplication.shared.keyWindow!
     }
 }

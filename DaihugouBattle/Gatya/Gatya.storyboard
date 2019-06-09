@@ -98,17 +98,15 @@
                                     <constraint firstItem="87d-sx-AbA" firstAttribute="width" secondItem="a86-6P-sVe" secondAttribute="width" id="guV-aQ-sCA"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgd-vw-7Ii">
+                                <rect key="frame" x="291.5" y="151.5" width="84" height="112.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Wgd-vw-7Ii" secondAttribute="height" multiplier="3:4" id="5dZ-fa-V1s"/>
+                                </constraints>
+                            </view>
                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uem-IH-K36" userLabel="CardsView">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgd-vw-7Ii">
-                                        <rect key="frame" x="291.5" y="151.5" width="84" height="112.5"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Wgd-vw-7Ii" secondAttribute="height" multiplier="3:4" id="5dZ-fa-V1s"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="biD-43-NjD" customClass="GifImageView" customModule="DaihugouBattle" customModuleProvider="target">
@@ -194,12 +192,9 @@
                             <constraint firstItem="iDC-Kp-qVg" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="1kk-Yj-ifG"/>
                             <constraint firstItem="cnF-pk-ch3" firstAttribute="top" secondItem="BfO-2B-2fJ" secondAttribute="top" id="4wX-KX-1rt"/>
                             <constraint firstItem="uem-IH-K36" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="71s-qD-oXt"/>
-                            <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="8Kl-5F-GtJ"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="8xM-si-4Vu"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="ADv-xT-UqM"/>
                             <constraint firstItem="96K-ij-P3g" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" multiplier="0.9" id="CAE-OR-b6S"/>
-                            <constraint firstItem="Wgd-vw-7Ii" firstAttribute="height" secondItem="iHI-b9-x2a" secondAttribute="height" multiplier="0.6" id="F39-3O-jQc"/>
-                            <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerY" secondItem="iHI-b9-x2a" secondAttribute="centerY" id="G1B-Zl-KYD"/>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="Gck-uC-y1F"/>
                             <constraint firstItem="iDC-Kp-qVg" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="Id0-CV-zOd"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="trailing" secondItem="cnF-pk-ch3" secondAttribute="trailing" id="IrT-jR-ePo"/>
@@ -228,7 +223,9 @@
                             <constraint firstItem="a86-6P-sVe" firstAttribute="top" secondItem="BfO-2B-2fJ" secondAttribute="top" multiplier="20" constant="20" id="gu4-B6-61z"/>
                             <constraint firstItem="a86-6P-sVe" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" multiplier="0.8" id="gvT-Rw-3Db"/>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="h0q-hE-7a8"/>
+                            <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="hC5-CM-E3q"/>
                             <constraint firstItem="96K-ij-P3g" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="jaE-xq-dps"/>
+                            <constraint firstItem="Wgd-vw-7Ii" firstAttribute="height" secondItem="iHI-b9-x2a" secondAttribute="height" multiplier="0.6" id="lHt-jt-8Bz"/>
                             <constraint firstItem="96K-ij-P3g" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" multiplier="0.8" id="lJZ-1G-igV"/>
                             <constraint firstItem="rYc-hF-hFI" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="lPf-qM-rOO"/>
                             <constraint firstItem="biD-43-NjD" firstAttribute="bottom" secondItem="iHI-b9-x2a" secondAttribute="bottom" constant="30" id="mw3-Na-Gco"/>
@@ -238,6 +235,7 @@
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" constant="20" id="pS1-PK-CaL"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="bottom" secondItem="cnF-pk-ch3" secondAttribute="bottom" id="qb4-t2-77m"/>
                             <constraint firstItem="iDC-Kp-qVg" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="qvJ-in-ZUV"/>
+                            <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerY" secondItem="iHI-b9-x2a" secondAttribute="centerY" id="rMP-FF-8RJ"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="top" secondItem="a86-6P-sVe" secondAttribute="bottom" constant="5" id="tAb-5U-84u"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="leading" secondItem="rYc-hF-hFI" secondAttribute="leading" id="vdm-tT-oFG"/>
                             <constraint firstItem="96K-ij-P3g" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" multiplier="0.8" id="xC0-Yt-wBN"/>

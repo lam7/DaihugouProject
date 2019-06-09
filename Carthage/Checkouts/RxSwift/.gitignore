@@ -17,6 +17,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.o
 
 timeline.xctimeline
 
@@ -50,3 +51,7 @@ Carthage/Build
 
 .build/
 Packages/
+
+# AppCode
+
+.idea

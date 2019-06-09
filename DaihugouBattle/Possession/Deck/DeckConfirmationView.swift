@@ -49,8 +49,8 @@ class DeckConfirmationView: UINibView, UICollectionViewDelegate, UICollectionVie
         characterDetailView.card = card
         HUD.show(.closableDark)
         HUD.container.addSubview(characterDetailView)
-        characterDetailView.close = {
-            HUD.dismiss()
-        }
+//        characterDetailView.close = {
+//            HUD.dismiss()
+//        }
     }
 }

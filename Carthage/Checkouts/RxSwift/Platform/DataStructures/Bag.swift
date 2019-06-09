@@ -171,15 +171,9 @@ extension Bag {
 }
 
 extension BagKey: Hashable {
-    #if !swift(>=4.2.2)
-    var hashValue: Int {
-        return rawValue.hashValue
-    }
-    #else
     func hash(into hasher: inout Hasher) {
         hasher.combine(rawValue)
     }
-    #endif
 }
 
 func ==(lhs: BagKey, rhs: BagKey) -> Bool {

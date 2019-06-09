@@ -11,23 +11,14 @@ import UIKit
 import SpriteKit
 
 class GatyaRollViewController: UIViewController{
-    @IBOutlet weak var tapableView: TapableView!{
-        didSet{
-            tapableView.tapped = {[weak self] in
-                self?.tapableView.isHidden = true
-                self?.characterDetailView.isHidden = true
-            }
-        }
-    }
+    @IBOutlet weak var tapableView: TapableView!
+    @IBOutlet weak var closableView: OutOfFrameCloseView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!{
         didSet{
-            characterDetailView.close = {[weak self] in
-                self?.tapableView.isHidden = true
-                self?.characterDetailView.isHidden = true
-            }
+            closableView.targetView = characterDetailView
         }
     }
     @IBOutlet weak var cardsView: UIView!
@@ -40,7 +31,6 @@ class GatyaRollViewController: UIViewController{
     
     var gatya: Gatya!
     private var getCards: [Card]!
-    private var animationCardViews = ZWeakObjectSet<CardView>()
     private var selectedCard: Card?
     private let RollCountOnceGatya = 8
     private var isPerform: Bool!
@@ -78,6 +68,10 @@ class GatyaRollViewController: UIViewController{
         case finish
     }
     
+    override func loadView() {
+        super.loadView()
+        createCardView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImageView.image = DataRealm.get(imageNamed: "gatyaStandartBackground.png")
@@ -85,7 +79,6 @@ class GatyaRollViewController: UIViewController{
         ManageAudio.shared.addAudioFromRealm("se_card_flip.mp3", audioType: .se)
         ManageAudio.shared.addAudioFromRealm("shakin2.mp3", audioType: .se)
         particleView.scene.setUpNormalParticle()
-        createCardView()
         sceneView.presentScene(GifEffectScene.self)
         if let image = DataRealm.get(imageNamed: "gatya_kourin.png"){
             let images = image.divImage(2, yNum: 8)
@@ -93,16 +86,11 @@ class GatyaRollViewController: UIViewController{
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        animationCardViews.removeAll()
-    }
-    
     private func createCardView(){
         //-TODO: ガチャの種類によりカードの裏面や背景を変えたりする
         let b = cardOriginalView.bounds
         for _ in (0 ..< RollCountOnceGatya).reversed(){
             let cardView = CardView(frame: b)
-            self.animationCardViews.add(cardView)
             self.cardsView.addSubview(cardView)
         }
     }
@@ -111,6 +99,7 @@ class GatyaRollViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         LoadingView.show()
+        self.view.isUserInteractionEnabled = true
         isPerform = true
         
         packImageView.image = DataRealm.get(imageNamed: "gatyaStandart.png")
@@ -144,6 +133,12 @@ class GatyaRollViewController: UIViewController{
         ManageAudio.shared.removeAudio("se_card_flip.mp3")
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // 遷移後もタッチが反応してしまうのでタッチできないようにする
+        self.view.isUserInteractionEnabled = false
+    }
+    
     private func present(_ error: Error, completion: (() -> ())!){
         let errorAlart = UIAlertController(title: "エラー", message: nil, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "前の画面に戻る", style: .default, handler: {
@@ -160,10 +155,11 @@ class GatyaRollViewController: UIViewController{
             guard let card = getCards[safe: i] else{
                 continue
             }
-            animationCardViews.objects[i].card = card
-            animationCardViews.objects[i].layer.removeAllAnimations()
-            animationCardViews.objects[i].center = cardOriginalView.center
-            animationCardViews.objects[i].bothSidesView.flip(0, isFront: false)
+            let cardView = cardsView.subviews[i] as! CardView
+            cardView.card = card
+            cardView.layer.removeAllAnimations()
+            cardView.center = cardOriginalView.center
+            cardView.bothSidesView.flip(0, isFront: false)
             getCards.remove(at: i)
         }
     }
@@ -229,7 +225,7 @@ class GatyaRollViewController: UIViewController{
     }
     
     private func animationAfterSecond(_ completion: @escaping() -> ()){
-        let count = self.animationCardViews.objects.count
+        let count = RollCountOnceGatya
         let radius = self.view.frame.size.height / 3
         for i in 0 ..< count{
             let moveArc    = self.circleAnimation(0, radius: radius, angle: CGFloat.pi * 2 * i / count)
@@ -240,24 +236,24 @@ class GatyaRollViewController: UIViewController{
             group.duration = 0
             group.fillMode = convertToCAMediaTimingFillMode(convertFromCAMediaTimingFillMode(CAMediaTimingFillMode.forwards))
             group.isRemovedOnCompletion = false
-            let layer = self.animationCardViews.objects[i].layer
+            let cardView = cardsView.subviews[i] as! CardView
+            let layer = cardView.layer
             CATransaction.setCompletionBlock({
                 [weak self] in
-                guard let `self` = self,
-                    let v = self.animationCardViews.objects[safe: i] else {
-                        return
+                guard let `self` = self else {
+                    return
                 }
-                v.center = layer.presentation()!.position
-                v.center.x -= self.view.frame.width
+                cardView.center = layer.presentation()!.position
+                cardView.center.x -= self.view.frame.width
                 layer.removeAnimation(forKey: "gatyaAnimation")
                 UIView.animate(withDuration: 0.3, animations: {
-                    v.center.x += self.view.frame.width
+                    cardView.center.x += self.view.frame.width
                 }, completion: {
                     [weak self] _ in
                     guard let `self` = self else{
                         return
                     }
-                    v.center.x += self.view.frame.width
+                    cardView.center.x += self.view.frame.width
                 })
                 
                 if i == count - 1{
@@ -284,7 +280,7 @@ class GatyaRollViewController: UIViewController{
                 return
             }
             self.particleView.scene.perform(pack: self.view, completion: {})
-            let count = self.animationCardViews.objects.count
+            let count = self.RollCountOnceGatya
             for i in 0 ..< count{
                 CATransaction.begin()
                 let center = self.view.center
@@ -304,14 +300,14 @@ class GatyaRollViewController: UIViewController{
                 group.duration = rotate0.beginTime + rotate0.duration
                 group.fillMode = convertToCAMediaTimingFillMode(convertFromCAMediaTimingFillMode(CAMediaTimingFillMode.forwards))
                 group.isRemovedOnCompletion = false
-                let layer = self.animationCardViews.objects[i].layer
+                let cardView = self.cardsView.subviews[i] as! CardView
+                let layer = cardView.layer
                 CATransaction.setCompletionBlock({
                     [weak self] in
-                    guard let `self` = self,
-                        let v = self.animationCardViews.objects[safe: i] else {
-                            return
+                    guard let `self` = self else {
+                        return
                     }
-                    v.center = layer.presentation()!.position
+                    cardView.center = layer.presentation()!.position
                     layer.removeAnimation(forKey: "gatyaAnimation")
                     if i == count - 1{
                         completion()
@@ -335,10 +331,9 @@ class GatyaRollViewController: UIViewController{
     }
     
     private func showAllCard(_ duration: TimeInterval, completion: @escaping () -> ()){
-
         let frames = listCardFrame
-        for (i, card) in animationCardViews.enumerated() {
-            let comp = i == animationCardViews.objects.count - 1 ? completion : nil
+        for (i, card) in cardsView.subviews.enumerated() {
+            let comp = i == cardsView.subviews.count - 1 ? completion : nil
             UIView.animate(withDuration: duration, animations: {
                 card.center = CGPoint(x: frames[i].midX, y: frames[i].midY)
             }, completion: {
@@ -350,7 +345,7 @@ class GatyaRollViewController: UIViewController{
     }
     
     private func flowingAnimation(_ duration: TimeInterval, completion: @escaping () -> ()){
-        for (i, card) in self.animationCardViews.enumerated(){
+        for (i, card) in self.cardsView.subviews.enumerated(){
             let by = CGPoint(x: self.view.frame.width, y: 10.cf.random.randomSign)
             UIView.animate(withDuration: duration, animations: {
                 card.center += by
@@ -360,7 +355,7 @@ class GatyaRollViewController: UIViewController{
                     return
                 }
                 card.center += by
-                if i == self.animationCardViews.objects.count - 1{
+                if i == self.cardsView.subviews.count - 1{
                     completion()
                 }
             })
@@ -408,7 +403,7 @@ class GatyaRollViewController: UIViewController{
                     guard let `self` = self else {
                         return
                     }
-                    for c in self.animationCardViews{
+                    for c in self.cardsView.subviews as! [CardView]{
                         //裏を向いているなら
                         if c.bothSidesView.isBack{
                             return
@@ -454,7 +449,7 @@ class GatyaRollViewController: UIViewController{
         guard let view = cardsView.hitTest(touch.location(in: cardsView), with: nil) else{
             return nil
         }
-        for animationCard in animationCardViews{
+        for animationCard in cardsView.subviews as! [CardView]{
             if animationCard == view{
                 return animationCard
             }
@@ -481,7 +476,6 @@ class GatyaRollViewController: UIViewController{
     
     
     private func  characterDetail(_ card: Card){
-        tapableView.isHidden = false
         characterDetailView.isHidden = false
         characterDetailView.card = card
     }

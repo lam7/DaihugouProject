@@ -137,6 +137,7 @@
 		AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */; };
 		AAA86F6320AA7598002A3E8D /* SkillAbilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */; };
 		AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */; };
+		AAAD8AD422A3A34B00ED441A /* CloseViewOutOfFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD8AD322A3A34B00ED441A /* CloseViewOutOfFrame.swift */; };
 		AAB0F4E220725979004D9C93 /* ManageAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F4E120725979004D9C93 /* ManageAudio.swift */; };
 		AAB19B2220AD3BCB004161F5 /* DeckSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */; };
 		AAB19B2420AD3BE8004161F5 /* DeckSelectPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */; };
@@ -382,6 +383,7 @@
 		AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAbilityList.swift; sourceTree = "<group>"; };
 		AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllAsyncBlock.swift; sourceTree = "<group>"; };
+		AAAD8AD322A3A34B00ED441A /* CloseViewOutOfFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseViewOutOfFrame.swift; sourceTree = "<group>"; };
 		AAB0F4E120725979004D9C93 /* ManageAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAudio.swift; sourceTree = "<group>"; };
 		AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectView.swift; sourceTree = "<group>"; };
 		AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectPageView.xib; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */,
 				AAF28CA221B6378F0010B847 /* CollectionHeaderView.swift */,
 				AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */,
+				AAAD8AD322A3A34B00ED441A /* CloseViewOutOfFrame.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1470,6 +1473,7 @@
 				AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */,
 				AADE548C1F72440F00DF83BF /* Skill.swift in Sources */,
 				AA65BE442058C0260062AFFA /* Extension_CAAnimation.swift in Sources */,
+				AAAD8AD422A3A34B00ED441A /* CloseViewOutOfFrame.swift in Sources */,
 				AA5541D6214E056B003A008B /* BattleDeck.swift in Sources */,
 				AAF16EE220C8EA7D0007417F /* IndexView.swift in Sources */,
 				AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */,
@@ -1613,7 +1617,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;

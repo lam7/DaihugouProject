@@ -9,12 +9,9 @@
 import Foundation
 import UIKit
 
-
-protocol Closable{
-    var close: (()->())?{ get set }
-}
-
-@IBDesignable class ClosableCharacterDetailView: UINibView, Closable{
+@IBDesignable class ClosableCharacterDetailView: UINibView, ClosableView{
+    var closeAction: (() -> ())?
+    
     var card: Card!{
         didSet{
             characterDetailView.set(card: card)
@@ -22,8 +19,12 @@ protocol Closable{
     }
     @IBOutlet weak var characterDetailView: CharacterDetailView!
     @IBOutlet weak var closeButton: UIButton!
-    var close: (()->())?
+    
     @IBAction func touchUp(_ sender: UIButton){
-        close?()
+        closeAction?()
+    }
+    
+    private func close(){
+        
     }
 }

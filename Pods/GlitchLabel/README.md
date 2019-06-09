@@ -79,6 +79,11 @@ glitchLabel.blendMode = .Multiply
 ## Inspired
 * http://codepen.io/paultreny/pen/nJyvG
 
+## Donate
+If you like this open source, you can sponsor it. :smile:
+
+[Paypal me](paypal.me/kciter)
+
 ## License
 The MIT License (MIT)
 

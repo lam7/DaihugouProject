@@ -29,7 +29,7 @@ Copyright 2019 Google
 
 ## FirebaseABTesting
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## FirebaseAnalytics
 
@@ -1071,7 +1071,7 @@ Copyright 2019 Google
 
 ## FirebaseRemoteConfig
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## FlatUIKit
 

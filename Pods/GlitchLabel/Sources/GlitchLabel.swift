@@ -45,7 +45,7 @@ open class GlitchLabel: UILabel {
             return
         }
         
-        var x0 = CGFloat(amplitude * sin((M_PI * 2.0) * phase))
+        var x0 = CGFloat(amplitude * sin((.pi * 2.0) * phase))
         
         if random() >= glitchThreshold {
             x0 *= CGFloat(glitchAmplitude)

@@ -51,7 +51,7 @@ let NumTimesCanRollGatyaAtOneTime = 10
     }
     
     private func setUp(){
-        gatyaTypes = []
+        gatyaTypes = Gatya.gatyaTypes
         setUpPicker()
         setUpLabel()
     }

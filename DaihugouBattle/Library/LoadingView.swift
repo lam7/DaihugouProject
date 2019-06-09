@@ -69,7 +69,6 @@ class LoadingView: NSObject{
     static func hide(delay: TimeInterval = 0){
         Timer.scheduledTimer(withTimeInterval: delay, repeats: false, block: {
             _ in
-            print("hideeeeee")
             shared.backgroundView.removeSafelyFromSuperview()
             shared.lotAnimationView.stop()
         }).fire()

@@ -184,7 +184,7 @@ extension SingleTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            (Single.just(1).delay(2.0, scheduler: scheduler) as Single<Int>).asObservable()
+            (Single.just(1).delay(.seconds(2), scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -197,7 +197,7 @@ extension SingleTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            (Single.just(1).delaySubscription(2.0, scheduler: scheduler) as Single<Int>).asObservable()
+            (Single.just(1).delaySubscription(.seconds(2), scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -408,7 +408,7 @@ extension SingleTest {
             ]).asSingle()
 
         let res = scheduler.start {
-            (xs.timeout(5.0, scheduler: scheduler) as Single<Int>).asObservable()
+            (xs.timeout(.seconds(5), scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -430,7 +430,7 @@ extension SingleTest {
             ]).asSingle()
 
         let res = scheduler.start {
-            (xs.timeout(5.0, other: xs2, scheduler: scheduler) as Single<Int>).asObservable()
+            (xs.timeout(.seconds(5), other: xs2, scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -448,7 +448,7 @@ extension SingleTest {
             ]).asSingle()
 
         let res = scheduler.start {
-            (xs.timeout(30.0, scheduler: scheduler) as Single<Int>).asObservable()
+            (xs.timeout(.seconds(30), scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -471,7 +471,7 @@ extension SingleTest {
             ]).asSingle()
 
         let res = scheduler.start {
-            (xs.timeout(30.0, other: xs2, scheduler: scheduler) as Single<Int>).asObservable()
+            (xs.timeout(.seconds(30), other: xs2, scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -486,7 +486,7 @@ extension SingleTest {
         let scheduler = TestScheduler(initialClock: 0)
 
         let res = scheduler.start {
-            (Single<Int>.timer(2, scheduler: scheduler) as Single<Int>).asObservable()
+            (Single<Int>.timer(.seconds(2), scheduler: scheduler) as Single<Int>).asObservable()
         }
 
         XCTAssertEqual(res.events, [
@@ -535,6 +535,31 @@ extension SingleTest {
             ])
     }
 
+    func test_compactMap() {
+        let scheduler = TestScheduler(initialClock: 0)
+        
+        let res = scheduler.start {
+            (Single<String>.just("1").compactMap(Int.init) as Maybe<Int>).asObservable()
+        }
+        
+        XCTAssertEqual(res.events, [
+            .next(200, 1),
+            .completed(200)
+            ])
+    }
+    
+    func test_compactMapNil() {
+        let scheduler = TestScheduler(initialClock: 0)
+        
+        let res = scheduler.start {
+            (Single<String>.just("a").compactMap(Int.init) as Maybe<Int>).asObservable()
+        }
+        
+        XCTAssertEqual(res.events, [
+            .completed(200)
+            ])
+    }
+    
     func test_flatMap() {
         let scheduler = TestScheduler(initialClock: 0)
 

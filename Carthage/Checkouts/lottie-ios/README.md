@@ -63,16 +63,16 @@ You can pull the [Lottie Github Repo](https://github.com/airbnb/lottie-ios/) and
 
 ### CocoaPods
 Add the pod to your Podfile:
-```
+```ruby
 pod 'lottie-ios'
 ```
 
 And then run:
-```
+```ruby
 pod install
 ```
 After installing the cocoapod into your project import Lottie with 
-```
+```swift
 import Lottie
 ```
 ### Carthage
@@ -101,7 +101,7 @@ You can quickly load a Lottie animation with:
 ```swift
 let starAnimationView = AnimationView(name: "StarAnimation")
 ```
-Additionally you can chose to load an `AnimationView` without any animation, and set the animation later:
+Additionally you can choose to load an `AnimationView` without any animation, and set the animation later:
 ```swift
 let starAnimationView = AnimationView()
 /// Some time later
@@ -113,7 +113,7 @@ You can load animations from a specific bundle, a filepath, or even asynchronous
 After loading an animation it can be played with:
 ```swift
 starAnimationView.play { (finished) in
-/// Animation finished
+	/// Animation finished
 }
 ```
 Read more about playing animations [Here](#playing-animations)
@@ -326,6 +326,8 @@ Options:
 : **playOnce**: Animation is played once then stops.
 : **loop**: Animation will loop from end to beginning until stopped.
 : **autoReverse**: Animation will play forward, then backwards and loop until stopped.
+: **repeat(amount)**: Animation will loop from end to beginning up to *amount* of times.
+: **repeatBackwards(amount)**: Animation will play forward, then backwards a *amount* of times.
 #
 #### Is Animation Playing
 ```swift
@@ -745,6 +747,7 @@ Lottie allows you to change **any** property that is animatable in After Effects
 | Rounded Rectangle | 👍 | 👍 |
 | Polystar | 👍 | 👍 |
 | Group | 👍 | 👍 |
+| Repeater | 👍 | ⛔️ |
 | Trim Path (individually) | ⛔️ | 🎉 |
 | Trim Path (simultaneously) | ❗️ | 🎉 |
 | **Renderable** | **2.5.2** | **3.0** |

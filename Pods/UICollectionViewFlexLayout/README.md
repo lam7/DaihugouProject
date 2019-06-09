@@ -1,6 +1,6 @@
 # UICollectionViewFlexLayout
 
-![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
 [![CocoaPods](http://img.shields.io/cocoapods/v/UICollectionViewFlexLayout.svg)](https://cocoapods.org/pods/UICollectionViewFlexLayout)
 [![Build Status](https://travis-ci.org/devxoul/UICollectionViewFlexLayout.svg?branch=master)](https://travis-ci.org/devxoul/UICollectionViewFlexLayout)
 [![Codecov](https://img.shields.io/codecov/c/github/devxoul/UICollectionViewFlexLayout.svg)](https://codecov.io/gh/devxoul/UICollectionViewFlexLayout)
@@ -87,13 +87,13 @@ func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElem
 
 * **Using with RxCocoa**
 
-    If you're using UICollectionView with RxSwift and RxCocoa, you should create an extension of `RxCollectionViewDelegateProxy` to support delegate proxy.
+    If you're using UICollectionView with RxSwift and RxCocoa, you should create an extension of `_RXDelegateProxy` class to support delegate proxy.
 
     ```swift
     import RxCocoa
     import UICollectionViewFlexLayout
 
-    extension RxCollectionViewDelegateProxy: UICollectionViewDelegateFlexLayout {
+    extension _RXDelegateProxy: UICollectionViewDelegateFlexLayout {
     }
     ```
 

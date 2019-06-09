@@ -26,6 +26,26 @@ public enum LottieLoopMode {
   case loop
   /// Animation will play forward, then backwards and loop until stopped.
   case autoReverse
+  /// Animation will loop from end to beginning up to defined amount of times.
+  case `repeat`(Float)
+  /// Animation will play forward, then backwards a defined amount of times.
+  case repeatBackwards(Float)
+}
+
+extension LottieLoopMode: Equatable {
+  public static func == (lhs: LottieLoopMode, rhs: LottieLoopMode) -> Bool {
+    switch (lhs, rhs) {
+    case (.repeat(let lhsAmount), .repeat(let rhsAmount)),
+         (.repeatBackwards(let lhsAmount), .repeatBackwards(let rhsAmount)):
+      return lhsAmount == rhsAmount
+    case (.playOnce, .playOnce),
+         (.loop, .loop),
+         (.autoReverse, .autoReverse):
+      return true
+    default:
+      return false
+    }
+  }
 }
 
 @IBDesignable
@@ -218,7 +238,7 @@ final public class AnimationView: LottieView {
    
    - Parameter fromProgress: The start progress of the animation. If `nil` the animation will start at the current progress.
    - Parameter toProgress: The end progress of the animation.
-   - Parameter toProgress: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
+   - Parameter loopMode: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
    - Parameter completion: An optional completion closure to be called when the animation stops.
    */
   public func play(fromProgress: AnimationProgressTime? = nil,
@@ -245,7 +265,7 @@ final public class AnimationView: LottieView {
    
    - Parameter fromProgress: The start progress of the animation. If `nil` the animation will start at the current progress.
    - Parameter toProgress: The end progress of the animation.
-   - Parameter toProgress: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
+   - Parameter loopMode: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
    - Parameter completion: An optional completion closure to be called when the animation stops.
    */
   public func play(fromFrame: AnimationFrameTime? = nil,
@@ -275,7 +295,7 @@ final public class AnimationView: LottieView {
    - Parameter fromProgress: The start marker for the animation playback. If `nil` the
    animation will start at the current progress.
    - Parameter toProgress: The end marker for the animation playback.
-   - Parameter toProgress: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
+   - Parameter loopMode: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
    - Parameter completion: An optional completion closure to be called when the animation stops.
    */
   public func play(fromMarker: String? = nil,
@@ -434,7 +454,7 @@ final public class AnimationView: LottieView {
       return viewLayer?.convert(rect, to: animationLayer)
     }
     guard let sublayer = animationLayer.layer(for: keypath) else {
-        return nil
+      return nil
     }
     self.setNeedsLayout()
     self.layoutIfNeeded()
@@ -608,9 +628,37 @@ final public class AnimationView: LottieView {
       position.x = bounds.maxX - animation.bounds.midX
       position.y = bounds.maxY - animation.bounds.midY
       xform = CATransform3DIdentity
+      
+      #if os(iOS) || os(tvOS)
+    @unknown default:
+      print("unsupported contentMode: \(contentMode.rawValue); please update lottie-ios")
+      xform = CATransform3DIdentity
+      #endif
     }
+    
+    /*
+     UIView Animation does not implicitly set CAAnimation time or timing fuctions.
+     If layout is changed in an animation we must get the current animation duration
+     and timing function and then manually set them in a CATransaction.
+     */
+    let duration: Double
+    let timingFunction: CAMediaTimingFunction
+    /// Check if any animation exist on the view's layer, and grab the duration and timing functions of the animation.
+    if let key = layer.animationKeys()?.first, let animation = layer.animation(forKey: key) {
+      duration = animation.duration
+      timingFunction = animation.timingFunction ?? CAMediaTimingFunction(name: .linear)
+    } else {
+      duration = 0.0
+      timingFunction = CAMediaTimingFunction(name: .linear)
+    }
+    
+    /// Create a transaction and set the duration and timing function of the implicit animation.
+    CATransaction.begin()
+    CATransaction.setAnimationDuration(duration)
+    CATransaction.setAnimationTimingFunction(timingFunction)
     animationLayer.position = position
     animationLayer.transform = xform
+    CATransaction.commit()
     
     if shouldForceUpdates {
       animationLayer.forceDisplayUpdate()
@@ -674,29 +722,48 @@ final public class AnimationView: LottieView {
   }
   
   @objc override func animationWillMoveToBackground() {
-    if backgroundBehavior == .pauseAndRestore, let currentContext = animationContext {
-      /// Ignore the delegate of the animation.
-      currentContext.closure.ignoreDelegate = true
-      removeCurrentAnimation()
-      /// Keep the stale context around for when the app enters the foreground.
-      self.animationContext = currentContext
-    }  else if backgroundBehavior == .stop,
-      let context = animationContext {
-      removeCurrentAnimation()
-      updateAnimationFrame(context.playFrom)
-    }
+    updateAnimationForBackgroundState()
   }
   
   @objc override func animationWillEnterForeground() {
-    if backgroundBehavior == .pauseAndRestore {
-      /// Restore animation from saved state
-      updateInFlightAnimation()
-    }
+    updateAnimationForForegroundState()
   }
   
   override func animationMovedToWindow() {
-    if let context = self.animationContext {
-      self.addNewAnimationForContext(context)
+    if window != nil {
+      updateAnimationForForegroundState()
+    } else {
+      updateAnimationForBackgroundState()
+    }
+  }
+  
+  fileprivate func updateAnimationForBackgroundState() {
+    if let currentContext = animationContext {
+      switch backgroundBehavior {
+      case .stop:
+        removeCurrentAnimation()
+        updateAnimationFrame(currentContext.playFrom)
+      case .pause:
+        removeCurrentAnimation()
+      case .pauseAndRestore:
+        currentContext.closure.ignoreDelegate = true
+        removeCurrentAnimation()
+        /// Keep the stale context around for when the app enters the foreground.
+        self.animationContext = currentContext
+      }
+    }
+  }
+  
+  fileprivate var waitingToPlayAimation: Bool = false
+  fileprivate func updateAnimationForForegroundState() {
+    if let currentContext = animationContext {
+      if waitingToPlayAimation {
+        waitingToPlayAimation = false
+        self.addNewAnimationForContext(currentContext)
+      } else if backgroundBehavior == .pauseAndRestore {
+        /// Restore animation from saved state
+        updateInFlightAnimation()
+      }
     }
   }
   
@@ -712,6 +779,12 @@ final public class AnimationView: LottieView {
   /// Updates an in flight animation.
   fileprivate func updateInFlightAnimation() {
     guard let animationContext = animationContext else { return }
+    
+    guard animationContext.closure.animationState != .complete else {
+      // Tried to re-add an already completed animation. Cancel.
+      self.animationContext = nil
+      return
+    }
     
     /// Tell existing context to ignore its closure
     animationContext.closure.ignoreDelegate = true
@@ -737,7 +810,7 @@ final public class AnimationView: LottieView {
     
     self.animationContext = animationContext
     
-    guard self.window != nil else { return }
+    guard self.window != nil else { waitingToPlayAimation = true; return }
     
     animationID = animationID + 1
     activeAnimationName = AnimationView.animationName + String(animationID)
@@ -771,8 +844,21 @@ final public class AnimationView: LottieView {
     layerAnimation.duration = TimeInterval(duration)
     layerAnimation.fillMode = CAMediaTimingFillMode.both
     
-    layerAnimation.repeatCount = loopMode == .playOnce ? 1 : HUGE
-    layerAnimation.autoreverses = loopMode == .autoReverse ? true : false
+    switch loopMode {
+    case .playOnce:
+      layerAnimation.repeatCount = 1
+    case .loop:
+      layerAnimation.repeatCount = HUGE
+    case .autoReverse:
+      layerAnimation.repeatCount = HUGE
+      layerAnimation.autoreverses = true
+    case let .repeat(amount):
+      layerAnimation.repeatCount = amount
+    case let .repeatBackwards(amount):
+      layerAnimation.repeatCount = amount
+      layerAnimation.autoreverses = true
+    }
+    
     layerAnimation.isRemovedOnCompletion = false
     if timeOffset != 0 {
       let currentLayerTime = viewLayer?.convertTime(CACurrentMediaTime(), from: nil) ?? 0

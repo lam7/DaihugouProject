@@ -13,10 +13,8 @@
 		25D5437322307C8800ED90FA /* CompatibleAnimationKeypath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D543702230787900ED90FA /* CompatibleAnimationKeypath.swift */; };
 		25D5437422307C8B00ED90FA /* CompatibleAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D5436E22306E2D00ED90FA /* CompatibleAnimationView.swift */; };
 		25D5437522307C8C00ED90FA /* CompatibleAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D5436E22306E2D00ED90FA /* CompatibleAnimationView.swift */; };
-		4866743322249C0600258C00 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866743222249C0600258C00 /* TextCompositionLayer.swift */; };
-		4866743522249C0600258C00 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866743222249C0600258C00 /* TextCompositionLayer.swift */; };
-		4866743622249C0600258C00 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866743222249C0600258C00 /* TextCompositionLayer.swift */; };
-		4866743722249C0600258C00 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866743222249C0600258C00 /* TextCompositionLayer.swift */; };
+		37A137F42265AF5B00E371E5 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8724220B78BF007CD915 /* TextCompositionLayer.swift */; };
+		37A137F52265AF5C00E371E5 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8724220B78BF007CD915 /* TextCompositionLayer.swift */; };
 		4866744122249C4E00258C00 /* TextAnimatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866744022249C4E00258C00 /* TextAnimatorNode.swift */; };
 		4866744222249C4E00258C00 /* TextAnimatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866744022249C4E00258C00 /* TextAnimatorNode.swift */; };
 		4866744322249C4E00258C00 /* TextAnimatorNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866744022249C4E00258C00 /* TextAnimatorNode.swift */; };
@@ -404,7 +402,6 @@
 		486E891E220B78FF007CD915 /* PointValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E871E220B78BF007CD915 /* PointValueProvider.swift */; };
 		486E891F220B78FF007CD915 /* CompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8722220B78BF007CD915 /* CompositionLayer.swift */; };
 		486E8920220B78FF007CD915 /* NullCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8723220B78BF007CD915 /* NullCompositionLayer.swift */; };
-		486E8921220B78FF007CD915 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8724220B78BF007CD915 /* TextCompositionLayer.swift */; };
 		486E8922220B78FF007CD915 /* SolidCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8725220B78BF007CD915 /* SolidCompositionLayer.swift */; };
 		486E8923220B78FF007CD915 /* PreCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8726220B78BF007CD915 /* PreCompositionLayer.swift */; };
 		486E8924220B78FF007CD915 /* ImageCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8727220B78BF007CD915 /* ImageCompositionLayer.swift */; };
@@ -617,6 +614,7 @@
 		486E89F3220B790E007CD915 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E879D220B78BF007CD915 /* Interpolatable.swift */; };
 		486E89F4220B790E007CD915 /* KeyframeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E879E220B78BF007CD915 /* KeyframeExtensions.swift */; };
 		486E89F5220B790E007CD915 /* AnimationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E87A0220B78BF007CD915 /* AnimationContext.swift */; };
+		48F4EECD229F167F00949A97 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8724220B78BF007CD915 /* TextCompositionLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -634,7 +632,6 @@
 /* Begin PBXFileReference section */
 		25D5436E22306E2D00ED90FA /* CompatibleAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleAnimationView.swift; sourceTree = "<group>"; };
 		25D543702230787900ED90FA /* CompatibleAnimationKeypath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibleAnimationKeypath.swift; sourceTree = "<group>"; };
-		4866743222249C0600258C00 /* TextCompositionLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCompositionLayer.swift; sourceTree = "<group>"; };
 		4866744022249C4E00258C00 /* TextAnimatorNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAnimatorNode.swift; sourceTree = "<group>"; };
 		486E8395220A3038007CD915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		486E83B2220A317C007CD915 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -995,7 +992,6 @@
 				486E8727220B78BF007CD915 /* ImageCompositionLayer.swift */,
 				486E8728220B78BF007CD915 /* ShapeCompositionLayer.swift */,
 				486E8729220B78BF007CD915 /* MaskContainerLayer.swift */,
-				4866743222249C0600258C00 /* TextCompositionLayer.swift */,
 			);
 			path = CompLayers;
 			sourceTree = "<group>";
@@ -1447,11 +1443,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = YurtvilleProds;
 				TargetAttributes = {
 					486E83B1220A317C007CD915 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 					};
 					486E84E1220A357D007CD915 = {
 						CreatedOnToolsVersion = 10.0;
@@ -1473,6 +1470,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 486E8387220A3038007CD915;
 			productRefGroup = 486E8392220A3038007CD915 /* Products */;
@@ -1522,7 +1520,6 @@
 				486E87A3220B78D1007CD915 /* AnimationPublic.swift in Sources */,
 				486E87A4220B78D1007CD915 /* AnimationImageProvider.swift in Sources */,
 				486E87A5220B78D1007CD915 /* FilepathImageProvider.swift in Sources */,
-				4866743322249C0600258C00 /* TextCompositionLayer.swift in Sources */,
 				486E87A6220B78D1007CD915 /* AnimatedSwitch.swift in Sources */,
 				486E87A7220B78D1007CD915 /* BundleImageProvider.swift in Sources */,
 				486E87A8220B78D1007CD915 /* UIColorExtension.swift in Sources */,
@@ -1589,6 +1586,7 @@
 				486E87E4220B78D1007CD915 /* RenderNode.swift in Sources */,
 				486E87E5220B78D1007CD915 /* AnimatorNode.swift in Sources */,
 				25D543712230787900ED90FA /* CompatibleAnimationKeypath.swift in Sources */,
+				37A137F52265AF5C00E371E5 /* TextCompositionLayer.swift in Sources */,
 				486E87E6220B78D1007CD915 /* Ellipse.swift in Sources */,
 				486E87E7220B78D1007CD915 /* Trim.swift in Sources */,
 				486E87E8220B78D1007CD915 /* ShapeItem.swift in Sources */,
@@ -1875,8 +1873,8 @@
 				486E88F9220B78F4007CD915 /* AnimatorNodeDebugging.swift in Sources */,
 				486E88FA220B78F4007CD915 /* CGFloatExtensions.swift in Sources */,
 				486E88FB220B78F4007CD915 /* AnimationKeypathExtension.swift in Sources */,
-				4866743522249C0600258C00 /* TextCompositionLayer.swift in Sources */,
 				486E88FC220B78F4007CD915 /* MathKit.swift in Sources */,
+				37A137F42265AF5B00E371E5 /* TextCompositionLayer.swift in Sources */,
 				486E88FD220B78F4007CD915 /* StringExtensions.swift in Sources */,
 				486E88FE220B78F4007CD915 /* BezierPath.swift in Sources */,
 				486E88FF220B78F4007CD915 /* CompoundBezierPath.swift in Sources */,
@@ -1904,12 +1902,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48F4EECD229F167F00949A97 /* TextCompositionLayer.swift in Sources */,
 				486E8908220B78FF007CD915 /* AnimationViewInitializers.swift in Sources */,
 				486E8909220B78FF007CD915 /* AnimationView.swift in Sources */,
 				486E890A220B78FF007CD915 /* AnimationPublic.swift in Sources */,
 				486E890B220B78FF007CD915 /* AnimationImageProvider.swift in Sources */,
 				486E890C220B78FF007CD915 /* FilepathImageProvider.swift in Sources */,
-				4866743622249C0600258C00 /* TextCompositionLayer.swift in Sources */,
 				486E890D220B78FF007CD915 /* AnimatedSwitch.swift in Sources */,
 				486E890E220B78FF007CD915 /* BundleImageProvider.swift in Sources */,
 				486E890F220B78FF007CD915 /* UIColorExtension.swift in Sources */,
@@ -1931,7 +1929,6 @@
 				486E891F220B78FF007CD915 /* CompositionLayer.swift in Sources */,
 				486E8920220B78FF007CD915 /* NullCompositionLayer.swift in Sources */,
 				25D5437522307C8C00ED90FA /* CompatibleAnimationView.swift in Sources */,
-				486E8921220B78FF007CD915 /* TextCompositionLayer.swift in Sources */,
 				486E8922220B78FF007CD915 /* SolidCompositionLayer.swift in Sources */,
 				486E8923220B78FF007CD915 /* PreCompositionLayer.swift in Sources */,
 				486E8924220B78FF007CD915 /* ImageCompositionLayer.swift in Sources */,
@@ -2133,7 +2130,6 @@
 				486E89E7220B790E007CD915 /* AnimatorNodeDebugging.swift in Sources */,
 				486E89E8220B790E007CD915 /* CGFloatExtensions.swift in Sources */,
 				486E89E9220B790E007CD915 /* AnimationKeypathExtension.swift in Sources */,
-				4866743722249C0600258C00 /* TextCompositionLayer.swift in Sources */,
 				486E89EA220B790E007CD915 /* MathKit.swift in Sources */,
 				486E89EB220B790E007CD915 /* StringExtensions.swift in Sources */,
 				486E89EC220B790E007CD915 /* BezierPath.swift in Sources */,
@@ -2286,6 +2282,7 @@
 		486E83B8220A317C007CD915 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -2305,7 +2302,7 @@
 				PRODUCT_NAME = Lottie;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2313,6 +2310,7 @@
 		486E83B9220A317C007CD915 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -2332,7 +2330,7 @@
 				PRODUCT_NAME = Lottie;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2340,6 +2338,7 @@
 		486E84E8220A357D007CD915 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -2359,7 +2358,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2368,6 +2367,7 @@
 		486E84E9220A357D007CD915 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -2387,7 +2387,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -2396,6 +2396,7 @@
 		486E856D220A3606007CD915 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2418,13 +2419,14 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		486E856E220A3606007CD915 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2447,7 +2449,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2460,7 +2462,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Lottie;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2473,7 +2475,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Lottie;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2490,7 +2492,7 @@
 				PRODUCT_NAME = Lottie;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2505,7 +2507,7 @@
 				PRODUCT_NAME = Lottie;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
