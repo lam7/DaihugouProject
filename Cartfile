@@ -1,5 +1,5 @@
     github "NIFTYCloud-mbaas/ncmb_ios"
-    github "realm/realm-cocoa"
+    github "realm/realm-cocoa" "tg/xcode-11-b1"
     github "sachinkesiraju/SKSplashView"
     github "HeroTransitions/Hero"
     github "zhxnlai/ZLSwipeableViewSwift"

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xlp-my-rpu">
-    <device id="retina4_7" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xlp-my-rpu">
+    <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -159,10 +157,6 @@
                                     <action selector="next:" destination="xlp-my-rpu" eventType="touchUpInside" id="khr-XG-SBw"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDC-Kp-qVg" customClass="TapableView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96K-ij-P3g" customClass="ClosableCharacterDetailView" customModule="DaihugouBattle" customModuleProvider="target">
                                 <rect key="frame" x="66.5" y="19" width="534" height="337.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,19 +183,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="0gh-Gj-ATc"/>
-                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="1kk-Yj-ifG"/>
                             <constraint firstItem="cnF-pk-ch3" firstAttribute="top" secondItem="BfO-2B-2fJ" secondAttribute="top" id="4wX-KX-1rt"/>
                             <constraint firstItem="uem-IH-K36" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="71s-qD-oXt"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="8xM-si-4Vu"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="ADv-xT-UqM"/>
                             <constraint firstItem="96K-ij-P3g" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" multiplier="0.9" id="CAE-OR-b6S"/>
                             <constraint firstItem="WGF-s9-3Ci" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="Gck-uC-y1F"/>
-                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" id="Id0-CV-zOd"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="trailing" secondItem="cnF-pk-ch3" secondAttribute="trailing" id="IrT-jR-ePo"/>
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="centerX" secondItem="BfO-2B-2fJ" secondAttribute="centerX" id="Kwh-qV-1Oq"/>
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="height" secondItem="cps-eo-40A" secondAttribute="height" multiplier="0.5" id="LJ6-rG-5MN"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="trailing" secondItem="W8B-Ur-J3C" secondAttribute="trailing" constant="10" id="Osb-Sx-KME"/>
-                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="width" secondItem="cps-eo-40A" secondAttribute="width" id="P6u-Jm-Da5"/>
                             <constraint firstItem="biD-43-NjD" firstAttribute="centerX" secondItem="iHI-b9-x2a" secondAttribute="centerX" id="PB4-44-I5u"/>
                             <constraint firstItem="jop-Mx-4rV" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="Q9X-pe-Mqu"/>
                             <constraint firstItem="W8B-Ur-J3C" firstAttribute="top" secondItem="BfO-2B-2fJ" secondAttribute="top" constant="10" id="QMn-BM-jl9"/>
@@ -234,7 +225,6 @@
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="bottom" secondItem="rYc-hF-hFI" secondAttribute="bottom" constant="20" id="oFj-bL-SgG"/>
                             <constraint firstItem="iHI-b9-x2a" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" constant="20" id="pS1-PK-CaL"/>
                             <constraint firstItem="BfO-2B-2fJ" firstAttribute="bottom" secondItem="cnF-pk-ch3" secondAttribute="bottom" id="qb4-t2-77m"/>
-                            <constraint firstItem="iDC-Kp-qVg" firstAttribute="centerY" secondItem="BfO-2B-2fJ" secondAttribute="centerY" id="qvJ-in-ZUV"/>
                             <constraint firstItem="Wgd-vw-7Ii" firstAttribute="centerY" secondItem="iHI-b9-x2a" secondAttribute="centerY" id="rMP-FF-8RJ"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="top" secondItem="a86-6P-sVe" secondAttribute="bottom" constant="5" id="tAb-5U-84u"/>
                             <constraint firstItem="5Lc-yV-VhY" firstAttribute="leading" secondItem="rYc-hF-hFI" secondAttribute="leading" id="vdm-tT-oFG"/>
@@ -284,7 +274,6 @@
                         <outlet property="particleView" destination="cnF-pk-ch3" id="6N6-SV-NRp"/>
                         <outlet property="sceneView" destination="jop-Mx-4rV" id="9lU-J9-Fmz"/>
                         <outlet property="skipButton" destination="W8B-Ur-J3C" id="z9z-th-RhA"/>
-                        <outlet property="tapableView" destination="iDC-Kp-qVg" id="Awh-f7-xC8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZwR-Ko-I06" userLabel="First Responder" sceneMemberID="firstResponder"/>

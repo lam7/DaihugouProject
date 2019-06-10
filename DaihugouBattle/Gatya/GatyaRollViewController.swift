@@ -11,14 +11,14 @@ import UIKit
 import SpriteKit
 
 class GatyaRollViewController: UIViewController{
-    @IBOutlet weak var tapableView: TapableView!
-    @IBOutlet weak var closableView: OutOfFrameCloseView!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!{
         didSet{
-            closableView.targetView = characterDetailView
+            let v = OutOfFrameCloseView()
+            v.targetView = characterDetailView
+            v.show()
         }
     }
     @IBOutlet weak var cardsView: UIView!

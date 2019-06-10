@@ -369,6 +369,7 @@
 		AA8ADD1920902D0500AEAFB1 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateDefine.swift; sourceTree = "<group>"; };
+		AA944CF222AD3C4800FEB406 /* RxRelay.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxRelay.framework.dSYM; path = Carthage/Build/iOS/RxRelay.framework.dSYM; sourceTree = "<group>"; };
 		AA95767620232B860023402A /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		AA98C90720CAB77F00FC8CE7 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		AA9DA11421AE2A3A0047E410 /* SelectTrueOrFalseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrueOrFalseView.swift; sourceTree = "<group>"; };
@@ -715,6 +716,7 @@
 		AA7B2FFF1F73DA9E00628FD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA944CF222AD3C4800FEB406 /* RxRelay.framework.dSYM */,
 				AA1F9CA62259F55600E0C9BF /* XcodeKit.framework */,
 				AA514B1C22125B8E00EBADE7 /* GlitchLabel.framework */,
 				AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */,

@@ -134,7 +134,7 @@ class HUD: NSObject{
     enum MaskType{
         case outOfFrameDark, outOfFrameClear, outOfFrameDarkBlur, closableDark, closableClear, closableDarkBlur, dark, darkBlur, clear
         
-        fileprivate func view()-> UIView{
+        func view()-> UIView{
             func setDarkView(_ view: UIView){
                 view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.7003616266)
             }
