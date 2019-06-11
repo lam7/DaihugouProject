@@ -32,5 +32,7 @@ class SceneView: UIView{
         scene.backgroundColor = .clear
         skView.backgroundColor = .clear
         backgroundColor = .clear
+        
+        skView.isHidden = true
     }
 }

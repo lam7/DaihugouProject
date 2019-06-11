@@ -42,6 +42,7 @@ class TDPView: UIView{
         addSubview(sceneView)
         self.sceneView = sceneView
         tdpScene.scaleMode = .aspectFill
+        sceneView.backgroundColor = .clear
         backgroundColor = .clear
         
     }

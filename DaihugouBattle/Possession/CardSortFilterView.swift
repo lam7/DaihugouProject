@@ -63,14 +63,7 @@ import RxSwift
     var rarities: Variable<Set<CardRarity>> = Variable([])
     var sortBy: Variable<CardsSort.SortBy>! = Variable(.id)
     var sortIsAsc: Variable<Bool>! = Variable(true)
-    
-//    var sortBy: Observable<CardsSortBy>{
-//        return sortByVar.asObservable()
-//    }
-//    var sortIsAsc: Observable<Bool>{
-//        return sortIsAscVar.asObservable()
-//    }
-    
+
     let disposeBag = DisposeBag()
     
     override func awakeFromNib() {

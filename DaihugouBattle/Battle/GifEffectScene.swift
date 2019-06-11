@@ -27,7 +27,6 @@ class GifEffectScene: SKScene{
     var gifNodes: [GifEffectNode] = []
 
     func createNode(gif data: Data, position: CGPoint){
-        
         let node = GifEffectNode(gif: data)
         node.position = position
         node.color = .clear

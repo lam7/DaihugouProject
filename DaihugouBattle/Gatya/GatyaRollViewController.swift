@@ -16,9 +16,7 @@ class GatyaRollViewController: UIViewController{
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!{
         didSet{
-            let v = OutOfFrameCloseView()
-            v.targetView = characterDetailView
-            v.show()
+            OutOfFrameCloseView.show(characterDetailView)
         }
     }
     @IBOutlet weak var cardsView: UIView!

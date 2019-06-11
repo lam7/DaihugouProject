@@ -12,34 +12,50 @@ import RxSwift
 
 protocol ClosableView where Self: UIView{
     var closeAction: (()->())? { set get }
+    func closeView()
 }
 
-class OutOfFrameCloseView: ClipFullScreenView, HUDable{
+extension ClosableView{
+    func closeView(){
+        self.isHidden = true
+    }
+}
+
+class OutOfFrameCloseView: UIView, HUDable{
     let disposeBag = DisposeBag()
+    weak var targetView: UIView?
     
-    override var isHidden: Bool{
-        didSet{
-            if isHidden{
-                closeView()
-            }else{
-                openView()
-            }
-        }
+    @discardableResult
+    static func show(_ targetView: UIView?)-> OutOfFrameCloseView{
+        let v = OutOfFrameCloseView()
+        v.show()
+        v.targetView = targetView
+        v.setUpTargetView()
     }
     
-    override func setUpTargetView() {
-        super.setUpTargetView()
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if let t = targetView?.hitTest(point, with: event){
+            return t
+        }
+        return self
+    }
+    
+    func setUpTargetView() {
+        self.layer.mask = targetView?.layer
         if let closableView = targetView as? ClosableView{
             closableView.closeAction = closeView
         }
-        targetView.rx
-            .observe(Bool.self, "isHidden")
+         targetView.rx
+            .observeWeakly(Bool.self, "isHidden")
             .flatMap({ $0.map{ Observable.just($0) } ?? Observable.empty() })
             .bind(to: self.rx.isHidden)
             .disposed(by: disposeBag)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(OutOfFrameCloseView.tap(_:)))
         addGestureRecognizer(tapGesture)
+        
+//        setNeedsDisplay()
+//        layoutIfNeeded()
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer) {
@@ -48,34 +64,11 @@ class OutOfFrameCloseView: ClipFullScreenView, HUDable{
     
     func closeView(){
         self.isHidden = true
-        targetView.isHidden = true
+        targetView?.isHidden = true
     }
     
     func openView(){
         self.isHidden = false
-        targetView.isHidden = false
-    }
-}
-
-
-class ClipFullScreenView: UIView{
-    ///このViewの領域を切り抜く
-    weak var targetView: UIView!{
-        didSet{
-            setUpTargetView()
-        }
-    }
-    
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if targetView.hitTest(point, with: event) != nil{
-            return nil
-        }
-        return super.hitTest(point, with: event)
-    }
-    
-    func setUpTargetView(){
-        self.layer.mask = targetView.layer
-        setNeedsDisplay()
-        layoutIfNeeded()
+        targetView?.isHidden = false
     }
 }

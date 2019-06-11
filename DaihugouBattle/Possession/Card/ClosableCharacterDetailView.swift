@@ -21,10 +21,7 @@ import UIKit
     @IBOutlet weak var closeButton: UIButton!
     
     @IBAction func touchUp(_ sender: UIButton){
-        closeAction?()
-    }
-    
-    private func close(){
-        
+        let closeAction = self.closeAction ?? self.closeView
+        closeAction()
     }
 }
