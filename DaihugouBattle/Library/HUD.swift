@@ -43,7 +43,7 @@ protocol HUDable where Self: UIView{
     func dismiss()
 }
 
-extension HUDable{
+extension HUDable{    
     func show(){
         let windows = UIApplication.shared.windows
         var w: UIWindow!
@@ -56,7 +56,7 @@ extension HUDable{
             }
         }
         w = w ?? UIApplication.shared.keyWindow
-        
+        w.parentViewController()
         w.addSubview(self)
         frame.origin = CGPoint.zero
         autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
@@ -152,14 +152,14 @@ class HUD: NSObject{
             
             switch self{
             case .outOfFrameDark:
-                let view = OutOfFrameCloseView(frame: .zero)
+                let view = OuterFrameClosableView(frame: .zero)
                 setDarkView(view)
                 return view
             case .outOfFrameClear:
-                let view = OutOfFrameCloseView(frame: .zero)
+                let view = OuterFrameClosableView(frame: .zero)
                 return view
             case .outOfFrameDarkBlur:
-                let view = OutOfFrameCloseView(frame: .zero)
+                let view = OuterFrameClosableView(frame: .zero)
                 setDarkBlurView(view)
                 return view
             case .closableDark:

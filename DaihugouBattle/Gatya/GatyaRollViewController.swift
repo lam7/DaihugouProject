@@ -14,11 +14,7 @@ class GatyaRollViewController: UIViewController{
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!{
-        didSet{
-            OutOfFrameCloseView.show(characterDetailView)
-        }
-    }
+    @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!
     @IBOutlet weak var cardsView: UIView!
     @IBOutlet weak var cardOriginalView: UIView!
     @IBOutlet weak var packImageView: UIImageView!
@@ -72,6 +68,7 @@ class GatyaRollViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        OuterFrameClosableView.show(characterDetailView)
         backgroundImageView.image = DataRealm.get(imageNamed: "gatyaStandartBackground.png")
         ManageAudio.shared.addAudioFromRealm("se_gatya_iainuki.mp3", audioType: .se)
         ManageAudio.shared.addAudioFromRealm("se_card_flip.mp3", audioType: .se)
@@ -123,18 +120,11 @@ class GatyaRollViewController: UIViewController{
         skipButton.isHidden = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func didMove(toParent parent: UIViewController?) {
         getCards = []
         selectedCard = nil
         ManageAudio.shared.removeAudio("se_gatya_iainuki.mp3")
         ManageAudio.shared.removeAudio("se_card_flip.mp3")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        // 遷移後もタッチが反応してしまうのでタッチできないようにする
-        self.view.isUserInteractionEnabled = false
     }
     
     private func present(_ error: Error, completion: (() -> ())!){

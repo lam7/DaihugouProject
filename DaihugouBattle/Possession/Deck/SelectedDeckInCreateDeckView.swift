@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import SVProgressHUD
 
-class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
+class SelectedDeckInCreateDeckView: UINibView{
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameChangingButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -24,8 +24,6 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
     @IBOutlet weak var deckFormingButton: UIButton!
     @IBOutlet weak var deckConfirmingButton: UIButton!
     
-    weak var behindView: UIView?
-    
     var updateDecks: (() -> ())?
     
     var deck: DeckRelated!{
@@ -33,16 +31,6 @@ class SelectedDeckInCreateDeckView: UINibView, BlockableOutsideTouchView{
             nameLabel.text = deck.name
             cardSleeveImageView.image = RealmImageCache.shared.image("cardBack.png")
             deckIndexBarGraph.indexCounts(from: deck)
-        }
-    }
-    
-    override func didMoveToSuperview() {
-        behindView = setUpBehindView()
-    }
-    
-    override func willMove(toSuperview newSuperview: UIView?) {
-        if newSuperview == nil{
-            behindView?.removeSafelyFromSuperview()
         }
     }
     

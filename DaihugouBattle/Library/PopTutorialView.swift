@@ -1,5 +1,5 @@
 //
-//  TutorialView.swift
+//  PopTutorialView.swift
 //  DaihugouBattle
 //
 //  Created by main on 2018/11/06.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TutorialView: UIView{
+class PopTutorialView: UIView{
     weak var maskLayer: CAShapeLayer!{
         didSet{
             maskLayer.fillRule = .evenOdd

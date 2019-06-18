@@ -38,7 +38,7 @@
 		AA17A365201ADE9E000FB55E /* TouchBeganParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */; };
 		AA1D1CD51F92E8D1001FE74B /* GatyaSheetSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */; };
 		AA1F9CA82259F56C00E0C9BF /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0361FE0E0C50099E71C /* Hero.framework */; };
-		AA22B6B2219133F900E89409 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B6B1219133F900E89409 /* TutorialView.swift */; };
+		AA22B6B2219133F900E89409 /* PopTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B6B1219133F900E89409 /* PopTutorialView.swift */; };
 		AA255FE9200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */; };
 		AA2692F9207B92F300631C3D /* Debug_GiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */; };
 		AA2692FB207B930300631C3D /* Debug_GiftItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */; };
@@ -120,8 +120,9 @@
 		AA84978F1F947C3F00DD6899 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA84978E1F947C3F00DD6899 /* LoadingView.xib */; };
 		AA8497931F948D1400DD6899 /* CharacterDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8497921F948D1400DD6899 /* CharacterDetailView.xib */; };
 		AA8497951F948E3A00DD6899 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8497941F948E3A00DD6899 /* CharacterDetailView.swift */; };
+		AA88DD5322B12D8000F96090 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA88DD5222B12D8000F96090 /* RxRelay.framework */; };
+		AA88DD5422B12D8000F96090 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA88DD5222B12D8000F96090 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA89C0B71F7E6FC800218655 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89C0B61F7E6FC800218655 /* HomeViewController.swift */; };
-		AA8ADD1620902D0300AEAFB1 /* Hydra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF134FE202411D5002A472E /* Hydra.framework */; };
 		AA8E770520E4FDDF00D31049 /* PrivateDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */; };
 		AA95767720232B860023402A /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95767620232B860023402A /* SceneView.swift */; };
 		AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA98C90720CAB77F00FC8CE7 /* FrameView.swift */; };
@@ -137,7 +138,7 @@
 		AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */; };
 		AAA86F6320AA7598002A3E8D /* SkillAbilityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */; };
 		AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */; };
-		AAAD8AD422A3A34B00ED441A /* CloseViewOutOfFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD8AD322A3A34B00ED441A /* CloseViewOutOfFrame.swift */; };
+		AAAD8AD422A3A34B00ED441A /* OutOfFrameCloseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD8AD322A3A34B00ED441A /* OutOfFrameCloseView.swift */; };
 		AAB0F4E220725979004D9C93 /* ManageAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB0F4E120725979004D9C93 /* ManageAudio.swift */; };
 		AAB19B2220AD3BCB004161F5 /* DeckSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */; };
 		AAB19B2420AD3BE8004161F5 /* DeckSelectPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */; };
@@ -160,6 +161,8 @@
 		AACDC0CF215F97EC00C30ADB /* cardInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = AACDC0CE215F97EC00C30ADB /* cardInfo.json */; };
 		AACDC0D1215F97F600C30ADB /* cardSkill.json in Resources */ = {isa = PBXBuildFile; fileRef = AACDC0D0215F97F600C30ADB /* cardSkill.json */; };
 		AAD65B351F88D7E8004A121B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B341F88D7E8004A121B /* StartViewController.swift */; };
+		AAD76C4B22B679790020586A /* BattleTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD76C4A22B679790020586A /* BattleTutorialViewController.swift */; };
+		AAD76C4D22B67AD40020586A /* TutorialBattleMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD76C4C22B67AD40020586A /* TutorialBattleMaster.swift */; };
 		AAD78AEF2179A1920033A313 /* DeckIndexBarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */; };
 		AAD9307A20C64FE9005488C5 /* GatyaResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD9307920C64FE9005488C5 /* GatyaResultView.xib */; };
 		AAD9308620C699B9005488C5 /* IndexLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9308520C699B9005488C5 /* IndexLabel.swift */; };
@@ -185,6 +188,7 @@
 		AADE54931F72440F00DF83BF /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54851F72440E00DF83BF /* CPU.swift */; };
 		AADE54991F724D4300DF83BF /* CreateDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE54981F724D4300DF83BF /* CreateDeck.swift */; };
 		AAE087F620F59F5B00586167 /* TDPVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE087F520F59F5B00586167 /* TDPVIewController.swift */; };
+		AAE1A3A622B6352E000C980B /* TutorialBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A3A522B6352E000C980B /* TutorialBattle.swift */; };
 		AAE5B4072157D1F400463F28 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE5B4062157D1F400463F28 /* ImageCache.swift */; };
 		AAE5B9B7220294170084A16D /* BattleMulti.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE5B9B6220294170084A16D /* BattleMulti.storyboard */; };
 		AAE71DE220A28B7C00A591A4 /* Cametery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE71DE120A28B7C00A591A4 /* Cametery.swift */; };
@@ -237,6 +241,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AA88DD5522B12D8000F96090 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AA88DD5422B12D8000F96090 /* RxRelay.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1F6157F55B3031BB92BC2204 /* Pods-DaihugouBattle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.release.xcconfig"; sourceTree = "<group>"; };
 		2E3D5D0E98CC556D6E3CF99D /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,7 +293,7 @@
 		AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TouchBeganParticle.sks; sourceTree = "<group>"; };
 		AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaSheetSelectView.xib; sourceTree = "<group>"; };
 		AA1F9CA62259F55600E0C9BF /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
-		AA22B6B1219133F900E89409 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		AA22B6B1219133F900E89409 /* PopTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTutorialView.swift; sourceTree = "<group>"; };
 		AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup+DurationAdjuster.swift"; sourceTree = "<group>"; };
 		AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug_GiftItemView.swift; sourceTree = "<group>"; };
 		AA2692FA207B930300631C3D /* Debug_GiftItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Debug_GiftItemView.xib; sourceTree = "<group>"; };
@@ -363,6 +381,7 @@
 		AA84978E1F947C3F00DD6899 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		AA8497921F948D1400DD6899 /* CharacterDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailView.xib; sourceTree = "<group>"; };
 		AA8497941F948E3A00DD6899 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		AA88DD5222B12D8000F96090 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		AA89C0B61F7E6FC800218655 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AA8ADD1720902D0500AEAFB1 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -384,7 +403,7 @@
 		AAA8342721E5B56A00965D92 /* Pods_DaihugouBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DaihugouBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA86F6220AA7598002A3E8D /* SkillAbilityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAbilityList.swift; sourceTree = "<group>"; };
 		AAA96575206B75BF00E0493C /* ControllAsyncBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllAsyncBlock.swift; sourceTree = "<group>"; };
-		AAAD8AD322A3A34B00ED441A /* CloseViewOutOfFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseViewOutOfFrame.swift; sourceTree = "<group>"; };
+		AAAD8AD322A3A34B00ED441A /* OutOfFrameCloseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutOfFrameCloseView.swift; sourceTree = "<group>"; };
 		AAB0F4E120725979004D9C93 /* ManageAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAudio.swift; sourceTree = "<group>"; };
 		AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectView.swift; sourceTree = "<group>"; };
 		AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckSelectPageView.xib; sourceTree = "<group>"; };
@@ -407,6 +426,10 @@
 		AACDC0CE215F97EC00C30ADB /* cardInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardInfo.json; sourceTree = "<group>"; };
 		AACDC0D0215F97F600C30ADB /* cardSkill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cardSkill.json; sourceTree = "<group>"; };
 		AAD65B341F88D7E8004A121B /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AAD76C4422B678500020586A /* EAIntroView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EAIntroView.framework; path = Carthage/Build/iOS/EAIntroView.framework; sourceTree = "<group>"; };
+		AAD76C4722B678620020586A /* EARestrictedScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EARestrictedScrollView.framework; path = Carthage/Build/iOS/EARestrictedScrollView.framework; sourceTree = "<group>"; };
+		AAD76C4A22B679790020586A /* BattleTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleTutorialViewController.swift; sourceTree = "<group>"; };
+		AAD76C4C22B67AD40020586A /* TutorialBattleMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialBattleMaster.swift; sourceTree = "<group>"; };
 		AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckIndexBarGraph.swift; sourceTree = "<group>"; };
 		AAD9307920C64FE9005488C5 /* GatyaResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatyaResultView.xib; sourceTree = "<group>"; };
 		AAD9308520C699B9005488C5 /* IndexLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexLabel.swift; sourceTree = "<group>"; };
@@ -438,6 +461,7 @@
 		AADE54851F72440E00DF83BF /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		AADE54981F724D4300DF83BF /* CreateDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeck.swift; sourceTree = "<group>"; };
 		AAE087F520F59F5B00586167 /* TDPVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDPVIewController.swift; sourceTree = "<group>"; };
+		AAE1A3A522B6352E000C980B /* TutorialBattle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialBattle.swift; sourceTree = "<group>"; };
 		AAE5B4062157D1F400463F28 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		AAE5B9B6220294170084A16D /* BattleMulti.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BattleMulti.storyboard; sourceTree = "<group>"; };
 		AAE71DE120A28B7C00A591A4 /* Cametery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cametery.swift; sourceTree = "<group>"; };
@@ -485,6 +509,7 @@
 				AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */,
 				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
 				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
+				AA88DD5322B12D8000F96090 /* RxRelay.framework in Frameworks */,
 				AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */,
 				AA093EBB20AF06940005B0E4 /* SlowAnimations.framework in Frameworks */,
 				AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */,
@@ -496,7 +521,6 @@
 				AA4AA03D1FE0E0C50099E71C /* RealmSwift.framework in Frameworks */,
 				AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */,
 				AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */,
-				AA8ADD1620902D0300AEAFB1 /* Hydra.framework in Frameworks */,
 				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
 				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
 				AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */,
@@ -547,14 +571,14 @@
 				AA9DA11421AE2A3A0047E410 /* SelectTrueOrFalseView.swift */,
 				AAFC181E2077181B002B1C7B /* SelectTrueOrFalseView.xib */,
 				AA02D86520930951005B1B55 /* TextFieldWithToolBar.swift */,
-				AA22B6B1219133F900E89409 /* TutorialView.swift */,
+				AA22B6B1219133F900E89409 /* PopTutorialView.swift */,
 				AA0975DB1F7F8DEC00404F9C /* UICircleLabel.swift */,
 				AA0975DE1F7F8DEF00404F9C /* UIImage+Gif.swift */,
 				AABF925E208055DB00BA0441 /* UINibView.swift */,
 				AA0975DF1F7F8DEF00404F9C /* ZFRippleButton.swift */,
 				AAF28CA221B6378F0010B847 /* CollectionHeaderView.swift */,
 				AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */,
-				AAAD8AD322A3A34B00ED441A /* CloseViewOutOfFrame.swift */,
+				AAAD8AD322A3A34B00ED441A /* OutOfFrameCloseView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -562,6 +586,7 @@
 		AA1AC2DC1F80ADC6001BDEB2 /* Battle */ = {
 			isa = PBXGroup;
 			children = (
+				AAE1A3A422B63505000C980B /* Tutorial */,
 				AA671EE51F8522B600355759 /* Battle.storyboard */,
 				AA5541CF214A3D0A003A008B /* Model */,
 				AA5541D0214A3D2A003A008B /* ViewController */,
@@ -639,6 +664,7 @@
 				AA5541D5214E056B003A008B /* BattleDeck.swift */,
 				AA0241D3217D9C6B00FA9EF2 /* FirebaseBattleMaster.swift */,
 				AA0241D5217DCC8600FA9EF2 /* FirebaseBattleRoom.swift */,
+				AAD76C4C22B67AD40020586A /* TutorialBattleMaster.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +675,7 @@
 				AA3D3DB22099D81800AB4396 /* BattleCPUViewController.swift */,
 				AA3D3DB02099D60900AB4396 /* BattleMultiViewController.swift */,
 				AA0173DE1F85124400D9168A /* BattleViewController.swift */,
+				AAD76C4A22B679790020586A /* BattleTutorialViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -716,6 +743,9 @@
 		AA7B2FFF1F73DA9E00628FD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD76C4722B678620020586A /* EARestrictedScrollView.framework */,
+				AAD76C4422B678500020586A /* EAIntroView.framework */,
+				AA88DD5222B12D8000F96090 /* RxRelay.framework */,
 				AA944CF222AD3C4800FEB406 /* RxRelay.framework.dSYM */,
 				AA1F9CA62259F55600E0C9BF /* XcodeKit.framework */,
 				AA514B1C22125B8E00EBADE7 /* GlitchLabel.framework */,
@@ -847,6 +877,14 @@
 				AAE087F520F59F5B00586167 /* TDPVIewController.swift */,
 			);
 			path = TouchDownParticle;
+			sourceTree = "<group>";
+		};
+		AAE1A3A422B63505000C980B /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				AAE1A3A522B6352E000C980B /* TutorialBattle.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		AAFA8829206A29E70003CC14 /* Card */ = {
@@ -983,6 +1021,7 @@
 				AA5DBAD2209B3A260034DFC0 /* Fabric */,
 				E439DE16EA01853F39BCFAA1 /* [CP] Embed Pods Frameworks */,
 				6683DDC419F2AEA36B2AFE97 /* [CP] Copy Pods Resources */,
+				AA88DD5522B12D8000F96090 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1232,7 +1271,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/NCMB.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Hydra.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FLEX.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
@@ -1240,7 +1278,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Floaty.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Hero.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1394,6 +1432,8 @@
 				AAFA43521F9089700067F296 /* BattleSelectView.swift in Sources */,
 				AAE087F620F59F5B00586167 /* TDPVIewController.swift in Sources */,
 				AA554192214616F0003A008B /* ControllBattleDeck.swift in Sources */,
+				AAD76C4B22B679790020586A /* BattleTutorialViewController.swift in Sources */,
+				AAE1A3A622B6352E000C980B /* TutorialBattle.swift in Sources */,
 				AAD65B351F88D7E8004A121B /* StartViewController.swift in Sources */,
 				AAE71DE220A28B7C00A591A4 /* Cametery.swift in Sources */,
 				AAF36D751FCA98F1009809F6 /* GatyaParticleScene.swift in Sources */,
@@ -1470,12 +1510,13 @@
 				AAA96576206B75BF00E0493C /* ControllAsyncBlock.swift in Sources */,
 				AA4F315F2258E03900F7E1B3 /* HomeSelectButton.swift in Sources */,
 				AA0975E01F7F8DF000404F9C /* UICircleLabel.swift in Sources */,
+				AAD76C4D22B67AD40020586A /* TutorialBattleMaster.swift in Sources */,
 				AA9DA11721AE2B600047E410 /* Card.swift in Sources */,
 				AAD78AEF2179A1920033A313 /* DeckIndexBarGraph.swift in Sources */,
 				AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */,
 				AADE548C1F72440F00DF83BF /* Skill.swift in Sources */,
 				AA65BE442058C0260062AFFA /* Extension_CAAnimation.swift in Sources */,
-				AAAD8AD422A3A34B00ED441A /* CloseViewOutOfFrame.swift in Sources */,
+				AAAD8AD422A3A34B00ED441A /* OutOfFrameCloseView.swift in Sources */,
 				AA5541D6214E056B003A008B /* BattleDeck.swift in Sources */,
 				AAF16EE220C8EA7D0007417F /* IndexView.swift in Sources */,
 				AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */,
@@ -1500,7 +1541,7 @@
 				AAF04A5B1FC11E740019723B /* Extension.swift in Sources */,
 				AA6E70BE1F77583900A401AE /* DownloadViewController.swift in Sources */,
 				AA98C90820CAB77F00FC8CE7 /* FrameView.swift in Sources */,
-				AA22B6B2219133F900E89409 /* TutorialView.swift in Sources */,
+				AA22B6B2219133F900E89409 /* PopTutorialView.swift in Sources */,
 				AA5AB98920ABC4F00084B7FC /* SelectableView.swift in Sources */,
 				AAFA43501F9088C10067F296 /* CardSelectView.swift in Sources */,
 				AA3667EC20770F490012835E /* HomeSelectView.swift in Sources */,
@@ -1695,10 +1736,10 @@
 				);
 				HEADERMAP_USES_VFS = YES;
 				INFOPLIST_FILE = DaihugouBattle/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lam7.daihugouProject1111;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.lam7.daihugouProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1723,10 +1764,10 @@
 				);
 				HEADERMAP_USES_VFS = NO;
 				INFOPLIST_FILE = DaihugouBattle/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lam7.daihugouProject1111;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.lam7.daihugouProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;

@@ -9,30 +9,6 @@
 import Foundation
 import UIKit
 import RxSwift
-
-protocol BlockableOutsideTouchView where Self: UIView{
-    var behindView: UIView?{get set}
-    
-    func setUpBehindView()-> UIView?
-}
-
-extension BlockableOutsideTouchView{
-    func setUpBehindView()-> UIView?{
-        guard let v = superview,
-            let vc = self.parentViewController()?.view else{
-            return nil
-        }
-        
-        let frame = CGRect(x: -vc.bounds.width, y: -vc.bounds.height, width: vc.bounds.width * 2, height: vc.bounds.height * 2)
-        let color = UIColor.darkGray.withAlphaComponent(0.6)
-        let behind = UIView(frame: frame)
-        behind.backgroundColor = color
-        v.insertSubview(behind, belowSubview: self)
-        return behind
-    }
-}
-
-
 @IBDesignable class SettingSelectView: UINibView, SelectableView {
     weak var displayView: UIView?{
         didSet{
@@ -49,6 +25,7 @@ extension BlockableOutsideTouchView{
             let dy: CGFloat = 10
             let audioFrame = CGRect(x: dx, y: dy, width: self.frame.width - dx * 2, height: self.frame.height - dy * 2)
             let audioView = AudioVolumeSettingView(frame: audioFrame)
+            OuterFrameClosableView.show(audioView)
             self.addSubview(audioView)
             UIView.animateOpenWindow(audioView)
             self.displayView = audioView
@@ -60,6 +37,7 @@ extension BlockableOutsideTouchView{
             let height = self.frame.height * 0.3
             let nameFrame = CGRect(x: self.center.x - width / 2, y: 50, width: width, height: height)
             let nameView = PlayerNameSettingView(frame: nameFrame)
+            OuterFrameClosableView.show(nameView)
             self.addSubview(nameView)
             UIView.animateOpenWindow(nameView)
             self.displayView = nameView

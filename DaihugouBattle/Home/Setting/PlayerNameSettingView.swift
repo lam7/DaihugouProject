@@ -9,23 +9,11 @@
 import Foundation
 import UIKit
 
-class PlayerNameSettingView: UINibView, BlockableOutsideTouchView{
+class PlayerNameSettingView: UINibView{
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
-    weak var behindView: UIView?
     
-    override func didMoveToSuperview() {
-        behindView = setUpBehindView()
-        let tapGesure = UITapGestureRecognizer(target: self, action: #selector(AudioVolumeSettingView.tapBehind(_:)))
-        behindView?.addGestureRecognizer(tapGesure)
-    }
-
-    override func willMove(toSuperview newSuperview: UIView?) {
-        if newSuperview == nil{
-            behindView?.removeSafelyFromSuperview()
-        }
-    }
 
     @objc func tapBehind(_ sender: UITapGestureRecognizer){
         removeSafelyFromSuperview()

@@ -45,10 +45,10 @@ import UIKit
         let hiddenAnimation = CABasicAnimation.moveY(hiddenDuration, to: -bounds.height / 2)
         
         appearAnimation.beginTime = CACurrentMediaTime() + appearDelay
-        appearAnimation.timingFunction = .easeIn
+        appearAnimation.timingFunction = .init(name: .easeIn)
         
         hiddenAnimation.beginTime = CACurrentMediaTime() + appearDelay + appearDuration + hiddenDelay
-        hiddenAnimation.timingFunction = .easeOut
+        hiddenAnimation.timingFunction = .init(name: .easeOut)
         
         layer.removeAllAnimations()
         layer.add(appearAnimation, forKey: "appear")

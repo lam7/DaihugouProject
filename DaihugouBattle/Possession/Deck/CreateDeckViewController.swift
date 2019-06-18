@@ -176,6 +176,8 @@ class CreateDeckViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         LoadingView.show()
         let cards = CardsSort.sort(UserInfo.shared.cardsValue.map{ $0.key }, by: .id, isAsc: true)
         let nameds = cards.map{ $0.imageNamed } + "cardBack.png"

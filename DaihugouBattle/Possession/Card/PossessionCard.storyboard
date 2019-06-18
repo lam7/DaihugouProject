@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXU-gu-3cl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,11 +13,11 @@
             <objects>
                 <viewController id="heL-WB-htU" customClass="ZLSwipeableViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tdq-Pz-re9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtC-ST-yWb" customClass="ZLSwipeableView" customModule="ZLSwipeableViewSwift">
-                                <rect key="frame" x="120" y="175" width="360" height="270"/>
+                                <rect key="frame" x="83" y="350" width="248" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RtC-ST-yWb" secondAttribute="height" multiplier="4:3" id="EBM-o9-R3l"/>
@@ -43,14 +45,14 @@
             <objects>
                 <viewController id="jXU-gu-3cl" customClass="PossessionCardViewController" customModule="DaihugouBattle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FOL-Bj-37a">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rmp-6I-5Ve">
-                                <rect key="frame" x="0.0" y="10" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bji-io-cb9">
-                                <rect key="frame" x="0.0" y="70" width="600" height="530"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="30" id="RuK-fV-QZr">
                                     <size key="itemSize" width="50" height="50"/>
@@ -65,7 +67,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQ4-52-LGg">
-                                <rect key="frame" x="0.0" y="20" width="120" height="40"/>
+                                <rect key="frame" x="0.0" y="44" width="83" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="戻る">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,7 +77,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xe-S0-SlV">
-                                <rect key="frame" x="330" y="20" width="40" height="40"/>
+                                <rect key="frame" x="237" y="44" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9xe-S0-SlV" secondAttribute="height" multiplier="1:1" id="Wkk-xR-dcT"/>
                                 </constraints>
@@ -88,7 +90,7 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gJd-8d-Fwl">
-                                <rect key="frame" x="370" y="20" width="230" height="40"/>
+                                <rect key="frame" x="277" y="44" width="137" height="40"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -98,16 +100,12 @@
                                     <outlet property="delegate" destination="jXU-gu-3cl" id="kA8-87-BQF"/>
                                 </connections>
                             </searchBar>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-eZ-A4p" customClass="TapableView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="10" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view hidden="YES" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-FR-edE" customClass="CardSortFilterView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="60" y="40" width="480" height="540"/>
+                                <rect key="frame" x="41.5" y="50" width="331" height="806"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64z-H9-xTF" customClass="ClosableCharacterDetailView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="45" y="40" width="510" height="540"/>
+                                <rect key="frame" x="31" y="50" width="352" height="806"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <viewLayoutGuide key="safeArea" id="Sfa-i1-1a3"/>
@@ -115,9 +113,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="centerX" secondItem="L7l-jf-xvv" secondAttribute="centerX" id="0Pz-dT-Bw0"/>
                             <constraint firstItem="eMb-FR-edE" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="3fT-wc-i8j"/>
-                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="48P-L4-nCm"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="1:5" id="6QX-bZ-elg"/>
                             <constraint firstItem="L7l-jf-xvv" firstAttribute="bottom" secondItem="bji-io-cb9" secondAttribute="bottom" id="7v5-sU-MWm"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="Hir-zC-T5X"/>
@@ -128,7 +124,6 @@
                             <constraint firstItem="Rmp-6I-5Ve" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" id="OlO-BC-0Td"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="SQ4-52-LGg" secondAttribute="bottom" constant="10" id="PfM-Tx-yW4"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="Pw2-fb-iDs"/>
-                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" id="Sr7-Zf-ueD"/>
                             <constraint firstItem="eMb-FR-edE" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" multiplier="0.8" id="Xc5-wf-vEr"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="leading" secondItem="L7l-jf-xvv" secondAttribute="leading" id="aoj-qL-wM0"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="ard-y5-lQb"/>
@@ -137,7 +132,6 @@
                             <constraint firstItem="eMb-FR-edE" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="e1H-e6-7se"/>
                             <constraint firstItem="SQ4-52-LGg" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" id="eXF-Oa-lnT"/>
                             <constraint firstItem="gJd-8d-Fwl" firstAttribute="trailing" secondItem="L7l-jf-xvv" secondAttribute="trailing" id="ffX-TQ-oNX"/>
-                            <constraint firstItem="a7D-eZ-A4p" firstAttribute="width" secondItem="FOL-Bj-37a" secondAttribute="width" id="izi-tU-npe"/>
                             <constraint firstItem="Rmp-6I-5Ve" firstAttribute="centerY" secondItem="L7l-jf-xvv" secondAttribute="centerY" id="mLR-wY-bv7"/>
                             <constraint firstItem="64z-H9-xTF" firstAttribute="height" secondItem="FOL-Bj-37a" secondAttribute="height" multiplier="0.9" id="nHG-f2-v9m"/>
                             <constraint firstItem="bji-io-cb9" firstAttribute="top" secondItem="L7l-jf-xvv" secondAttribute="top" constant="50" id="nhR-Qx-eiK"/>
@@ -156,7 +150,6 @@
                         <outlet property="collectionView" destination="bji-io-cb9" id="GM9-Vg-8AP"/>
                         <outlet property="searchBar" destination="gJd-8d-Fwl" id="B3C-Hl-TI4"/>
                         <outlet property="sortFilterView" destination="eMb-FR-edE" id="Lvb-sb-Mw4"/>
-                        <outlet property="tapableView" destination="a7D-eZ-A4p" id="fa2-Dn-iMv"/>
                         <segue destination="heL-WB-htU" kind="show" identifier="swipeable" id="GKh-qC-SlQ"/>
                     </connections>
                 </viewController>

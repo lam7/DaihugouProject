@@ -21,23 +21,9 @@ import Foundation
 import UIKit
 
 
-@IBDesignable class AudioVolumeSettingView: UINibView, BlockableOutsideTouchView {
+@IBDesignable class AudioVolumeSettingView: UINibView {
     
     private weak var windowView: UIView!
-    weak var behindView: UIView?
-    
-    
-    override func didMoveToSuperview() {
-        behindView = setUpBehindView()
-        let tapGesure = UITapGestureRecognizer(target: self, action: #selector(AudioVolumeSettingView.tapBehind(_:)))
-        behindView?.addGestureRecognizer(tapGesure)
-    }
-    
-    override func willMove(toSuperview newSuperview: UIView?) {
-        if newSuperview == nil{
-            behindView?.removeSafelyFromSuperview()
-        }
-    }
     
     @objc func tapBehind(_ sender: UITapGestureRecognizer){
         removeSafelyFromSuperview()

@@ -115,7 +115,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             guard let `self` = self else {
                 return
             }
-            let tutorial = TutorialView(frame: self.view.bounds)
+            let tutorial = PopTutorialView(frame: self.view.bounds)
             self.view.addSubview(tutorial)
             tutorial.append(self.menuButton, description: "ボタンを押して")
             tutorial.descriptionDirection = .left
@@ -127,7 +127,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         ManageAudio.shared.addAudioFromLocal("勇者たちのララバイ.mp3",audioType: .bgm)
         ManageAudio.shared.play("勇者たちのララバイ.mp3")
         
@@ -139,7 +139,8 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
         projectEffectView.fadeoutAnimation()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
         ManageAudio.shared.removeAudio("勇者たちのララバイ.mp3")
     }
     

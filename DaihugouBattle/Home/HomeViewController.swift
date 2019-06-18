@@ -74,6 +74,7 @@ class HomeViewController: UIViewController{
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         if isFirst{
             let v = convertToView(HomeViewController.initialSelectViewType)
             let b = convertToButton(HomeViewController.initialSelectViewType)
@@ -85,13 +86,15 @@ class HomeViewController: UIViewController{
         }
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let bgm = DefineServer.shared.value("homeBGM") as! String
         ManageAudio.shared.addAudioFromRealm("click.mp3", audioType: .se)
         ManageAudio.shared.addAudioFromRealm(bgm,audioType: .bgm)
         ManageAudio.shared.play(bgm)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
         let bgm = DefineServer.shared.value("homeBGM") as! String
         ManageAudio.shared.removeAudio(bgm)
         ManageAudio.shared.removeAudio("click.mp3")

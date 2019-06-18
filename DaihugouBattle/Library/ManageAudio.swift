@@ -156,11 +156,15 @@ final class ManageAudio: NSObject, AVAudioPlayerDelegate{
     ///
     /// - Parameter audioNamed: 拡張子を含むファイル名
     func removeAudio(_ audioNamed: String){
+//        audiosWithType[audioNamed]?.1.pause()
         audiosWithType[audioNamed] = nil
     }
     
     /// キャッシュから全てのプレイヤーを削除する
     func removeAllAudios(){
+        audiosWithType.forEach{
+            $0.value.1.pause()
+        }
         audiosWithType.removeAll()
     }
     
@@ -168,8 +172,15 @@ final class ManageAudio: NSObject, AVAudioPlayerDelegate{
     ///
     /// - Parameter audioNamed: 拡張子を含むファイル名
     func play(_ audioNamed: String){
-        guard let audio = audios[audioNamed] else{
+        guard let audioWithType = audiosWithType[audioNamed] else{
             return
+        }
+        
+        let type = audioWithType.0
+        let audio = audioWithType.1
+        //iOS13環境で，viewDidDisappearが呼ばれないため，全BGMを一度止める
+        audiosWithType.filter{ type == .bgm && $0.value.0 == .bgm }.forEach{
+            $0.value.1.pause()
         }
         
         audio.currentTime = 0

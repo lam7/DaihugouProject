@@ -88,6 +88,7 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let bgm = DefineServer.shared.value("battleBGM") as? String ?? "神臨 -しんりん-.mp3"
         ManageAudio.shared.addAudioFromRealm(bgm, audioType: .bgm)
         ManageAudio.shared.play(bgm)
@@ -95,7 +96,8 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         ManageAudio.shared.addAudioFromRealm("se_battle_attack.mp3", audioType: .se)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
         let bgm = DefineServer.shared.value("battleBGM") as? String ?? "神臨 -しんりん-.mp3"
         ManageAudio.shared.removeAudio(bgm)
         ManageAudio.shared.removeAudio("se_battle_attack.mp3")
@@ -136,11 +138,6 @@ class BattleViewController: UIViewController, BattleFieldDelegate, TableDelegate
         spotView.enemyCardViews = enemyCardViews
         
         battleMaster.battleField.table.delegate = self
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.view.removeAllSubviews()
     }
     
     @IBAction func touchUpSetting(_ sender: Any) {

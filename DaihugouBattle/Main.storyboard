@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0V1-AU-9po">
-    <device id="retina5_5" orientation="landscape" appearance="light"/>
+    <device id="retina5_5" orientation="landscape" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
@@ -299,6 +299,6 @@ vvvvvsss</string>
         <image name="startBackground" width="1100" height="650"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="flQ-GY-itj"/>
+        <segue reference="Ot2-UO-Ps1"/>
     </inferredMetricsTieBreakers>
 </document>

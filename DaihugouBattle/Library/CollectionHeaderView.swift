@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SnapKit
 
 class CollectionHeaderView: UICollectionReusableView{
     @IBOutlet weak var headerLabel: UILabel!
