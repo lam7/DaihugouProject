@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina3_5" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="landscape" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,11 +21,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEx-aj-gyo">
-                    <rect key="frame" x="5" y="5" width="48" height="32"/>
+                    <rect key="frame" x="5" y="5" width="73.666666666666671" height="41.333333333333336"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                     <state key="normal" title="×">
                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -37,14 +35,14 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Fc-yM-N27">
-                    <rect key="frame" x="0.0" y="37" width="480" height="228"/>
+                    <rect key="frame" x="0.0" y="46.333333333333343" width="736" height="301"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gcl-4u-7fy">
-                    <rect key="frame" x="72" y="270" width="336" height="40"/>
+                    <rect key="frame" x="110.33333333333331" y="352.33333333333331" width="515.33333333333348" height="51.666666666666686"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHU-u9-Nu4">
-                            <rect key="frame" x="0.0" y="0.0" width="63" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="99" height="51.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="50"/>
                             <state key="normal" title="-">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,14 +52,14 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dep-8E-oAg">
-                            <rect key="frame" x="68" y="0.0" width="63.5" height="40"/>
+                            <rect key="frame" x="104" y="0.0" width="99" height="51.666666666666664"/>
                             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H66-cs-NxD">
-                            <rect key="frame" x="136.5" y="0.0" width="63" height="40"/>
+                            <rect key="frame" x="208.00000000000003" y="0.0" width="99.333333333333343" height="51.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <state key="normal" title="+">
                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -71,7 +69,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM1-uw-gQF">
-                            <rect key="frame" x="204.5" y="0.0" width="63.5" height="40"/>
+                            <rect key="frame" x="312.33333333333337" y="0.0" width="99" height="51.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <state key="normal" title="max">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,7 +79,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXE-sj-h41">
-                            <rect key="frame" x="273" y="0.0" width="63" height="40"/>
+                            <rect key="frame" x="416.33333333333331" y="0.0" width="98.999999999999943" height="51.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <inset key="titleEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="購入する">
@@ -94,7 +92,7 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所持数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOF-Bg-mtZ">
-                    <rect key="frame" x="180" y="225" width="120" height="40"/>
+                    <rect key="frame" x="276" y="295.66666666666669" width="184" height="51.666666666666686"/>
                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -120,6 +118,7 @@
                 <constraint firstItem="OOF-Bg-mtZ" firstAttribute="height" secondItem="gcl-4u-7fy" secondAttribute="height" id="wHy-2U-uyC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="141" y="156"/>
         </view>
     </objects>
 </document>
