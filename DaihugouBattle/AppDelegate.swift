@@ -13,6 +13,7 @@ import Fabric
 import Crashlytics
 import HyperionCore
 import FLEX
+import UserNotifications
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+        
+        // For iOS 10 display notification (sent via APNS)
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+//            UNUserNotificationCenter.current().delegate = self            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, error in
+                    if let error = error{
+                        print(error)
+                    }
+                    application.registerForRemoteNotifications()
+            })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        }
         return true
+    }
+    
+    // デバイストークンが取得されたら呼び出されるメソッド
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // 端末情報を扱うNCMBInstallationのインスタンスを作成
+        let installation : NCMBInstallation = NCMBInstallation.current()
+        // デバイストークンの設定
+        installation.setDeviceTokenFrom(deviceToken)
+        // 端末情報をデータストアに登録
+        installation.saveInBackground {error in
+            if error != nil {
+                // 端末情報の登録に失敗した時の処理
+            } else {
+                // 端末情報の登録に成功した時の処理
+            }
+        }
     }
     
     

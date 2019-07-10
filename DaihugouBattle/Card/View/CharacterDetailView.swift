@@ -21,9 +21,9 @@ import UIKit
     func set(card: Card){
         imageView.image = card.image
         nameLabel.text = card.name
-        hpLabel.text = "体力 " + card.hp.description
-        atkLabel.text = "攻撃力 " + card.atk.description
-        indexLabel.text = "インデックス " + card.index.description
+        hpLabel.text = card.hp.description
+        atkLabel.text = card.atk.description
+        indexLabel.text = card.index.description
         let text = card.skills.map{ $0.description }.reduce("", { $0 + $1 + "\n"})
         descriptionTextView.text = "レアリティ " + card.rarity.rawValue + "\n" + text
     }
