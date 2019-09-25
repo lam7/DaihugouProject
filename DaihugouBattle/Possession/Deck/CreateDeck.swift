@@ -50,6 +50,25 @@ class CreateDeck{
     init(deck: Deck?){
         self.deck = deck
     }
+    
+    /// デッキに指定のカードがあるかどうか確認する
+    ///
+    /// - Parameter possessionCards: あるかどうか確認するカード
+    /// - Returns: デッキになかったカード
+    private func notExistDeckCards(in possessionCards: CardCount, deck: Deck)-> CardCount{
+        var possessionCards = possessionCards
+        var notExistCards: CardCount = [:]
+        
+        for card in deck.cards.reversed(){
+            if possessionCards[card] != nil && possessionCards[card]! >= 1{
+                possessionCards -= card
+            }else{
+                notExistCards += card
+            }
+        }
+        return notExistCards
+    }
+
     ///所持カードをセットする
     final func set(possessionCards: CardCount){
         if let deck = self.deck{
