@@ -37,7 +37,6 @@
 		AA128C342166DE5400B78B23 /* BattleSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA128C332166DE5400B78B23 /* BattleSkillView.swift */; };
 		AA17A365201ADE9E000FB55E /* TouchBeganParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA17A364201ADE9E000FB55E /* TouchBeganParticle.sks */; };
 		AA1D1CD51F92E8D1001FE74B /* GatyaSheetSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1D1CD41F92E8D1001FE74B /* GatyaSheetSelectView.xib */; };
-		AA1F9CA82259F56C00E0C9BF /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0361FE0E0C50099E71C /* Hero.framework */; };
 		AA22B6B2219133F900E89409 /* PopTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22B6B1219133F900E89409 /* PopTutorialView.swift */; };
 		AA255FE9200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA255FE8200DDE4B00198C16 /* CAAnimationGroup+DurationAdjuster.swift */; };
 		AA2692F9207B92F300631C3D /* Debug_GiftItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2692F8207B92F300631C3D /* Debug_GiftItemView.swift */; };
@@ -505,7 +504,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA1F9CA82259F56C00E0C9BF /* Hero.framework in Frameworks */,
 				AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */,
 				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
 				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
@@ -1380,8 +1378,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework",
 				"${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GlitchLabel/GlitchLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -1395,8 +1395,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Canvas.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlatUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GlitchLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",

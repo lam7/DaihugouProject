@@ -93,6 +93,7 @@ class CreateDeckViewController: UIViewController{
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var statusDetailView: CharacterStatusDetailView!
     @IBOutlet weak var possessionSearchBar: UISearchBar!
+    weak var nameView: InputNameView?
     @IBOutlet weak var possessionCollectionView: UICollectionView!{
         didSet{
             possessionCollectionView.register(UINib(nibName: "CardSheetsStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -193,6 +194,9 @@ class CreateDeckViewController: UIViewController{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         statusDetailView.isHidden = true
+        if nameView?.textField.isEditing ?? false{
+            nameView?.endEditing(true)
+        }
     }
     
     @IBAction func pan(_ sender: UIPanGestureRecognizer){
@@ -307,17 +311,18 @@ class CreateDeckViewController: UIViewController{
             nameView.titleLabel.textColor = .white
             nameView.textField.delegate = self
             nameView.okButton.rx.tap.subscribe{ [weak self]_ in
-                self?.createDeck()
+                self?.didFinishFormingDeck()
             }.disposed(by: disposeBag)
             view.addSubview(nameView)
+            self.nameView = nameView
             
         }catch(let error){
             alert(error, actions: OKAlertAction, BackAlertAction)
         }
     }
     
-    private func createDeck(){
-        let deck = self.createDeck.create(nameView.textField.text ?? "")
+    private func didFinishFormingDeck(){
+        let deck = self.createDeck.create(nameView?.textField.text ?? "")
         UserInfo.shared.append(deck: deck, completion: { error in
             if let error = error{
                 self.alert(error, actions: self.BackAlertAction)
@@ -332,7 +337,6 @@ class CreateDeckViewController: UIViewController{
                                   name: UIResponder.keyboardWillShowNotification, object: nil)
          notification.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                   name: UIResponder.keyboardWillHideNotification, object: nil)
-         print("Notificationを発行")
     }
     
     /// キーボードが表示時に画面をずらす。
@@ -341,7 +345,7 @@ class CreateDeckViewController: UIViewController{
             let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         UIView.animate(withDuration: duration) {
             let transform = CGAffineTransform(translationX: 0, y: -(rect.size.height))
-            self.nameView.transform = transform
+            self.nameView?.transform = transform
         }
     }
     
@@ -349,14 +353,7 @@ class CreateDeckViewController: UIViewController{
     @objc func keyboardWillHide(_ notification: Notification?) {
         guard let duration = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? TimeInterval else { return }
         UIView.animate(withDuration: duration) {
-            self.nameView.transform = CGAffineTransform.identity
-        }
-    }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if nameView.textField.isEditing{
-            nameView.endEditing(true)
+            self.nameView?.transform = CGAffineTransform.identity
         }
     }
 }
@@ -371,8 +368,8 @@ extension CreateDeckViewController: UISearchBarDelegate{
 extension CreateDeckViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case nameView.textField:
-            createDeck()
+        case nameView?.textField:
+            didFinishFormingDeck()
         default:
             break
         }

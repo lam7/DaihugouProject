@@ -16,17 +16,19 @@ public enum LottieBackgroundBehavior {
   case pause
   /// Pause the animation and restart it when the application moves to the foreground. The completion block is stored and called when the animation completes.
   case pauseAndRestore
+  /// Stops the animation and sets it to the end of its current play time. The completion block is called.
+  case forceFinish
 }
 
 /// Defines animation loop behavior
 public enum LottieLoopMode {
   /// Animation is played once then stops.
   case playOnce
-  /// Animation will loop from end to beginning until stopped.
+  /// Animation will loop from beginning to end until stopped.
   case loop
   /// Animation will play forward, then backwards and loop until stopped.
   case autoReverse
-  /// Animation will loop from end to beginning up to defined amount of times.
+  /// Animation will loop from beginning to end up to defined amount of times.
   case `repeat`(Float)
   /// Animation will play forward, then backwards a defined amount of times.
   case repeatBackwards(Float)
@@ -92,7 +94,17 @@ final public class AnimationView: LottieView {
       reloadImages()
     }
   }
-  
+  /**
+   Sets the text provider for animation view. A text provider provides the
+   animation with values for text layers
+   */
+   public var textProvider: AnimationTextProvider {
+     didSet {
+       animationLayer?.textProvider = textProvider
+     }
+  }
+    
+    
   /// Returns `true` if the animation is currently playing.
   public var isAnimationPlaying: Bool {
     return animationLayer?.animation(forKey: activeAnimationName) != nil
@@ -213,6 +225,33 @@ final public class AnimationView: LottieView {
     }
   }
   
+  /**
+   Controls the cropping of an Animation. Setting this property will crop the animation
+   to the current views bounds by the viewport frame. The coordinate space is specified
+   in the animation's coordinate space.
+   
+   Animatable.
+  */
+  public var viewportFrame: CGRect? = nil {
+    didSet {
+      
+      /*
+       This is really ugly, but is needed to trigger a layout pass within an animation block.
+       Typically this happens automatically, when layout objects are UIView based.
+       The animation layer is a CALayer which will not implicitly grab the animation
+       duration of a UIView animation block.
+       
+       By setting bounds and then resetting bounds the UIView animation block's
+       duration and curve are captured and added to the layer. This is used in the
+       layout block to animate the animationLayer's position and size.
+       */
+      let rect = bounds
+      self.bounds = CGRect.zero
+      self.bounds = rect
+      self.setNeedsLayout()
+    }
+  }
+  
   // MARK: - Public Functions
   
   /**
@@ -263,8 +302,8 @@ final public class AnimationView: LottieView {
   /**
    Plays the animation from a start frame to an end frame in the animation's framerate.
    
-   - Parameter fromProgress: The start progress of the animation. If `nil` the animation will start at the current progress.
-   - Parameter toProgress: The end progress of the animation.
+   - Parameter fromFrame: The start frame of the animation. If `nil` the animation will start at the current frame.
+   - Parameter toFrame: The end frame of the animation.
    - Parameter loopMode: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
    - Parameter completion: An optional completion closure to be called when the animation stops.
    */
@@ -292,9 +331,9 @@ final public class AnimationView: LottieView {
    
    NOTE: If markers are not found the play command will exit.
    
-   - Parameter fromProgress: The start marker for the animation playback. If `nil` the
+   - Parameter fromMarker: The start marker for the animation playback. If `nil` the
    animation will start at the current progress.
-   - Parameter toProgress: The end marker for the animation playback.
+   - Parameter toMarker: The end marker for the animation playback.
    - Parameter loopMode: The loop behavior of the animation. If `nil` the view's `loopMode` property will be used.
    - Parameter completion: An optional completion closure to be called when the animation stops.
    */
@@ -349,7 +388,7 @@ final public class AnimationView: LottieView {
   public func reloadImages() {
     animationLayer?.reloadImages()
   }
-  
+    
   /// Forces the AnimationView to redraw its contents.
   public func forceDisplayUpdate() {
     animationLayer?.forceDisplayUpdate()
@@ -485,6 +524,26 @@ final public class AnimationView: LottieView {
     return animationLayer.convert(point, to: sublayer)
   }
   
+  // MARK: - Public (Animation Contents)
+  
+  /**
+   Sets the enabled state of all animator nodes found with the keypath search.
+   This can be used to interactively enable / disable parts of the animation.
+
+   - Parameter isEnabled: When true the animator nodes affect the rendering tree. When false the node is removed from the tree.
+   - Parameter keypath: The keypath used to find the node(s).
+   */
+  public func setNodeIsEnabled(isEnabled: Bool, keypath: AnimationKeypath) {
+    guard let animationLayer = animationLayer else { return }
+    let nodes = animationLayer.animatorNodes(for: keypath)
+    if let nodes = nodes {
+      for node in nodes {
+        node.isEnabled = isEnabled
+      }
+      self.forceDisplayUpdate()
+    }
+  }
+  
   // MARK: - Public (Markers)
   
   /**
@@ -524,9 +583,10 @@ final public class AnimationView: LottieView {
   // MARK: - Public (Initializers)
   
   /// Initializes a LottieView with an animation.
-  public init(animation: Animation?, imageProvider: AnimationImageProvider? = nil) {
+  public init(animation: Animation?, imageProvider: AnimationImageProvider? = nil, textProvider: AnimationTextProvider = DefaultTextProvider()) {
     self.animation = animation
     self.imageProvider = imageProvider ?? BundleImageProvider(bundle: Bundle.main, searchPath: nil)
+    self.textProvider = textProvider
     super.init(frame: .zero)
     commonInit()
     makeAnimationLayer()
@@ -538,6 +598,7 @@ final public class AnimationView: LottieView {
   public init() {
     self.animation = nil
     self.imageProvider = BundleImageProvider(bundle: Bundle.main, searchPath: nil)
+    self.textProvider = DefaultTextProvider()
     super.init(frame: .zero)
     commonInit()
   }
@@ -545,12 +606,14 @@ final public class AnimationView: LottieView {
   public override init(frame: CGRect) {
     self.animation = nil
     self.imageProvider = BundleImageProvider(bundle: Bundle.main, searchPath: nil)
+    self.textProvider = DefaultTextProvider()
     super.init(frame: .zero)
     commonInit()
   }
   
   required public init?(coder aDecoder: NSCoder) {
     self.imageProvider = BundleImageProvider(bundle: Bundle.main, searchPath: nil)
+    self.textProvider = DefaultTextProvider()
     super.init(coder: aDecoder)
     commonInit()
   }
@@ -573,92 +636,121 @@ final public class AnimationView: LottieView {
     var position = animation.bounds.center
     let xform: CATransform3D
     var shouldForceUpdates: Bool = false
-    switch contentMode {
-    case .scaleToFill:
-      position = bounds.center
-      xform = CATransform3DMakeScale(bounds.size.width / animation.size.width,
-                                     bounds.size.height / animation.size.height,
-                                     1);
-    case .scaleAspectFit:
-      position = bounds.center
-      let compAspect = animation.size.width / animation.size.height
+    
+    if let viewportFrame = self.viewportFrame {
+      shouldForceUpdates = self.contentMode == .redraw
+      
+      let compAspect = viewportFrame.size.width / viewportFrame.size.height
       let viewAspect = bounds.size.width / bounds.size.height
       let dominantDimension = compAspect > viewAspect ? bounds.size.width : bounds.size.height
-      let compDimension = compAspect > viewAspect ? animation.size.width : animation.size.height
+      let compDimension = compAspect > viewAspect ? viewportFrame.size.width : viewportFrame.size.height
       let scale = dominantDimension / compDimension
-      xform = CATransform3DMakeScale(scale, scale, 1)
-    case .scaleAspectFill:
-      position = bounds.center
-      let compAspect = animation.size.width / animation.size.height
-      let viewAspect = bounds.size.width / bounds.size.height
-      let scaleWidth = compAspect < viewAspect
-      let dominantDimension = scaleWidth ? bounds.size.width : bounds.size.height
-      let compDimension = scaleWidth ? animation.size.width : animation.size.height
-      let scale = dominantDimension / compDimension
-      xform = CATransform3DMakeScale(scale, scale, 1)
-    case .redraw:
-      shouldForceUpdates = true
-      xform = CATransform3DIdentity
-    case .center:
-      position = bounds.center
-      xform = CATransform3DIdentity
-    case .top:
-      position.x = bounds.center.x
-      xform = CATransform3DIdentity
-    case .bottom:
-      position.x = bounds.center.x
-      position.y = bounds.maxY - animation.bounds.midY
-      xform = CATransform3DIdentity
-    case .left:
-      position.y = bounds.center.y
-      xform = CATransform3DIdentity
-    case .right:
-      position.y = bounds.center.y
-      position.x = bounds.maxX - animation.bounds.midX
-      xform = CATransform3DIdentity
-    case .topLeft:
-      xform = CATransform3DIdentity
-    case .topRight:
-      position.x = bounds.maxX - animation.bounds.midX
-      xform = CATransform3DIdentity
-    case .bottomLeft:
-      position.y = bounds.maxY - animation.bounds.midY
-      xform = CATransform3DIdentity
-    case .bottomRight:
-      position.x = bounds.maxX - animation.bounds.midX
-      position.y = bounds.maxY - animation.bounds.midY
-      xform = CATransform3DIdentity
       
-      #if os(iOS) || os(tvOS)
-    @unknown default:
-      print("unsupported contentMode: \(contentMode.rawValue); please update lottie-ios")
-      xform = CATransform3DIdentity
-      #endif
+      let viewportOffset = animation.bounds.center - viewportFrame.center
+      xform = CATransform3DTranslate(CATransform3DMakeScale(scale, scale, 1), viewportOffset.x, viewportOffset.y, 0)
+      position = bounds.center
+    } else {
+      switch contentMode {
+      case .scaleToFill:
+        position = bounds.center
+        xform = CATransform3DMakeScale(bounds.size.width / animation.size.width,
+                                       bounds.size.height / animation.size.height,
+                                       1);
+      case .scaleAspectFit:
+        position = bounds.center
+        let compAspect = animation.size.width / animation.size.height
+        let viewAspect = bounds.size.width / bounds.size.height
+        let dominantDimension = compAspect > viewAspect ? bounds.size.width : bounds.size.height
+        let compDimension = compAspect > viewAspect ? animation.size.width : animation.size.height
+        let scale = dominantDimension / compDimension
+        xform = CATransform3DMakeScale(scale, scale, 1)
+      case .scaleAspectFill:
+        position = bounds.center
+        let compAspect = animation.size.width / animation.size.height
+        let viewAspect = bounds.size.width / bounds.size.height
+        let scaleWidth = compAspect < viewAspect
+        let dominantDimension = scaleWidth ? bounds.size.width : bounds.size.height
+        let compDimension = scaleWidth ? animation.size.width : animation.size.height
+        let scale = dominantDimension / compDimension
+        xform = CATransform3DMakeScale(scale, scale, 1)
+      case .redraw:
+        shouldForceUpdates = true
+        xform = CATransform3DIdentity
+      case .center:
+        position = bounds.center
+        xform = CATransform3DIdentity
+      case .top:
+        position.x = bounds.center.x
+        xform = CATransform3DIdentity
+      case .bottom:
+        position.x = bounds.center.x
+        position.y = bounds.maxY - animation.bounds.midY
+        xform = CATransform3DIdentity
+      case .left:
+        position.y = bounds.center.y
+        xform = CATransform3DIdentity
+      case .right:
+        position.y = bounds.center.y
+        position.x = bounds.maxX - animation.bounds.midX
+        xform = CATransform3DIdentity
+      case .topLeft:
+        xform = CATransform3DIdentity
+      case .topRight:
+        position.x = bounds.maxX - animation.bounds.midX
+        xform = CATransform3DIdentity
+      case .bottomLeft:
+        position.y = bounds.maxY - animation.bounds.midY
+        xform = CATransform3DIdentity
+      case .bottomRight:
+        position.x = bounds.maxX - animation.bounds.midX
+        position.y = bounds.maxY - animation.bounds.midY
+        xform = CATransform3DIdentity
+        
+        #if os(iOS) || os(tvOS)
+      @unknown default:
+        print("unsupported contentMode: \(contentMode.rawValue); please update lottie-ios")
+        xform = CATransform3DIdentity
+        #endif
+      }
     }
     
     /*
      UIView Animation does not implicitly set CAAnimation time or timing fuctions.
      If layout is changed in an animation we must get the current animation duration
-     and timing function and then manually set them in a CATransaction.
+     and timing function and then manually create a CAAnimation to match the UIView animation.
      */
-    let duration: Double
-    let timingFunction: CAMediaTimingFunction
+
     /// Check if any animation exist on the view's layer, and grab the duration and timing functions of the animation.
-    if let key = layer.animationKeys()?.first, let animation = layer.animation(forKey: key) {
-      duration = animation.duration
-      timingFunction = animation.timingFunction ?? CAMediaTimingFunction(name: .linear)
+    if let key = viewLayer?.animationKeys()?.first, let animation = viewLayer?.animation(forKey: key) {
+      // The layout is happening within an animation block. Grab the animation data.
+      
+      let animationKey = "LayoutAnimation"
+      animationLayer.removeAnimation(forKey: animationKey)
+      
+      let positionAnimation = CABasicAnimation(keyPath: "position")
+      positionAnimation.fromValue = animationLayer.position
+      positionAnimation.toValue = position
+      let xformAnimation = CABasicAnimation(keyPath: "transform")
+      xformAnimation.fromValue = animationLayer.transform
+      xformAnimation.toValue = xform
+      
+      let group = CAAnimationGroup()
+      group.animations = [positionAnimation, xformAnimation]
+      group.duration = animation.duration
+      group.fillMode = .both
+      group.timingFunction = animation.timingFunction
+      if animation.beginTime > 0 {
+        group.beginTime = CACurrentMediaTime() + animation.beginTime
+      }
+      group.isRemovedOnCompletion = true
+      
+      animationLayer.position = position
+      animationLayer.transform = xform
+      animationLayer.add(group, forKey: animationKey)
     } else {
-      duration = 0.0
-      timingFunction = CAMediaTimingFunction(name: .linear)
+      animationLayer.position = position
+      animationLayer.transform = xform
     }
-    
-    /// Create a transaction and set the duration and timing function of the implicit animation.
-    CATransaction.begin()
-    CATransaction.setAnimationDuration(duration)
-    CATransaction.setAnimationTimingFunction(timingFunction)
-    animationLayer.position = position
-    animationLayer.transform = xform
-    CATransaction.commit()
     
     if shouldForceUpdates {
       animationLayer.forceDisplayUpdate()
@@ -692,7 +784,7 @@ final public class AnimationView: LottieView {
       return
     }
     
-    let animationLayer = AnimationContainer(animation: animation, imageProvider: imageProvider)
+    let animationLayer = AnimationContainer(animation: animation, imageProvider: imageProvider, textProvider: textProvider)
     animationLayer.renderScale = self.screenScale
     viewLayer?.addSublayer(animationLayer)
     self.animationLayer = animationLayer
@@ -718,7 +810,9 @@ final public class AnimationView: LottieView {
     CATransaction.setDisableActions(true)
     animationLayer?.currentFrame = newFrame
     CATransaction.commit()
-    animationLayer?.forceDisplayUpdate()
+    CATransaction.setCompletionBlock {
+        self.animationLayer?.forceDisplayUpdate()
+    }
   }
   
   @objc override func animationWillMoveToBackground() {
@@ -750,6 +844,9 @@ final public class AnimationView: LottieView {
         removeCurrentAnimation()
         /// Keep the stale context around for when the app enters the foreground.
         self.animationContext = currentContext
+      case .forceFinish:
+        removeCurrentAnimation()
+        updateAnimationFrame(currentContext.playTo)
       }
     }
   }

@@ -1,20 +1,144 @@
-x.y.z Release notes (yyyy-MM-dd)
+3.18.0 Release notes (2019-08-13)
 =============================================================
+
+The file format for synchronized Realms has changed. Old Realms will be
+automatically upgraded when they are opened. Once upgraded, the files will not
+be openable by older versions of Realm. The upgrade should not take a
+significant amount of time to run or run any risk of errors.
+
+This does not effect non-synchronized Realms.
+
 ### Enhancements
+
+* Improve performance of queries on Date properties
+  ([Core #3344](https://github.com/realm/realm-core/pull/3344), [Core #3351](https://github.com/realm/realm-core/pull/3351)).
+* Syncronized Realms are now more aggressive about trimming local history that
+  is no longer needed. This should reduce file size growth in write-heavy
+  workloads. ([Sync #3007](https://github.com/realm/realm-sync/issues/3007)).
+* Add support for building Realm as an xcframework.
+  ([PR #6237](https://github.com/realm/realm-cocoa/pull/6237)).
+* Add prebuilt libraries for Xcode 11 to the release package.
+  ([PR #6248](https://github.com/realm/realm-cocoa/pull/6248)).
+* Add a prebuilt library for Catalyst/UIKit For Mac to the release package
+  ([PR #6248](https://github.com/realm/realm-cocoa/pull/6248)).
+
+### Fixed
+
+* If a signal interrupted a msync() call, Realm would throw an exception and
+  the write transaction would fail. This behavior has new been changed to retry
+  the system call instead. ([Core #3352](https://github.com/realm/realm-core/issues/3352))
+* Queries on the sum or average of an integer property would sometimes give
+  incorrect results. ([Core #3356](https://github.com/realm/realm-core/pull/3356)).
+* Opening query-based synchronized Realms with a small number of subscriptions
+  performed an unneccesary write transaction. ([ObjectStore #815](https://github.com/realm/realm-object-store/pull/815)).
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 11.0
+
+### Deprecations
+
+* `RLMIdentityProviderNickname` has been deprecated in favor of `RLMIdentityProviderUsernamePassword`.
+* `+[RLMIdentityProvider credentialsWithNickname]` has been deprecated in favor of `+[RLMIdentityProvider credentialsWithUsername]`.
+* `Sync.nickname(String, Bool)` has been deprecated in favor of `Sync.usernamePassword(String, String, Bool)`.
+
+3.17.3 Release notes (2019-07-24)
+=============================================================
+
+### Enhancements
+
+* Add Xcode 10.3 binaries to the release package. Remove the Xcode 9.2 and 9.3 binaries.
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 10.3.
+
+3.17.1 Release notes (2019-07-10)
+=============================================================
+
+### Enhancements
+
+* Add support for canceling asynchronous opens using a new AsyncOpenTask
+  returned from the asyncOpen() call. ([PR #6913](https://github.com/realm/realm-cocoa/pull/6187)).
+* Importing the Realm SPM package can now be done by pinning to a version
+  rather than a branch.
+
+### Fixed
+
+* Queries on a List/RLMArray which checked an indexed int property would
+  sometimes give incorrect results.
+  ([#6154](https://github.com/realm/realm-cocoa/issues/6154)), since v3.15.0)
+* Queries involving an indexed int property had a memory leak if run multiple
+  times. ([#6186](https://github.com/realm/realm-cocoa/issues/6186)), since v3.15.0)
+* Creating a subscription with `includeLinkingObjects:` performed unneccesary
+  comparisons, making it extremely slow when large numbers of objects were
+  involved. ([Core #3311](https://github.com/realm/realm-core/issues/3311), since v3.15.0)
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 10.2.1.
+
+3.17.0 Release notes (2019-06-28)
+=============================================================
+
+### Enhancements
+
+* Add support for including Realm via Swift Package Manager. This currently
+  requires depending on the branch "master" rather than pinning to a version
+  (i.e. `.package(url: "https://github.com/realm/realm-cocoa", .branch("master"))`).
+  ([#6187](https://github.com/realm/realm-cocoa/pull/6187)).
+* Add Codable conformance to RealmOptional and List, and Encodable conformance to Results.
+  ([PR #6172](https://github.com/realm/realm-cocoa/pull/6172)).
+
+### Fixed
+
+* Attempting to observe an unmanaged LinkingObjects object crashed rather than
+  throwing an approriate exception (since v0.100.0).
+* Opening an encrypted Realm could potentially report that a valid file was
+  corrupted if the system was low on free memory.
+  (since 3.14.0, [Core #3267](https://github.com/realm/realm-core/issues/3267))
+* Calling `Realm.asyncOpen()` on multiple Realms at once would sometimes crash
+  due to a `FileNotFound` exception being thrown on a background worker thread.
+  (since 3.16.0, [ObjectStore #806](https://github.com/realm/realm-object-store/pull/806)).
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.21.0 or later.
+* Carthage release for Swift is built with Xcode 10.2.1.
+
+3.16.2 Release notes (2019-06-14)
+=============================================================
+
+### Enhancements
+
 * Add support for Xcode 11 Beta 1. Xcode betas are only supported when building
   from source, and not when using a prebuilt framework.
   ([PR #6164](https://github.com/realm/realm-cocoa/pull/6164)).
 
 ### Fixed
-* <How to hit and notice issue? what was the impact?> ([#????](https://github.com/realm/realm-js/issues/????), since v?.?.?)
-* None.
 
-<!-- ### Breaking Changes - ONLY INCLUDE FOR NEW MAJOR version -->
+* Using asyncOpen on query-based Realms which didn't already exist on the local
+  device would fail with error 214.
+  ([#6178](https://github.com/realm/realm-cocoa/issues/6178), since 3.16.0).
+* asyncOpen on query-based Realms did not wait for the server-created
+  permission objects to be downloaded, resulting in crashes if modifications to
+  the permissions were made before creating a subscription for the first time (since 3.0.0).
+* EINTR was not handled correctly in the notification worker, which may have
+  resulted in inconsistent and rare assertion failures in
+  `ExternalCommitHelper::listen()` when building with assertions enabled.
+  (PR: [#804](https://github.com/realm/realm-object-store/pull/804), since 0.91.0).
 
 ### Compatibility
+
 * File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
 * Realm Object Server: 3.21.0 or later.
-* APIs are backwards compatible with all previous releases in the 3.x.y series.
 * Carthage release for Swift is built with Xcode 10.2.1.
 
 3.16.1 Release notes (2019-05-31)
@@ -46,7 +170,7 @@ x.y.z Release notes (yyyy-MM-dd)
   improves Object Server performance by reducing the number of operations to
   merge. (Issue: [#5970](https://github.com/realm/realm-cocoa/issues/5970),
   PR: [#6149](https://github.com/realm/realm-cocoa/pull/6149)).
-* Using `-[RLMRealm * asyncOpenWithConfiguration:callbackQueue:]`/`Realm.asyncOpen()` to open a
+* Using `-[RLMRealm asyncOpenWithConfiguration:callbackQueue:]`/`Realm.asyncOpen()` to open a
   synchronized Realm which does not exist on the local device now uses an
   optimized transfer method to download the initial data for the Realm, greatly
   speeding up the first start time for applications which use full
