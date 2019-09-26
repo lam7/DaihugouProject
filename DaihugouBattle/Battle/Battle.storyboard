@@ -369,7 +369,7 @@
                                         </constraints>
                                     </imageView>
                                     <view tag="109" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6B-CT-wpr" customClass="BattlePlayerAtkView" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="100" width="133.5" height="75"/>
+                                        <rect key="frame" x="5" y="100" width="140" height="70"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view userInteractionEnabled="NO" tag="110" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVp-sv-eav" customClass="SceneView" customModule="DaihugouBattle" customModuleProvider="target">
@@ -401,7 +401,7 @@
                                     <constraint firstItem="9jp-Gr-Qry" firstAttribute="centerX" secondItem="EwP-Ry-lcC" secondAttribute="centerX" id="FZ2-Z3-bMl"/>
                                     <constraint firstItem="9jp-Gr-Qry" firstAttribute="top" secondItem="EwP-Ry-lcC" secondAttribute="top" id="HzB-Jd-McJ"/>
                                     <constraint firstItem="Ao0-Tm-wkA" firstAttribute="height" secondItem="EwP-Ry-lcC" secondAttribute="height" id="Icc-r8-RT9"/>
-                                    <constraint firstItem="c6B-CT-wpr" firstAttribute="leading" secondItem="waz-7K-n3H" secondAttribute="leading" id="LdA-vF-hPH"/>
+                                    <constraint firstItem="c6B-CT-wpr" firstAttribute="leading" secondItem="waz-7K-n3H" secondAttribute="leading" constant="5" id="LdA-vF-hPH"/>
                                     <constraint firstItem="Qqq-FC-4WJ" firstAttribute="centerX" secondItem="EwP-Ry-lcC" secondAttribute="centerX" id="NmL-hr-9WI"/>
                                     <constraint firstItem="c6B-CT-wpr" firstAttribute="top" secondItem="EwP-Ry-lcC" secondAttribute="bottom" constant="20" id="OWV-pf-ybV"/>
                                     <constraint firstItem="hVp-sv-eav" firstAttribute="height" secondItem="waz-7K-n3H" secondAttribute="height" id="On2-Zu-aig"/>
@@ -1067,8 +1067,12 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view tag="109" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-AH-D2p" customClass="BattlePlayerAtkView" customModule="DaihugouBattle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="186" width="133.5" height="75"/>
+                                        <rect key="frame" x="5" y="191" width="140" height="70"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="1fA-va-HKN"/>
+                                            <constraint firstAttribute="width" constant="140" id="tHw-gP-QeY"/>
+                                        </constraints>
                                     </view>
                                     <view userInteractionEnabled="NO" tag="110" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZT-r8-dQq" customClass="SceneView" customModule="DaihugouBattle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
@@ -1116,14 +1120,12 @@
                                     <constraint firstItem="5eO-um-U4H" firstAttribute="centerX" secondItem="hpI-Qt-JVT" secondAttribute="centerX" id="WMo-TD-ulm"/>
                                     <constraint firstItem="Hej-ym-vDJ" firstAttribute="centerX" secondItem="hpI-Qt-JVT" secondAttribute="centerX" id="XAo-0w-52o"/>
                                     <constraint firstItem="z0v-bx-KgC" firstAttribute="height" secondItem="hpI-Qt-JVT" secondAttribute="height" id="ZKU-EF-WDe"/>
-                                    <constraint firstItem="3eW-AH-D2p" firstAttribute="width" secondItem="0bd-eq-tTW" secondAttribute="width" multiplier="0.2" id="dMF-0K-jgj"/>
                                     <constraint firstAttribute="bottom" secondItem="bhe-jM-UMN" secondAttribute="bottom" id="deN-JG-PXx"/>
                                     <constraint firstItem="TSi-FW-aqO" firstAttribute="bottom" secondItem="hpI-Qt-JVT" secondAttribute="bottom" id="eem-a3-Ddp"/>
                                     <constraint firstAttribute="bottom" secondItem="1af-aC-8kD" secondAttribute="bottom" id="exv-Et-eim"/>
                                     <constraint firstItem="Fok-1F-ZKK" firstAttribute="width" secondItem="hpI-Qt-JVT" secondAttribute="width" id="gcZ-lF-Hoi"/>
-                                    <constraint firstItem="3eW-AH-D2p" firstAttribute="leading" secondItem="0bd-eq-tTW" secondAttribute="leading" id="hZj-3h-YeA"/>
+                                    <constraint firstItem="3eW-AH-D2p" firstAttribute="leading" secondItem="0bd-eq-tTW" secondAttribute="leading" constant="5" id="hZj-3h-YeA"/>
                                     <constraint firstItem="Fok-1F-ZKK" firstAttribute="bottom" secondItem="hpI-Qt-JVT" secondAttribute="bottom" id="hdV-qF-Ddb"/>
-                                    <constraint firstItem="3eW-AH-D2p" firstAttribute="height" secondItem="0bd-eq-tTW" secondAttribute="height" multiplier="0.2" id="jX2-cD-x3Y"/>
                                     <constraint firstItem="5eO-um-U4H" firstAttribute="height" secondItem="hpI-Qt-JVT" secondAttribute="height" id="meB-ql-kvl"/>
                                     <constraint firstItem="TSi-FW-aqO" firstAttribute="centerX" secondItem="hpI-Qt-JVT" secondAttribute="centerX" id="meO-1d-tzY"/>
                                     <constraint firstItem="Fok-1F-ZKK" firstAttribute="height" secondItem="hpI-Qt-JVT" secondAttribute="height" id="miB-q6-WsQ"/>
@@ -1238,7 +1240,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view hidden="YES" alpha="0.89999997615814209" tag="1000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9A-VP-XFy" customClass="CharacterStatusDetailView" customModule="DaihugouBattle" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="267" height="150"/>
+                                <rect key="frame" x="395" y="5" width="267" height="150"/>
                                 <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="descriptionTextColor">
@@ -1304,7 +1306,6 @@
                             <constraint firstItem="ylK-e0-yis" firstAttribute="width" secondItem="Q1v-Js-Ect" secondAttribute="width" id="U1s-XX-tAD"/>
                             <constraint firstItem="1af-aC-8kD" firstAttribute="height" secondItem="Vcy-Nb-cH7" secondAttribute="height" id="UiA-JC-5Uu"/>
                             <constraint firstItem="ylK-e0-yis" firstAttribute="height" secondItem="Q1v-Js-Ect" secondAttribute="height" id="V6Z-Ow-Pts"/>
-                            <constraint firstItem="X9A-VP-XFy" firstAttribute="leading" secondItem="wO9-Xp-Jj8" secondAttribute="leading" constant="5" id="WqA-Wq-hfd"/>
                             <constraint firstItem="hpI-Qt-JVT" firstAttribute="top" secondItem="bI0-L7-AEN" secondAttribute="bottom" constant="10" id="WyJ-Rd-Ogb"/>
                             <constraint firstItem="0bd-eq-tTW" firstAttribute="width" secondItem="Q1v-Js-Ect" secondAttribute="width" id="Z4O-Fd-abq"/>
                             <constraint firstItem="wO9-Xp-Jj8" firstAttribute="trailing" secondItem="dml-es-yaE" secondAttribute="trailing" constant="5" id="bCk-c5-cik">
@@ -1334,6 +1335,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="3eW-AH-D2p" firstAttribute="height" secondItem="c6B-CT-wpr" secondAttribute="height" id="sif-6j-Nwb"/>
+                            <constraint firstItem="wO9-Xp-Jj8" firstAttribute="trailing" secondItem="X9A-VP-XFy" secondAttribute="trailing" constant="5" id="xdZ-Qm-IIi"/>
                             <constraint firstItem="AV6-ag-6sZ" firstAttribute="width" secondItem="Q1v-Js-Ect" secondAttribute="width" multiplier="0.35" id="xsF-eL-Q5y"/>
                             <constraint firstItem="TU4-IL-3Sq" firstAttribute="top" secondItem="wO9-Xp-Jj8" secondAttribute="top" constant="5" id="yGS-Fw-KOn"/>
                             <constraint firstItem="dml-es-yaE" firstAttribute="width" secondItem="qL4-IK-6Xb" secondAttribute="width" id="ymZ-Tp-B8s"/>

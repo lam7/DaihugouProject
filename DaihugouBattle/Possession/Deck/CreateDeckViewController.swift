@@ -93,6 +93,7 @@ class CreateDeckViewController: UIViewController{
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var statusDetailView: CharacterStatusDetailView!
     @IBOutlet weak var possessionSearchBar: UISearchBar!
+    weak var nameView: InputNameView?
     @IBOutlet weak var possessionCollectionView: UICollectionView!{
         didSet{
             possessionCollectionView.register(UINib(nibName: "CardSheetsStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -170,6 +171,7 @@ class CreateDeckViewController: UIViewController{
         super.viewDidLoad()
         
         backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
+        configureObserver()
         
         possessionViewModel = SortFilterViewModel(filterIndexs: possessionSortFilterView.indexs.asObservable(), filterRarities: possessionSortFilterView.rarities.asObservable(), filterText: possessionIncrementalText, sortBy: possessionSortFilterView.sortBy.asObservable(), sortIsAsc: possessionSortFilterView.sortIsAsc.asObservable())
         possessionViewModel.cards.bind(to: possessionCollectionView.rx.items(dataSource: possessionDataSource)).disposed(by: disposeBag)
@@ -192,6 +194,9 @@ class CreateDeckViewController: UIViewController{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         statusDetailView.isHidden = true
+        if nameView?.textField.isEditing ?? false{
+            nameView?.endEditing(true)
+        }
     }
     
     @IBAction func pan(_ sender: UIPanGestureRecognizer){
@@ -304,25 +309,70 @@ class CreateDeckViewController: UIViewController{
             nameView.okButton.backgroundColor = .white
             nameView.okButton.tintColor = .black
             nameView.titleLabel.textColor = .white
-            nameView.okButton.rx.tap.subscribe{ _ in
-                let deck = self.createDeck.create(nameView.textField.text ?? "")
-                UserInfo.shared.append(deck: deck, completion: { error in
-                    if let error = error{
-                        self.alert(error, actions: self.BackAlertAction)
-                    }
-                    self.dismiss(animated: true, completion: nil)
-                })
+            nameView.textField.delegate = self
+            nameView.okButton.rx.tap.subscribe{ [weak self]_ in
+                self?.didFinishFormingDeck()
             }.disposed(by: disposeBag)
             view.addSubview(nameView)
+            self.nameView = nameView
             
         }catch(let error){
             alert(error, actions: OKAlertAction, BackAlertAction)
+        }
+    }
+    
+    private func didFinishFormingDeck(){
+        let deck = self.createDeck.create(nameView?.textField.text ?? "")
+        UserInfo.shared.append(deck: deck, completion: { error in
+            if let error = error{
+                self.alert(error, actions: self.BackAlertAction)
+            }
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+    
+    func configureObserver() {
+         let notification = NotificationCenter.default
+         notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                  name: UIResponder.keyboardWillShowNotification, object: nil)
+         notification.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                  name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    /// キーボードが表示時に画面をずらす。
+    @objc func keyboardWillShow(_ notification: Notification?) {
+        guard let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        UIView.animate(withDuration: duration) {
+            let transform = CGAffineTransform(translationX: 0, y: -(rect.size.height))
+            self.nameView?.transform = transform
+        }
+    }
+    
+    /// キーボードが降りたら画面を戻す
+    @objc func keyboardWillHide(_ notification: Notification?) {
+        guard let duration = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? TimeInterval else { return }
+        UIView.animate(withDuration: duration) {
+            self.nameView?.transform = CGAffineTransform.identity
         }
     }
 }
 
 extension CreateDeckViewController: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return true
+    }
+    
+}
+
+extension CreateDeckViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case nameView?.textField:
+            didFinishFormingDeck()
+        default:
+            break
+        }
         return true
     }
 }

@@ -25,22 +25,3 @@ class Deck: NSCopying{
         return Deck(cards: cards.map{ $0.copy() as! Card })
     }
 }
-
-
-/// デッキに指定のカードがあるかどうか確認する
-///
-/// - Parameter possessionCards: あるかどうか確認するカード
-/// - Returns: デッキになかったカード
-func notExistDeckCards(in possessionCards: CardCount, deck: Deck)-> CardCount{
-    var possessionCards = possessionCards
-    var notExistCards: CardCount = [:]
-    
-    for card in deck.cards.reversed(){
-        if possessionCards[card] != nil && possessionCards[card]! >= 1{
-            possessionCards -= card
-        }else{
-            notExistCards += card
-        }
-    }
-    return notExistCards
-}
