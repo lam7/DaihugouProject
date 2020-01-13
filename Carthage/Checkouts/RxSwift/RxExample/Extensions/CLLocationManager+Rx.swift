@@ -207,7 +207,7 @@ extension Reactive where Base: CLLocationManager {
 }
 
 
-private func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
+fileprivate func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     guard let returnValue = object as? T else {
         throw RxCocoaError.castingError(object: object, targetType: resultType)
     }
@@ -215,7 +215,7 @@ private func castOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T {
     return returnValue
 }
 
-private func castOptionalOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T? {
+fileprivate func castOptionalOrThrow<T>(_ resultType: T.Type, _ object: Any) throws -> T? {
     if NSNull().isEqual(object) {
         return nil
     }

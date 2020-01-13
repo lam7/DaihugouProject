@@ -101,7 +101,7 @@ extension BlockingObservable {
 }
 
 extension BlockingObservable {
-    private func materializeResult(max: Int? = nil, predicate: @escaping (Element) throws -> Bool = { _ in true }) -> MaterializedSequenceResult<Element> {
+    fileprivate func materializeResult(max: Int? = nil, predicate: @escaping (Element) throws -> Bool = { _ in true }) -> MaterializedSequenceResult<Element> {
         var elements = [Element]()
         var error: Swift.Error?
         
@@ -159,7 +159,7 @@ extension BlockingObservable {
         return MaterializedSequenceResult.completed(elements: elements)
     }
     
-    private func elementsOrThrow(_ results: MaterializedSequenceResult<Element>) throws -> [Element] {
+    fileprivate func elementsOrThrow(_ results: MaterializedSequenceResult<Element>) throws -> [Element] {
         switch results {
         case .failed(_, let error):
             throw error

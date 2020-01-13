@@ -136,6 +136,17 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.2)
+  - Realm (4.3.0):
+    - Realm/Headers (= 4.3.0)
+  - Realm/Headers (4.3.0)
+  - RealmSwift (4.3.0):
+    - Realm (= 4.3.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
   - SnapKit (4.0.1)
   - UICollectionViewFlexLayout (1.2.0)
 
@@ -150,11 +161,14 @@ DEPENDENCIES:
   - GlitchLabel
   - GoogleSignIn
   - MMPopLabel
+  - RealmSwift
+  - RxCocoa
+  - RxSwift
   - SnapKit (~> 4.0.0)
   - UICollectionViewFlexLayout
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AppAuth
     - Canvas
     - Firebase
@@ -186,6 +200,12 @@ SPEC REPOS:
     - Protobuf
     - SnapKit
     - UICollectionViewFlexLayout
+  trunk:
+    - Realm
+    - RealmSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
@@ -217,9 +237,14 @@ SPEC CHECKSUMS:
   MMPopLabel: d9909f18cacd5200f005ef3f0790c9490357b57a
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 67fb42ba613def994e61854de2b3164f13790cc4
+  Realm: 9357c3589555793e1860a7104a7412bca4a48d99
+  RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   UICollectionViewFlexLayout: 89273f710c5b97ed22041ad0d43ab3853978b1d0
 
-PODFILE CHECKSUM: cc4af727b61b65cb6291fd28094e3711170a2595
+PODFILE CHECKSUM: 4b8a07be9c756f790ac6f92fe919692a6e921f29
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

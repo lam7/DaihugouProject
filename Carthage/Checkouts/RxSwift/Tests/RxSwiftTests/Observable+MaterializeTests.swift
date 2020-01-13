@@ -95,7 +95,7 @@ extension ObservableMaterializeTest {
     #endif
 }
 
-private func materializedRecoredEventsComparison<T: Equatable>(lhs: [Recorded<Event<Event<T>>>], rhs: [Recorded<Event<Event<T>>>]) -> Bool {
+fileprivate func materializedRecoredEventsComparison<T: Equatable>(lhs: [Recorded<Event<Event<T>>>], rhs: [Recorded<Event<Event<T>>>]) -> Bool {
     guard lhs.count == rhs.count else {
         return false
     }

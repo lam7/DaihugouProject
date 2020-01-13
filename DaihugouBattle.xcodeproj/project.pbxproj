@@ -63,8 +63,6 @@
 		AA472FAD2021C6B500440C59 /* ParticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA472FAC2021C6B500440C59 /* ParticleView.swift */; };
 		AA487E881F820E6F00342B49 /* CardBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA487E871F820E6F00342B49 /* CardBattle.swift */; };
 		AA487E921F821E4600342B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA487E911F821E4600342B49 /* Main.storyboard */; };
-		AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0351FE0E0C50099E71C /* Realm.framework */; };
-		AA4AA03D1FE0E0C50099E71C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0371FE0E0C50099E71C /* RealmSwift.framework */; };
 		AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4AA0381FE0E0C50099E71C /* NCMB.framework */; };
 		AA4AA0411FE0E39F0099E71C /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4AA0401FE0E39F0099E71C /* EFCountingLabel.swift */; };
 		AA4B1EE020B244AD009969D3 /* GatyaPackParticle1.sks in Resources */ = {isa = PBXBuildFile; fileRef = AA4B1EDF20B244AD009969D3 /* GatyaPackParticle1.sks */; };
@@ -90,8 +88,6 @@
 		AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAD3209B3C8E0034DFC0 /* Fabric.framework */; };
 		AA5DBAD6209B3C910034DFC0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAD4209B3C8F0034DFC0 /* Crashlytics.framework */; };
 		AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAD7209B43CA0034DFC0 /* GameAnalytics.framework */; };
-		AA5DBADA209BDD2C0034DFC0 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */; };
-		AA5DBADB209BDD2C0034DFC0 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1A20902D0500AEAFB1 /* RxCocoa.framework */; };
 		AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5DBAE1209BDD310034DFC0 /* FLEX.framework */; };
 		AA5DBAE9209BDFD00034DFC0 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1920902D0500AEAFB1 /* RxTest.framework */; };
 		AA5DBAEA209BDFD00034DFC0 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1720902D0500AEAFB1 /* RxBlocking.framework */; };
@@ -119,8 +115,6 @@
 		AA84978F1F947C3F00DD6899 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA84978E1F947C3F00DD6899 /* LoadingView.xib */; };
 		AA8497931F948D1400DD6899 /* CharacterDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8497921F948D1400DD6899 /* CharacterDetailView.xib */; };
 		AA8497951F948E3A00DD6899 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8497941F948E3A00DD6899 /* CharacterDetailView.swift */; };
-		AA88DD5322B12D8000F96090 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA88DD5222B12D8000F96090 /* RxRelay.framework */; };
-		AA88DD5422B12D8000F96090 /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA88DD5222B12D8000F96090 /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA89C0B71F7E6FC800218655 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89C0B61F7E6FC800218655 /* HomeViewController.swift */; };
 		AA8E770520E4FDDF00D31049 /* PrivateDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8E770420E4FDDF00D31049 /* PrivateDefine.swift */; };
 		AA95767720232B860023402A /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95767620232B860023402A /* SceneView.swift */; };
@@ -130,6 +124,7 @@
 		AA9FB2EF1FC2B5F800406195 /* BothSidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */; };
 		AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */; };
 		AAA1F629217C29450072A8DD /* SelectedDeckInBattleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */; };
+		AAA5DCBD233C6BD1002F4A12 /* DeckCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5DCBC233C6BD0002F4A12 /* DeckCollectionDataSource.swift */; };
 		AAA637A121738B5000678992 /* DeckRelated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A021738B5000678992 /* DeckRelated.swift */; };
 		AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA637A22174B43900678992 /* DeckConfirmationView.swift */; };
 		AAA637A52174B5C700678992 /* DeckConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA637A42174B5C700678992 /* DeckConfirmationView.xib */; };
@@ -239,20 +234,6 @@
 			remoteInfo = DaihugouBattle;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		AA88DD5522B12D8000F96090 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				AA88DD5422B12D8000F96090 /* RxRelay.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F6157F55B3031BB92BC2204 /* Pods-DaihugouBattle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaihugouBattle.release.xcconfig"; path = "Pods/Target Support Files/Pods-DaihugouBattle/Pods-DaihugouBattle.release.xcconfig"; sourceTree = "<group>"; };
@@ -395,6 +376,7 @@
 		AA9FB2EE1FC2B5F800406195 /* BothSidesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesView.swift; sourceTree = "<group>"; };
 		AAA1192F20982ADB00E15247 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		AAA1F628217C29450072A8DD /* SelectedDeckInBattleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDeckInBattleView.xib; sourceTree = "<group>"; };
+		AAA5DCBC233C6BD0002F4A12 /* DeckCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCollectionDataSource.swift; sourceTree = "<group>"; };
 		AAA637A021738B5000678992 /* DeckRelated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRelated.swift; sourceTree = "<group>"; };
 		AAA637A22174B43900678992 /* DeckConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckConfirmationView.swift; sourceTree = "<group>"; };
 		AAA637A42174B5C700678992 /* DeckConfirmationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckConfirmationView.xib; sourceTree = "<group>"; };
@@ -507,17 +489,12 @@
 				AAA8342821E5B56A00965D92 /* Pods_DaihugouBattle.framework in Frameworks */,
 				AACDC0CD215F974700C30ADB /* SwiftyJSON.framework in Frameworks */,
 				AAA82E7020B2A95000D70B38 /* Lottie.framework in Frameworks */,
-				AA88DD5322B12D8000F96090 /* RxRelay.framework in Frameworks */,
 				AA093EBD20AF06BF0005B0E4 /* Measurements.framework in Frameworks */,
 				AA093EBB20AF06940005B0E4 /* SlowAnimations.framework in Frameworks */,
 				AAB19B2D20AEBA05004161F5 /* AttributesInspector.framework in Frameworks */,
 				AAB19B2E20AEBA05004161F5 /* HyperionCore.framework in Frameworks */,
 				AA5DBAE7209BDD310034DFC0 /* FLEX.framework in Frameworks */,
 				AAA1193020982ADB00E15247 /* SVProgressHUD.framework in Frameworks */,
-				AA5DBADA209BDD2C0034DFC0 /* RxSwift.framework in Frameworks */,
-				AA5DBADB209BDD2C0034DFC0 /* RxCocoa.framework in Frameworks */,
-				AA4AA03D1FE0E0C50099E71C /* RealmSwift.framework in Frameworks */,
-				AA4AA03B1FE0E0C50099E71C /* Realm.framework in Frameworks */,
 				AA4AA03E1FE0E0C50099E71C /* NCMB.framework in Frameworks */,
 				AA5DBAD8209B43CB0034DFC0 /* GameAnalytics.framework in Frameworks */,
 				AA5DBAD5209B3C900034DFC0 /* Fabric.framework in Frameworks */,
@@ -955,11 +932,15 @@
 		AAFA882D206A2D970003CC14 /* Deck */ = {
 			isa = PBXGroup;
 			children = (
-				AAF96579209477C6007690B5 /* BarGraphView.swift */,
 				AA6D96482179DB4B004E4A25 /* BarGraphBaseView.xib */,
+				AAF96579209477C6007690B5 /* BarGraphView.swift */,
 				AA5C14EE1FB0184900D8CC15 /* CreateDeck.storyboard */,
 				AADE54981F724D4300DF83BF /* CreateDeck.swift */,
 				AA5C14EC1FB0180800D8CC15 /* CreateDeckViewController.swift */,
+				AAA5DCBC233C6BD0002F4A12 /* DeckCollectionDataSource.swift */,
+				AAA637A22174B43900678992 /* DeckConfirmationView.swift */,
+				AAA637A42174B5C700678992 /* DeckConfirmationView.xib */,
+				AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */,
 				AAB19B2520AD3D4D004161F5 /* DeckSelectPageView.swift */,
 				AAB19B2320AD3BE8004161F5 /* DeckSelectPageView.xib */,
 				AAB19B2120AD3BCB004161F5 /* DeckSelectView.swift */,
@@ -967,9 +948,6 @@
 				AAF9657520933867007690B5 /* NumOfEachCardIndexView.xib */,
 				AA03F4F720B1390000D1F26E /* SelectedDeckInCreateDeckView.swift */,
 				AA03F4F920B1390E00D1F26E /* SelectedDeckInCreateDeckView.xib */,
-				AAA637A22174B43900678992 /* DeckConfirmationView.swift */,
-				AAA637A42174B5C700678992 /* DeckConfirmationView.xib */,
-				AAD78AEE2179A1920033A313 /* DeckIndexBarGraph.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -1019,7 +997,6 @@
 				AA5DBAD2209B3A260034DFC0 /* Fabric */,
 				E439DE16EA01853F39BCFAA1 /* [CP] Embed Pods Frameworks */,
 				6683DDC419F2AEA36B2AFE97 /* [CP] Copy Pods Resources */,
-				AA88DD5522B12D8000F96090 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1267,8 +1244,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/NCMB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FLEX.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
@@ -1276,7 +1251,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Lottie.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Floaty.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -1388,6 +1362,11 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -1405,6 +1384,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICollectionViewFlexLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -1521,6 +1505,7 @@
 				AAAD8AD422A3A34B00ED441A /* OutOfFrameCloseView.swift in Sources */,
 				AA5541D6214E056B003A008B /* BattleDeck.swift in Sources */,
 				AAF16EE220C8EA7D0007417F /* IndexView.swift in Sources */,
+				AAA5DCBD233C6BD1002F4A12 /* DeckCollectionDataSource.swift in Sources */,
 				AA4BB3CC21670A1400E53BDA /* BattlePlayerAtkView.swift in Sources */,
 				AAA637A32174B43900678992 /* DeckConfirmationView.swift in Sources */,
 				AAF16EE020C8D2C20007417F /* CardStandartBackView.swift in Sources */,

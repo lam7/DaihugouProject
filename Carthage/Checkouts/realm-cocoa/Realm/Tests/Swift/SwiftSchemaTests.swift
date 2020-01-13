@@ -21,6 +21,8 @@ import Realm
 import Realm.Private
 import RealmTestSupport
 
+#if os(macOS)
+
 class InitLinkedToClass: RLMObject {
     @objc dynamic var value: SwiftRLMIntObject! = SwiftRLMIntObject(value: [0])
 }
@@ -208,9 +210,9 @@ class SwiftRLMSchemaTests: RLMMultiProcessTestCase {
     }
 
     func testInvalidObjectTypeForRLMArray() {
-        RLMSetTreatFakeObjectAsRLMObject(true)
         assertThrowsWithReasonMatching(RLMObjectSchema(forObjectClass: InvalidArrayType.self),
                                        "RLMArray\\<invalid class\\>")
-        RLMSetTreatFakeObjectAsRLMObject(false)
     }
 }
+
+#endif

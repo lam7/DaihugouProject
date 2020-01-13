@@ -22,6 +22,10 @@ import RxSwift
             return RxSwift.Resources.numberOfSerialDispatchQueueObservables
         }
 
+        static var numberOfMapOperators: Int32 {
+            return RxSwift.Resources.numberOfMapOperators
+        }
+
         static var total: Int32 {
             return RxSwift.Resources.total
         }

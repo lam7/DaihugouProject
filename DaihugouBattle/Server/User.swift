@@ -614,7 +614,7 @@ class UserInfo{
                     deck.name = name
                     decks.append(deck)
                 }
-                completion(decks, nil)
+                completion(decks.reversed(), nil)
             }
         }
     }

@@ -72,7 +72,7 @@ public class WikipediaSearchCell: UITableViewCell {
 
 }
 
-private protocol ReusableView: class {
+fileprivate protocol ReusableView: class {
     var disposeBag: DisposeBag? { get }
     func prepareForReuse()
 }
@@ -85,7 +85,7 @@ extension CollectionViewImageCell : ReusableView {
 
 }
 
-private extension ReusableView {
+fileprivate extension ReusableView {
     func installHackBecauseOfAutomationLeaksOnIOS10(firstViewThatDoesntLeak: UIView) {
         if #available(iOS 10.0, *) {
             if OSApplication.isInUITest  {

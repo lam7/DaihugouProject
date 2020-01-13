@@ -1,6 +1,4 @@
     github "NIFTYCloud-mbaas/ncmb_ios"
-    github "realm/realm-cocoa" >= 3.18.0
-    github "ReactiveX/RxSwift" "9b31a15520306b073cb9d46456f64826c1d6dcab"
     github "SVProgressHUD/SVProgressHUD"
     github "willowtreeapps/Hyperion-iOS"
     github "airbnb/lottie-ios" "master"

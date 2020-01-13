@@ -16,6 +16,9 @@ target 'DaihugouBattle' do
   pod 'MMPopLabel'
   pod 'SnapKit', '~> 4.0.0'
   pod 'GlitchLabel'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RealmSwift'
 # Pods for DaihugouBattle
 
   target 'DaihugouBattleTests' do

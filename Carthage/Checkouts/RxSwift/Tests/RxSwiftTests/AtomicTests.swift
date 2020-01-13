@@ -41,7 +41,7 @@ private struct AtomicIntSanityCheck {
         return self.atom
     }
 }
-private typealias AtomicPrimitive = AtomicIntSanityCheck
+fileprivate typealias AtomicPrimitive = AtomicIntSanityCheck
 #endif
 
 class AtomicTests: RxTest {}

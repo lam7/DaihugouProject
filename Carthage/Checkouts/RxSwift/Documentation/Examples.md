@@ -129,14 +129,14 @@ enum Availability {
 // bind UI control values directly
 // use username from `usernameOutlet` as username values source
 self.usernameOutlet.rx.text
-    .map { username -> Observable<Availability> in
+    .map { username in
 
         // synchronous validation, nothing special here
-        guard let username = username, !username.isEmpty else {
+        if username.isEmpty {
             // Convenience for constructing synchronous result.
             // In case there is mixed synchronous and asynchronous code inside the same
             // method, this will construct an async result that is resolved immediately.
-            return Observable.just(.invalid(message: "Username can't be empty."))
+            return Observable.just(Availability.invalid(message: "Username can't be empty."))
         }
 
         // ...
@@ -150,10 +150,10 @@ self.usernameOutlet.rx.text
         return API.usernameAvailable(username)
           .map { available in
               if available {
-                  return .available(message: "Username available")
+                  return Availability.available(message: "Username available")
               }
               else {
-                  return .taken(message: "Username already taken")
+                  return Availability.unavailable(message: "Username already taken")
               }
           }
           // use `loadingValue` until server responds
@@ -168,9 +168,9 @@ self.usernameOutlet.rx.text
 // Now we need to bind that to the user interface somehow.
 // Good old `subscribe(onNext:)` can do that.
 // That's the end of `Observable` chain.
-    .subscribe(onNext: { [weak self] validity in
-        self?.errorLabel.textColor = validationColor(validity)
-        self?.errorLabel.text = validity.message
+    .subscribe(onNext: { validity in
+        errorLabel.textColor = validationColor(validity)
+        errorLabel.text = validity.message
     })
 // This will produce a `Disposable` object that can unbind everything and cancel
 // pending async operations.

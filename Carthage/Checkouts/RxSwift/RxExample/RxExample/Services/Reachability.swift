@@ -91,9 +91,9 @@ public class Reachability {
         return .notReachable
     }
     
-    private var previousFlags: SCNetworkReachabilityFlags?
+    fileprivate var previousFlags: SCNetworkReachabilityFlags?
     
-    private var isRunningOnDevice: Bool = {
+    fileprivate var isRunningOnDevice: Bool = {
         #if targetEnvironment(simulator)
             return false
         #else
@@ -101,10 +101,10 @@ public class Reachability {
         #endif
     }()
     
-    private var notifierRunning = false
-    private var reachabilityRef: SCNetworkReachability?
+    fileprivate var notifierRunning = false
+    fileprivate var reachabilityRef: SCNetworkReachability?
     
-    private let reachabilitySerialQueue = DispatchQueue(label: "uk.co.ashleymills.reachability")
+    fileprivate let reachabilitySerialQueue = DispatchQueue(label: "uk.co.ashleymills.reachability")
     
     required public init(reachabilityRef: SCNetworkReachability) {
         reachableOnWWAN = true
@@ -227,7 +227,7 @@ public extension Reachability {
     }
 }
 
-private extension Reachability {
+fileprivate extension Reachability {
     
     func reachabilityChanged() {
         

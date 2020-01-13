@@ -290,10 +290,6 @@ class CardList{
                         print(obj.object(forKey: "atk"))
                         fatalError("atk Error")
                     }
-                    guard let skillNumber = obj.intValue(forKey: "skillNumber") else{
-                        print(obj.object(forKey: "skillNumber"))
-                        fatalError("skill Error")
-                    }
                     guard let skillNumbers = obj.object(forKey: "skillNumbers") as? [Int] else{
                         print(obj.object(forKey: "skillNumbers"))
                         fatalError("skill Error")

@@ -58,7 +58,7 @@ extension NSTextFieldTests {
 
 }
 
-private final class TextFieldDelegate: NSObject, NSTextFieldDelegate {
+fileprivate final class TextFieldDelegate: NSObject, NSTextFieldDelegate {
 
     var didChange = false
 

@@ -18,7 +18,7 @@ final class ObjectRuntimeState {
         actingAs = ClassRuntimeState(RXObjCTestRuntime.objCClass(target))
     }
 
-    private static func changesFrom(_ from: ClassRuntimeState, to: ClassRuntimeState) -> [ObjectRuntimeChange] {
+    fileprivate static func changesFrom(_ from: ClassRuntimeState, to: ClassRuntimeState) -> [ObjectRuntimeChange] {
         if from.targetClass == to.targetClass {
             var changes = [ObjectRuntimeChange]()
             for (selector, implementation) in to.implementations {

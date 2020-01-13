@@ -9,91 +9,26 @@
 import Foundation
 import UIKit
 import RxSwift
-import RxCocoa
-
-class DeckCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching{
-    typealias Element = [Card]
-    var cards: [Card] = []
-    
-
-    private func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<[Card]>) {
-        Binder(self) { dataSource, element in
-            if dataSource.cards.count == 0 &&  element.count == 0{
-                return
-            }
-            if dataSource.cards.count < element.count{
-                var t = element
-                for card in dataSource.cards{
-                    t.remove(at: t.firstIndex(of: card)!)
-                }
-                dataSource.cards = element
-                
-                var indexPaths: [IndexPath] = []
-                for c in t{
-                    guard let i = dataSource.cards.firstIndex(of: c) else{ continue }
-                    let indexPath = IndexPath(row: i, section: 0)
-                    print(indexPath)
-                    indexPaths.append(indexPath)
-                }
-                collectionView.insertItems(at: indexPaths)
-                if let indexPath = indexPaths.first{
-                    collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-                }
-            }else{
-                var t = dataSource.cards
-                for card in element{
-                    t.remove(at: t.firstIndex(of: card)!)
-                }
-                var indexPaths: [IndexPath] = []
-                for c in t{
-                    guard let i = dataSource.cards.firstIndex(of: c) else{ continue }
-                    let indexPath = IndexPath(row: i, section: 0)
-                    print(indexPath)
-                    indexPaths.append(indexPath)
-                }
-                dataSource.cards = element
-                collectionView.deleteItems(at: indexPaths)
-            }
-        }.on(observedEvent)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cards.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardStandartCell
-        let card = cards[indexPath.row]
-        cell.card = card
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let cards = indexPaths.map{ $0.row }.map({ self.cards[$0] }).map({ $0.imageNamed })
-        RealmImageCache.shared.loadImagesBackground(cards, completion: {})
-    }
-}
+import SVProgressHUD
 
 class CreateDeckViewController: UIViewController{
-    @IBOutlet weak var tapableView: TapableView!{
-        didSet{
-            tapableView.tapped = {[weak self] in
-                self?.tapableView.isHidden = true
-                self?.possessionSortFilterView.isHidden = true
-                self?.panGesture.isEnabled = true
-            }
-        }
-    }
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var touchedCardView: CardStandartFrontView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var statusDetailView: CharacterStatusDetailView!
     @IBOutlet weak var possessionSearchBar: UISearchBar!
-    weak var nameView: InputNameView?
+    @IBOutlet weak var deckBarGraphView: DeckIndexBarGraph!
+    @IBOutlet var panGesture: UIPanGestureRecognizer!
+    @IBOutlet weak var tapableView: TapableView!{
+        didSet{
+            tapableView.tapped = {[weak self] in
+                self?.tapableView.isHidden = true
+                self?.possessionSortFilterView.isHidden = true
+                self?.nameView?.removeSafelyFromSuperview()
+                self?.panGesture.isEnabled = true
+            }
+        }
+    }
     @IBOutlet weak var possessionCollectionView: UICollectionView!{
         didSet{
             possessionCollectionView.register(UINib(nibName: "CardSheetsStandartCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -110,8 +45,6 @@ class CreateDeckViewController: UIViewController{
             deckCollectionView.prefetchDataSource = deckDataSource
         }
     }
-    @IBOutlet weak var deckBarGraphView: DeckIndexBarGraph!
-    
     @IBOutlet weak var possessionSortFilterView: CardSortFilterView!{
         didSet{
             possessionSortFilterView.closeButton.rx.tap.subscribe{ [weak self] event in
@@ -121,11 +54,18 @@ class CreateDeckViewController: UIViewController{
             }.disposed(by: disposeBag)
         }
     }
-    
-    @IBOutlet var panGesture: UIPanGestureRecognizer!
-    
-    private var possessionIncrementalText: Observable<String?> {
-        return possessionSearchBar.rx.text.asObservable()
+    weak var nameView: InputNameView?{
+        didSet{
+            nameView?.backgroundColor = .black
+            nameView?.okButton.backgroundColor = .white
+            nameView?.okButton.tintColor = .black
+            nameView?.titleLabel.textColor = .white
+            nameView?.textField.delegate = self
+            nameView?.okButton.rx.tap.subscribe{ [weak self]_ in
+                self?.didFinishFormingDeck()
+            }.disposed(by: disposeBag)
+            tapableView.isHidden = false
+        }
     }
     private var possessionDataSource = PossessionCollectionDataSource()
     private var possessionViewModel: SortFilterViewModel!
@@ -166,13 +106,14 @@ class CreateDeckViewController: UIViewController{
     private var touchedCard: Card?
     private var touchedIsPossession: Bool = false
     private let disposeBag = DisposeBag()
-    
+    private var didFinishForming = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
         backgroundImageView.image = DataRealm.get(imageNamed: "black_mamba.png")
         configureObserver()
         
+        let possessionIncrementalText = possessionSearchBar.rx.text.asObservable()
         possessionViewModel = SortFilterViewModel(filterIndexs: possessionSortFilterView.indexs.asObservable(), filterRarities: possessionSortFilterView.rarities.asObservable(), filterText: possessionIncrementalText, sortBy: possessionSortFilterView.sortBy.asObservable(), sortIsAsc: possessionSortFilterView.sortIsAsc.asObservable())
         possessionViewModel.cards.bind(to: possessionCollectionView.rx.items(dataSource: possessionDataSource)).disposed(by: disposeBag)
     }
@@ -305,14 +246,6 @@ class CreateDeckViewController: UIViewController{
             let height: CGFloat = 100
             let frame = CGRect(x: view.frame.midX - width / 2, y: view.frame.midY - height / 2, width: width, height: height)
             let nameView = InputNameView(frame: frame)
-            nameView.backgroundColor = .black
-            nameView.okButton.backgroundColor = .white
-            nameView.okButton.tintColor = .black
-            nameView.titleLabel.textColor = .white
-            nameView.textField.delegate = self
-            nameView.okButton.rx.tap.subscribe{ [weak self]_ in
-                self?.didFinishFormingDeck()
-            }.disposed(by: disposeBag)
             view.addSubview(nameView)
             self.nameView = nameView
             
@@ -322,6 +255,10 @@ class CreateDeckViewController: UIViewController{
     }
     
     private func didFinishFormingDeck(){
+        if didFinishForming{
+            return
+        }
+        didFinishForming = true
         let deck = self.createDeck.create(nameView?.textField.text ?? "")
         UserInfo.shared.append(deck: deck, completion: { error in
             if let error = error{
@@ -341,11 +278,13 @@ class CreateDeckViewController: UIViewController{
     
     /// キーボードが表示時に画面をずらす。
     @objc func keyboardWillShow(_ notification: Notification?) {
-        guard let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
-            let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        guard let frame = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+            let nameView = self.nameView else { return }
+        let y = frame.minY - nameView.frame.height - 20
         UIView.animate(withDuration: duration) {
-            let transform = CGAffineTransform(translationX: 0, y: -(rect.size.height))
-            self.nameView?.transform = transform
+            let transform = CGAffineTransform(translationX: 0, y: y)
+            nameView.transform = transform
         }
     }
     

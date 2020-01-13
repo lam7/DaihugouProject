@@ -134,7 +134,7 @@ class DataRealm: Object{
         }
         
         try DataRealm.realm?.write{
-            DataRealm.realm?.add(self, update: true)
+            DataRealm.realm?.add(self, update: .all)
         }
     }
 }

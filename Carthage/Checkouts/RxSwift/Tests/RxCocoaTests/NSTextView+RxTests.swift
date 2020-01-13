@@ -59,7 +59,7 @@ extension NSTextViewTests {
     }
 }
 
-private final class TextViewDelegate: NSObject, NSTextViewDelegate {
+fileprivate final class TextViewDelegate: NSObject, NSTextViewDelegate {
     var numberOfChanges = 0
 
     func textDidChange(_ notification: Notification) {
