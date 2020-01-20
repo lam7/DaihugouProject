@@ -97,35 +97,6 @@ final class RealmImageCache{
             })
         }
         group.notify(queue: .main, execute: completion)
-//        let group = DispatchGroup()
-//        var flag = true
-//        for named in nameds{
-//            guard loadings[named] == nil,
-//                cache.object(forKey: convertKey(from: named)) == nil,
-//                let image = DataRealm.get(imageNamed: named) else{
-//                    continue
-//            }
-//            flag = false
-//            loadings[named] = [{}]
-//
-//            group.enter()
-//            DispatchQueue.global(qos: .userInteractive).async{
-//                [weak self] in
-//                guard let `self` = self else {
-//                    return
-//                }
-//                let i = self.drawImage(image)
-//                self.cache.setObject(i, forKey: self.convertKey(from: named))
-//                self.loadings[named]?.forEach({ $0() })
-//                self.loadings[named] = nil
-//                group.leave()
-//            }
-//        }
-//        if flag{
-//            completion()
-//        }else{
-//            group.notify(queue: .main, execute: completion)
-//        }
     }
     
     func removeAllImages(){

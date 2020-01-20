@@ -162,33 +162,25 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GlitchLabel/GlitchLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Canvas/Canvas.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FlatUIKit/FlatUIKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GlitchLabel/GlitchLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/MMPopLabel/MMPopLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/UICollectionViewFlexLayout/UICollectionViewFlexLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi

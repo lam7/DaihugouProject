@@ -34,6 +34,32 @@ extension UIViewController{
     }
 }
 
+extension UISearchBar {
+    func makeSearchToolBar(_ target: Any? = self, completeAction: Selector? = #selector(UISearchBar.done), clearAction: Selector? = #selector(UISearchBar.clear), disposeBag: DisposeBag){
+        let toolBar = UIToolbar()
+        let textField = UITextField()
+        let textFieldItem = UIBarButtonItem(customView: textField)
+        let completeItem = UIBarButtonItem(barButtonSystemItem: .done, target: target, action: completeAction)
+        let clearItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: target, action: clearAction)
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.items = [textFieldItem, spaceItem, completeItem, clearItem]
+        toolBar.isUserInteractionEnabled = true
+        toolBar.sizeToFit()
+        
+        self.inputAccessoryView = toolBar
+        textField.rx.text.bind(to: self.rx.text).disposed(by: disposeBag)
+    }
+    
+    @objc func done() {
+        endEditing(true)
+    }
+    
+    @objc func clear() {
+        text = nil
+        endEditing(true)
+    }
+}
+
 class PossessionCollectionDataSource: NSObject, RxCollectionViewDataSourceType, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching{
     typealias Element = [Card]
     var cards: [Card] = []
@@ -74,8 +100,8 @@ class PossessionCollectionDataSource: NSObject, RxCollectionViewDataSourceType, 
 
 
 class SortFilterViewModel{
-//    private var cardsVar: Variable<[Card]> = Variable([Card](repeating: cardNoData, count: 32))
-    private var cardsVar: Variable<[Card]> = Variable([])
+//    private var cardsVar: BehaviorRelay<[Card]> = BehaviorRelay([Card](repeating: cardNoData, count: 32))
+    private var cardsVar: BehaviorRelay<[Card]> = BehaviorRelay(value: [])
     var cards: Observable<[Card]>{
         return cardsVar.asObservable()
     }
@@ -83,7 +109,7 @@ class SortFilterViewModel{
     var originalCards: [Card] = []{
         didSet{
             let cards = CardsSort.sort(originalCards, by: currentSort, isAsc: true)
-            cardsVar.value = cards
+            cardsVar.accept(cards)
         }
     }
     private var currentSort: CardsSort.SortBy = CardsSort.SortBy.id
@@ -100,7 +126,7 @@ class SortFilterViewModel{
             }
             let text = element.2 ?? ""
             let cards = CardsFilter.filter(self.originalCards, indexs: element.0.map({$0}), rarities: element.1.map({$0}), text: text)
-            self.cardsVar.value = cards
+            self.cardsVar.accept(cards)
             }.disposed(by: disposeBag)
 
         let sort = Observable.combineLatest(sortBy, sortIsAsc).debounce(RxTimeInterval.milliseconds(10), scheduler: MainScheduler.instance)
@@ -111,7 +137,7 @@ class SortFilterViewModel{
             }
             
             let cards = CardsSort.sort(self.cardsVar.value, by: element.0, isAsc: element.1)
-            self.cardsVar.value = cards
+            self.cardsVar.accept(cards)
             self.currentSort = element.0
             }.disposed(by: disposeBag)
     }
@@ -120,7 +146,11 @@ class SortFilterViewModel{
 class PossessionCardViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var sortFilterView: CardSortFilterView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.makeSearchToolBar(disposeBag: disposeBag)
+        }
+    }
     @IBOutlet weak var characterDetailView: ClosableCharacterDetailView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     var dataSource: PossessionCollectionDataSource!

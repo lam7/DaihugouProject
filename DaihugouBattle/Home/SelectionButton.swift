@@ -46,11 +46,9 @@ import UIKit
     }
     
     override func draw(_ rect: CGRect) {
-        print(borderWidth)
         updateGradientColors()
         updateLayerProperty()
-        
-        dump(layer)
+
         super.draw(rect)
     }
     
@@ -85,5 +83,31 @@ import UIKit
             gradientLocation4
             ][0..<colors.count].map{ NSNumber(value: $0) }
         gradientLayer.locations = locations
+    }
+    
+    enum Color {
+        case blue, red, clear
+    }
+    
+    func updateColor(_ color: Color) {
+        switch color {
+        case .blue:
+            updateBlueColor()
+        case .red:
+            updateRedColor()
+        case .clear:
+            updateClearColor()
+        }
+        
+    }
+    
+    func updateBlueColor() {
+        
+    }
+    func updateRedColor() {
+        
+    }
+    func updateClearColor() {
+        
     }
 }

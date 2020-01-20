@@ -14,6 +14,7 @@ protocol DeckSelectPageViewDelegate: class{
 }
 
 class DeckSelectPageView: UINibView{
+    static let numOfButtons = 9
     @IBOutlet weak var selectButton0: UIButton!
     @IBOutlet weak var selectButton1: UIButton!
     @IBOutlet weak var selectButton2: UIButton!

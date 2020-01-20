@@ -33,7 +33,7 @@ class ProjectEffectView: TapableView{
             make.centerY.equalTo(self)
         }
         label.blendMode = .multiply
-        label.text = "S_Project"
+        label.text = "Presented by lam"
         label.font = UIFont(name: "Zapfino", size: 50)
     }
     

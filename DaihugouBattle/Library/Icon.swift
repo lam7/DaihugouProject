@@ -31,7 +31,7 @@ public class Icon : NSObject {
         
         
         
-        //// Variable Declarations
+        //// BehaviorRelay Declarations
         let angleGiar: CGFloat = fraction * 360
         let angleOppGiar: CGFloat = -angleGiar * 2
         
@@ -260,7 +260,7 @@ public class Icon : NSObject {
         
         
         
-        //// Variable Declarations
+        //// BehaviorRelay Declarations
         let angleSword: CGFloat = fraction <= 0.5 ? -45 + fraction * 40 : (fraction <= 0.9 ? -25 - (fraction - 0.5) * 80 : -57 + (fraction - 0.9) * 120)
         let angleOppSword: CGFloat = -angleSword
         
@@ -423,7 +423,7 @@ public class Icon : NSObject {
         
         
         
-        //// Variable Declarations
+        //// BehaviorRelay Declarations
         let effect1 = fraction == 0 ? true : fraction >= 0.333333333333
         let effect2 = fraction == 0 ? true : fraction >= 0.666666666666
         let effect3 = fraction == 0 ? true : fraction == 1

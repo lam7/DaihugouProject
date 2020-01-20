@@ -9,7 +9,7 @@ import Foundation
 import CoreGraphics
 
 /// A value provider that produces a value at Time from a group of keyframes
-class KeyframeInterpolator<ValueType>: AnyValueProvider where ValueType: Interpolatable {
+final class KeyframeInterpolator<ValueType>: AnyValueProvider where ValueType: Interpolatable {
   
   init(keyframes: [Keyframe<ValueType>]) {
     self.keyframes = keyframes
@@ -67,9 +67,10 @@ class KeyframeInterpolator<ValueType>: AnyValueProvider where ValueType: Interpo
   
   fileprivate var lastUpdatedFrame: CGFloat?
   
+  @discardableResult
   func value(frame: CGFloat) -> Any {
     // First set the keyframe span for the frame.
-    self.updateSpanIndices(frame: frame)
+    updateSpanIndices(frame: frame)
     lastUpdatedFrame = frame
     // If only one keyframe return its value
     let progress: CGFloat

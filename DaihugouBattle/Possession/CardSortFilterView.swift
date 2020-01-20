@@ -59,26 +59,28 @@ import RxSwift
         ]
     }
 
-    var indexs: Variable<Set<Int>> = Variable([])
-    var rarities: Variable<Set<CardRarity>> = Variable([])
-    var sortBy: Variable<CardsSort.SortBy>! = Variable(.id)
-    var sortIsAsc: Variable<Bool>! = Variable(true)
+    var indexs: BehaviorRelay<Set<Int>> = BehaviorRelay(value: [])
+    var rarities: BehaviorRelay<Set<CardRarity>> = BehaviorRelay(value: [])
+    var sortBy: BehaviorRelay<CardsSort.SortBy>! = BehaviorRelay(value: .id)
+    var sortIsAsc: BehaviorRelay<Bool>! = BehaviorRelay(value: true)
 
     let disposeBag = DisposeBag()
     
     override func awakeFromNib() {
-        //個別のボタンがタッチされたならVariableの値を変更する
-        //個別のボタンのisSelectedはVariableに要素が含まれているかどうかできまる
-        //"すべて"ボタンがタッチされたならVariableに空を突っ込む
+        //個別のボタンがタッチされたならBehaviorRelayの値を変更する
+        //個別のボタンのisSelectedはBehaviorRelayに要素が含まれているかどうかできまる
+        //"すべて"ボタンがタッチされたならBehaviorRelayに空を突っ込む
         indexButtons.forEach{ button in
             button.rx.tap.subscribe{[weak self] _ in
                 guard let `self` = self else { return }
                 let index = button.tag
+                var value = self.indexs.value
                 if !self.indexs.value.contains(index){
-                    self.indexs.value.insert(index)
+                    value.insert(index)
                 }else{
-                    self.indexs.value.remove(index)
+                    value.remove(index)
                 }
+                self.indexs.accept(value)
             }.disposed(by: disposeBag)
         }
         
@@ -106,7 +108,7 @@ import RxSwift
         indexAllButton.rx.tap.subscribe{[weak self] _ in
             guard let `self` = self,
                 self.indexs.value != [] else { return }
-            self.indexs.value = []
+            self.indexs.accept([])
         }.disposed(by: disposeBag)
         
         
@@ -115,11 +117,13 @@ import RxSwift
             button.rx.tap.subscribe{[weak self] _ in
                 guard let `self` = self else { return }
                 let rarity = CardRarity.allCases[button.tag]
+                var value = self.rarities.value
                 if !self.rarities.value.contains(rarity){
-                    self.rarities.value.insert(rarity)
+                    value.insert(rarity)
                 }else{
-                    self.rarities.value.remove(rarity)
+                    value.remove(rarity)
                 }
+                self.rarities.accept(value)
                 
             }.disposed(by: disposeBag)
         }
@@ -142,7 +146,7 @@ import RxSwift
                     self.sortBy.value != sortByButton else{
                         return
                 }
-                self.sortBy.value = sortByButton
+                self.sortBy.accept(sortByButton)
             }.disposed(by: disposeBag)
         }
         
@@ -157,13 +161,13 @@ import RxSwift
         sortOrderAscButton.rx.tap.subscribe{[weak self] _ in
             guard let `self` = self,
                 !self.sortOrderAscButton.isSelected else{ return }
-            self.sortIsAsc.value = true
+            self.sortIsAsc.accept(true)
         }.disposed(by: disposeBag)
         
         sortOrderDesButton.rx.tap.subscribe{[weak self] _ in
             guard let `self` = self,
                 !self.sortOrderDesButton.isSelected else{ return }
-            self.sortIsAsc.value = false
+            self.sortIsAsc.accept(false)
         }.disposed(by: disposeBag)
         
         sortIsAsc.asObservable().subscribe{[weak self] event in

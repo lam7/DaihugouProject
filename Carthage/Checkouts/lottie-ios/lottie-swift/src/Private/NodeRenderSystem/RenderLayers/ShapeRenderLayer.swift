@@ -11,18 +11,11 @@ import QuartzCore
 /**
  The layer responsible for rendering shape objects
  */
-class ShapeRenderLayer: ShapeContainerLayer {
+final class ShapeRenderLayer: ShapeContainerLayer {
   
   fileprivate(set) var renderer: Renderable & NodeOutput
   
   let shapeLayer: CAShapeLayer = CAShapeLayer()
-  
-  override var renderScale: CGFloat {
-    didSet {
-      renderLayers.forEach( { $0.renderScale = renderScale } )
-      self.contentsScale = renderScale
-    }
-  }
   
   init(renderer: Renderable & NodeOutput) {
     self.renderer = renderer
@@ -95,4 +88,8 @@ class ShapeRenderLayer: ShapeContainerLayer {
     renderer.render(ctx)
   }
   
+  override func updateRenderScale() {
+    super.updateRenderScale()
+    shapeLayer.contentsScale = self.renderScale
+  }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 extension Errors{
     class CreateDeck{
@@ -25,8 +26,8 @@ extension Errors{
 }
 
 class CreateDeck{
-    private var possessionCardsVar: Variable<CardCount> = Variable([:])
-    private var deckCardsVar: Variable<[Card]> = Variable([])
+    private var possessionCardsVar: BehaviorRelay<CardCount> = BehaviorRelay(value: [:])
+    private var deckCardsVar: BehaviorRelay<[Card]> = BehaviorRelay(value: [])
     
     var deckCardsValue: [Card]{
         return deckCardsVar.value
@@ -77,7 +78,7 @@ class CreateDeck{
             if !cards.isEmpty{
                 deckCards -= cards
             }
-            deckCardsVar.value = convertCardArray(deckCards)
+            deckCardsVar.accept(convertCardArray(deckCards))
             
             var p = possessionCards
             p -= deckCards
@@ -86,9 +87,9 @@ class CreateDeck{
                     p[$0.key] = 0
                 }
             }
-            possessionCardsVar.value = p
+            possessionCardsVar.accept(p)
         }else{
-            possessionCardsVar.value = possessionCards
+            possessionCardsVar.accept(possessionCards)
         }
     }
     
@@ -98,10 +99,12 @@ class CreateDeck{
     final func append(_ card: Card) throws{
         try checkAppend(card, possessionCards: possessionCardsVar.value, deckCards: convertCardCount(deckCardsVar.value))
         if possessionCardsVar.value[card] != nil{
-            possessionCardsVar.value[card]! -= 1
+            var value = possessionCardsVar.value
+            value[card]! -= 1
+            possessionCardsVar.accept(value)
             var cards = deckCardsVar.value + card
             cards.sort(bys: [CardsSort.indexSort, CardsSort.idSort])
-            deckCardsVar.value = cards
+            deckCardsVar.accept(cards)
         }
     }
 
@@ -111,12 +114,17 @@ class CreateDeck{
     final func remove(_ card: Card) throws{
         try checkRemove(card, possessionCards: possessionCardsVar.value, deckCards: convertCardCount(deckCardsVar.value))
         if let i = deckCardsVar.value.firstIndex(of: card){
-            deckCardsVar.value.remove(at: i)
-            if possessionCardsVar.value[card] == nil{
-               possessionCardsVar.value[card] = 1
+            var deckValue = deckCardsVar.value
+            deckValue.remove(at: i)
+            deckCardsVar.accept(deckValue)
+            
+            var posValue = possessionCardsVar.value
+            if posValue[card] == nil{
+               posValue[card] = 1
             }else{
-               possessionCardsVar.value[card]! += 1
+               posValue[card]! += 1
             }
+            possessionCardsVar.accept(posValue)
         }
     }
 

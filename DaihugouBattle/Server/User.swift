@@ -9,6 +9,7 @@
 import Foundation
 import NCMB
 import UIKit
+import RxCocoa
 import RxSwift
 
 extension NCMBObject{
@@ -356,15 +357,15 @@ class UserInfoUpdateServerModel{
     }
 }
 class UserInfo{
-    private var nameVar = Variable("")
-    private var actVar = Variable(0)
-    private var goldVar = Variable(0)
-    private var crystalVar = Variable(0)
-    private var ticketVar = Variable(0)
-    private var deckIdsVar: Variable<[String]> = Variable([])
-    private var cardsVar: Variable<CardCount> = Variable([:])
-    private var giftedIdsVar: Variable<[String]> = Variable([])
-    private var receivedGiftedIdsVar: Variable<[String]> = Variable([])
+    private var nameVar = BehaviorRelay(value: "")
+    private var actVar = BehaviorRelay(value: 0)
+    private var goldVar = BehaviorRelay(value: 0)
+    private var crystalVar = BehaviorRelay(value: 0)
+    private var ticketVar = BehaviorRelay(value: 0)
+    private var deckIdsVar: BehaviorRelay<[String]> = BehaviorRelay(value: [])
+    private var cardsVar: BehaviorRelay<CardCount> = BehaviorRelay(value: [:])
+    private var giftedIdsVar: BehaviorRelay<[String]> = BehaviorRelay(value: [])
+    private var receivedGiftedIdsVar: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
     var name: Observable<String>{ return nameVar.asObservable() }
     var act: Observable<Int>{ return actVar.asObservable() }
@@ -406,15 +407,15 @@ class UserInfo{
         if let error = convert.0{
             return error
         }
-        self.nameVar.value    = name
-        self.actVar.value     = act
-        self.goldVar.value    = gold
-        self.crystalVar.value = crystal
-        self.ticketVar.value  = ticket
-        self.deckIdsVar.value = deckIds
-        self.cardsVar.value = convert.1
-        self.giftedIdsVar.value = giftedIds
-        self.receivedGiftedIdsVar.value = receivedGiftedIds
+        self.nameVar.accept(name)
+        self.actVar.accept(act)
+        self.goldVar.accept(gold)
+        self.crystalVar.accept(crystal)
+        self.ticketVar.accept(ticket)
+        self.deckIdsVar.accept(deckIds)
+        self.cardsVar.accept(convert.1)
+        self.giftedIdsVar.accept(giftedIds)
+        self.receivedGiftedIdsVar.accept(receivedGiftedIds)
         return nil
     }
     
@@ -450,19 +451,19 @@ class UserInfo{
                     completion(saveError)
                     return
                 }
-                self.nameVar.value    = object.object(forKey: "name") as! String
-                self.actVar.value     = object.object(forKey: "act") as! Int
-                self.goldVar.value    = object.object(forKey: "gold") as! Int
-                self.crystalVar.value = object.object(forKey: "crystal") as! Int
-                self.ticketVar.value  = object.object(forKey: "ticket") as! Int
-                self.deckIdsVar.value = object.object(forKey: "deckObjectIds") as! [String]
+                self.nameVar.accept(object.object(forKey: "name") as! String)
+                self.actVar.accept(object.object(forKey: "act") as! Int)
+                self.goldVar.accept(object.object(forKey: "gold") as! Int)
+                self.crystalVar.accept(object.object(forKey: "crystal") as! Int)
+                self.ticketVar.accept(object.object(forKey: "ticket") as! Int)
+                self.deckIdsVar.accept(object.object(forKey: "deckObjectIds") as! [String])
                 let cardsIdCount = object.object(forKey: "cardsIdCount") as! [[Int]]
                 let convert = self.convertCardCount(from: cardsIdCount)
                 if let error = convert.0{
                     completion(error)
                     return
                 }
-                self.cardsVar.value = convert.1
+                self.cardsVar.accept(convert.1)
             }
         }
     }
@@ -614,7 +615,7 @@ class UserInfo{
                     deck.name = name
                     decks.append(deck)
                 }
-                completion(decks, nil)
+                completion(decks.reversed(), nil)
             }
         }
     }
@@ -644,7 +645,7 @@ class UserInfo{
                     completion(saveError)
                     return
                 }
-                self?.deckIdsVar.value = deckIds
+                self?.deckIdsVar.accept(deckIds)
                 
                 userDeck.objectId = objectId
                 userDeck.deleteInBackground(completion)

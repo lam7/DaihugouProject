@@ -1,6 +1,0 @@
-framework module UICollectionViewFlexLayout {
-  umbrella header "UICollectionViewFlexLayout-umbrella.h"
-
-  export *
-  module * { export * }
-}

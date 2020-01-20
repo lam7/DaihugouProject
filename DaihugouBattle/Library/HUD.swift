@@ -108,8 +108,26 @@ class HUDView: UIView, HUDable{
 
 class HUD: NSObject{
     static var shared: HUD = HUD()
-    var container: UIView
-    
+    var container: UIView! {
+        didSet {
+            let disposable = container.rx
+                .methodInvoked(#selector(UIView.willRemoveSubview(_:)))
+                .subscribe{ [weak self] event in
+                    guard let `self` = self else {
+                        return
+                    }
+                    let subview = event.element![0] as! UIView
+                    var subviews = self.container.subviews
+                    subviews = subviews.filter{ !$0.isHidden }
+                    subviews = subviews.filter{ $0 != subview }
+                    if subviews.isEmpty {
+                        HUD.dismiss()
+                    }
+            }
+            containerDisposable = disposable
+        }
+    }
+    var containerDisposable: Disposable!
     static var container: UIView{
         return shared.container
     }
@@ -127,7 +145,6 @@ class HUD: NSObject{
     }
     
     override init() {
-        container = UIView()
         super.init()
     }
     
@@ -212,6 +229,7 @@ class HUD: NSObject{
     }
     
     func dismiss(){
+        containerDisposable.dispose()
         if let container = container as? HUDable{
             container.dismiss()
         }

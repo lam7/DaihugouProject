@@ -24,7 +24,11 @@ extension Animation{
     }
 }
 extension AnimationView{
-    convenience init(data: Data){
+    convenience init(data: Data?){
+        guard let data = data else {
+            self.init()
+            return
+        }
         let animation = Animation.data(data)
         self.init(animation: animation)
     }
@@ -44,7 +48,7 @@ class LoadingView: NSObject{
     private func setUp(){
         let frame = UIScreen.main.bounds
         
-        let v = AnimationView(data: DataRealm.get(dataNamed: "loading1.json")!)
+        let v = AnimationView(data: DataRealm.get(dataNamed: "loading1.json"))
         let height = frame.height / 3
         let width = frame.width / 3
         v.frame = CGRect(x: frame.width - width - 10, y: frame.height - height - 10, width: width, height: height)
@@ -59,10 +63,8 @@ class LoadingView: NSObject{
     }
     
     static func show(){
-        guard let window = UIApplication.shared.keyWindow else{
-            return
-        }
-        window.addSubview(shared.backgroundView)
+        HUD.show()
+        HUD.container.addSubview(shared.backgroundView)
         shared.lotAnimationView.play()
     }
     
@@ -71,39 +73,7 @@ class LoadingView: NSObject{
             _ in
             shared.backgroundView.removeSafelyFromSuperview()
             shared.lotAnimationView.stop()
+            HUD.dismiss()
         }).fire()
     }
-}
-
-class Circlelayer : CAShapeLayer {
-    
-    var onLight : Bool = true
-    fileprivate var count : Int = 1
-    
-    override init() {
-        super.init()
-    }
-    
-    override init(layer: Any) {
-        super.init(layer: layer)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(in ctx: CGContext) {
-        //背景
-        let c = UIColor.clear
-        ctx.setFillColor(c.cgColor)
-        ctx.addRect(self.bounds)
-        ctx.drawPath(using: .fill)
-        
-        //center circle
-        ctx.addArc(center: CGPoint(x: self.bounds.midX, y:self.bounds.midY), radius: 8, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
-        ctx.closePath()
-        ctx.setFillColor(UIColor.white.cgColor)
-        ctx.drawPath(using: .fill)
-    }
-    
 }

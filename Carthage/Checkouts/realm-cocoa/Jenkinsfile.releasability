@@ -1,10 +1,10 @@
-xcodeVersions = ['10.0', '10.1', '10.2.1', '10.3', '11.0']
+xcodeVersions = ['10.0', '10.1', '10.3', '11.1', '11.2.1', '11.3']
 platforms = ['osx', 'ios', 'watchos', 'tvos', 'catalyst']
 carthagePlatforms = ['osx', 'ios', 'watchos', 'tvos']
 platformNames = ['osx': 'macOS', 'ios': 'iOS', 'watchos': 'watchOS', 'tvos': 'tvOS', 'catalyst': 'Catalyst']
-carthageXcodeVersion = '11.0'
+carthageXcodeVersion = '11.3'
 objcXcodeVersion = '10.1'
-docsSwiftVersion = '5.1'
+docsSwiftVersion = '5.1.2'
 
 def installationTest(platform, test, language) {
   return {
@@ -17,9 +17,13 @@ def installationTest(platform, test, language) {
       }
 
       sh """
-      archive=\$(echo \$PWD/realm-${language}-*.zip)
+      export REALM_XCODE_VERSION=${carthageXcodeVersion}
+      if [ "${platform}" != osx ]; then
+        ./scripts/reset-simulators.sh
+      fi
       cd examples/installation
 
+      archive=\$(echo \$PWD/realm-${language}-*.zip)
       if [[ -f \$archive ]]; then
         mv \$archive .
         unzip realm-${language}-*.zip
@@ -27,7 +31,6 @@ def installationTest(platform, test, language) {
         mv realm-${language}-* realm-${language}-latest
       fi
 
-      export REALM_XCODE_VERSION=${carthageXcodeVersion}
       ./build.sh test-${platform}-${language}-${test}
       """
     }
@@ -62,6 +65,7 @@ def doBuild() {
           unstash 'source'
           sh """
           export REALM_SWIFT_VERSION=${docsSwiftVersion}
+          export PATH='/Users/realm/.rbenv/bin:/Users/realm/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/realm/.gems/bin'
           ./scripts/reset-simulators.sh
           ./build.sh docs
           cd docs
@@ -154,8 +158,8 @@ def doBuild() {
 
           // The 10.x builds don't actually have a framework for catalyst, so
           // use the 11.0 version instead
-          unstash 'catalyst-11.0'
-          sh "mv realm-framework-catalyst-11.0.zip realm-framework-catalyst-${objcXcodeVersion}.zip"
+          unstash 'catalyst-11.1'
+          sh "mv realm-framework-catalyst-11.1.zip realm-framework-catalyst-${objcXcodeVersion}.zip"
 
           unstash 'ios-static'
           unstash 'examples'

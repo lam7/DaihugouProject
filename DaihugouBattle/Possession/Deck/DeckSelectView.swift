@@ -15,8 +15,13 @@ protocol DeckSelectDelegate: class{
 
 class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
-    lazy var numPages: Int = pageControl.numberOfPages
+    @IBOutlet weak var pageControl: UIPageControl!{
+        didSet {
+            pageControl.numberOfPages = numOfPages
+        }
+    }
+    static let numOfPages: Int = MaxPossessionDecksNum / DeckSelectPageView.numOfButtons
+    let numOfPages = DeckSelectView.numOfPages
     
     private (set) var pages = [UIView?]()
     var decks: [Deck]!{
@@ -38,7 +43,7 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     }
 
     private func setUp(){
-        pages = [UIView?](repeating: nil, count: numPages)
+        pages = [UIView?](repeating: nil, count: numOfPages)
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         scrollView.backgroundColor = backgroundColor
         setupInitialPages()
@@ -49,11 +54,13 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     }
     
     private func adjustScrollView() {
-        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(numPages), height: scrollView.frame.height)
+        //　なぜかnumOfPagesちょうどで掛け算したら実際に動かしたとき中途半端な位置で止まる
+        //　最終ページのみへんな位置で止まるっぽいので+1しといて余白いれて解決しとく
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(numOfPages + 1), height: scrollView.frame.height)
     }
     
     private func loadPage(_ page: Int) {
-        guard 0 <= page && page < numPages else { return }
+        guard 0 <= page && page < numOfPages else { return }
         if pages[page] == nil{
             let width = scrollView.bounds.width * 0.95
             let height = scrollView.bounds.height * 0.95
@@ -100,22 +107,22 @@ class DeckSelectView: UINibView, DeckSelectPageViewDelegate{
     }
     
     func loadCurrentPages(page: Int, update: Bool = false) {
-        guard 0 <= page && page < numPages else { return }
+        guard 0 <= page && page < numOfPages else { return }
     
         // Remove all of the images and start over.
         if update{
             removeAnyPageView()
-            pages = [UIView?](repeating: nil, count: numPages)
+            pages = [UIView?](repeating: nil, count: numOfPages)
         }
         
         // Load the appropriate new pages for scrolling.
         if page == 0{
-            loadPage(numPages - 1)
+            loadPage(numOfPages - 1)
         }else{
             loadPage(page - 1)
         }
         loadPage(page)
-        if page == numPages - 1{
+        if page == numOfPages - 1{
             loadPage(0)
         }else{
             loadPage(page + 1)

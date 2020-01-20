@@ -48,7 +48,8 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             let dy: CGFloat = 20.0
             let frame = CGRect(x: dx, y: dy, width: self.view.frame.width - dx * 2, height: self.view.frame.height - dy * 2)
             let cacheView = CacheClearView(frame: frame)
-            self.view.addSubview(cacheView)
+            HUD.show(.closableDark)
+            HUD.shared.container.addSubview(cacheView)
             UIView.animateOpenWindow(cacheView)
         })
         
@@ -151,6 +152,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
     private func login(){
         //二度タップ防止
         if !isFirstTap{ return }
+        NowLoadingView.show()
         isFirstTap = false
         print("tap")
         
@@ -161,6 +163,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
                 return
             }
             if let error = error{
+                NowLoadingView.hide()
                 self.isFirstTap = true
                 self.present(error, completion: nil)
                 return
@@ -182,8 +185,9 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             guard let `self` = self else {
                 return
             }
-            self.isFirstTap = true
+            NowLoadingView.hide()
             let isLatest = ImageVersion.isLatest()
+            self.isFirstTap = true
             if isLatest{
                 self.performSegue(withIdentifier: "home", sender: self)
             }else{

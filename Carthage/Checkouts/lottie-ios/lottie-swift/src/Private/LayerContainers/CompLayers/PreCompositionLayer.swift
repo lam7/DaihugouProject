@@ -8,17 +8,11 @@
 import Foundation
 import QuartzCore
 
-class PreCompositionLayer: CompositionLayer {
+final class PreCompositionLayer: CompositionLayer {
   
   let frameRate: CGFloat
   let remappingNode: NodeProperty<Vector1D>?
   fileprivate var animationLayers: [CompositionLayer]
-  
-  override var renderScale: CGFloat {
-    didSet {
-      animationLayers.forEach( { $0.renderScale = renderScale } )
-    }
-  }
   
   init(precomp: PreCompLayerModel,
        asset: PrecompAsset,
@@ -34,8 +28,8 @@ class PreCompositionLayer: CompositionLayer {
     }
     self.frameRate = frameRate
     super.init(layer: precomp, size: CGSize(width: precomp.width, height: precomp.height))
-    masksToBounds = true
-    bounds = CGRect(origin: .zero, size: CGSize(width: precomp.width, height: precomp.height))
+    contentsLayer.masksToBounds = true
+    contentsLayer.bounds = CGRect(origin: .zero, size: CGSize(width: precomp.width, height: precomp.height))
     
     let layers = asset.layers.initializeCompositionLayers(assetLibrary: assetLibrary, layerImageProvider: layerImageProvider, textProvider: textProvider, frameRate: frameRate)
     
@@ -100,5 +94,10 @@ class PreCompositionLayer: CompositionLayer {
       return super.keypathProperties
     }
     return ["Time Remap" : remappingNode]
+  }
+  
+  override func updateRenderScale() {
+    super.updateRenderScale()
+    animationLayers.forEach( { $0.renderScale = renderScale } )
   }
 }
