@@ -152,6 +152,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
     private func login(){
         //二度タップ防止
         if !isFirstTap{ return }
+        NowLoadingView.show()
         isFirstTap = false
         print("tap")
         
@@ -162,6 +163,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
                 return
             }
             if let error = error{
+                NowLoadingView.hide()
                 self.isFirstTap = true
                 self.present(error, completion: nil)
                 return
@@ -183,6 +185,7 @@ class StartViewController: UIViewController, UIGestureRecognizerDelegate{
             guard let `self` = self else {
                 return
             }
+            NowLoadingView.hide()
             let isLatest = ImageVersion.isLatest()
             self.isFirstTap = true
             if isLatest{

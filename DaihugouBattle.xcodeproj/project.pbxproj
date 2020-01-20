@@ -36,6 +36,8 @@
 		AA05509A23D530570018B812 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA8ADD1820902D0500AEAFB1 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA05509E23D530580018B812 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA05509D23D530580018B812 /* RxAtomic.framework */; };
 		AA05509F23D530580018B812 /* RxAtomic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA05509D23D530580018B812 /* RxAtomic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AA0550A123D5E3FF0018B812 /* NowLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0550A023D5E3FF0018B812 /* NowLoadingView.swift */; };
+		AA0550A323D5E5170018B812 /* nowloading.json in Resources */ = {isa = PBXBuildFile; fileRef = AA0550A223D5E5160018B812 /* nowloading.json */; };
 		AA065A3B21BA0BA70024E5EF /* CardSheetsStandartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA065A3A21BA0BA70024E5EF /* CardSheetsStandartCell.xib */; };
 		AA065A3D21BA0BC60024E5EF /* CardSheetsStandartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA065A3C21BA0BC60024E5EF /* CardSheetsStandartCell.swift */; };
 		AA065A3F21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA065A3E21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift */; };
@@ -292,6 +294,8 @@
 		AA03F4FB20B1408B00D1F26E /* GatyaPackParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GatyaPackParticle.sks; sourceTree = "<group>"; };
 		AA03F4FC20B1408B00D1F26E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA05509D23D530580018B812 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
+		AA0550A023D5E3FF0018B812 /* NowLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowLoadingView.swift; sourceTree = "<group>"; };
+		AA0550A223D5E5160018B812 /* nowloading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nowloading.json; sourceTree = "<group>"; };
 		AA065A3A21BA0BA70024E5EF /* CardSheetsStandartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSheetsStandartCell.xib; sourceTree = "<group>"; };
 		AA065A3C21BA0BC60024E5EF /* CardSheetsStandartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSheetsStandartCell.swift; sourceTree = "<group>"; };
 		AA065A3E21BA0DEF0024E5EF /* SpotCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -596,6 +600,7 @@
 				AAF28CA221B6378F0010B847 /* CollectionHeaderView.swift */,
 				AAF28CA421B6627D0010B847 /* CollectionHeaderView.xib */,
 				AAAD8AD322A3A34B00ED441A /* OutOfFrameCloseView.swift */,
+				AA0550A023D5E3FF0018B812 /* NowLoadingView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -841,6 +846,7 @@
 			children = (
 				AAF9E51C22394422000E5413 /* DaihugouBattle.entitlements */,
 				AACDC0CE215F97EC00C30ADB /* cardInfo.json */,
+				AA0550A223D5E5160018B812 /* nowloading.json */,
 				AACDC0D0215F97F600C30ADB /* cardSkill.json */,
 				AA4BB3D8216AF82900E53BDA /* 勇者たちのララバイ.mp3 */,
 				AA3D3DB62099F1E600AB4396 /* GoogleService-Info.plist */,
@@ -1176,6 +1182,7 @@
 				AA84978F1F947C3F00DD6899 /* LoadingView.xib in Resources */,
 				AA10CA1C1F93326E0078850C /* PossessionCard.storyboard in Resources */,
 				AADE54521F723FC800DF83BF /* Assets.xcassets in Resources */,
+				AA0550A323D5E5170018B812 /* nowloading.json in Resources */,
 				AA6F043820907EB600B4B65D /* CardsCell.xib in Resources */,
 				AA4BB3CE21670A8C00E53BDA /* BattlePlayerAtkView.xib in Resources */,
 				AA17A365201ADE9E000FB55E /* TouchBeganParticle.sks in Resources */,
@@ -1567,6 +1574,7 @@
 				AAB401832085CB160077763D /* CollectionImageViewCell.swift in Sources */,
 				AA95767720232B860023402A /* SceneView.swift in Sources */,
 				AA3EBAE81FC7B5B100D902B7 /* GatyaRollViewController.swift in Sources */,
+				AA0550A123D5E3FF0018B812 /* NowLoadingView.swift in Sources */,
 				AADE54451F723FC700DF83BF /* AppDelegate.swift in Sources */,
 				AAF479061FD582610074AFC5 /* TDPView.swift in Sources */,
 			);
