@@ -10,6 +10,7 @@ import Foundation
 import NCMB
 import UIKit
 import RxSwift
+import RxCocoa
 
 /// 最初の文字と最後の文字を取り除く．
 /// "で閉じられていないなら引数をそのまま返す
@@ -71,8 +72,8 @@ class DownloadData{
     private var erasedDatas: [DataInfo] = []
     private var downloadDatas: [DataInfo] = []
     
-    var countDownloaded: Variable<Int> = Variable(0)
-    var lastDownloadedNamed: Variable<String> = Variable("")
+    var countDownloaded: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    var lastDownloadedNamed: BehaviorRelay<String> = BehaviorRelay(value: "")
     
     var countDownloadDatas: Int{
         return downloadDatas.count
@@ -207,8 +208,8 @@ class DownloadData{
                 error(e)
                 return
             }
-            self?.lastDownloadedNamed.value = downloadData.path
-            self?.countDownloaded.value = count
+            self?.lastDownloadedNamed.accept(downloadData.path)
+            self?.countDownloaded.accept(count)
             self?.download(count + 1, error: error, completion: completion)
         })
     }

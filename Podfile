@@ -10,15 +10,12 @@ target 'DaihugouBattle' do
   pod 'Firebase/Performance'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
-  pod 'Canvas'
-  pod 'FlatUIKit'
-  pod 'UICollectionViewFlexLayout'  
-  pod 'MMPopLabel'
+  #pod 'Canvas'
+  #pod 'FlatUIKit'
+  #pod 'UICollectionViewFlexLayout'  
+  #pod 'MMPopLabel'
   pod 'SnapKit', '~> 4.0.0'
   pod 'GlitchLabel'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RealmSwift'
 # Pods for DaihugouBattle
 
   target 'DaihugouBattleTests' do

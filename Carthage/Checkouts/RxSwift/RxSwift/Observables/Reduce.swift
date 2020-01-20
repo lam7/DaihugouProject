@@ -38,7 +38,7 @@ extension ObservableType {
     */
     public func reduce<A>(_ seed: A, accumulator: @escaping (A, Element) throws -> A)
         -> Observable<A> {
-        return Reduce(source: self.asObservable(), seed: seed, accumulator: accumulator, mapResult: { $0 })
+        Reduce(source: self.asObservable(), seed: seed, accumulator: accumulator, mapResult: { $0 })
     }
 }
 
@@ -88,7 +88,7 @@ final private class Reduce<SourceType, AccumulateType, ResultType>: Producer<Res
     typealias AccumulatorType = (AccumulateType, SourceType) throws -> AccumulateType
     typealias ResultSelectorType = (AccumulateType) throws -> ResultType
     
-    fileprivate let _source: Observable<SourceType>
+    private let _source: Observable<SourceType>
     fileprivate let _seed: AccumulateType
     fileprivate let _accumulator: AccumulatorType
     fileprivate let _mapResult: ResultSelectorType

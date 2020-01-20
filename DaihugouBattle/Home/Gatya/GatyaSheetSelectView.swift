@@ -9,18 +9,19 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 
 @IBDesignable class GatyaSheetSelectView: UINibView{
     var max: Int!
     var buyType: GatyaBuyType!
     var gatyaType: GatyaType!
     
-    var numOfSheet: Variable<Int> = Variable(1){
+    var numOfSheet: BehaviorRelay<Int> = BehaviorRelay(value: 1){
         willSet{
             if newValue.value < 1{
-                newValue.value = 1
+                newValue.accept(1)
             }else if newValue.value > max{
-                newValue.value = max
+                newValue.accept(max)
             }
         }
     }
@@ -64,13 +65,14 @@ import RxSwift
     }
     
     @IBAction func regulationSheet(_ sender: UIButton){
+        let v = numOfSheet.value
         switch sender.tag{
         case 1:
-            numOfSheet.value -= 1
+            numOfSheet.accept(v - 1)
         case 2:
-            numOfSheet.value += 1
+            numOfSheet.accept(v + 1)
         case 3:
-            numOfSheet.value = max
+            numOfSheet.accept(max)
         default:
             break
         }

@@ -40,25 +40,25 @@ class GiftBoxTableDataSource: NSObject, RxTableViewDataSourceType, UITableViewDa
 }
 
 class GiftBoxViewModel{
-    private var _giftedItemsVar: Variable<[GiftedItem]> = Variable([])
-    private var _receivedGiftedItemsVar:Variable<[GiftedItem]> = Variable([])
-    private var giftedItemsVar: Variable<[GiftedItem]> = Variable([])
+    private var _giftedItemsVar: BehaviorRelay<[GiftedItem]> = BehaviorRelay(value: [])
+    private var _receivedGiftedItemsVar:BehaviorRelay<[GiftedItem]> = BehaviorRelay(value: [])
+    private var giftedItemsVar: BehaviorRelay<[GiftedItem]> = BehaviorRelay(value: [])
     private let disposeBag = DisposeBag()
     var giftedItems: Observable<[GiftedItem]>{
         return giftedItemsVar.asObservable()
     }
     init(segmentedControl: Observable<Int>, receiveGiftedItem: Observable<GiftedItem>, collectiveGiftedItems: Observable<Void>, collectiveGiftedItemsEnable: Binder<Bool>, activityIndicatorHidden: Binder<Bool>, alert: PublishRelay<Error>){
         
-        let activityVar: Variable<Bool> = Variable(false)
+        let activityVar: BehaviorRelay<Bool> = BehaviorRelay(value: false)
         activityVar.asObservable().bind(to: activityIndicatorHidden).disposed(by: disposeBag)
         func getAllGiftedItemInfos(){
-            activityVar.value = true     
+            activityVar.accept(true)
             UserInfo.shared.getAllGiftedItemInfos{ result in
                 switch result{
                 case .success(let (giftedItems, receivedGiftedItems)):
-                    self._giftedItemsVar.value = giftedItems
-                    self._receivedGiftedItemsVar.value = receivedGiftedItems
-                    activityVar.value = false
+                    self._giftedItemsVar.accept(giftedItems)
+                    self._receivedGiftedItemsVar.accept(receivedGiftedItems)
+                    activityVar.accept(false)
                 case .failure(let error):
                     alert.accept(error)
                 }
@@ -71,24 +71,24 @@ class GiftBoxViewModel{
             guard let element = event.element else{
                 return
             }
-            activityVar.value = true
+            activityVar.accept(true)
             UserInfo.shared.receive(items: [element]){
                 error in
                 if let error = error{
                     alert.accept(error)
                 }
-                activityVar.value = false
+                activityVar.accept(false)
                 getAllGiftedItemInfos()
             }
         }.disposed(by: disposeBag)
         
         collectiveGiftedItems.subscribe{ _ in
-            activityVar.value = true
+            activityVar.accept(true)
             UserInfo.shared.receive(items: self._giftedItemsVar.value){ error in
                 if let error = error{
                     alert.accept(error)
                 }
-                activityVar.value = false
+                activityVar.accept(false)
                 getAllGiftedItemInfos()
             }
         }.disposed(by: disposeBag)

@@ -12,7 +12,7 @@ import AppKit
 import XCTest
 
 final class NSTextViewTests: RxTest {
-    static let timeout: TimeInterval = 0.5
+    static let timeout: TimeInterval = 2
 }
 
 extension NSTextViewTests {
@@ -59,7 +59,7 @@ extension NSTextViewTests {
     }
 }
 
-fileprivate final class TextViewDelegate: NSObject, NSTextViewDelegate {
+private final class TextViewDelegate: NSObject, NSTextViewDelegate {
     var numberOfChanges = 0
 
     func textDidChange(_ notification: Notification) {

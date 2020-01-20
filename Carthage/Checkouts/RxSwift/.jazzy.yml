@@ -13,10 +13,6 @@ custom_categories:
   - RxTarget
   - SectionedViewDataSourceType
   - TextInput
-- name: RxCocoa
-  children:
-  - Deprecated
-  - RxCocoa
 - name: RxCocoa/Foundation
   children:
   - KVORepresentable+CoreGraphics
@@ -31,6 +27,9 @@ custom_categories:
 - name: RxCocoa/Platform
   children:
   - DispatchQueue+Extensions
+- name: RxCocoa
+  children:
+  - RxCocoa
 - name: RxCocoa/Traits
   children:
   - ControlEvent
@@ -100,7 +99,6 @@ custom_categories:
   - UITextView+Rx
   - UIView+Rx
   - UIViewController+Rx
-  - UIWebView+Rx
 - name: RxCocoa/iOS/Protocols
   children:
   - RxCollectionViewDataSourceType
@@ -124,7 +122,6 @@ custom_categories:
   - RxTableViewDelegateProxy
   - RxTextStorageDelegateProxy
   - RxTextViewDelegateProxy
-  - RxWebViewDelegateProxy
 - name: RxCocoa/macOS
   children:
   - NSButton+Rx
@@ -146,7 +143,6 @@ custom_categories:
   - Cancelable
   - ConnectableObservableType
   - Date+Dispatch
-  - Deprecated
   - Disposable
   - Errors
   - Event
@@ -187,7 +183,6 @@ custom_categories:
 - name: RxSwift/Extensions
   children:
   - Bag+Rx
-  - String+Rx
 - name: RxSwift/Observables
   children:
   - AddRef

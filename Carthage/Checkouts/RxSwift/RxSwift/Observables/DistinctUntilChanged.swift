@@ -17,7 +17,7 @@ extension ObservableType where Element: Equatable {
      */
     public func distinctUntilChanged()
         -> Observable<Element> {
-            return self.distinctUntilChanged({ $0 }, comparer: { ($0 == $1) })
+        self.distinctUntilChanged({ $0 }, comparer: { ($0 == $1) })
     }
 }
 
@@ -32,7 +32,7 @@ extension ObservableType {
      */
     public func distinctUntilChanged<Key: Equatable>(_ keySelector: @escaping (Element) throws -> Key)
         -> Observable<Element> {
-            return self.distinctUntilChanged(keySelector, comparer: { $0 == $1 })
+        self.distinctUntilChanged(keySelector, comparer: { $0 == $1 })
     }
 
     /**
@@ -45,7 +45,7 @@ extension ObservableType {
      */
     public func distinctUntilChanged(_ comparer: @escaping (Element, Element) throws -> Bool)
         -> Observable<Element> {
-            return self.distinctUntilChanged({ $0 }, comparer: comparer)
+        self.distinctUntilChanged({ $0 }, comparer: comparer)
     }
 
     /**
@@ -107,7 +107,7 @@ final private class DistinctUntilChanged<Element, Key>: Producer<Element> {
     typealias KeySelector = (Element) throws -> Key
     typealias EqualityComparer = (Key, Key) throws -> Bool
     
-    fileprivate let _source: Observable<Element>
+    private let _source: Observable<Element>
     fileprivate let _selector: KeySelector
     fileprivate let _comparer: EqualityComparer
     

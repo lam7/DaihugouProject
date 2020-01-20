@@ -6,3 +6,5 @@
     github "kirualex/SwiftyGif"
     github "kciter/Floaty"
     github "ealeksandrov/EAIntroView"
+    github "ReactiveX/RxSwift" "c3c0cac3d4c176b04404e3574d62b51776277384"
+    github "realm/realm-cocoa" "9011b2df17019552d7acae3ed085bf8c01a6a38f"

@@ -23,10 +23,11 @@ import RxSwift
         case 1:
             let dx: CGFloat = 10
             let dy: CGFloat = 10
-            let audioFrame = CGRect(x: dx, y: dy, width: self.frame.width - dx * 2, height: self.frame.height - dy * 2)
+            var audioFrame = CGRect(x: dx, y: dy, width: self.frame.width - dx * 2, height: self.frame.height - dy * 2)
+            audioFrame = convert(audioFrame, to: superview)
             let audioView = AudioVolumeSettingView(frame: audioFrame)
-            OuterFrameClosableView.show(audioView)
-            self.addSubview(audioView)
+            HUD.show(.closableDark)
+            HUD.container.addSubview(audioView)
             UIView.animateOpenWindow(audioView)
             self.displayView = audioView
         case 2:
@@ -35,10 +36,11 @@ import RxSwift
         case 3:
             let width = self.frame.width * 0.8
             let height = self.frame.height * 0.3
-            let nameFrame = CGRect(x: self.center.x - width / 2, y: 50, width: width, height: height)
+            var nameFrame = CGRect(x: self.center.x - width / 2, y: 50, width: width, height: height)
+            nameFrame = convert(nameFrame, to: superview)
             let nameView = PlayerNameSettingView(frame: nameFrame)
-            OuterFrameClosableView.show(nameView)
-            self.addSubview(nameView)
+            HUD.show(.closableDark)
+            HUD.container.addSubview(nameView)
             UIView.animateOpenWindow(nameView)
             self.displayView = nameView
         case 4:
